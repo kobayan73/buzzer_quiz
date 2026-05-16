@@ -3898,7 +3898,22 @@
     const SAVED_QUESTIONS_KEY = "buzzer_quiz_saved_questions_json";
     const SUPABASE_URL = "https://vfedwqlrfjdhnetdgaeq.supabase.co";
     const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZmZWR3cWxyZmpkaG5ldGRnYWVxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcxMTYxODcsImV4cCI6MjA5MjY5MjE4N30.o8lFcRilQ-eIqakyBM55_JOZgVqHexOKGU023AwXUEY";
-    const WS_GAME_URL = window.WS_GAME_URL || `ws://${window.location.hostname || "localhost"}:8788`;
+    function getGameWebSocketUrl() {
+      if (window.WS_GAME_URL) return window.WS_GAME_URL;
+
+      const host = window.location.hostname || "localhost";
+      const isLocalhost = host === "localhost" || host === "127.0.0.1";
+      const isLanIp =
+        /^192\.168\./.test(host) ||
+        /^10\./.test(host) ||
+        /^172\.(1[6-9]|2\d|3[0-1])\./.test(host);
+
+      if (isLocalhost) return "ws://localhost:8788";
+      if (isLanIp) return `ws://${host}:8788`;
+      return "wss://buzzer-quiz-ws.onrender.com";
+    }
+
+    const WS_GAME_URL = getGameWebSocketUrl();
     const SUPABASE_MATCH_QUESTION_LIMIT = 90;
     const AVATAR_NAME = "koh";
     const AVATAR_ATTEMPTS_TABLE = "avatar_attempts";
@@ -4158,7 +4173,9 @@
 
       return new Promise((resolve) => {
         let resolved = false;
-        const socket = new WebSocket(WS_GAME_URL);
+        const wsUrl = getGameWebSocketUrl();
+        console.log("[ws] connecting", wsUrl);
+        const socket = new WebSocket(wsUrl);
         online.gameSocket = socket;
         online.wsConnected = false;
         online.wsRoomJoined = false;
@@ -4179,7 +4196,7 @@
         socket.onopen = () => {
           online.wsConnected = true;
           markOnlineLag("ws connected", {
-            url: WS_GAME_URL,
+            url: wsUrl,
             roomCode: online.roomCode
           });
           const message = {
