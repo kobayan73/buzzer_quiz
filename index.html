@@ -2821,6 +2821,16 @@
           playerId: window.onlineMatchState.playerId,
           roomCode: window.onlineMatchState.roomCode
         });
+
+        if (
+          window.onlineMatchState.enabled &&
+          window.onlineMatchState.useWebSocketEvents &&
+          typeof window.connectGameSocket === "function"
+        ) {
+          window.connectGameSocket().catch(error => {
+            console.warn("[ws] early connect failed", error);
+          });
+        }
       }
 
       function disableOnlineMatchState() {
@@ -4168,6 +4178,9 @@
         return Promise.resolve(false);
       }
       if (isGameSocketReady()) return Promise.resolve(true);
+      if (online.gameSocket && online.gameSocket.readyState === WebSocket.CONNECTING) {
+        return Promise.resolve(false);
+      }
 
       disconnectGameSocket();
 
@@ -4240,6 +4253,12 @@
         };
       });
     }
+
+    function connectGameSocket() {
+      return ensureOnlineGameSocketJoined();
+    }
+
+    window.connectGameSocket = connectGameSocket;
 
     function unsubscribeRoomEvents() {
       const sb = window.buzzerQuizSupabase;
