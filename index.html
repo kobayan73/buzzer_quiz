@@ -4079,7 +4079,7 @@
         return;
       }
 
-      startTimebar(duration);
+      startTimebar(duration, FULL_REVEAL_ANSWER_LIMIT_MS);
       state.fullRevealTimer = setTimeout(() => {
         if (state.status === "streaming") {
           beginLateBuzzGrace("Time up. No correct answer after full reveal.");
@@ -6106,15 +6106,17 @@ function hideTimebar() {
   if (mobileFill) mobileFill.style.transform = "scaleX(1)";
 }
 
-    function startTimebar(durationMs) {
-      state.countdownStart = performance.now();
-      state.countdownDuration = durationMs;
+    function startTimebar(durationMs, totalDurationMs = durationMs) {
+      const remainingDuration = Math.max(0, Number(durationMs) || 0);
+      const totalDuration = Math.max(remainingDuration, Number(totalDurationMs) || remainingDuration || 1);
+      state.countdownStart = performance.now() - (totalDuration - remainingDuration);
+      state.countdownDuration = totalDuration;
 
       const timebar = getActiveTimebarElements();
 if (!timebar.wrap || !timebar.fill) return;
 
 timebar.wrap.classList.add("show");
-timebar.fill.style.transform = "scaleX(1)";
+timebar.fill.style.transform = `scaleX(${Math.max(0, Math.min(1, remainingDuration / totalDuration))})`;
 
       clearInterval(state.countdownTimer);
 
