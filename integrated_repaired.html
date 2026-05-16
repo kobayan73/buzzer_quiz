@@ -3979,6 +3979,7 @@
       countdownStart: null,
       countdownDuration: null,
       countdownTimer: null,
+      pausedFullRevealRemainingMs: null,
       avatarBuzzTimer: null,
       avatarAnswerTimers: []
     };
@@ -4050,6 +4051,40 @@
     function clearLateBuzzGraceTimer() {
       clearTimeout(state.lateBuzzGraceTimer);
       state.lateBuzzGraceTimer = null;
+    }
+
+    function getFullRevealRemainingMs() {
+      if (!Number.isFinite(state.countdownStart) || !Number.isFinite(state.countdownDuration)) return null;
+      return Math.max(0, state.countdownDuration - (performance.now() - state.countdownStart));
+    }
+
+    function captureFullRevealRemainingMs() {
+      const remaining = getFullRevealRemainingMs();
+      if (remaining !== null) {
+        state.pausedFullRevealRemainingMs = remaining;
+      }
+      return remaining;
+    }
+
+    function startFullRevealBuzzWindow(durationMs = FULL_REVEAL_ANSWER_LIMIT_MS) {
+      const duration = Math.max(0, Number(durationMs) || 0);
+      clearTimeout(state.fullRevealTimer);
+      state.fullRevealTimer = null;
+      clearInterval(state.countdownTimer);
+      state.countdownTimer = null;
+      log(`Full question revealed. Players have ${(duration / 1000).toFixed(1)} seconds to buzz.`);
+
+      if (duration <= 0) {
+        beginLateBuzzGrace("Time up. No correct answer after full reveal.");
+        return;
+      }
+
+      startTimebar(duration);
+      state.fullRevealTimer = setTimeout(() => {
+        if (state.status === "streaming") {
+          beginLateBuzzGrace("Time up. No correct answer after full reveal.");
+        }
+      }, duration);
     }
 
     function beginLateBuzzGrace(reason) {
@@ -4732,6 +4767,7 @@
       });
 
       clearInterval(state.streamTimer);
+      captureFullRevealRemainingMs();
       clearTimeout(state.fullRevealTimer);
       clearTimeout(state.graceTimer);
       clearLateBuzzGraceTimer();
@@ -4975,6 +5011,10 @@
       state.pos = Math.max(0, Math.min(resumePos, currentQuestion().text.length));
       state.showAnswerInQuestionBox = false;
       state.displayStart = performance.now() - state.pos * QUESTION_SPEED_MS;
+      const resumeFullRevealRemainingMs = state.pos >= currentQuestion().text.length
+        ? Math.max(0, state.pausedFullRevealRemainingMs ?? FULL_REVEAL_ANSWER_LIMIT_MS)
+        : null;
+      state.pausedFullRevealRemainingMs = null;
 
       hideBuzzResult();
       setScoreBuzzTime("A", "");
@@ -4982,24 +5022,21 @@
       setStatus("Question resumed");
       log(`[online] Question resumed after wrong answer from character ${state.pos}.`);
 
-      state.streamTimer = setInterval(() => {
-        if (state.status !== "streaming") return;
+      if (resumeFullRevealRemainingMs !== null) {
+        startFullRevealBuzzWindow(resumeFullRevealRemainingMs);
+      } else {
+        state.streamTimer = setInterval(() => {
+          if (state.status !== "streaming") return;
 
-        if (state.pos < currentQuestion().text.length) {
-          state.pos += 1;
-          updateUI();
-        } else {
-          clearInterval(state.streamTimer);
-          log("Full question revealed. Players have 5 seconds to buzz.");
-          startTimebar(FULL_REVEAL_ANSWER_LIMIT_MS);
-
-          state.fullRevealTimer = setTimeout(() => {
-            if (state.status === "streaming") {
-              beginLateBuzzGrace("Time up. No correct answer after full reveal.");
-            }
-          }, FULL_REVEAL_ANSWER_LIMIT_MS);
-        }
-      }, QUESTION_SPEED_MS);
+          if (state.pos < currentQuestion().text.length) {
+            state.pos += 1;
+            updateUI();
+          } else {
+            clearInterval(state.streamTimer);
+            startFullRevealBuzzWindow(FULL_REVEAL_ANSWER_LIMIT_MS);
+          }
+        }, QUESTION_SPEED_MS);
+      }
 
       updateUI();
     }
@@ -6202,6 +6239,7 @@ timebar.fill.style.transform = "scaleX(1)";
       state.answerIndex = 0;
       state.eliminatedThisQuestion = new Set();
       state.showAnswerInQuestionBox = false;
+      state.pausedFullRevealRemainingMs = null;
 
       $("answerArea").classList.remove("show");
       $("answerArea").classList.remove("avatar-answering");
@@ -6321,14 +6359,7 @@ timebar.fill.style.transform = "scaleX(1)";
             updateUI();
           } else {
             clearInterval(state.streamTimer);
-            log("Full question revealed. Players have 5 seconds to buzz.");
-            startTimebar(FULL_REVEAL_ANSWER_LIMIT_MS);
-
-            state.fullRevealTimer = setTimeout(() => {
-              if (state.status === "streaming") {
-                beginLateBuzzGrace("Time up. No correct answer after full reveal.");
-              }
-            }, FULL_REVEAL_ANSWER_LIMIT_MS);
+            startFullRevealBuzzWindow(FULL_REVEAL_ANSWER_LIMIT_MS);
           }
         }, QUESTION_SPEED_MS);
 
@@ -6349,6 +6380,7 @@ timebar.fill.style.transform = "scaleX(1)";
       const reaction = Math.round(performance.now() - state.displayStart);
       const isFirstBuzz = Object.keys(state.buzzes).length === 0;
 
+      captureFullRevealRemainingMs();
       state.buzzes[player] = reaction;
       setScoreBuzzTime(player, formatSeconds(reaction));
       playSfx("sfxBuzz");
@@ -6704,14 +6736,7 @@ timebar.fill.style.transform = "scaleX(1)";
           updateUI();
         } else {
           clearInterval(state.streamTimer);
-          log("Full question revealed. Players have 5 seconds to buzz.");
-          startTimebar(FULL_REVEAL_ANSWER_LIMIT_MS);
-
-          state.fullRevealTimer = setTimeout(() => {
-            if (state.status === "streaming") {
-              beginLateBuzzGrace("Time up. No correct answer after full reveal.");
-            }
-          }, FULL_REVEAL_ANSWER_LIMIT_MS);
+          startFullRevealBuzzWindow(FULL_REVEAL_ANSWER_LIMIT_MS);
         }
       }, QUESTION_SPEED_MS);
 
