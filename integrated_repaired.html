@@ -34,6 +34,61 @@
     button:hover { transform: translateY(-1px); }
     button:active { transform: translateY(1px) scale(0.99); }
 
+    .match-debug-panel {
+      position: fixed;
+      right: 8px;
+      bottom: 8px;
+      width: min(92vw, 360px);
+      max-height: 45vh;
+      overflow: auto;
+      z-index: 99999;
+      padding: 10px;
+      border-radius: 10px;
+      background: rgba(17,24,39,0.92);
+      color: #ffffff;
+      font-size: 11px;
+      line-height: 1.35;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.28);
+      backdrop-filter: blur(8px);
+    }
+
+    .match-debug-panel pre {
+      margin: 8px 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .match-debug-actions {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      padding-bottom: 6px;
+      background: rgba(17,24,39,0.94);
+    }
+
+    .match-debug-actions button {
+      padding: 6px 8px;
+      border-radius: 8px;
+      font-size: 11px;
+      color: #111827;
+      background: #e5e7eb;
+    }
+
+    .match-debug-panel textarea {
+      width: 100%;
+      min-height: 90px;
+      margin-top: 8px;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 8px;
+      background: rgba(15,23,42,0.92);
+      color: #ffffff;
+      font-size: 11px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
     .flow-start-screen {
       position: fixed;
       inset: 0;
@@ -2814,6 +2869,114 @@
       let hostQuestionPreparation = false;
       let randomFallbackTimer = null;
 
+      function getSocketReadyStateLabel(value) {
+        return ["CONNECTING", "OPEN", "CLOSING", "CLOSED"][value] || "UNKNOWN";
+      }
+
+      function readText(id) {
+        const el = document.getElementById(id);
+        return el ? el.textContent || "" : "";
+      }
+
+      window.getMatchDebugSnapshot = function getMatchDebugSnapshot() {
+        const state = window.onlineMatchState || {};
+        const socket = state.gameSocket || null;
+        return {
+          device: /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) ? "mobile" : "desktop",
+          time: new Date().toISOString(),
+          href: location.href,
+          wsUrl: typeof window.getGameWebSocketUrl === "function" ? window.getGameWebSocketUrl() : null,
+          roomCode: state.roomCode || "",
+          role: state.role || "",
+          playerId: state.playerId || "",
+          matchType: state.matchType || "",
+          enabled: Boolean(state.enabled),
+          useWebSocketEvents: state.useWebSocketEvents,
+          socketReadyState: socket ? socket.readyState : null,
+          socketReadyStateLabel: socket ? getSocketReadyStateLabel(socket.readyState) : "NO_SOCKET",
+          wsConnected: Boolean(state.wsConnected),
+          wsRoomJoined: Boolean(state.wsRoomJoined),
+          flow: {
+            title: readText("flowMatchingTitle"),
+            subtitle: readText("flowMatchingSubtitle"),
+            message: readText("flowMatchingMessage"),
+            opponentCardClass: document.getElementById("flowOpponentCard")?.className || "",
+            opponentName: readText("flowOpponentName"),
+            opponentStatus: readText("flowOpponentStatus"),
+            roomIdValue: readText("flowRoomIdValue")
+          }
+        };
+      };
+
+      window.copyMatchDebugSnapshot = async function copyMatchDebugSnapshot() {
+        const json = JSON.stringify(window.getMatchDebugSnapshot(), null, 2);
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(json);
+            return true;
+          }
+        } catch (error) {
+          console.warn("[debug] clipboard copy failed", error);
+        }
+
+        window.__matchDebugPanel = true;
+        window.renderMatchDebugPanel?.(json);
+        return false;
+      };
+
+      window.renderMatchDebugPanel = function renderMatchDebugPanel(fallbackText = "") {
+        if (!window.__matchDebugPanel) {
+          document.getElementById("matchDebugPanel")?.remove();
+          return;
+        }
+
+        let panel = document.getElementById("matchDebugPanel");
+        if (!panel) {
+          panel = document.createElement("div");
+          panel.id = "matchDebugPanel";
+          panel.className = "match-debug-panel";
+          document.body.appendChild(panel);
+        }
+
+        const json = JSON.stringify(window.getMatchDebugSnapshot(), null, 2);
+        panel.innerHTML = `
+          <div class="match-debug-actions">
+            <button type="button" data-debug-action="refresh">Refresh Debug</button>
+            <button type="button" data-debug-action="copy">Copy Debug</button>
+            <button type="button" data-debug-action="hide">Hide</button>
+          </div>
+          <pre>${json.replace(/[&<>]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[char]))}</pre>
+          ${fallbackText ? `<textarea readonly>${fallbackText.replace(/[&<>]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[char]))}</textarea>` : ""}
+        `;
+
+        panel.querySelector('[data-debug-action="refresh"]')?.addEventListener("click", () => {
+          window.renderMatchDebugPanel();
+        });
+        panel.querySelector('[data-debug-action="copy"]')?.addEventListener("click", () => {
+          window.copyMatchDebugSnapshot();
+        });
+        panel.querySelector('[data-debug-action="hide"]')?.addEventListener("click", () => {
+          window.__matchDebugPanel = false;
+          panel.remove();
+        });
+      };
+
+      function safeRenderMatchDebugPanel() {
+        if (!window.__matchDebugPanel) return;
+        try {
+          window.renderMatchDebugPanel?.();
+        } catch (error) {
+          console.warn("[debug] render failed", error);
+        }
+      }
+
+      window.safeRenderMatchDebugPanel = safeRenderMatchDebugPanel;
+
+      if (new URLSearchParams(window.location.search).get("debug") === "1") {
+        window.__matchDebugPanel = true;
+        setTimeout(safeRenderMatchDebugPanel, 0);
+      }
+
       function setOnlineMatchState(patch) {
         window.onlineMatchState = Object.assign(window.onlineMatchState || {}, patch);
         console.log("[online] local role / playerId / roomCode", {
@@ -2831,6 +2994,7 @@
             console.warn("[ws] early connect failed", error);
           });
         }
+        safeRenderMatchDebugPanel();
       }
 
       function disableOnlineMatchState() {
@@ -3119,6 +3283,7 @@
 
       function handleRoomUpdate(room) {
         if (!room || room.room_code !== currentRoomCode) return;
+        safeRenderMatchDebugPanel();
 
         if (isRandomOnlineMatch() && room.guest_id) {
           clearRandomFallbackTimer();
@@ -3146,6 +3311,7 @@
           countdownRing.style.display = "none";
           waitingSpinner.classList.add("show");
           opponentCard.classList.toggle("is-hidden", currentPlayerRole !== "guest");
+          safeRenderMatchDebugPanel();
           return;
         }
 
@@ -3158,6 +3324,7 @@
             countdownRing.style.display = "none";
             waitingSpinner.classList.add("show");
             countdownTransitionDone = false;
+            safeRenderMatchDebugPanel();
             return;
           }
           if (countdownTransitionDone) return;
@@ -3172,12 +3339,14 @@
             startedAt: room.started_at
           });
           startSyncedCountdown(room.started_at);
+          safeRenderMatchDebugPanel();
           return;
         }
 
         if (room.status === "playing") {
           if (!receiveQuestionSetFromRoom(room)) return;
           transitionToBuzzerGameAndStart();
+          safeRenderMatchDebugPanel();
         }
       }
 
@@ -3289,6 +3458,7 @@
         countdownRing.style.display = "none";
         waitingSpinner.classList.add("show");
         opponentCard.classList.add("is-hidden");
+        safeRenderMatchDebugPanel();
 
         const { data: rooms, error: findError } = await sb
           .from("quiz_rooms")
@@ -3370,6 +3540,7 @@
         console.log("[random] using friend-match sync flow");
         subscribeRoom(updatedRoom.room_code);
         handleRoomUpdate(updatedRoom);
+        safeRenderMatchDebugPanel();
       }
 
       async function createRandomRoomAsHost() {
@@ -3418,6 +3589,7 @@
 
         console.log("[random] room created", roomCode);
         subscribeRoom(roomCode);
+        safeRenderMatchDebugPanel();
 
         clearRandomFallbackTimer();
         randomFallbackTimer = setTimeout(() => {
@@ -3602,6 +3774,7 @@
         matchingSubtitle.textContent = "Preparing your friend match.";
         matchingMessage.textContent = "Creating room...";
         matchingMessage.classList.remove("waiting-pulse");
+        safeRenderMatchDebugPanel();
 
         const { error } = await sb
           .from("quiz_rooms")
@@ -3628,6 +3801,7 @@
         matchingMessage.classList.add("waiting-pulse");
         roomIdCard.classList.add("show");
         subscribeRoom(roomId);
+        safeRenderMatchDebugPanel();
       }
 
       function openRoomEntry() {
@@ -3669,6 +3843,7 @@
         matchingTitle.textContent = "Joining Room...";
         matchingSubtitle.textContent = `Room ${roomId}`;
         matchingMessage.textContent = "Checking room...";
+        safeRenderMatchDebugPanel();
 
         const { data: room, error: fetchError } = await sb
           .from("quiz_rooms")
@@ -3736,6 +3911,7 @@
           guest_id: currentPlayerId,
           status: "waiting"
         });
+        safeRenderMatchDebugPanel();
       }
 
 
@@ -3924,6 +4100,7 @@
     }
 
     const WS_GAME_URL = getGameWebSocketUrl();
+    window.getGameWebSocketUrl = getGameWebSocketUrl;
     const SUPABASE_MATCH_QUESTION_LIMIT = 90;
     const AVATAR_NAME = "koh";
     const AVATAR_ATTEMPTS_TABLE = "avatar_attempts";
@@ -4208,6 +4385,7 @@
 
         socket.onopen = () => {
           online.wsConnected = true;
+          window.safeRenderMatchDebugPanel?.();
           markOnlineLag("ws connected", {
             url: wsUrl,
             roomCode: online.roomCode
@@ -4234,6 +4412,7 @@
           }
 
           handleWsGameMessage(message);
+          window.safeRenderMatchDebugPanel?.();
           if (message.type === "room_members") {
             clearTimeout(timeout);
             finish(true);
@@ -4244,12 +4423,14 @@
           console.warn("[ws] socket error; falling back to Supabase Realtime", error);
           clearTimeout(timeout);
           disconnectGameSocket();
+          window.safeRenderMatchDebugPanel?.();
           finish(false);
         };
 
         socket.onclose = () => {
           online.wsConnected = false;
           online.wsRoomJoined = false;
+          window.safeRenderMatchDebugPanel?.();
         };
       });
     }
