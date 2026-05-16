@@ -2868,6 +2868,7 @@
       let syncedCountdownTimer = null;
       let hostQuestionPreparation = false;
       let randomFallbackTimer = null;
+      const randomRoomFreshMs = 45000;
 
       function getSocketReadyStateLabel(value) {
         return ["CONNECTING", "OPEN", "CLOSING", "CLOSED"][value] || "UNKNOWN";
@@ -2975,6 +2976,57 @@
       if (new URLSearchParams(window.location.search).get("debug") === "1") {
         window.__matchDebugPanel = true;
         setTimeout(safeRenderMatchDebugPanel, 0);
+      }
+
+      function getRandomRoomCutoffIso() {
+        return new Date(Date.now() - randomRoomFreshMs).toISOString();
+      }
+
+      function isFreshRandomRoom(room, cutoffIso) {
+        if (!room || !room.room_code) return false;
+        if (room.status !== "waiting") return false;
+        if (room.guest_id) return false;
+        if (room.host_id === currentPlayerId) return false;
+        if (room.match_type && room.match_type !== "random") return false;
+        if (!room.created_at) return false;
+        return new Date(room.created_at).getTime() >= new Date(cutoffIso).getTime();
+      }
+
+      async function cancelStaleRandomRooms(cutoffIso) {
+        const { data: staleRooms, error: staleFindError } = await sb
+          .from("quiz_rooms")
+          .select("room_code, host_id, created_at")
+          .eq("match_type", "random")
+          .eq("status", "waiting")
+          .is("guest_id", null)
+          .neq("room_code", "")
+          .lt("created_at", cutoffIso)
+          .limit(10);
+
+        if (staleFindError) {
+          console.warn("[random] stale room lookup failed", staleFindError);
+          return;
+        }
+
+        if (!Array.isArray(staleRooms) || staleRooms.length === 0) return;
+
+        console.log("[random] stale rooms ignored", staleRooms.map(room => ({
+          roomCode: room.room_code,
+          hostId: room.host_id,
+          createdAt: room.created_at
+        })));
+
+        const { error: cancelError } = await sb
+          .from("quiz_rooms")
+          .update({ status: "cancelled" })
+          .eq("match_type", "random")
+          .eq("status", "waiting")
+          .is("guest_id", null)
+          .lt("created_at", cutoffIso);
+
+        if (cancelError) {
+          console.warn("[random] stale room cancel failed", cancelError);
+        }
       }
 
       function setOnlineMatchState(patch) {
@@ -3434,7 +3486,6 @@
       };
 
       async function startRandomMatchOnline() {
-        console.log("[random] search started");
         unlockAudioForMobile();
         clearRandomFallbackTimer();
 
@@ -3447,6 +3498,8 @@
         currentPlayerRole = "local";
         currentRoomCode = "";
         hostQuestionPreparation = false;
+        const cutoffIso = getRandomRoomCutoffIso();
+        console.log("[random] search started", { playerId: currentPlayerId, cutoffIso });
 
         resetMatchingUi();
         setFriendMode(false);
@@ -3460,6 +3513,8 @@
         opponentCard.classList.add("is-hidden");
         safeRenderMatchDebugPanel();
 
+        await cancelStaleRandomRooms(cutoffIso);
+
         const { data: rooms, error: findError } = await sb
           .from("quiz_rooms")
           .select("*")
@@ -3467,6 +3522,8 @@
           .eq("status", "waiting")
           .is("guest_id", null)
           .neq("host_id", currentPlayerId)
+          .neq("room_code", "")
+          .gte("created_at", cutoffIso)
           .order("created_at", { ascending: true })
           .limit(1);
 
@@ -3475,7 +3532,11 @@
         }
 
         if (Array.isArray(rooms) && rooms.length > 0) {
-          console.log("[random] waiting room found", rooms[0].room_code);
+          console.log("[random] candidate room", {
+            roomCode: rooms[0].room_code,
+            hostId: rooms[0].host_id,
+            createdAt: rooms[0].created_at
+          });
           await joinRandomRoomAsGuest(rooms[0]);
           return;
         }
@@ -3488,13 +3549,28 @@
         currentPlayerRole = "guest";
         currentRoomCode = room.room_code;
         hostQuestionPreparation = false;
+        const cutoffIso = getRandomRoomCutoffIso();
+
+        if (!isFreshRandomRoom(room, cutoffIso)) {
+          console.log("[random] stale or unavailable candidate ignored", {
+            roomCode: room && room.room_code,
+            hostId: room && room.host_id,
+            createdAt: room && room.created_at,
+            cutoffIso
+          });
+          await createRandomRoomAsHost();
+          return;
+        }
 
         const { error } = await sb
           .from("quiz_rooms")
           .update({ guest_id: currentPlayerId })
           .eq("room_code", room.room_code)
+          .eq("match_type", "random")
           .eq("status", "waiting")
-          .is("guest_id", null);
+          .is("guest_id", null)
+          .neq("host_id", currentPlayerId)
+          .gte("created_at", cutoffIso);
 
         if (error) {
           console.warn("[random] join failed", error);
@@ -3508,7 +3584,16 @@
           .eq("room_code", room.room_code)
           .single();
 
-        if (verifyError || !updatedRoom || updatedRoom.guest_id !== currentPlayerId) {
+        if (
+          verifyError ||
+          !updatedRoom ||
+          updatedRoom.guest_id !== currentPlayerId ||
+          updatedRoom.status !== "waiting" ||
+          updatedRoom.host_id === currentPlayerId ||
+          updatedRoom.match_type !== "random" ||
+          !updatedRoom.created_at ||
+          new Date(updatedRoom.created_at).getTime() < new Date(cutoffIso).getTime()
+        ) {
           console.warn("[random] join verification failed", verifyError || updatedRoom);
           await createRandomRoomAsHost();
           return;
@@ -3536,7 +3621,7 @@
         opponentName.textContent = "Opponent";
         opponentStatus.textContent = "Joined";
 
-        console.log("[random] joined room", updatedRoom.room_code);
+        console.log("[random] joined room", { roomCode: updatedRoom.room_code, role: "guest" });
         console.log("[random] using friend-match sync flow");
         subscribeRoom(updatedRoom.room_code);
         handleRoomUpdate(updatedRoom);
