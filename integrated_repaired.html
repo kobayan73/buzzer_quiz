@@ -3960,8 +3960,10 @@
       pos: 0,
       streamTimer: null,
       displayStart: null,
+      questionPhase: "idle",
       buzzes: {},
       graceTimer: null,
+      lateBuzzGraceTimer: null,
       answerPlayer: null,
       answerIndex: 0,
       answerTimer: null,
@@ -3989,6 +3991,7 @@
     const QUESTION_SPEED_MS = 50;
     const GRACE_WINDOW_MS = 800;
     const FULL_REVEAL_ANSWER_LIMIT_MS = 5000;
+    const LATE_BUZZ_GRACE_MS = 500;
     const BETWEEN_QUESTIONS_REVEAL_MS = 3000;
     const SAVED_QUESTIONS_KEY = "buzzer_quiz_saved_questions_json";
     const SUPABASE_URL = "https://vfedwqlrfjdhnetdgaeq.supabase.co";
@@ -4024,6 +4027,51 @@
 
     function getOnlineState() {
       return window.onlineMatchState || {};
+    }
+
+    function setQuestionPhase(phase) {
+      state.questionPhase = phase;
+      window.currentQuestionPhase = phase;
+    }
+
+    function isAnswerAreaOpen() {
+      return Boolean($("answerArea") && $("answerArea").classList.contains("show"));
+    }
+
+    function canAcceptBuzzForCurrentPhase() {
+      return (
+        !state.matchOver &&
+        !getOnlineState().buzzWinner &&
+        (state.questionPhase === "buzz_open" || state.questionPhase === "late_buzz_grace") &&
+        (state.status === "streaming" || state.status === "buzz_pending" || state.status === "late_buzz_grace")
+      );
+    }
+
+    function clearLateBuzzGraceTimer() {
+      clearTimeout(state.lateBuzzGraceTimer);
+      state.lateBuzzGraceTimer = null;
+    }
+
+    function beginLateBuzzGrace(reason) {
+      if (state.matchOver || state.status !== "streaming") return;
+
+      clearTimeout(state.fullRevealTimer);
+      state.fullRevealTimer = null;
+      clearLateBuzzGraceTimer();
+
+      state.status = "late_buzz_grace";
+      setQuestionPhase("late_buzz_grace");
+      setStatus("Last chance");
+      updateUI();
+
+      state.lateBuzzGraceTimer = setTimeout(() => {
+        state.lateBuzzGraceTimer = null;
+        if (state.questionPhase !== "late_buzz_grace") return;
+        if (getOnlineState().buzzWinner || isAnswerAreaOpen() || state.status === "answering") return;
+
+        setQuestionPhase("answer_reveal");
+        revealQuestionThenContinue(reason);
+      }, LATE_BUZZ_GRACE_MS);
     }
 
     function getOnlineLocalLabel() {
@@ -4454,6 +4502,7 @@
       const online = getOnlineState();
       if (!online.enabled) return false;
       if (onlineAnswerSubmitted || state.status === "answering" || state.status === "revealing" || state.matchOver) return true;
+      if (!canAcceptBuzzForCurrentPhase()) return true;
 
       const label = getOnlineLocalLabel();
       const questionIndex = state.currentQuestionIndex;
@@ -4560,6 +4609,7 @@
       if (!isOnlineHost()) return;
       if (questionIndex !== state.currentQuestionIndex) return;
       if (onlineBuzzWinnerIssued.has(questionIndex)) return;
+      if (state.questionPhase !== "buzz_open" && state.questionPhase !== "late_buzz_grace") return;
 
       if (!onlineBuzzBufferByQuestion.has(questionIndex)) {
         onlineBuzzBufferByQuestion.set(questionIndex, []);
@@ -4585,6 +4635,8 @@
     async function issueOnlineBuzzWinner(questionIndex) {
       if (!isOnlineHost()) return;
       if (onlineBuzzWinnerIssued.has(questionIndex)) return;
+      if (questionIndex !== state.currentQuestionIndex) return;
+      if (state.questionPhase !== "buzz_open" && state.questionPhase !== "late_buzz_grace") return;
 
       const events = (onlineBuzzBufferByQuestion.get(questionIndex) || [])
         .filter((event) => {
@@ -4658,6 +4710,14 @@
       const questionIndex = Number(payload.questionIndex);
       if (questionIndex !== state.currentQuestionIndex) return;
       payload.winnerPlayerId = String(payload.winnerPlayerId || payload.playerId || "");
+      if (state.questionPhase !== "buzz_open" && state.questionPhase !== "late_buzz_grace") {
+        console.warn("[online] buzz_winner ignored outside buzz phase", {
+          questionIndex,
+          phase: state.questionPhase,
+          status: state.status
+        });
+        return;
+      }
 
       const winner = payload.winnerLabel || getOnlineRoleLabel(payload.winnerRole);
       if (winner !== "A" && winner !== "B") return;
@@ -4674,6 +4734,7 @@
       clearInterval(state.streamTimer);
       clearTimeout(state.fullRevealTimer);
       clearTimeout(state.graceTimer);
+      clearLateBuzzGraceTimer();
       hideTimebar();
 
       getOnlineState().buzzWinner = payload;
@@ -4699,6 +4760,7 @@
       });
       state.answerPlayer = winner;
       state.status = "answering";
+      setQuestionPhase("answering");
       setStatus(winner === getOnlineLocalLabel() ? "Answering" : "Opponent answering");
       console.log("[online] buzz_winner received", {
         questionIndex,
@@ -4847,9 +4909,11 @@
       $("buzzActionPanel").classList.remove("answering");
       restoreOnlineChoicesDisplay();
       $("winnerInfo").textContent = "";
+      setQuestionPhase("judged");
 
       if (wasCorrect) {
         state.status = "revealing";
+        setQuestionPhase("answer_reveal");
         state.pos = currentQuestion().text.length;
         state.showAnswerInQuestionBox = true;
         setStatus("Correct");
@@ -4879,6 +4943,7 @@
 
       if (!wasCorrect && terminalWrong) {
         state.status = "revealing";
+        setQuestionPhase("answer_reveal");
         state.pos = currentQuestion().text.length;
         state.showAnswerInQuestionBox = true;
         hideBuzzResult();
@@ -4903,6 +4968,7 @@
       onlineJudgementIssued.delete(questionIndex);
 
       state.status = "streaming";
+      setQuestionPhase("buzz_open");
       state.answerPlayer = null;
       state.answerIndex = 0;
       state.buzzes = {};
@@ -4929,7 +4995,7 @@
 
           state.fullRevealTimer = setTimeout(() => {
             if (state.status === "streaming") {
-              revealQuestionThenContinue("Time up. No correct answer after full reveal.");
+              beginLateBuzzGrace("Time up. No correct answer after full reveal.");
             }
           }, FULL_REVEAL_ANSWER_LIMIT_MS);
         }
@@ -4942,7 +5008,24 @@
       if (!isOnlineHost()) return;
 
       const questionIndex = Number(judgementPayload.questionIndex);
+      if (questionIndex !== state.currentQuestionIndex) return;
       if (onlineNextIssued.has(questionIndex) || onlineFinishIssued.has(questionIndex)) return;
+      if (isAnswerAreaOpen()) {
+        console.warn("[online] next_question blocked because answer area is open", {
+          questionIndex,
+          phase: state.questionPhase,
+          status: state.status
+        });
+        return;
+      }
+      if (state.questionPhase === "answering" || state.status === "answering") {
+        console.warn("[online] next_question blocked during answering phase", {
+          questionIndex,
+          phase: state.questionPhase,
+          status: state.status
+        });
+        return;
+      }
 
       const scoreA = Number(judgementPayload.scoreA || 0);
       const scoreB = Number(judgementPayload.scoreB || 0);
@@ -4972,6 +5055,7 @@
       }
 
       onlineNextIssued.add(questionIndex);
+      setQuestionPhase("transitioning");
       const nextQuestionIndex = questionIndex + 1;
       const sent = await sendOnlineGameMessage("next_question", {
         questionIndex: nextQuestionIndex
@@ -4995,7 +5079,16 @@
     async function issueOnlineFinishMatch(payload, questionIndex = state.currentQuestionIndex) {
       if (!isOnlineHost()) return;
       if (onlineFinishIssued.has(questionIndex)) return;
+      if (isAnswerAreaOpen() || state.questionPhase === "answering" || state.status === "answering") {
+        console.warn("[online] finish_match blocked during answering phase", {
+          questionIndex,
+          phase: state.questionPhase,
+          status: state.status
+        });
+        return;
+      }
       onlineFinishIssued.add(questionIndex);
+      setQuestionPhase("transitioning");
 
       const sent = await sendOnlineGameMessage("finish_match", {
         ...payload,
@@ -5019,6 +5112,15 @@
     function applyOnlineNextQuestion(payload) {
       const nextQuestionIndex = Number(payload.questionIndex);
       if (!Number.isFinite(nextQuestionIndex)) return;
+      if (isAnswerAreaOpen() || state.questionPhase === "answering" || state.status === "answering") {
+        console.warn("[online] next_question ignored because answer is in progress", {
+          nextQuestionIndex,
+          phase: state.questionPhase,
+          status: state.status
+        });
+        return;
+      }
+      if (nextQuestionIndex <= state.currentQuestionIndex) return;
 
       clearTimers();
       clearOnlineQuestionState();
@@ -5035,6 +5137,7 @@
       clearTimers();
       state.matchOver = true;
       state.status = "match_over";
+      setQuestionPhase("match_over");
       state.scores.A = Math.max(0, Number(payload.scoreA || 0) / 10);
       state.scores.B = Math.max(0, Number(payload.scoreB || 0) / 10);
       state.wrongs.A = Math.max(0, MAX_WRONGS - Number(payload.livesA ?? MAX_WRONGS));
@@ -6018,19 +6121,19 @@ timebar.fill.style.transform = "scaleX(1)";
 
       const canBuzzA = online
         ? (
-          (state.status === "streaming" || state.status === "buzz_pending") &&
+          canAcceptBuzzForCurrentPhase() &&
           !state.eliminatedThisQuestion.has(localOnlineLabel) &&
           state.buzzes[localOnlineLabel] === undefined &&
           !getOnlineState().buzzWinner
         )
         : (
-          (state.status === "streaming" || state.status === "buzz_pending") &&
+          canAcceptBuzzForCurrentPhase() &&
           !state.eliminatedThisQuestion.has("A") &&
           state.buzzes.A === undefined
         );
 
       const canBuzzB = !online &&
-        (state.status === "streaming" || state.status === "buzz_pending") &&
+        canAcceptBuzzForCurrentPhase() &&
         !state.eliminatedThisQuestion.has("B") &&
         state.buzzes.B === undefined;
 
@@ -6066,6 +6169,7 @@ timebar.fill.style.transform = "scaleX(1)";
       clearAvatarTimers();
       clearInterval(state.streamTimer);
       clearTimeout(state.graceTimer);
+      clearTimeout(state.lateBuzzGraceTimer);
       clearTimeout(state.answerTimer);
       clearInterval(state.answerCountdownTimer);
       clearTimeout(state.fullRevealTimer);
@@ -6074,6 +6178,7 @@ timebar.fill.style.transform = "scaleX(1)";
 
       state.streamTimer = null;
       state.graceTimer = null;
+      state.lateBuzzGraceTimer = null;
       state.answerTimer = null;
       state.answerCountdownTimer = null;
       state.fullRevealTimer = null;
@@ -6089,6 +6194,7 @@ timebar.fill.style.transform = "scaleX(1)";
       clearTimers();
 
       state.status = "ready";
+      setQuestionPhase("ready");
       state.pos = 0;
       state.displayStart = null;
       state.buzzes = {};
@@ -6189,6 +6295,7 @@ timebar.fill.style.transform = "scaleX(1)";
       }
 
       state.status = "question_intro";
+      setQuestionPhase("question_intro");
       setStatus("Get ready");
       $("winnerInfo").textContent = "";
       log(`Question ${state.currentQuestionIndex + 1} intro sound.`);
@@ -6198,6 +6305,7 @@ timebar.fill.style.transform = "scaleX(1)";
         if (state.matchOver || state.status !== "question_intro") return;
 
         state.status = "streaming";
+        setQuestionPhase("buzz_open");
         state.displayStart = performance.now();
         scheduleAvatarForCurrentQuestion();
 
@@ -6218,7 +6326,7 @@ timebar.fill.style.transform = "scaleX(1)";
 
             state.fullRevealTimer = setTimeout(() => {
               if (state.status === "streaming") {
-                revealQuestionThenContinue("Time up. No correct answer after full reveal.");
+                beginLateBuzzGrace("Time up. No correct answer after full reveal.");
               }
             }, FULL_REVEAL_ANSWER_LIMIT_MS);
           }
@@ -6234,7 +6342,7 @@ timebar.fill.style.transform = "scaleX(1)";
         return;
       }
 
-      if (state.status !== "streaming" && state.status !== "buzz_pending") return;
+      if (!canAcceptBuzzForCurrentPhase()) return;
       if (state.eliminatedThisQuestion.has(player)) return;
       if (state.buzzes[player] !== undefined) return;
 
@@ -6253,6 +6361,7 @@ timebar.fill.style.transform = "scaleX(1)";
         state.status = "buzz_pending";
         clearInterval(state.streamTimer);
         clearTimeout(state.fullRevealTimer);
+        clearLateBuzzGraceTimer();
         hideTimebar();
         setStatus("Buzz pending");
         log(`Player ${player} buzzed first at ${(reaction / 1000).toFixed(3)}s. Waiting ${GRACE_WINDOW_MS}ms for the other player.`);
@@ -6309,6 +6418,7 @@ timebar.fill.style.transform = "scaleX(1)";
 
       state.answerPlayer = winner;
       state.status = "answering";
+      setQuestionPhase("answering");
 
       $("winnerInfo").textContent = "";
 
@@ -6522,6 +6632,7 @@ timebar.fill.style.transform = "scaleX(1)";
         const p = state.answerPlayer;
         state.scores[p] += 1;
         state.status = "result";
+        setQuestionPhase("judged");
 
         setStatus("Correct");
         playSfx("sfxCorrect");
@@ -6576,6 +6687,7 @@ timebar.fill.style.transform = "scaleX(1)";
       }
 
       state.status = "streaming";
+      setQuestionPhase("buzz_open");
       state.displayStart = performance.now() - state.pos * QUESTION_SPEED_MS;
       scheduleAvatarForCurrentQuestion();
 
@@ -6597,7 +6709,7 @@ timebar.fill.style.transform = "scaleX(1)";
 
           state.fullRevealTimer = setTimeout(() => {
             if (state.status === "streaming") {
-              revealQuestionThenContinue("Time up. No correct answer after full reveal.");
+              beginLateBuzzGrace("Time up. No correct answer after full reveal.");
             }
           }, FULL_REVEAL_ANSWER_LIMIT_MS);
         }
@@ -6608,9 +6720,18 @@ timebar.fill.style.transform = "scaleX(1)";
 
     function revealQuestionThenContinue(reason) {
       if (isOnlineFriendMatch()) {
+        if (isAnswerAreaOpen() || state.questionPhase === "answering" || state.status === "answering") {
+          console.warn("[online] answer reveal blocked during answering phase", {
+            phase: state.questionPhase,
+            status: state.status,
+            reason
+          });
+          return;
+        }
         clearTimers();
 
         state.status = "revealing";
+        setQuestionPhase("answer_reveal");
         state.pos = currentQuestion().text.length;
         state.showAnswerInQuestionBox = true;
 
@@ -6643,6 +6764,7 @@ timebar.fill.style.transform = "scaleX(1)";
       clearTimers();
 
       state.status = "revealing";
+      setQuestionPhase("answer_reveal");
       state.pos = currentQuestion().text.length;
       state.showAnswerInQuestionBox = true;
 
@@ -6704,6 +6826,7 @@ timebar.fill.style.transform = "scaleX(1)";
 
       state.matchOver = true;
       state.status = "match_over";
+      setQuestionPhase("match_over");
 
       setStatus("Match over");
       $("answerArea").classList.remove("show");
