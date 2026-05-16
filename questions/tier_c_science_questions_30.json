@@ -1,0 +1,549 @@
+[
+  {
+    "id": "sci_000001_int_std",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "In atmospheric science, this layer is discussed in relation to ultraviolet absorption and catalytic reactions involving chlorine-containing compounds. Its concentration varies with altitude and latitude, and its depletion became an important environmental issue in the late twentieth century. It is not simply ordinary oxygen gas, though it is made from the same element. What substance is this?",
+    "displayAnswer": "Ozone",
+    "normalizedAnswer": "ozone",
+    "answerChars": [
+      "o",
+      "z",
+      "o",
+      "n",
+      "e"
+    ]
+  },
+  {
+    "id": "sci_000002_int_std",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "In genetics, this molecule is often described through complementary pairing and a directional backbone, but its importance is not limited to a simple double-helix image. It can be copied before cell division and carries information that influences inherited traits through coded sequences. What molecule is this?",
+    "displayAnswer": "DNA",
+    "normalizedAnswer": "dna",
+    "answerChars": [
+      "d",
+      "n",
+      "a"
+    ]
+  },
+  {
+    "id": "sci_000003_int_std",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "In astronomy, this type of object is identified through intense gravity, accretion phenomena, and effects on nearby matter rather than by direct visible surface light. Some form after massive stars collapse, while much larger examples are found at galactic centers. What astronomical object is this?",
+    "displayAnswer": "Black hole",
+    "normalizedAnswer": "blackhole",
+    "answerChars": [
+      "b",
+      "l",
+      "a",
+      "c",
+      "k",
+      "h",
+      "o",
+      "l",
+      "e"
+    ]
+  },
+  {
+    "id": "sci_000004_int_std",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "In cell biology, this organelle is associated with membranes folded into internal structures that help produce usable chemical energy. It has its own genetic material and is often discussed in relation to an ancient symbiotic origin. It is especially important in cells with high energy demand. What organelle is this?",
+    "displayAnswer": "Mitochondrion",
+    "normalizedAnswer": "mitochondrion",
+    "answerChars": [
+      "m",
+      "i",
+      "t",
+      "o",
+      "c",
+      "h",
+      "o",
+      "n",
+      "d",
+      "r",
+      "i",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "sci_000005_int_std",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "In chemistry, this type of bond is explained through the sharing of electron pairs rather than the complete transfer of electrons. It helps account for the shapes and properties of many molecules, from simple gases to large biological compounds. What kind of chemical bond is this?",
+    "displayAnswer": "Covalent bond",
+    "normalizedAnswer": "covalentbond",
+    "answerChars": [
+      "c",
+      "o",
+      "v",
+      "a",
+      "l",
+      "e",
+      "n",
+      "t",
+      "b",
+      "o",
+      "n",
+      "d"
+    ]
+  },
+  {
+    "id": "sci_000006_int_std",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "In physics, this quantity is conserved in many isolated systems and is defined using mass and velocity. It helps explain collisions, recoil, and the motion of objects from particles to rockets. It is a vector, so direction matters as well as size. What physical quantity is this?",
+    "displayAnswer": "Momentum",
+    "normalizedAnswer": "momentum",
+    "answerChars": [
+      "m",
+      "o",
+      "m",
+      "e",
+      "n",
+      "t",
+      "u",
+      "m"
+    ]
+  },
+  {
+    "id": "sci_000007_int_std",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "In biology, this process involves the gradual change of populations across generations through inherited variation and differential survival or reproduction. It does not describe an individual changing because it wants to, but rather shifts in traits over time. What process is this?",
+    "displayAnswer": "Evolution",
+    "normalizedAnswer": "evolution",
+    "answerChars": [
+      "e",
+      "v",
+      "o",
+      "l",
+      "u",
+      "t",
+      "i",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "sci_000008_int_std",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "In Earth science, this boundary-related process explains why some oceanic crust disappears into the mantle while earthquakes and volcanic arcs can occur nearby. It is central to plate tectonic cycles and helps recycle material from the surface into deeper regions. What process is this?",
+    "displayAnswer": "Subduction",
+    "normalizedAnswer": "subduction",
+    "answerChars": [
+      "s",
+      "u",
+      "b",
+      "d",
+      "u",
+      "c",
+      "t",
+      "i",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "sci_000009_int_std",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "In thermodynamics, this quantity is linked to the number of possible microscopic arrangements of a system and to the direction of spontaneous change. It is often associated with disorder, but that simple wording can be misleading without considering energy and probability. What quantity is this?",
+    "displayAnswer": "Entropy",
+    "normalizedAnswer": "entropy",
+    "answerChars": [
+      "e",
+      "n",
+      "t",
+      "r",
+      "o",
+      "p",
+      "y"
+    ]
+  },
+  {
+    "id": "sci_000010_int_std",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "In biology, this pigment-containing organelle is found in many plant and algal cells and contains internal membrane systems where light-driven reactions occur. It has its own DNA and is linked to the conversion of environmental energy into chemical form. What organelle is this?",
+    "displayAnswer": "Chloroplast",
+    "normalizedAnswer": "chloroplast",
+    "answerChars": [
+      "c",
+      "h",
+      "l",
+      "o",
+      "r",
+      "o",
+      "p",
+      "l",
+      "a",
+      "s",
+      "t"
+    ]
+  },
+  {
+    "id": "sci_000011_int_std",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "In astronomy, this planet is studied for its large magnetosphere, rapid rotation, and atmospheric bands shaped by storms and jet streams. It strongly influences many smaller bodies in the outer solar system and has a system of numerous moons. What planet is this?",
+    "displayAnswer": "Jupiter",
+    "normalizedAnswer": "jupiter",
+    "answerChars": [
+      "j",
+      "u",
+      "p",
+      "i",
+      "t",
+      "e",
+      "r"
+    ]
+  },
+  {
+    "id": "sci_000012_int_std",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "In chemistry, this scale is used to express how acidic or basic a solution is by relating to hydrogen ion activity. It is logarithmic, so a difference of one unit represents a large change rather than a simple linear step. What scale is this?",
+    "displayAnswer": "pH scale",
+    "normalizedAnswer": "phscale",
+    "answerChars": [
+      "p",
+      "h",
+      "s",
+      "c",
+      "a",
+      "l",
+      "e"
+    ]
+  },
+  {
+    "id": "sci_000013_int_std",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "In physics, this phenomenon occurs when a wave changes direction as it passes between media where its speed differs. It explains why lenses can focus light and why objects partly submerged in water may appear displaced. What phenomenon is this?",
+    "displayAnswer": "Refraction",
+    "normalizedAnswer": "refraction",
+    "answerChars": [
+      "r",
+      "e",
+      "f",
+      "r",
+      "a",
+      "c",
+      "t",
+      "i",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "sci_000014_int_std",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "In biology, this cell division process reduces chromosome number and creates genetically varied reproductive cells. It includes pairing and exchange between homologous chromosomes, which contributes to variation among offspring. What process is this?",
+    "displayAnswer": "Meiosis",
+    "normalizedAnswer": "meiosis",
+    "answerChars": [
+      "m",
+      "e",
+      "i",
+      "o",
+      "s",
+      "i",
+      "s"
+    ]
+  },
+  {
+    "id": "sci_000015_int_std",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "In geology, this measure describes the resistance of a mineral to scratching and is commonly compared using a ranked reference scale. It is useful in identification but does not mean the same thing as toughness or resistance to breaking. What property is this?",
+    "displayAnswer": "Hardness",
+    "normalizedAnswer": "hardness",
+    "answerChars": [
+      "h",
+      "a",
+      "r",
+      "d",
+      "n",
+      "e",
+      "s",
+      "s"
+    ]
+  },
+  {
+    "id": "sci_000016_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This body is studied through seismology, orbital dynamics, and samples that reveal an early history involving differentiation and heavy bombardment. Its synchronous rotation produces a familiar near side and far side distinction, while its gravitational interaction affects tides and long-term rotational behavior of its primary planet. What celestial body is this?",
+    "displayAnswer": "Moon",
+    "normalizedAnswer": "moon",
+    "answerChars": [
+      "m",
+      "o",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "sci_000017_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This element appears in discussions of stellar nucleosynthesis, oxidation states, and biological respiration, but its everyday identity is often hidden behind compounds and molecular forms. Its diatomic molecule is central to aerobic metabolism, while another triatomic form plays an atmospheric role. What element is this?",
+    "displayAnswer": "Oxygen",
+    "normalizedAnswer": "oxygen",
+    "answerChars": [
+      "o",
+      "x",
+      "y",
+      "g",
+      "e",
+      "n"
+    ]
+  },
+  {
+    "id": "sci_000018_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This planet is examined through runaway greenhouse models, dense atmospheric chemistry, and radar mapping that penetrates cloud cover. Although its orbit is closer to the Sun than Earth’s, its surface conditions are shaped more dramatically by atmospheric pressure and heat retention. What planet is this?",
+    "displayAnswer": "Venus",
+    "normalizedAnswer": "venus",
+    "answerChars": [
+      "v",
+      "e",
+      "n",
+      "u",
+      "s"
+    ]
+  },
+  {
+    "id": "sci_000019_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This physical phenomenon is described by field equations and inverse-square behavior in simple cases, yet it becomes more subtle in curved spacetime. It governs orbits, falling motion, tides, and the large-scale clustering of matter without requiring contact between bodies. What phenomenon is this?",
+    "displayAnswer": "Gravity",
+    "normalizedAnswer": "gravity",
+    "answerChars": [
+      "g",
+      "r",
+      "a",
+      "v",
+      "i",
+      "t",
+      "y"
+    ]
+  },
+  {
+    "id": "sci_000020_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This substance is unusual because its solid phase can be less dense than its liquid phase under ordinary conditions. Its polarity, hydrogen bonding, and high heat capacity make it central to climate, biology, and many chemical processes. What substance is this?",
+    "displayAnswer": "Water",
+    "normalizedAnswer": "water",
+    "answerChars": [
+      "w",
+      "a",
+      "t",
+      "e",
+      "r"
+    ]
+  },
+  {
+    "id": "sci_000021_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This astronomical object is classified by spectral type, luminosity, and nuclear reactions in its core rather than by its apparent brightness alone. Its stability can be understood through the balance between inward gravitational forces and outward pressure from energy generation. What kind of object is this?",
+    "displayAnswer": "Star",
+    "normalizedAnswer": "star",
+    "answerChars": [
+      "s",
+      "t",
+      "a",
+      "r"
+    ]
+  },
+  {
+    "id": "sci_000022_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This biological organ is discussed in terms of neuronal networks, synaptic plasticity, and specialized regions involved in perception, movement, memory, and decision-making. It consumes significant energy relative to its mass and coordinates many body functions through electrical and chemical signals. What organ is this?",
+    "displayAnswer": "Brain",
+    "normalizedAnswer": "brain",
+    "answerChars": [
+      "b",
+      "r",
+      "a",
+      "i",
+      "n"
+    ]
+  },
+  {
+    "id": "sci_000023_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This celestial body has seasons, polar ice, and surface features shaped by ancient water-related processes, making it a major target in astrobiology and planetary exploration. Its thin atmosphere and oxidized surface contribute to its distinctive appearance in the night sky. What planet is this?",
+    "displayAnswer": "Mars",
+    "normalizedAnswer": "mars",
+    "answerChars": [
+      "m",
+      "a",
+      "r",
+      "s"
+    ]
+  },
+  {
+    "id": "sci_000024_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This chemical element is central to organic chemistry because it forms stable chains, rings, and multiple bonds with itself and other elements. Its allotropes can have very different properties, from layered structures to extremely hard networks. What element is this?",
+    "displayAnswer": "Carbon",
+    "normalizedAnswer": "carbon",
+    "answerChars": [
+      "c",
+      "a",
+      "r",
+      "b",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "sci_000025_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This form of energy transfer is carried by electromagnetic radiation and can be described using both wave and particle models. It is involved in vision, photosynthesis, spectroscopy, and the measurement of distant astronomical objects. What is this?",
+    "displayAnswer": "Light",
+    "normalizedAnswer": "light",
+    "answerChars": [
+      "l",
+      "i",
+      "g",
+      "h",
+      "t"
+    ]
+  },
+  {
+    "id": "sci_000026_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This organ is studied through pulmonary ventilation, gas exchange surfaces, and the diffusion of gases across thin membranes. Its structure increases surface area, and its function is tightly linked with circulation and cellular metabolism. What organ is this?",
+    "displayAnswer": "Lung",
+    "normalizedAnswer": "lung",
+    "answerChars": [
+      "l",
+      "u",
+      "n",
+      "g"
+    ]
+  },
+  {
+    "id": "sci_000027_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This natural satellite system feature is not the answer; instead, think of the planet whose low density, rapid rotation, and prominent ring system have made it a key case in studies of gas giants. Its moons include bodies important for atmospheric and astrobiological research. What planet is this?",
+    "displayAnswer": "Saturn",
+    "normalizedAnswer": "saturn",
+    "answerChars": [
+      "s",
+      "a",
+      "t",
+      "u",
+      "r",
+      "n"
+    ]
+  },
+  {
+    "id": "sci_000028_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This process is described in terms of pathogen recognition, signaling molecules, and memory responses that can become faster after previous exposure. It helps organisms defend against infection, although excessive or misdirected responses can cause disease. What biological defense system is this?",
+    "displayAnswer": "Immune system",
+    "normalizedAnswer": "immunesystem",
+    "answerChars": [
+      "i",
+      "m",
+      "m",
+      "u",
+      "n",
+      "e",
+      "s",
+      "y",
+      "s",
+      "t",
+      "e",
+      "m"
+    ]
+  },
+  {
+    "id": "sci_000029_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This layer of gases is analyzed using pressure gradients, circulation patterns, radiation balance, and chemical composition. It protects and shapes conditions at a planetary surface, while also producing weather and influencing climate over long timescales. What is this layer called?",
+    "displayAnswer": "Atmosphere",
+    "normalizedAnswer": "atmosphere",
+    "answerChars": [
+      "a",
+      "t",
+      "m",
+      "o",
+      "s",
+      "p",
+      "h",
+      "e",
+      "r",
+      "e"
+    ]
+  },
+  {
+    "id": "sci_000030_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This fundamental particle is described by its negative electric charge, small mass, and behavior in orbitals or energy bands depending on the system. It is central to chemical bonding, electric current, and many spectroscopic phenomena. What particle is this?",
+    "displayAnswer": "Electron",
+    "normalizedAnswer": "electron",
+    "answerChars": [
+      "e",
+      "l",
+      "e",
+      "c",
+      "t",
+      "r",
+      "o",
+      "n"
+    ]
+  }
+]

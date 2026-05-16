@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Answer UI Test - Exact Extract</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(186, 230, 253, 0.46), transparent 30%),
+        radial-gradient(circle at 88% 14%, rgba(252, 231, 243, 0.55), transparent 32%),
+        radial-gradient(circle at 72% 86%, rgba(254, 240, 138, 0.24), transparent 34%),
+        linear-gradient(135deg, #f8fbff 0%, #fff8fc 52%, #fffdf3 100%);
+      background-attachment: fixed;
+      color: #1d1d1f;
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #111827;
+      color: white;
+      transition: transform 0.08s ease, opacity 0.15s ease;
+      font-family: inherit;
+    }
+
+    button:hover { transform: translateY(-1px); }
+    button:active { transform: translateY(1px) scale(0.99); }
+
+    button:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .app {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 18px 24px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+
+    h1 { font-size: 24px; margin: 0; }
+
+    .subtitle {
+      margin-top: 4px;
+      color: #6e6e73;
+      font-size: 13px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.86);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.07);
+      border: 1px solid rgba(148, 163, 184, 0.26);
+      backdrop-filter: blur(10px);
+      margin-bottom: 10px;
+    }
+
+    .main-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 760px);
+      gap: 12px;
+      align-items: start;
+      justify-content: center;
+    }
+
+    .game-column {
+      min-width: 0;
+      width: 100%;
+    }
+
+    .question-box {
+      position: relative;
+      min-height: 380px;
+      font-size: 22px;
+      line-height: 1.55;
+      letter-spacing: 0.01em;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.88), rgba(250,252,255,0.82));
+      padding: 20px;
+      padding-bottom: 62px;
+      white-space: pre-wrap;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+    }
+
+    .buzz-result {
+      display: none;
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      font-weight: 800;
+      color: #111827;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .buzz-result.show { display: block; }
+    .buzz-result .winner-a { color: #0284c7; }
+    .buzz-result .winner-b { color: #db2777; }
+
+    .players {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .match-scoreboard {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 12px;
+      min-height: 92px;
+      padding: 12px 16px;
+    }
+
+    .score-side {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .score-side-a { justify-content: flex-start; }
+    .score-side-b { justify-content: flex-end; }
+
+    .score-center {
+      display: grid;
+      grid-template-columns: 86px 54px 86px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 234px;
+    }
+
+    .score-number {
+      min-width: 44px;
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 950;
+      color: #111827;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .score-side-a .score-number { text-align: left; margin-left: 8px; }
+    .score-side-b .score-number { text-align: right; margin-right: 8px; }
+
+    .question-counter-center {
+      min-width: 54px;
+      text-align: center;
+      font-size: 23px;
+      line-height: 1;
+      font-weight: 950;
+      color: #111827;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .score-buzz-time {
+      min-width: 92px;
+      text-align: center;
+      padding: 6px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      color: #475569;
+      font-size: 13px;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+      min-height: 29px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 140ms ease, visibility 140ms ease, background 160ms ease, color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .score-buzz-time.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .score-buzz-time.win-a {
+      background: rgba(224, 245, 255, 0.96);
+      border-color: rgba(14, 165, 216, 0.28);
+      color: #0369a1;
+      box-shadow: 0 6px 14px rgba(14, 165, 216, 0.10);
+    }
+
+    .score-buzz-time.win-b {
+      background: rgba(255, 230, 242, 0.96);
+      border-color: rgba(219, 63, 145, 0.24);
+      color: #be185d;
+      box-shadow: 0 6px 14px rgba(219, 63, 145, 0.10);
+    }
+
+    .avatar-wrap {
+      position: relative;
+      width: 72px;
+      height: 72px;
+      flex: 0 0 auto;
+    }
+
+    .life-badge {
+      position: absolute;
+      bottom: 0;
+      z-index: 5;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      min-width: 38px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(244, 114, 182, 0.28);
+      box-shadow: 0 5px 12px rgba(0,0,0,0.12);
+      color: #db2777;
+      font-size: 11px;
+      font-weight: 950;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .score-side-a .life-badge { right: -8px; }
+    .score-side-b .life-badge { right: -8px; left: auto; }
+
+    .player-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 30px;
+      font-weight: 900;
+      border: 4px solid rgba(255,255,255,0.7);
+      box-shadow:
+        inset 0 8px 12px rgba(255,255,255,0.28),
+        inset 0 -10px 14px rgba(0,0,0,0.14),
+        0 8px 18px rgba(0,0,0,0.12);
+    }
+
+    .player-avatar.a {
+      background: radial-gradient(circle at 36% 25%, #dff6ff, #5fc7f2 34%, #0ea5d8 86%);
+    }
+
+    .player-avatar.b {
+      background: radial-gradient(circle at 36% 25%, #ffe4f2, #ff8bc7 34%, #db3f91 86%);
+    }
+
+    .buzz-action-panel {
+      position: relative;
+      min-height: 198px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .buzz-action-panel.answering {
+      position: relative;
+      z-index: 1000;
+    }
+
+    .buzz-action-panel.answering .buzz-action-inner {
+      filter: brightness(0.82) saturate(0.72);
+      opacity: 0.35;
+      transform: scale(0.98);
+    }
+
+    .buzz-action-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: filter 180ms ease, opacity 180ms ease, transform 180ms ease;
+      transform: translateY(10px);
+    }
+
+    .press-label {
+      margin: 0;
+      min-height: 18px;
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 950;
+      order: 2;
+      text-align: center;
+      color: #f97316;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-shadow:
+        0 2px 0 rgba(255, 255, 255, 0.9),
+        0 5px 12px rgba(249, 115, 22, 0.26);
+    }
+
+    .buzz-pad {
+      width: 126px;
+      height: 126px;
+      border-radius: 999px;
+      padding: 11px;
+      background: linear-gradient(145deg, #fffdf0, #f4edcf);
+      border: 3px solid rgba(255, 255, 255, 0.85);
+      box-shadow:
+        inset 0 2px 5px rgba(255,255,255,0.75),
+        inset 0 -5px 10px rgba(177, 152, 89, 0.16),
+        0 10px 20px rgba(0,0,0,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      position: relative;
+      order: 1;
+    }
+
+    .quiz-buzz-button {
+      width: 98px;
+      height: 98px;
+      border-radius: 999px;
+      color: white;
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-shadow: 0 2px 3px rgba(0,0,0,0.22);
+      border: 5px solid rgba(255,255,255,0.58);
+      box-shadow:
+        inset 0 9px 15px rgba(255,255,255,0.30),
+        inset 0 -13px 18px rgba(0,0,0,0.18),
+        0 8px 0 rgba(0,0,0,0.18),
+        0 14px 22px rgba(0,0,0,0.15);
+      transition: transform 80ms ease, box-shadow 80ms ease, filter 120ms ease;
+      padding: 0;
+    }
+
+    .quiz-buzz-button.a {
+      background: radial-gradient(circle at 36% 25%, #dff6ff, #5fc7f2 34%, #0ea5d8 86%);
+    }
+
+    .quiz-buzz-button.b {
+      background: radial-gradient(circle at 36% 25%, #ffe4f2, #ff8bc7 34%, #db3f91 86%);
+    }
+
+    .quiz-buzz-button:active {
+      transform: translateY(6px) scale(0.965);
+      box-shadow:
+        inset 0 6px 12px rgba(255,255,255,0.24),
+        inset 0 -8px 13px rgba(0,0,0,0.18),
+        0 3px 0 rgba(0,0,0,0.18),
+        0 8px 14px rgba(0,0,0,0.13);
+      filter: brightness(0.98);
+    }
+
+    .answer-area {
+      display: none;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      width: min(760px, calc(100vw - 32px));
+      height: 202px;
+      min-height: 0;
+      transform: translate(-50%, -50%);
+      z-index: 1200;
+      margin: 0;
+      padding: 18px 16px 18px;
+      text-align: center;
+      border: 1px solid rgba(148, 163, 184, 0.32);
+      background: #ffffff;
+      box-shadow: 0 22px 48px rgba(0,0,0,0.18);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      grid-template-rows: 54px 30px 62px;
+      align-content: center;
+      row-gap: 10px;
+    }
+
+    .answer-area.show { display: grid; }
+
+    .answer-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      background: rgba(17, 24, 39, 0.25);
+      pointer-events: none;
+    }
+
+    .answer-backdrop.show {
+      display: block;
+    }
+
+    .mobile-answer-backdrop {
+      display: none;
+    }
+
+    .answer-player-icon {
+      position: absolute;
+      left: 10%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 26px;
+      font-weight: 950;
+      border: 4px solid rgba(255,255,255,0.76);
+      box-shadow:
+        inset 0 8px 12px rgba(255,255,255,0.28),
+        inset 0 -10px 14px rgba(0,0,0,0.14),
+        0 10px 22px rgba(0,0,0,0.16);
+      pointer-events: none;
+      z-index: 1201;
+    }
+
+    .answer-player-icon.a {
+      background: radial-gradient(circle at 36% 25%, #dff6ff, #5fc7f2 34%, #0ea5d8 86%);
+    }
+
+    .answer-player-icon.b {
+      background: radial-gradient(circle at 36% 25%, #ffe4f2, #ff8bc7 34%, #db3f91 86%);
+    }
+
+    .answer-area.avatar-answering {
+      grid-template-rows: 58px 30px;
+      row-gap: 10px;
+    }
+
+    .answer-area.avatar-answering .choices {
+      display: none;
+    }
+
+    .answer-progress {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 54px;
+      min-height: 54px;
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: 0.10em;
+      margin: 0;
+      color: #111827;
+      text-transform: lowercase;
+      line-height: 1;
+      transform: translateY(25px);
+    }
+
+    .answer-progress.empty {
+      opacity: 0.35;
+      font-size: 24px;
+      letter-spacing: 0.02em;
+      text-transform: none;
+    }
+
+    .choices {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin-top: 0;
+      height: 93px;
+      transform: translateY(-10px);
+    }
+
+    .choice {
+      min-width: 73px;
+      height: 68px;
+      border-radius: 12px;
+      font-size: 32px;
+      font-weight: 900;
+      padding: 0 18px;
+      color: #111827;
+      background: linear-gradient(145deg, rgba(255,255,255,0.98), rgba(239,246,255,0.92));
+      border: 1px solid rgba(148, 163, 184, 0.32);
+      box-shadow:
+        inset 0 3px 8px rgba(255,255,255,0.75),
+        inset 0 -8px 14px rgba(148, 163, 184, 0.10),
+        0 8px 18px rgba(0,0,0,0.10);
+      text-transform: lowercase;
+      line-height: 1;
+    }
+
+    .choice:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        inset 0 3px 8px rgba(255,255,255,0.8),
+        inset 0 -8px 14px rgba(148, 163, 184, 0.10),
+        0 12px 22px rgba(0,0,0,0.12);
+    }
+
+    .choice:active {
+      transform: translateY(4px) scale(0.97);
+      box-shadow:
+        inset 0 2px 6px rgba(255,255,255,0.7),
+        inset 0 -4px 10px rgba(148, 163, 184, 0.10),
+        0 4px 10px rgba(0,0,0,0.10);
+    }
+
+    .timer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      height: 30px;
+      margin: 0 0 0 auto;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(255, 247, 237, 0.9);
+      border: 1px solid rgba(251, 191, 36, 0.26);
+      text-align: right;
+      font-weight: 900;
+      color: #92400e;
+      font-size: 16px;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+    }
+
+    .test-controls {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin-top: 12px;
+    }
+
+    .test-controls .secondary { background: #e5e7eb; color: #111827; }
+    .test-controls .orange { background: #c2410c; }
+    .test-controls .blue { background: #2563eb; }
+    .test-controls .green { background: #15803d; }
+
+    .direct-input {
+      width: min(100%, 760px);
+      margin: 0 auto 10px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .direct-input input {
+      min-width: min(420px, 100%);
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.42);
+      background: rgba(255, 255, 255, 0.94);
+      padding: 0 16px;
+      color: #111827;
+      font-size: 15px;
+      font-weight: 800;
+      outline: none;
+    }
+
+    .close-answer-btn {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      z-index: 1203;
+      width: 34px;
+      height: 34px;
+      min-width: 34px;
+      padding: 0;
+      border-radius: 999px;
+      background: #e5e7eb;
+      color: #111827;
+      font-size: 20px;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    @media (max-width: 760px) {
+      .header { display: none; }
+      .app {
+        padding: 2px 4px 12px;
+      }
+
+      .main-layout {
+        grid-template-columns: 1fr;
+        justify-content: stretch;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .game-column {
+        display: flex;
+        flex-direction: column;
+        order: 1;
+      }
+
+      .players {
+        display: block;
+        order: -1;
+        margin-bottom: 2px;
+        margin-top: 0;
+      }
+
+      .players .card {
+        margin-top: 0;
+      }
+
+      .match-scoreboard {
+        margin-bottom: 2px;
+        position: relative;
+        padding-bottom: 18px;
+      }
+
+      .question-box {
+        font-size: 18px;
+        min-height: 320px;
+        width: 100%;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        padding: 6px 2px 52px;
+      }
+
+      .game-column > .card:first-child {
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        min-height: 360px;
+        margin-top: 0;
+        margin-bottom: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom: 0;
+        padding-bottom: 8px;
+      }
+
+      .buzz-action-inner {
+        transform: translateY(15px);
+      }
+
+      .press-label { order: 1; }
+      .buzz-pad { order: 2; }
+
+      .game-column > .buzz-action-panel {
+        margin-top: 0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-top: 0;
+        box-shadow: 0 10px 26px rgba(0,0,0,0.07);
+        background: rgba(255, 255, 255, 0.86);
+      }
+
+      .game-column > .card:first-child + .buzz-action-panel {
+        margin-bottom: 10px;
+      }
+
+      .answer-area {
+        position: fixed;
+        top: 85%;
+        left: 4px;
+        right: 4px;
+        width: auto;
+        z-index: 1200;
+        background: #ffffff;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border-radius: 22px;
+        overflow: visible;
+        transform: translateY(-50%);
+        grid-template-rows: 64px 24px 93px;
+        row-gap: 4px;
+        align-content: center;
+      }
+
+      .answer-player-icon {
+        left: 22px;
+        top: 12px;
+        transform: none;
+        width: 36px;
+        height: 36px;
+        font-size: 17px;
+      }
+
+      .timer {
+        position: absolute;
+        top: 12px;
+        right: 14px;
+        margin: 0;
+        z-index: 1202;
+      }
+
+      .choices {
+        height: 93px;
+        align-items: center;
+        gap: 4px;
+        transform: translateY(10px);
+      }
+
+      .choice {
+        min-width: 73px;
+        height: 68px;
+        border-radius: 12px;
+        font-size: 32px;
+        padding: 0 18px;
+      }
+
+      .answer-progress {
+        padding-left: 58px;
+        padding-right: 58px;
+        transform: translateY(26px);
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 100%;
+      }
+
+      .buzz-action-panel.answering {
+        position: static;
+        z-index: auto;
+      }
+
+      .answer-area.show {
+        position: fixed;
+        z-index: 1200;
+      }
+
+      .answer-area {
+        position: fixed;
+        z-index: 1200;
+        background: #ffffff;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border-radius: 22px;
+        overflow: hidden;
+      }
+
+      .answer-backdrop {
+        display: none !important;
+      }
+
+      .mobile-answer-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 900;
+        display: none;
+        background: rgba(17, 24, 39, 0.25);
+        pointer-events: none;
+      }
+
+      .mobile-answer-backdrop.show {
+        display: block;
+      }
+
+      .player-avatar {
+        width: 54px;
+        height: 54px;
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      .avatar-wrap {
+        width: 62px;
+        height: 62px;
+      }
+
+      .life-badge {
+        bottom: 0;
+        z-index: 8;
+        min-width: 34px;
+        padding: 2px 5px;
+        gap: 1px;
+        font-size: 10px;
+        line-height: 1;
+        box-shadow: 0 5px 12px rgba(0,0,0,0.14);
+      }
+
+      .score-side-a .life-badge,
+      .score-side-b .life-badge {
+        right: 0;
+        left: auto;
+      }
+
+      .question-counter-center {
+        font-size: 15px;
+        min-width: 38px;
+      }
+
+      .score-center {
+        grid-template-columns: 38px;
+        min-width: 38px;
+      }
+
+      .score-number { min-width: 34px; }
+      .score-side-a .score-number { margin-left: 6px; }
+      .score-side-b .score-number { margin-right: 6px; }
+
+      .score-buzz-time {
+        position: absolute;
+        top: 3px;
+        width: 54px;
+        min-width: 54px;
+        min-height: 22px;
+        padding: 4px 4px;
+        font-size: 10px;
+        line-height: 1;
+        z-index: 12;
+        pointer-events: none;
+      }
+
+      #buzzSummaryA { left: 16px; }
+      #buzzSummaryB { right: 16px; }
+
+      .direct-input {
+        padding: 0 6px;
+      }
+
+      .direct-input input {
+        min-width: 0;
+        flex: 1 1 100%;
+      }
+
+      .test-controls button {
+        flex: 1 1 calc(50% - 8px);
+        min-width: 0;
+        font-size: 13px;
+        padding: 11px 10px;
+      }
+
+      .close-answer-btn {
+        right: 10px;
+        top: 50px;
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        font-size: 19px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="header">
+      <div>
+        <h1>Answer UI Exact Test</h1>
+        <div class="subtitle">This page extracts the answer area UI from integrated_repaired.html.</div>
+      </div>
+    </div>
+
+    <div class="main-layout">
+      <main class="game-column">
+        <div class="players">
+          <div class="card match-scoreboard">
+            <div class="score-side score-side-a player-a score-0" id="playerA">
+              <div class="avatar-wrap">
+                <div class="player-avatar a">A</div>
+                <div class="life-badge">♥×<span>5</span></div>
+              </div>
+              <div class="score-number"><span>0</span></div>
+            </div>
+
+            <div class="score-center">
+              <div class="score-buzz-time" id="buzzSummaryA"></div>
+              <div class="question-counter-center">Q1</div>
+              <div class="score-buzz-time" id="buzzSummaryB"></div>
+            </div>
+
+            <div class="score-side score-side-b player-b score-0" id="playerB">
+              <div class="score-number"><span>0</span></div>
+              <div class="avatar-wrap">
+                <div class="player-avatar b">B</div>
+                <div class="life-badge">♥×<span>5</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="question-box" id="questionBox">Answer UI test screen.\n\nPress the buzzer to display the exact answer area. Use the letter buttons or direct input to test how long strings look in the answer-progress line. On mobile width, the same mobile media query behavior from the main file is applied.</div>
+          <div class="buzz-result" id="buzzResult"></div>
+        </div>
+
+        <div class="card buzz-action-panel" id="buzzActionPanel">
+          <div class="buzz-action-inner">
+            <div class="press-label">Press!!</div>
+            <div class="buzz-pad">
+              <button class="quiz-buzz-button a" id="buzzA">A</button>
+            </div>
+          </div>
+
+          <div class="card answer-area" id="answerArea">
+            <button class="close-answer-btn" id="closeAnswerBtn" type="button" aria-label="Close answer area">×</button>
+            <div class="answer-player-icon a" id="answerPlayerIcon">A</div>
+            <div class="answer-progress empty" id="answerProgress">Start spelling</div>
+            <span class="timer" id="answerTimer">--</span>
+            <div class="choices" id="choices"></div>
+          </div>
+        </div>
+
+        <div class="direct-input">
+          <input id="directAnswerInput" type="text" placeholder="Direct input for long answer test" autocomplete="off" />
+        </div>
+
+        <div class="test-controls">
+          <button class="blue" id="showA" type="button">Show A Answer</button>
+          <button class="green" id="showB" type="button">Show B Answer</button>
+          <button class="secondary" id="longTest" type="button">Long Answer Test</button>
+          <button class="secondary" id="opponentMode" type="button">Opponent Answering</button>
+          <button class="secondary" id="clearText" type="button">Clear Text</button>
+          <button class="orange" id="resetBtn" type="button">× Reset</button>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="answer-backdrop" id="answerBackdrop"></div>
+  <div class="mobile-answer-backdrop" id="mobileAnswerBackdrop"></div>
+
+  <script>
+    const answerArea = document.getElementById("answerArea");
+    const answerBackdrop = document.getElementById("answerBackdrop");
+    const mobileAnswerBackdrop = document.getElementById("mobileAnswerBackdrop");
+    const answerPlayerIcon = document.getElementById("answerPlayerIcon");
+    const answerProgress = document.getElementById("answerProgress");
+    const answerTimer = document.getElementById("answerTimer");
+    const choices = document.getElementById("choices");
+    const buzzActionPanel = document.getElementById("buzzActionPanel");
+    const buzzResult = document.getElementById("buzzResult");
+    const buzzSummaryA = document.getElementById("buzzSummaryA");
+    const buzzSummaryB = document.getElementById("buzzSummaryB");
+    const directAnswerInput = document.getElementById("directAnswerInput");
+
+    let currentText = "";
+    let timerInterval = null;
+    let remaining = 10;
+
+    function setIcon(role) {
+      const label = role === "b" ? "B" : "A";
+      answerPlayerIcon.textContent = label;
+      answerPlayerIcon.classList.toggle("a", role !== "b");
+      answerPlayerIcon.classList.toggle("b", role === "b");
+    }
+
+    function renderChoices() {
+      const letters = ["a", "b", "c", "d", "e", "f", "g", "h"];
+      choices.innerHTML = "";
+      for (const letter of letters) {
+        const btn = document.createElement("button");
+        btn.className = "choice";
+        btn.type = "button";
+        btn.textContent = letter;
+        btn.addEventListener("click", () => {
+          currentText += letter;
+          directAnswerInput.value = currentText;
+          updateProgress();
+        });
+        choices.appendChild(btn);
+      }
+    }
+
+    function updateProgress() {
+      if (!currentText) {
+        answerProgress.textContent = "Start spelling";
+        answerProgress.classList.add("empty");
+      } else {
+        answerProgress.textContent = currentText.toLowerCase();
+        answerProgress.classList.remove("empty");
+      }
+    }
+
+    function startTimer() {
+      clearInterval(timerInterval);
+      remaining = 10;
+      answerTimer.textContent = "10.0";
+      const started = performance.now();
+      timerInterval = setInterval(() => {
+        const elapsed = (performance.now() - started) / 1000;
+        remaining = Math.max(0, 10 - elapsed);
+        answerTimer.textContent = remaining.toFixed(1);
+        if (remaining <= 0) clearInterval(timerInterval);
+      }, 80);
+    }
+
+    function showAnswer(role = "a", options = {}) {
+      setIcon(role);
+      answerArea.classList.add("show");
+      answerBackdrop.classList.add("show");
+      mobileAnswerBackdrop.classList.add("show");
+      buzzActionPanel.classList.add("answering");
+      buzzResult.classList.add("show");
+      buzzResult.innerHTML = role === "b"
+        ? '<span class="winner-b">Player B wins the buzz</span>'
+        : '<span class="winner-a">Player A wins the buzz</span>';
+
+      buzzSummaryA.className = "score-buzz-time show" + (role === "a" ? " win-a" : "");
+      buzzSummaryB.className = "score-buzz-time show" + (role === "b" ? " win-b" : "");
+      buzzSummaryA.textContent = role === "a" ? "3.196sWIN" : "3.196s";
+      buzzSummaryB.textContent = role === "b" ? "3.136sWIN" : "3.136s";
+
+      answerArea.classList.toggle("avatar-answering", Boolean(options.opponent));
+      if (options.opponent) {
+        answerProgress.textContent = "Opponent answering...";
+        answerProgress.classList.add("empty");
+      } else {
+        updateProgress();
+      }
+      startTimer();
+    }
+
+    function resetAnswer() {
+      clearInterval(timerInterval);
+      currentText = "";
+      directAnswerInput.value = "";
+      answerTimer.textContent = "--";
+      answerArea.classList.remove("show", "avatar-answering");
+      answerBackdrop.classList.remove("show");
+      mobileAnswerBackdrop.classList.remove("show");
+      buzzActionPanel.classList.remove("answering");
+      buzzResult.classList.remove("show");
+      buzzResult.innerHTML = "";
+      buzzSummaryA.className = "score-buzz-time";
+      buzzSummaryB.className = "score-buzz-time";
+      buzzSummaryA.textContent = "";
+      buzzSummaryB.textContent = "";
+      updateProgress();
+    }
+
+    document.getElementById("buzzA").addEventListener("click", () => showAnswer("a"));
+    document.getElementById("showA").addEventListener("click", () => showAnswer("a"));
+    document.getElementById("showB").addEventListener("click", () => showAnswer("b"));
+    document.getElementById("closeAnswerBtn").addEventListener("click", resetAnswer);
+    document.getElementById("resetBtn").addEventListener("click", resetAnswer);
+    document.getElementById("clearText").addEventListener("click", () => {
+      currentText = "";
+      directAnswerInput.value = "";
+      updateProgress();
+    });
+    document.getElementById("longTest").addEventListener("click", () => {
+      currentText = "supercalifragilisticexpialidocious";
+      directAnswerInput.value = currentText;
+      showAnswer("a");
+    });
+    document.getElementById("opponentMode").addEventListener("click", () => {
+      currentText = "";
+      directAnswerInput.value = "";
+      showAnswer("b", { opponent: true });
+    });
+    directAnswerInput.addEventListener("input", () => {
+      currentText = directAnswerInput.value;
+      if (!answerArea.classList.contains("show")) showAnswer("a");
+      answerArea.classList.remove("avatar-answering");
+      updateProgress();
+    });
+
+    renderChoices();
+    updateProgress();
+  </script>
+</body>
+</html>

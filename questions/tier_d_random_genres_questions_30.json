@@ -1,0 +1,605 @@
+[
+  {
+    "id": "art_000001_beg_std",
+    "category": "art",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This art movement is associated with visible brushwork, changing light, outdoor scenes, and a break from highly polished academic styles. Many works focus on moments of perception rather than sharply outlined detail. It developed in nineteenth-century France and influenced later modern art. What movement is this?",
+    "displayAnswer": "Impressionism",
+    "normalizedAnswer": "impressionism",
+    "answerChars": [
+      "i",
+      "m",
+      "p",
+      "r",
+      "e",
+      "s",
+      "s",
+      "i",
+      "o",
+      "n",
+      "i",
+      "s",
+      "m"
+    ]
+  },
+  {
+    "id": "ent_000002_beg_std",
+    "category": "ent",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This film franchise combines science fiction, adventure, and questions about using technology to revive extinct animals. Its stories often involve theme parks, genetic engineering, and creatures that become impossible to control. The title refers to an ancient geological period associated with many dinosaurs. What franchise is this?",
+    "displayAnswer": "Jurassic Park",
+    "normalizedAnswer": "jurassicpark",
+    "answerChars": [
+      "j",
+      "u",
+      "r",
+      "a",
+      "s",
+      "s",
+      "i",
+      "c",
+      "p",
+      "a",
+      "r",
+      "k"
+    ]
+  },
+  {
+    "id": "his_000003_int_com",
+    "category": "his",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This state expanded from a city-based republic into a vast imperial system around the Mediterranean. It developed roads, law, urban infrastructure, military organization, and provincial administration that influenced later Europe. Its history includes emperors, civil wars, frontier defense, and eventual division between western and eastern centers of power. What empire was this?",
+    "displayAnswer": "Roman Empire",
+    "normalizedAnswer": "romanempire",
+    "answerChars": [
+      "r",
+      "o",
+      "m",
+      "a",
+      "n",
+      "e",
+      "m",
+      "p",
+      "i",
+      "r",
+      "e"
+    ]
+  },
+  {
+    "id": "lang_000004_int_com",
+    "category": "lang",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This language family or group is often discussed through varieties that can differ greatly in pronunciation while sharing historical writing traditions. It uses characters rather than an alphabet in its standard written form, and one standardized spoken variety has become especially important in education and media. What language is this?",
+    "displayAnswer": "Chinese",
+    "normalizedAnswer": "chinese",
+    "answerChars": [
+      "c",
+      "h",
+      "i",
+      "n",
+      "e",
+      "s",
+      "e"
+    ]
+  },
+  {
+    "id": "ent_000005_int_com",
+    "category": "ent",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This fictional character is built around detective work, fear, technology, and a personal response to crime rather than superhuman powers. His stories often explore urban corruption, moral limits, and masked identity. He is associated with a dark costume, a secret base, specialized vehicles, and the city he protects. Who is this?",
+    "displayAnswer": "Batman",
+    "normalizedAnswer": "batman",
+    "answerChars": [
+      "b",
+      "a",
+      "t",
+      "m",
+      "a",
+      "n"
+    ]
+  },
+  {
+    "id": "his_000006_beg_std",
+    "category": "his",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This network of trade routes connected regions of East Asia, Central Asia, the Middle East, and Europe. It carried not only luxury goods, but also ideas, religions, technologies, and diseases across long distances. Its name refers to one especially famous product traded from China. What route network is this?",
+    "displayAnswer": "Silk Road",
+    "normalizedAnswer": "silkroad",
+    "answerChars": [
+      "s",
+      "i",
+      "l",
+      "k",
+      "r",
+      "o",
+      "a",
+      "d"
+    ]
+  },
+  {
+    "id": "tech_000007_int_com",
+    "category": "tech",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This device combines mobile communication, computing, sensors, cameras, and internet access in a handheld form. It changed photography, navigation, messaging, payments, entertainment, and app-based services. Its importance comes less from one function than from integrating many everyday tools into a portable computer. What device is this?",
+    "displayAnswer": "Smartphone",
+    "normalizedAnswer": "smartphone",
+    "answerChars": [
+      "s",
+      "m",
+      "a",
+      "r",
+      "t",
+      "p",
+      "h",
+      "o",
+      "n",
+      "e"
+    ]
+  },
+  {
+    "id": "sci_000008_int_com",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This biological process involves pigments, electron transport, and carbon fixation rather than just a simple phrase about sunlight. It links energy from radiation with chemical storage in sugars and helps shape atmospheric gas balance. It supports many food webs and is especially associated with plants, algae, and some bacteria. What process is this?",
+    "displayAnswer": "Photosynthesis",
+    "normalizedAnswer": "photosynthesis",
+    "answerChars": [
+      "p",
+      "h",
+      "o",
+      "t",
+      "o",
+      "s",
+      "y",
+      "n",
+      "t",
+      "h",
+      "e",
+      "s",
+      "i",
+      "s"
+    ]
+  },
+  {
+    "id": "sci_000009_beg_std",
+    "category": "sci",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This scientific theory explains the movement of large sections of Earth's outer shell. It helps account for earthquakes, volcanoes, mountain building, ocean trenches, and the changing positions of continents over long periods of time. The theory connects surface geology with slow motion in deeper parts of the planet. What theory is this?",
+    "displayAnswer": "Plate tectonics",
+    "normalizedAnswer": "platetectonics",
+    "answerChars": [
+      "p",
+      "l",
+      "a",
+      "t",
+      "e",
+      "t",
+      "e",
+      "c",
+      "t",
+      "o",
+      "n",
+      "i",
+      "c",
+      "s"
+    ]
+  },
+  {
+    "id": "tech_000010_beg_std",
+    "category": "tech",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This security technique changes readable information into a form that cannot easily be understood without the proper key. It protects messages, passwords, online payments, and stored files. The idea is not simply hiding a file, but mathematically transforming its contents. What technique is this?",
+    "displayAnswer": "Encryption",
+    "normalizedAnswer": "encryption",
+    "answerChars": [
+      "e",
+      "n",
+      "c",
+      "r",
+      "y",
+      "p",
+      "t",
+      "i",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "geo_000011_beg_std",
+    "category": "geo",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This long mountain range runs along the western side of South America and passes through countries such as Chile, Peru, Bolivia, Ecuador, and Colombia. It includes high plateaus, volcanoes, and areas important to ancient civilizations and modern mining. What mountain range is this?",
+    "displayAnswer": "Andes",
+    "normalizedAnswer": "andes",
+    "answerChars": [
+      "a",
+      "n",
+      "d",
+      "e",
+      "s"
+    ]
+  },
+  {
+    "id": "tech_000012_beg_std",
+    "category": "tech",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This operating system family is widely used in servers, embedded systems, smartphones through related systems, and by many developers. It is associated with open-source development and a kernel originally created in the early 1990s. Many distributions package it with different tools and interfaces. What operating system family is this?",
+    "displayAnswer": "Linux",
+    "normalizedAnswer": "linux",
+    "answerChars": [
+      "l",
+      "i",
+      "n",
+      "u",
+      "x"
+    ]
+  },
+  {
+    "id": "ent_000013_int_com",
+    "category": "ent",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This animated story draws on themes of inheritance, exile, responsibility, and the natural order, while using animals to tell a family-centered drama. Its music and stage adaptation became widely known. The setting evokes African landscapes, and the plot follows a young royal figure forced to confront his past. What film is this?",
+    "displayAnswer": "The Lion King",
+    "normalizedAnswer": "thelionking",
+    "answerChars": [
+      "t",
+      "h",
+      "e",
+      "l",
+      "i",
+      "o",
+      "n",
+      "k",
+      "i",
+      "n",
+      "g"
+    ]
+  },
+  {
+    "id": "food_000014_beg_std",
+    "category": "food",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This Middle Eastern spread is commonly made from chickpeas blended with sesame paste, lemon juice, garlic, and olive oil. It is often eaten with flatbread, vegetables, or as part of a larger set of small dishes. Its texture is smooth, and its flavor can vary by region and seasoning. What food is this?",
+    "displayAnswer": "Hummus",
+    "normalizedAnswer": "hummus",
+    "answerChars": [
+      "h",
+      "u",
+      "m",
+      "m",
+      "u",
+      "s"
+    ]
+  },
+  {
+    "id": "gen_000015_int_com",
+    "category": "gen",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This system organizes time into units such as days, weeks, months, and years, often reflecting astronomical cycles and cultural rules. Different societies have created different versions, and some systems add extra days or months to remain aligned with seasons. It is used for planning, history, festivals, and civil life. What system is this?",
+    "displayAnswer": "Calendar",
+    "normalizedAnswer": "calendar",
+    "answerChars": [
+      "c",
+      "a",
+      "l",
+      "e",
+      "n",
+      "d",
+      "a",
+      "r"
+    ]
+  },
+  {
+    "id": "geo_000016_int_com",
+    "category": "geo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This country is also a continent in many school classifications, with ecosystems ranging from tropical reefs to dry interior regions. Its settlement history includes Indigenous cultures with very long continuity and later British colonization. It is known for distinctive animals, large coastal cities, and a vast interior often called the outback. What country is this?",
+    "displayAnswer": "Australia",
+    "normalizedAnswer": "australia",
+    "answerChars": [
+      "a",
+      "u",
+      "s",
+      "t",
+      "r",
+      "a",
+      "l",
+      "i",
+      "a"
+    ]
+  },
+  {
+    "id": "sci_000017_int_com",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This geological feature forms where molten rock, gas, and ash can reach the surface through openings in the crust. Its activity may build mountains, islands, lava fields, or explosive deposits. It is closely related to plate boundaries, hotspots, magma composition, and pressure beneath the surface. What feature is this?",
+    "displayAnswer": "Volcano",
+    "normalizedAnswer": "volcano",
+    "answerChars": [
+      "v",
+      "o",
+      "l",
+      "c",
+      "a",
+      "n",
+      "o"
+    ]
+  },
+  {
+    "id": "his_000018_int_com",
+    "category": "his",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This period involved major changes in production, energy use, labor, transport, and urban life. It began with developments such as mechanized textile production, steam power, coal use, and factory systems, then spread across regions and industries. It reshaped economies and social structures far beyond manufacturing alone. What historical transformation was this?",
+    "displayAnswer": "Industrial Revolution",
+    "normalizedAnswer": "industrialrevolution",
+    "answerChars": [
+      "i",
+      "n",
+      "d",
+      "u",
+      "s",
+      "t",
+      "r",
+      "i",
+      "a",
+      "l",
+      "r",
+      "e",
+      "v",
+      "o",
+      "l",
+      "u",
+      "t",
+      "i",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "lang_000019_beg_std",
+    "category": "lang",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "In language study, this term refers to how words are arranged to form phrases and sentences. It is not mainly about pronunciation or dictionary meaning, but about structure, order, and relationships between parts of a sentence. It helps explain why some word sequences sound grammatical while others do not. What concept is this?",
+    "displayAnswer": "Syntax",
+    "normalizedAnswer": "syntax",
+    "answerChars": [
+      "s",
+      "y",
+      "n",
+      "t",
+      "a",
+      "x"
+    ]
+  },
+  {
+    "id": "food_000020_beg_std",
+    "category": "food",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This Italian rice dish is cooked by gradually adding liquid and stirring to create a creamy texture without necessarily using cream. It often uses short-grain rice and may include ingredients such as mushrooms, seafood, cheese, saffron, or vegetables. It is more about cooking method and texture than simply boiled rice. What dish is this?",
+    "displayAnswer": "Risotto",
+    "normalizedAnswer": "risotto",
+    "answerChars": [
+      "r",
+      "i",
+      "s",
+      "o",
+      "t",
+      "t",
+      "o"
+    ]
+  },
+  {
+    "id": "gen_000021_int_com",
+    "category": "gen",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This metal has been valued for its color, rarity, resistance to corrosion, and usefulness in jewelry, coinage, electronics, and finance. It is chemically stable compared with many metals, which helped make it a symbol of wealth over long periods of history. What metal is this?",
+    "displayAnswer": "Gold",
+    "normalizedAnswer": "gold",
+    "answerChars": [
+      "g",
+      "o",
+      "l",
+      "d"
+    ]
+  },
+  {
+    "id": "art_000022_int_com",
+    "category": "art",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This Renaissance wall painting is studied for its composition, perspective, emotional grouping of figures, and the dramatic moment it represents. It has suffered deterioration and restoration over time. The work is located in Milan and is associated with Leonardo da Vinci, but the answer is the artwork itself. What artwork is this?",
+    "displayAnswer": "The Last Supper",
+    "normalizedAnswer": "thelastsupper",
+    "answerChars": [
+      "t",
+      "h",
+      "e",
+      "l",
+      "a",
+      "s",
+      "t",
+      "s",
+      "u",
+      "p",
+      "p",
+      "e",
+      "r"
+    ]
+  },
+  {
+    "id": "geo_000023_beg_std",
+    "category": "geo",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This major river flows through parts of Southeast Asia and supports farming, fishing, transport, and large delta communities. It passes near or through several countries, including China, Laos, Thailand, Cambodia, and Vietnam. It is often discussed in relation to seasonal floods, rice production, and environmental change. What river is this?",
+    "displayAnswer": "Mekong",
+    "normalizedAnswer": "mekong",
+    "answerChars": [
+      "m",
+      "e",
+      "k",
+      "o",
+      "n",
+      "g"
+    ]
+  },
+  {
+    "id": "spo_000024_int_com",
+    "category": "spo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This sport was invented in the late nineteenth century as an indoor activity and later developed complex tactics involving spacing, screening, passing, and shooting efficiency. Professional leagues made it globally popular, and modern play values both athleticism and long-range accuracy. Two teams try to score by putting a ball through an elevated hoop. What sport is this?",
+    "displayAnswer": "Basketball",
+    "normalizedAnswer": "basketball",
+    "answerChars": [
+      "b",
+      "a",
+      "s",
+      "k",
+      "e",
+      "t",
+      "b",
+      "a",
+      "l",
+      "l"
+    ]
+  },
+  {
+    "id": "sci_000025_beg_std",
+    "category": "sci",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This mechanism explains how inherited traits can become more or less common in populations depending on survival and reproduction. It does not require organisms to consciously improve themselves. Instead, variation, inheritance, and environmental pressures shape populations over generations. What mechanism is this?",
+    "displayAnswer": "Natural selection",
+    "normalizedAnswer": "naturalselection",
+    "answerChars": [
+      "n",
+      "a",
+      "t",
+      "u",
+      "r",
+      "a",
+      "l",
+      "s",
+      "e",
+      "l",
+      "e",
+      "c",
+      "t",
+      "i",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "food_000026_int_com",
+    "category": "food",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This broad category of dishes can involve spice blends, sauces, stews, vegetables, meat, legumes, or rice, and it varies greatly across South Asia, Southeast Asia, Japan, Britain, and other regions. Its name does not refer to one single recipe, but to many adapted food traditions involving seasoned sauces or mixtures. What food category is this?",
+    "displayAnswer": "Curry",
+    "normalizedAnswer": "curry",
+    "answerChars": [
+      "c",
+      "u",
+      "r",
+      "r",
+      "y"
+    ]
+  },
+  {
+    "id": "spo_000027_beg_std",
+    "category": "spo",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This long-distance running event has a fixed race distance and is connected by tradition to an ancient Greek story. Modern versions are held in city streets, international competitions, and major sporting festivals. It tests endurance, pacing, hydration, and mental strength over a much longer distance than track sprints. What event is this?",
+    "displayAnswer": "Marathon",
+    "normalizedAnswer": "marathon",
+    "answerChars": [
+      "m",
+      "a",
+      "r",
+      "a",
+      "t",
+      "h",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "geo_000028_int_com",
+    "category": "geo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This country has vast boreal forests, Arctic regions, large freshwater systems, and two official languages at the federal level. Its history includes Indigenous nations, French and British colonial influence, and a close relationship with its southern neighbor. It is known for large land area, cold climates in many regions, and major cities such as Toronto and Vancouver. What country is this?",
+    "displayAnswer": "Canada",
+    "normalizedAnswer": "canada",
+    "answerChars": [
+      "c",
+      "a",
+      "n",
+      "a",
+      "d",
+      "a"
+    ]
+  },
+  {
+    "id": "gen_000029_beg_std",
+    "category": "gen",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This chemical element is very light, unreactive under ordinary conditions, and used in balloons, cryogenic cooling, and some scientific equipment. It is produced in stars through nuclear processes and is also found in natural gas deposits on Earth. Its name is connected historically with the Sun. What element is this?",
+    "displayAnswer": "Helium",
+    "normalizedAnswer": "helium",
+    "answerChars": [
+      "h",
+      "e",
+      "l",
+      "i",
+      "u",
+      "m"
+    ]
+  },
+  {
+    "id": "his_000030_beg_std",
+    "category": "his",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This medieval English document was issued after conflict between a king and powerful nobles. It did not create modern democracy by itself, but it became important in later arguments about law, royal authority, and limits on government power. It is often connected with the idea that rulers are not completely above the law. What document is this?",
+    "displayAnswer": "Magna Carta",
+    "normalizedAnswer": "magnacarta",
+    "answerChars": [
+      "m",
+      "a",
+      "g",
+      "n",
+      "a",
+      "c",
+      "a",
+      "r",
+      "t",
+      "a"
+    ]
+  }
+]

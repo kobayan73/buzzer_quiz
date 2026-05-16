@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buzzer Button Design Gallery</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 32px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f5f7;
+      color: #111827;
+    }
+    .app { max-width: 1180px; margin: 0 auto; }
+    h1 { margin: 0 0 8px; font-size: 34px; }
+    .lead { margin: 0 0 28px; color: #6b7280; line-height: 1.7; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 22px; }
+    .card { background: white; border-radius: 24px; padding: 24px; box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+    .card h2 { margin: 0 0 8px; font-size: 21px; }
+    .desc { color: #6b7280; font-size: 14px; line-height: 1.6; min-height: 48px; margin-bottom: 18px; }
+    .preview {
+      display: flex; gap: 18px; align-items: center; justify-content: center; min-height: 190px;
+      border-radius: 20px;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.9), transparent 22%), linear-gradient(135deg, #f9fafb, #eef2f7);
+      padding: 18px;
+    }
+    .label { text-align: center; margin-top: 10px; font-weight: 700; font-size: 13px; color: #374151; }
+    .btn-wrap { display: flex; flex-direction: column; align-items: center; }
+    .buzz-button {
+      border: 0; cursor: pointer; user-select: none; -webkit-user-select: none;
+      transition: transform 80ms ease, box-shadow 80ms ease, filter 120ms ease;
+    }
+    .buzz-button:active { transform: translateY(6px) scale(0.96); }
+
+    .classic {
+      width: 118px; height: 118px; border-radius: 999px; color: white; font-size: 38px; font-weight: 900;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.25); border: 7px solid rgba(255,255,255,0.75);
+      box-shadow: inset 0 16px 24px rgba(255,255,255,0.55), inset 0 -18px 26px rgba(0,0,0,0.22), 0 12px 0 rgba(0,0,0,0.22), 0 22px 34px rgba(0,0,0,0.20);
+    }
+    .classic.a { background: radial-gradient(circle at 35% 25%, #ffffff, #69d4ff 28%, #0ea5e9 78%); }
+    .classic.b { background: radial-gradient(circle at 35% 25%, #ffffff, #ff9bd3 28%, #ec4899 78%); }
+    .classic:active {
+      box-shadow: inset 0 10px 18px rgba(255,255,255,0.45), inset 0 -10px 18px rgba(0,0,0,0.22), 0 5px 0 rgba(0,0,0,0.22), 0 12px 20px rgba(0,0,0,0.16);
+    }
+
+    .arcade-base {
+      width: 138px; height: 138px; border-radius: 28px; padding: 14px;
+      background: linear-gradient(145deg, #1f2937, #030712);
+      box-shadow: inset 0 2px 6px rgba(255,255,255,0.12), 0 16px 28px rgba(0,0,0,0.25);
+    }
+    .arcade {
+      width: 100%; height: 100%; border-radius: 999px; font-size: 34px; font-weight: 900; color: white;
+      border: 5px solid rgba(255,255,255,0.35); text-shadow: 0 2px 4px rgba(0,0,0,0.28);
+      box-shadow: inset 0 18px 20px rgba(255,255,255,0.55), inset 0 -18px 20px rgba(0,0,0,0.25), 0 8px 0 rgba(0,0,0,0.28);
+    }
+    .arcade.a { background: linear-gradient(145deg, #93e5ff, #0284c7); }
+    .arcade.b { background: linear-gradient(145deg, #ffaddd, #db2777); }
+    .arcade:active { transform: translateY(7px) scale(0.97); box-shadow: inset 0 8px 16px rgba(255,255,255,0.45), inset 0 -12px 16px rgba(0,0,0,0.25), 0 2px 0 rgba(0,0,0,0.28); }
+
+    .neon {
+      position: relative; width: 120px; height: 120px; border-radius: 30px; font-size: 36px; font-weight: 900;
+      color: white; background: #111827; overflow: hidden;
+    }
+    .neon::before {
+      content: ""; position: absolute; inset: 4px; border-radius: 26px; border: 3px solid currentColor;
+      box-shadow: 0 0 18px currentColor, inset 0 0 18px currentColor; opacity: 0.9;
+    }
+    .neon::after {
+      content: ""; position: absolute; inset: -20%; background: radial-gradient(circle, currentColor, transparent 55%); opacity: 0.24;
+    }
+    .neon span { position: relative; z-index: 1; }
+    .neon.a { color: #38d9ff; box-shadow: 0 0 22px rgba(56,217,255,.45); }
+    .neon.b { color: #ff5ec4; box-shadow: 0 0 22px rgba(255,94,196,.45); }
+    .neon:active { filter: brightness(1.3); }
+
+    .pop {
+      width: 124px; height: 104px; border-radius: 34px; font-size: 34px; font-weight: 900; color: #111827;
+      border: 4px solid white; box-shadow: 0 10px 0 rgba(0,0,0,0.12), 0 18px 28px rgba(0,0,0,0.12);
+    }
+    .pop.a { background: linear-gradient(180deg, #ecfeff, #a5f3fc); }
+    .pop.b { background: linear-gradient(180deg, #fff1f7, #fbcfe8); }
+    .pop:active { transform: scale(0.90); box-shadow: 0 4px 0 rgba(0,0,0,0.12), 0 10px 18px rgba(0,0,0,0.12); }
+
+    .lightning {
+      width: 126px; height: 126px; border-radius: 999px; color: white; font-size: 52px; font-weight: 900;
+      border: 6px solid rgba(255,255,255,0.8); text-shadow: 0 3px 8px rgba(0,0,0,0.25);
+      box-shadow: inset 0 14px 24px rgba(255,255,255,0.42), inset 0 -18px 20px rgba(0,0,0,0.22), 0 14px 26px rgba(0,0,0,0.18);
+    }
+    .lightning.a { background: linear-gradient(145deg, #7dd3fc, #0284c7); }
+    .lightning.b { background: linear-gradient(145deg, #f9a8d4, #db2777); }
+    .lightning:active { transform: translateY(5px) rotate(-3deg) scale(0.95); filter: brightness(1.15); }
+
+    .note { margin-top: 24px; padding: 18px 20px; border-radius: 18px; background: #111827; color: #d1d5db; line-height: 1.7; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <h1>Buzzer Button Design Gallery</h1>
+    <p class="lead">5つのボタン案です。各ボタンはクリックすると押下アニメーションを確認できます。左がPlayer A、右がPlayer Bの想定です。</p>
+
+    <div class="grid">
+      <div class="card">
+        <h2>1. Classic Quiz Button</h2>
+        <div class="desc">王道の早押しクイズ番組風。最も分かりやすく、現在のUIにも合わせやすい案です。</div>
+        <div class="preview">
+          <div class="btn-wrap"><button class="buzz-button classic a">A</button><div class="label">Player A</div></div>
+          <div class="btn-wrap"><button class="buzz-button classic b">B</button><div class="label">Player B</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>2. Arcade Cabinet Button</h2>
+        <div class="desc">ゲーセン筐体の物理ボタン風。黒い台座があり、押している感がかなり強いです。</div>
+        <div class="preview">
+          <div class="btn-wrap"><div class="arcade-base"><button class="buzz-button arcade a">A</button></div><div class="label">Player A</div></div>
+          <div class="btn-wrap"><div class="arcade-base"><button class="buzz-button arcade b">B</button></div><div class="label">Player B</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>3. Neon Lock-in Button</h2>
+        <div class="desc">近未来・オンライン対戦感が出るネオンボタン。外周が光るのでゲームアプリらしい印象です。</div>
+        <div class="preview">
+          <div class="btn-wrap"><button class="buzz-button neon a"><span>A</span></button><div class="label">Player A</div></div>
+          <div class="btn-wrap"><button class="buzz-button neon b"><span>B</span></button><div class="label">Player B</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>4. Soft Pop Button</h2>
+        <div class="desc">カジュアルで親しみやすい、ぷにっとしたボタン。やわらかい雰囲気にしたい場合に向いています。</div>
+        <div class="preview">
+          <div class="btn-wrap"><button class="buzz-button pop a">A</button><div class="label">Player A</div></div>
+          <div class="btn-wrap"><button class="buzz-button pop b">B</button><div class="label">Player B</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>5. Lightning Speed Button</h2>
+        <div class="desc">早押し・スピード感を前面に出す稲妻ボタン。画面映えしやすい案です。</div>
+        <div class="preview">
+          <div class="btn-wrap"><button class="buzz-button lightning a">⚡</button><div class="label">Player A</div></div>
+          <div class="btn-wrap"><button class="buzz-button lightning b">⚡</button><div class="label">Player B</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      おすすめは 1 または 2 です。1はUIに自然に馴染み、2は「実際に早押しボタンを押している感」が強いです。
+    </div>
+  </div>
+</body>
+</html>

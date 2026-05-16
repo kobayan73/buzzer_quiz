@@ -1,0 +1,743 @@
+[
+  {
+    "id": "geo_000401_int_std",
+    "category": "geo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "The Iron Gates gorge and the Wachau valley are both associated with this European river, which flows from the Black Forest toward the Black Sea. It has shaped trade, borders, and capitals across central and southeastern Europe. What river is this?",
+    "displayAnswer": "Danube",
+    "normalizedAnswer": "danube",
+    "answerChars": [
+      "d",
+      "a",
+      "n",
+      "u",
+      "b",
+      "e"
+    ]
+  },
+  {
+    "id": "his_000402_int_std",
+    "category": "his",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "His law code was carved on a basalt stele topped by a scene with Shamash, the sun god. This Babylonian ruler is often discussed in connection with early written law and royal authority in Mesopotamia. Who was he?",
+    "displayAnswer": "Hammurabi",
+    "normalizedAnswer": "hammurabi",
+    "answerChars": [
+      "h",
+      "a",
+      "m",
+      "m",
+      "u",
+      "r",
+      "a",
+      "b",
+      "i"
+    ]
+  },
+  {
+    "id": "sci_000403_int_std",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "In astronomy and emergency sirens, this effect explains why observed frequency shifts when a source and observer move relative to each other. It helps reveal motion in sound, light, and distant galaxies. What effect is this?",
+    "displayAnswer": "Doppler Effect",
+    "normalizedAnswer": "dopplereffect",
+    "answerChars": [
+      "d",
+      "o",
+      "p",
+      "p",
+      "l",
+      "e",
+      "r",
+      "e",
+      "f",
+      "f",
+      "e",
+      "c",
+      "t"
+    ]
+  },
+  {
+    "id": "tech_000404_int_std",
+    "category": "tech",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "Kary Mullis is linked to this laboratory method, which uses cycles of heating and cooling with primers and polymerase to make many copies of a DNA segment. It became central to genetics and diagnostics. What method is this?",
+    "displayAnswer": "Polymerase Chain Reaction",
+    "normalizedAnswer": "polymerasechainreaction",
+    "answerChars": [
+      "p",
+      "o",
+      "l",
+      "y",
+      "m",
+      "e",
+      "r",
+      "a",
+      "s",
+      "e",
+      "c",
+      "h",
+      "a",
+      "i",
+      "n",
+      "r",
+      "e",
+      "a",
+      "c",
+      "t",
+      "i",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "art_000405_int_std",
+    "category": "art",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "The Great Wave off Kanagawa belongs to this Japanese printmaking tradition, which used carved woodblocks and often depicted actors, landscapes, and urban life in the Edo period. What art form is this?",
+    "displayAnswer": "Ukiyo-e",
+    "normalizedAnswer": "ukiyoe",
+    "answerChars": [
+      "u",
+      "k",
+      "i",
+      "y",
+      "o",
+      "e"
+    ]
+  },
+  {
+    "id": "lang_000406_int_std",
+    "category": "lang",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This poetic form is often linked to seasonal words and a 5-7-5 sound pattern in Japanese. It became associated with compact observation rather than long argument or narrative. What form is this?",
+    "displayAnswer": "Haiku",
+    "normalizedAnswer": "haiku",
+    "answerChars": [
+      "h",
+      "a",
+      "i",
+      "k",
+      "u"
+    ]
+  },
+  {
+    "id": "food_000407_int_std",
+    "category": "food",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "Arborio and Carnaroli rice are often used for this northern Italian dish, whose texture comes from gradually adding stock and releasing starch while stirring. What dish is this?",
+    "displayAnswer": "Risotto",
+    "normalizedAnswer": "risotto",
+    "answerChars": [
+      "r",
+      "i",
+      "s",
+      "o",
+      "t",
+      "t",
+      "o"
+    ]
+  },
+  {
+    "id": "spo_000408_int_std",
+    "category": "spo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "In this event, athletes combine fencing, swimming, equestrian show jumping, pistol shooting, and running. It was designed to reflect the skills of a 19th-century cavalry officer. What event is this?",
+    "displayAnswer": "Modern Pentathlon",
+    "normalizedAnswer": "modernpentathlon",
+    "answerChars": [
+      "m",
+      "o",
+      "d",
+      "e",
+      "r",
+      "n",
+      "p",
+      "e",
+      "n",
+      "t",
+      "a",
+      "t",
+      "h",
+      "l",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "ent_000409_int_std",
+    "category": "ent",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This film genre often uses chiaroscuro lighting, cynical detectives, and morally ambiguous plots in city settings. Its name comes from a French word for a dark visual style. What genre is this?",
+    "displayAnswer": "Film Noir",
+    "normalizedAnswer": "filmnoir",
+    "answerChars": [
+      "f",
+      "i",
+      "l",
+      "m",
+      "n",
+      "o",
+      "i",
+      "r"
+    ]
+  },
+  {
+    "id": "gen_000410_int_std",
+    "category": "gen",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This planning tool was developed by Henry Gantt and shows tasks as horizontal bars across a timeline. It is often used to visualize schedules, dependencies, and project progress. What chart is this?",
+    "displayAnswer": "Gantt Chart",
+    "normalizedAnswer": "ganttchart",
+    "answerChars": [
+      "g",
+      "a",
+      "n",
+      "t",
+      "t",
+      "c",
+      "h",
+      "a",
+      "r",
+      "t"
+    ]
+  },
+  {
+    "id": "geo_000411_adv_com",
+    "category": "geo",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "The Greenwich meridian and the Thames Barrier are both associated with this city, whose growth was shaped by a tidal river, imperial trade, and later global finance. What city is this?",
+    "displayAnswer": "London",
+    "normalizedAnswer": "london",
+    "answerChars": [
+      "l",
+      "o",
+      "n",
+      "d",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "sci_000412_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "Its peel color is affected by chlorophyll breakdown and carotenoid visibility, while Cavendish cultivars dominate global trade. This curved fruit is often treated as a simple snack but has complex domestication history. What fruit is this?",
+    "displayAnswer": "Banana",
+    "normalizedAnswer": "banana",
+    "answerChars": [
+      "b",
+      "a",
+      "n",
+      "a",
+      "n",
+      "a"
+    ]
+  },
+  {
+    "id": "sci_000413_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "Matriarch-led herds, infrasonic calls, and modified upper incisors are often discussed in studies of this large mammal. It is famous for memory, social bonds, and heavy ecological impact. What animal is this?",
+    "displayAnswer": "Elephant",
+    "normalizedAnswer": "elephant",
+    "answerChars": [
+      "e",
+      "l",
+      "e",
+      "p",
+      "h",
+      "a",
+      "n",
+      "t"
+    ]
+  },
+  {
+    "id": "art_000414_adv_com",
+    "category": "art",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "Its modern form grew from earlier instruments using hammers to strike strings, allowing players to control loudness more flexibly than the harpsichord. It became central to classical, jazz, and popular music. What instrument is this?",
+    "displayAnswer": "Piano",
+    "normalizedAnswer": "piano",
+    "answerChars": [
+      "p",
+      "i",
+      "a",
+      "n",
+      "o"
+    ]
+  },
+  {
+    "id": "sci_000415_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This weather event forms when cloud droplets grow heavy enough to fall, and its patterns are studied with radar, gauges, and monsoon systems. It is common, but its timing strongly affects agriculture and cities. What is this?",
+    "displayAnswer": "Rain",
+    "normalizedAnswer": "rain",
+    "answerChars": [
+      "r",
+      "a",
+      "i",
+      "n"
+    ]
+  },
+  {
+    "id": "tech_000416_adv_com",
+    "category": "tech",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "The camera obscura and silver halide chemistry helped lead to this device, now often built around digital sensors and lenses. It captures scenes by controlling light, focus, and exposure. What device is this?",
+    "displayAnswer": "Camera",
+    "normalizedAnswer": "camera",
+    "answerChars": [
+      "c",
+      "a",
+      "m",
+      "e",
+      "r",
+      "a"
+    ]
+  },
+  {
+    "id": "gen_000417_adv_com",
+    "category": "gen",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "Its safety frame and chain drive helped replace high-wheel designs in the late 19th century. This human-powered vehicle uses pedals, wheels, and steering to turn balance into motion. What vehicle is this?",
+    "displayAnswer": "Bicycle",
+    "normalizedAnswer": "bicycle",
+    "answerChars": [
+      "b",
+      "i",
+      "c",
+      "y",
+      "c",
+      "l",
+      "e"
+    ]
+  },
+  {
+    "id": "gen_000418_adv_com",
+    "category": "gen",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "Ag is the chemical symbol for this metal, whose high electrical conductivity and reflective surface have made it useful in coins, mirrors, jewelry, and electronics. What metal is this?",
+    "displayAnswer": "Silver",
+    "normalizedAnswer": "silver",
+    "answerChars": [
+      "s",
+      "i",
+      "l",
+      "v",
+      "e",
+      "r"
+    ]
+  },
+  {
+    "id": "geo_000419_adv_com",
+    "category": "geo",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "The subtropical high-pressure belts and rain-shadow effects help create many examples of this dry landscape. It may be hot or cold, and its defining feature is low precipitation rather than sand alone. What landscape is this?",
+    "displayAnswer": "Desert",
+    "normalizedAnswer": "desert",
+    "answerChars": [
+      "d",
+      "e",
+      "s",
+      "e",
+      "r",
+      "t"
+    ]
+  },
+  {
+    "id": "art_000420_adv_com",
+    "category": "art",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "Luthiers, frets, and soundboards are associated with this instrument, whose classical, acoustic, and electric forms use vibrating strings to produce sound. It appears across folk, rock, and flamenco traditions. What instrument is this?",
+    "displayAnswer": "Guitar",
+    "normalizedAnswer": "guitar",
+    "answerChars": [
+      "g",
+      "u",
+      "i",
+      "t",
+      "a",
+      "r"
+    ]
+  },
+  {
+    "id": "geo_000421_beg_std",
+    "category": "geo",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "Helsinki, Lapland, and the sauna tradition are strongly linked to this Nordic country. It borders Sweden and Russia, uses Finnish and Swedish officially, and is known for forests and many lakes. What country is this?",
+    "displayAnswer": "Finland",
+    "normalizedAnswer": "finland",
+    "answerChars": [
+      "f",
+      "i",
+      "n",
+      "l",
+      "a",
+      "n",
+      "d"
+    ]
+  },
+  {
+    "id": "sci_000422_beg_std",
+    "category": "sci",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This greenish halogen is used in water disinfection and forms common compounds such as sodium chloride. It is reactive as an element but familiar through many salts and cleaning products. What element is this?",
+    "displayAnswer": "Chlorine",
+    "normalizedAnswer": "chlorine",
+    "answerChars": [
+      "c",
+      "h",
+      "l",
+      "o",
+      "r",
+      "i",
+      "n",
+      "e"
+    ]
+  },
+  {
+    "id": "his_000423_beg_std",
+    "category": "his",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "Movable metal type, Mainz, and a famous 42-line Bible are linked to this inventor. His printing technology helped books spread more widely in Europe during the 15th century. Who was he?",
+    "displayAnswer": "Gutenberg",
+    "normalizedAnswer": "gutenberg",
+    "answerChars": [
+      "g",
+      "u",
+      "t",
+      "e",
+      "n",
+      "b",
+      "e",
+      "r",
+      "g"
+    ]
+  },
+  {
+    "id": "food_000424_beg_std",
+    "category": "food",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "Mascarpone, espresso-soaked ladyfingers, cocoa powder, and layered cream are associated with this Italian dessert. Its name is often translated as something like pick me up. What dessert is this?",
+    "displayAnswer": "Tiramisu",
+    "normalizedAnswer": "tiramisu",
+    "answerChars": [
+      "t",
+      "i",
+      "r",
+      "a",
+      "m",
+      "i",
+      "s",
+      "u"
+    ]
+  },
+  {
+    "id": "tech_000425_beg_std",
+    "category": "tech",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This square barcode was developed by Denso Wave and can store information in black-and-white modules. It is scanned by phones for payments, menus, tickets, and links. What code is this?",
+    "displayAnswer": "QR Code",
+    "normalizedAnswer": "qrcode",
+    "answerChars": [
+      "q",
+      "r",
+      "c",
+      "o",
+      "d",
+      "e"
+    ]
+  },
+  {
+    "id": "lang_000426_beg_std",
+    "category": "lang",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "Calling time a thief or saying a city never sleeps are examples of this figure of speech. It describes one thing as another to create meaning without using like or as. What device is this?",
+    "displayAnswer": "Metaphor",
+    "normalizedAnswer": "metaphor",
+    "answerChars": [
+      "m",
+      "e",
+      "t",
+      "a",
+      "p",
+      "h",
+      "o",
+      "r"
+    ]
+  },
+  {
+    "id": "art_000427_beg_std",
+    "category": "art",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This painting method uses pigments suspended in water, often on paper, and is valued for transparent washes and soft layering. It differs from thick oil paint or carved printing. What medium is this?",
+    "displayAnswer": "Watercolor",
+    "normalizedAnswer": "watercolor",
+    "answerChars": [
+      "w",
+      "a",
+      "t",
+      "e",
+      "r",
+      "c",
+      "o",
+      "l",
+      "o",
+      "r"
+    ]
+  },
+  {
+    "id": "spo_000428_beg_std",
+    "category": "spo",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "Recurve bows, compound bows, targets with scoring rings, and Olympic shooting distances are associated with this sport. It grew from hunting and warfare into competition. What sport is this?",
+    "displayAnswer": "Archery",
+    "normalizedAnswer": "archery",
+    "answerChars": [
+      "a",
+      "r",
+      "c",
+      "h",
+      "e",
+      "r",
+      "y"
+    ]
+  },
+  {
+    "id": "ent_000429_beg_std",
+    "category": "ent",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "Woody, Buzz Lightyear, and Andy's room are central to this Pixar film series. It imagines the secret lives of playthings and began with a landmark computer-animated movie. What series is this?",
+    "displayAnswer": "Toy Story",
+    "normalizedAnswer": "toystory",
+    "answerChars": [
+      "t",
+      "o",
+      "y",
+      "s",
+      "t",
+      "o",
+      "r",
+      "y"
+    ]
+  },
+  {
+    "id": "gen_000430_beg_std",
+    "category": "gen",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "Galileo's observations of Jupiter's moons made this optical instrument famous in astronomy. It uses lenses or mirrors to make distant objects appear closer. What instrument is this?",
+    "displayAnswer": "Telescope",
+    "normalizedAnswer": "telescope",
+    "answerChars": [
+      "t",
+      "e",
+      "l",
+      "e",
+      "s",
+      "c",
+      "o",
+      "p",
+      "e"
+    ]
+  },
+  {
+    "id": "geo_000431_int_com",
+    "category": "geo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "The Amazon Basin, the Cerrado, and Portuguese-language colonial history all point to this South American country. Its population and land area are both the largest on its continent. What country is this?",
+    "displayAnswer": "Brazil",
+    "normalizedAnswer": "brazil",
+    "answerChars": [
+      "b",
+      "r",
+      "a",
+      "z",
+      "i",
+      "l"
+    ]
+  },
+  {
+    "id": "geo_000432_int_com",
+    "category": "geo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "The Yangtze River, the Loess Plateau, and a long imperial examination tradition are associated with this East Asian country. Its modern economy and ancient dynasties are both widely studied. What country is this?",
+    "displayAnswer": "China",
+    "normalizedAnswer": "china",
+    "answerChars": [
+      "c",
+      "h",
+      "i",
+      "n",
+      "a"
+    ]
+  },
+  {
+    "id": "sci_000433_int_com",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "Emperor penguins incubate eggs on Antarctic ice, while other species live in warmer southern waters. These flightless birds use flippers for swimming rather than wings for flying. What bird is this?",
+    "displayAnswer": "Penguin",
+    "normalizedAnswer": "penguin",
+    "answerChars": [
+      "p",
+      "e",
+      "n",
+      "g",
+      "u",
+      "i",
+      "n"
+    ]
+  },
+  {
+    "id": "food_000434_int_com",
+    "category": "food",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "Nectar, enzymes from bees, and low water content help create this sweet food. It has long been stored in combs and used as a natural sweetener before refined sugar became common. What food is this?",
+    "displayAnswer": "Honey",
+    "normalizedAnswer": "honey",
+    "answerChars": [
+      "h",
+      "o",
+      "n",
+      "e",
+      "y"
+    ]
+  },
+  {
+    "id": "geo_000435_int_com",
+    "category": "geo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "Madagascar, Java, and Greenland are examples of this landform category, defined by being surrounded by water. Some form from volcanoes, while others are pieces of continents. What landform is this?",
+    "displayAnswer": "Island",
+    "normalizedAnswer": "island",
+    "answerChars": [
+      "i",
+      "s",
+      "l",
+      "a",
+      "n",
+      "d"
+    ]
+  },
+  {
+    "id": "tech_000436_int_com",
+    "category": "tech",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "Citric acid gives this yellow fruit much of its sour taste, and its zest and juice are widely used in cooking. It grows on citrus trees and is common in drinks, desserts, and marinades. What fruit is this?",
+    "displayAnswer": "Lemon",
+    "normalizedAnswer": "lemon",
+    "answerChars": [
+      "l",
+      "e",
+      "m",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "gen_000437_int_com",
+    "category": "gen",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "Suspension cables, arches, trusses, and piers are different engineering solutions for this structure. It lets roads, trains, or people cross water, valleys, or other obstacles. What structure is this?",
+    "displayAnswer": "Bridge",
+    "normalizedAnswer": "bridge",
+    "answerChars": [
+      "b",
+      "r",
+      "i",
+      "d",
+      "g",
+      "e"
+    ]
+  },
+  {
+    "id": "gen_000438_int_com",
+    "category": "gen",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "Rails, stations, timetables, and linked carriages are associated with this transport system. It moves people or freight along fixed tracks and shaped modern commuting and travel. What vehicle is this?",
+    "displayAnswer": "Train",
+    "normalizedAnswer": "train",
+    "answerChars": [
+      "t",
+      "r",
+      "a",
+      "i",
+      "n"
+    ]
+  },
+  {
+    "id": "gen_000439_int_com",
+    "category": "gen",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "A canopy, ribs, and a central shaft are parts of this everyday object. It is opened above the head to block rain or sometimes sunlight. What object is this?",
+    "displayAnswer": "Umbrella",
+    "normalizedAnswer": "umbrella",
+    "answerChars": [
+      "u",
+      "m",
+      "b",
+      "r",
+      "e",
+      "l",
+      "l",
+      "a"
+    ]
+  },
+  {
+    "id": "gen_000440_int_com",
+    "category": "gen",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "Gears, hands, pendulums, or quartz oscillators can be used in this timekeeping device. It helps people divide the day into hours, minutes, and seconds. What device is this?",
+    "displayAnswer": "Clock",
+    "normalizedAnswer": "clock",
+    "answerChars": [
+      "c",
+      "l",
+      "o",
+      "c",
+      "k"
+    ]
+  }
+]

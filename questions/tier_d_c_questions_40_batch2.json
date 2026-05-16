@@ -1,0 +1,772 @@
+[
+  {
+    "id": "geo_000105_beg_std",
+    "category": "geo",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This country is often discussed through fjords, long coastlines, northern climate, and settlements shaped by the sea. Its economy and culture connect fishing, energy resources, winter sports, and a Nordic political tradition, while parts of its territory extend far into Arctic regions. What country is this?",
+    "displayAnswer": "Norway",
+    "normalizedAnswer": "norway",
+    "answerChars": [
+      "n",
+      "o",
+      "r",
+      "w",
+      "a",
+      "y"
+    ]
+  },
+  {
+    "id": "geo_000106_int_com",
+    "category": "geo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This country is frequently studied through a long mountain spine, large coastal cities, and major regional contrasts between north and south. Its history links ancient empires, Renaissance city-states, and modern European politics, while its geography places it deep into the Mediterranean. What country is this?",
+    "displayAnswer": "Italy",
+    "normalizedAnswer": "italy",
+    "answerChars": [
+      "i",
+      "t",
+      "a",
+      "l",
+      "y"
+    ]
+  },
+  {
+    "id": "geo_000107_int_std",
+    "category": "geo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This river system is central to the history and ecology of northeastern Africa, where seasonal water patterns supported agriculture and settlement over thousands of years. Modern dams, irrigation projects, and international negotiations show how important its flow remains across several countries. What river is this?",
+    "displayAnswer": "Nile",
+    "normalizedAnswer": "nile",
+    "answerChars": [
+      "n",
+      "i",
+      "l",
+      "e"
+    ]
+  },
+  {
+    "id": "geo_000108_adv_com",
+    "category": "geo",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This landmass is often introduced through plate-tectonic isolation, unusual biogeography, and a long coastline facing both the Indian and Pacific oceans. Its interior dryness, reef systems, and distinctive marsupial fauna make it a common example in geography and environmental studies. What country is this?",
+    "displayAnswer": "Australia",
+    "normalizedAnswer": "australia",
+    "answerChars": [
+      "a",
+      "u",
+      "s",
+      "t",
+      "r",
+      "a",
+      "l",
+      "i",
+      "a"
+    ]
+  },
+  {
+    "id": "his_000105_beg_std",
+    "category": "his",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This state preserved Roman political traditions in the eastern Mediterranean while developing Greek-speaking administration, Christian theology, and a distinctive court culture. Its capital controlled major trade routes for centuries, and its history is often studied between antiquity and the medieval world. What empire was this?",
+    "displayAnswer": "Byzantine Empire",
+    "normalizedAnswer": "byzantineempire",
+    "answerChars": [
+      "b",
+      "y",
+      "z",
+      "a",
+      "n",
+      "t",
+      "i",
+      "n",
+      "e",
+      "e",
+      "m",
+      "p",
+      "i",
+      "r",
+      "e"
+    ]
+  },
+  {
+    "id": "his_000106_int_com",
+    "category": "his",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This conflict is studied through alliance systems, industrialized warfare, trench conditions, and the collapse or weakening of several empires. It reshaped borders, diplomacy, and political movements in the early twentieth century, while its consequences influenced later international tensions. What war was this?",
+    "displayAnswer": "World War 1",
+    "normalizedAnswer": "worldwar1",
+    "answerChars": [
+      "w",
+      "o",
+      "r",
+      "l",
+      "d",
+      "w",
+      "a",
+      "r",
+      "1"
+    ]
+  },
+  {
+    "id": "his_000107_int_std",
+    "category": "his",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This period is often framed through renewed interest in classical learning, urban patronage, artistic experimentation, and changes in science and literature. It developed unevenly across Europe and is associated with both humanist scholarship and new visual techniques. What period is this?",
+    "displayAnswer": "Renaissance",
+    "normalizedAnswer": "renaissance",
+    "answerChars": [
+      "r",
+      "e",
+      "n",
+      "a",
+      "i",
+      "s",
+      "s",
+      "a",
+      "n",
+      "c",
+      "e"
+    ]
+  },
+  {
+    "id": "his_000108_adv_com",
+    "category": "his",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This political system can be examined through hereditary rule, court ritual, dynastic legitimacy, and the symbolic concentration of authority in one family. It appears in many regions and periods, sometimes as ceremonial leadership and sometimes as direct rule. What system is this?",
+    "displayAnswer": "Monarchy",
+    "normalizedAnswer": "monarchy",
+    "answerChars": [
+      "m",
+      "o",
+      "n",
+      "a",
+      "r",
+      "c",
+      "h",
+      "y"
+    ]
+  },
+  {
+    "id": "sci_000105_beg_std",
+    "category": "sci",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This organelle is often explained through folded inner membranes, energy conversion, and the use of chemical gradients. It has its own small genome and is frequently discussed in relation to cellular respiration, inheritance patterns, and the energy needs of active tissues. What organelle is this?",
+    "displayAnswer": "Mitochondria",
+    "normalizedAnswer": "mitochondria",
+    "answerChars": [
+      "m",
+      "i",
+      "t",
+      "o",
+      "c",
+      "h",
+      "o",
+      "n",
+      "d",
+      "r",
+      "i",
+      "a"
+    ]
+  },
+  {
+    "id": "sci_000106_int_com",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This physical effect appears when surfaces, fluids, or materials resist relative motion. It can waste energy as heat, help people walk, allow brakes and tires to work, and depend on texture, normal force, lubrication, and material properties. What effect is this?",
+    "displayAnswer": "Friction",
+    "normalizedAnswer": "friction",
+    "answerChars": [
+      "f",
+      "r",
+      "i",
+      "c",
+      "t",
+      "i",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "sci_000107_int_std",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This biological process is associated with pigment molecules, electron transfer, and the conversion of environmental energy into stored chemical forms. It affects atmospheric gases and supports many ecosystems, but it is also studied through detailed reaction pathways inside cells. What process is this?",
+    "displayAnswer": "Photosynthesis",
+    "normalizedAnswer": "photosynthesis",
+    "answerChars": [
+      "p",
+      "h",
+      "o",
+      "t",
+      "o",
+      "s",
+      "y",
+      "n",
+      "t",
+      "h",
+      "e",
+      "s",
+      "i",
+      "s"
+    ]
+  },
+  {
+    "id": "sci_000108_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This vast part of Earth is studied through salinity, circulation, heat storage, plate boundaries, ecosystems, and carbon exchange. It shapes climate and weather while also supporting transportation, food webs, and environments that remain difficult to observe directly. What is this?",
+    "displayAnswer": "Ocean",
+    "normalizedAnswer": "ocean",
+    "answerChars": [
+      "o",
+      "c",
+      "e",
+      "a",
+      "n"
+    ]
+  },
+  {
+    "id": "spo_000105_beg_std",
+    "category": "spo",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This racket sport is often analyzed through service patterns, court surfaces, spin, footwork, and one-on-one pressure. Matches can change sharply with momentum, and its scoring system gives special importance to points grouped within games and sets. What sport is this?",
+    "displayAnswer": "Tennis",
+    "normalizedAnswer": "tennis",
+    "answerChars": [
+      "t",
+      "e",
+      "n",
+      "n",
+      "i",
+      "s"
+    ]
+  },
+  {
+    "id": "spo_000106_int_com",
+    "category": "spo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This team sport is shaped by rotations, serves, sets, blocks, and rapid transitions near a net. Players must coordinate touches under strict limits, and momentum can change quickly because each rally directly affects the score. What sport is this?",
+    "displayAnswer": "Volleyball",
+    "normalizedAnswer": "volleyball",
+    "answerChars": [
+      "v",
+      "o",
+      "l",
+      "l",
+      "e",
+      "y",
+      "b",
+      "a",
+      "l",
+      "l"
+    ]
+  },
+  {
+    "id": "spo_000107_int_std",
+    "category": "spo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This endurance event grew from historical legend into a standardized long-distance race, where pacing, hydration, course profile, and late-race fatigue are central concerns. It is a major feature of city races and international athletics competitions. What event is this?",
+    "displayAnswer": "Marathon",
+    "normalizedAnswer": "marathon",
+    "answerChars": [
+      "m",
+      "a",
+      "r",
+      "a",
+      "t",
+      "h",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "spo_000108_adv_com",
+    "category": "spo",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This international competition is studied not only as sport but also through hosting politics, amateurism debates, broadcasting, and national symbolism. It brings together many disciplines under a recurring festival format rather than a single-league season. What event is this?",
+    "displayAnswer": "Olympics",
+    "normalizedAnswer": "olympics",
+    "answerChars": [
+      "o",
+      "l",
+      "y",
+      "m",
+      "p",
+      "i",
+      "c",
+      "s"
+    ]
+  },
+  {
+    "id": "ent_000105_beg_std",
+    "category": "ent",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This film genre often uses atmosphere, pacing, sound design, and uncertainty to create tension before revealing danger. It can involve supernatural ideas, psychological fear, monsters, or realistic threats, but its main purpose is to unsettle the audience. What genre is this?",
+    "displayAnswer": "Horror",
+    "normalizedAnswer": "horror",
+    "answerChars": [
+      "h",
+      "o",
+      "r",
+      "r",
+      "o",
+      "r"
+    ]
+  },
+  {
+    "id": "ent_000106_int_com",
+    "category": "ent",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This form of entertainment combines sequential images, character designs, voice performance, and timing to create motion. It can be made with drawings, models, or computers, and is used for comedy, drama, fantasy, education, and experimental storytelling. What form is this?",
+    "displayAnswer": "Animation",
+    "normalizedAnswer": "animation",
+    "answerChars": [
+      "a",
+      "n",
+      "i",
+      "m",
+      "a",
+      "t",
+      "i",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "ent_000107_int_std",
+    "category": "ent",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This narrative format is usually built around numbered or named releases, recurring characters, and audience memory across installments. It allows creators to expand fictional worlds while balancing novelty with recognizable patterns. What format is this?",
+    "displayAnswer": "Franchise",
+    "normalizedAnswer": "franchise",
+    "answerChars": [
+      "f",
+      "r",
+      "a",
+      "n",
+      "c",
+      "h",
+      "i",
+      "s",
+      "e"
+    ]
+  },
+  {
+    "id": "ent_000108_adv_com",
+    "category": "ent",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This superhero figure is often interpreted through dual identity, urban crime, detective methods, and a visual language of darkness rather than superhuman birth. The character’s stories frequently explore fear, justice, trauma, and vigilantism. Who is this?",
+    "displayAnswer": "Batman",
+    "normalizedAnswer": "batman",
+    "answerChars": [
+      "b",
+      "a",
+      "t",
+      "m",
+      "a",
+      "n"
+    ]
+  },
+  {
+    "id": "food_000105_beg_std",
+    "category": "food",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This fermented dairy food is made by the activity of specific bacteria that change texture and flavor while preserving nutrients. It appears in sweet and savory dishes, can be strained or cultured in different ways, and is often associated with breakfast or sauces. What food is this?",
+    "displayAnswer": "Yogurt",
+    "normalizedAnswer": "yogurt",
+    "answerChars": [
+      "y",
+      "o",
+      "g",
+      "u",
+      "r",
+      "t"
+    ]
+  },
+  {
+    "id": "food_000106_int_com",
+    "category": "food",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This food is produced by transforming milk through curdling, draining, salting, and often aging. Its texture and flavor depend on microbes, enzymes, fat content, moisture, and regional methods, and it appears in both simple meals and elaborate cooking. What food is this?",
+    "displayAnswer": "Cheese",
+    "normalizedAnswer": "cheese",
+    "answerChars": [
+      "c",
+      "h",
+      "e",
+      "e",
+      "s",
+      "e"
+    ]
+  },
+  {
+    "id": "food_000107_int_std",
+    "category": "food",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This Japanese dish uses a batter-cooked structure around chopped octopus and is typically turned in special molded pans. Toppings and sauces vary, and its preparation is strongly associated with street food culture and regional identity. What dish is this?",
+    "displayAnswer": "Takoyaki",
+    "normalizedAnswer": "takoyaki",
+    "answerChars": [
+      "t",
+      "a",
+      "k",
+      "o",
+      "y",
+      "a",
+      "k",
+      "i"
+    ]
+  },
+  {
+    "id": "food_000108_adv_com",
+    "category": "food",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This beverage is studied through roasting chemistry, extraction, grind size, water temperature, and aroma compounds. Its preparation methods range from pressure-based to immersion-based, and it has become central to social habits and daily routines worldwide. What beverage is this?",
+    "displayAnswer": "Coffee",
+    "normalizedAnswer": "coffee",
+    "answerChars": [
+      "c",
+      "o",
+      "f",
+      "f",
+      "e",
+      "e"
+    ]
+  },
+  {
+    "id": "tech_000105_beg_std",
+    "category": "tech",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This system links documents through addresses, browsers, servers, and protocols so that people can move between pages and services. It is often confused with the broader internet, but it specifically refers to a layer of linked information and applications. What is this?",
+    "displayAnswer": "World Wide Web",
+    "normalizedAnswer": "worldwideweb",
+    "answerChars": [
+      "w",
+      "o",
+      "r",
+      "l",
+      "d",
+      "w",
+      "i",
+      "d",
+      "e",
+      "w",
+      "e",
+      "b"
+    ]
+  },
+  {
+    "id": "tech_000106_int_com",
+    "category": "tech",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This online tool organizes large amounts of information by crawling pages, indexing content, and ranking results in response to user queries. Its design involves relevance signals, advertising models, spam resistance, and constant changes in how people find knowledge. What tool is this?",
+    "displayAnswer": "Search Engine",
+    "normalizedAnswer": "searchengine",
+    "answerChars": [
+      "s",
+      "e",
+      "a",
+      "r",
+      "c",
+      "h",
+      "e",
+      "n",
+      "g",
+      "i",
+      "n",
+      "e"
+    ]
+  },
+  {
+    "id": "tech_000107_int_std",
+    "category": "tech",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This security method transforms readable information into a form that should be unusable without the proper key. It supports private messaging, online banking, secure websites, and data protection, while also raising questions about access and regulation. What method is this?",
+    "displayAnswer": "Encryption",
+    "normalizedAnswer": "encryption",
+    "answerChars": [
+      "e",
+      "n",
+      "c",
+      "r",
+      "y",
+      "p",
+      "t",
+      "i",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "tech_000108_adv_com",
+    "category": "tech",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This field is often discussed through models that learn patterns from data, with applications in language, images, games, robotics, and recommendation systems. Its progress depends on algorithms, computation, datasets, and evaluation choices. What field is this?",
+    "displayAnswer": "Artificial Intelligence",
+    "normalizedAnswer": "artificialintelligence",
+    "answerChars": [
+      "a",
+      "r",
+      "t",
+      "i",
+      "f",
+      "i",
+      "c",
+      "i",
+      "a",
+      "l",
+      "i",
+      "n",
+      "t",
+      "e",
+      "l",
+      "l",
+      "i",
+      "g",
+      "e",
+      "n",
+      "c",
+      "e"
+    ]
+  },
+  {
+    "id": "lang_000105_beg_std",
+    "category": "lang",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This type of speech sound is produced with a relatively open vocal tract and often forms the core of a syllable. Languages vary in how many of them they distinguish, and writing systems may represent them clearly, partly, or not at all. What sound type is this?",
+    "displayAnswer": "Vowel",
+    "normalizedAnswer": "vowel",
+    "answerChars": [
+      "v",
+      "o",
+      "w",
+      "e",
+      "l"
+    ]
+  },
+  {
+    "id": "lang_000106_int_com",
+    "category": "lang",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This part of speech commonly expresses actions, processes, states, or changes. In many languages it carries information about tense, aspect, mood, agreement, or voice, making it central to how a sentence shows what is happening. What part of speech is this?",
+    "displayAnswer": "Verb",
+    "normalizedAnswer": "verb",
+    "answerChars": [
+      "v",
+      "e",
+      "r",
+      "b"
+    ]
+  },
+  {
+    "id": "lang_000107_int_std",
+    "category": "lang",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This linguistic process involves taking a word or expression from one language and using it in another, sometimes with changed pronunciation or meaning. It reflects contact through trade, conquest, migration, technology, and popular culture. What is this called?",
+    "displayAnswer": "Borrowing",
+    "normalizedAnswer": "borrowing",
+    "answerChars": [
+      "b",
+      "o",
+      "r",
+      "r",
+      "o",
+      "w",
+      "i",
+      "n",
+      "g"
+    ]
+  },
+  {
+    "id": "lang_000108_adv_com",
+    "category": "lang",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This language family is reconstructed through sound correspondences, shared roots, and historical comparison across many branches. It includes languages spread widely through Europe and parts of Asia, but its earliest stages are known indirectly rather than from direct documents. What family is this?",
+    "displayAnswer": "Indo European",
+    "normalizedAnswer": "indoeuropean",
+    "answerChars": [
+      "i",
+      "n",
+      "d",
+      "o",
+      "e",
+      "u",
+      "r",
+      "o",
+      "p",
+      "e",
+      "a",
+      "n"
+    ]
+  },
+  {
+    "id": "art_000105_beg_std",
+    "category": "art",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This artistic movement is associated with fragmented forms, multiple viewpoints, and a break from single-point perspective. It changed modern painting and sculpture by treating objects as structures that could be rearranged on the surface of the work. What movement is this?",
+    "displayAnswer": "Cubism",
+    "normalizedAnswer": "cubism",
+    "answerChars": [
+      "c",
+      "u",
+      "b",
+      "i",
+      "s",
+      "m"
+    ]
+  },
+  {
+    "id": "art_000106_int_com",
+    "category": "art",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This performing art depends on live presentation, staging, dialogue, movement, and the shared presence of performers and audience. It can include comedy, tragedy, musical elements, ritual, improvisation, or scripted drama across many cultures. What art form is this?",
+    "displayAnswer": "Theater",
+    "normalizedAnswer": "theater",
+    "answerChars": [
+      "t",
+      "h",
+      "e",
+      "a",
+      "t",
+      "e",
+      "r"
+    ]
+  },
+  {
+    "id": "art_000107_int_std",
+    "category": "art",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This Spanish artist moved through blue-toned poverty scenes, fractured perspectives, political imagery, and constant stylistic reinvention. His work is central to modern art history, especially where representation is broken apart and reassembled. Who was he?",
+    "displayAnswer": "Picasso",
+    "normalizedAnswer": "picasso",
+    "answerChars": [
+      "p",
+      "i",
+      "c",
+      "a",
+      "s",
+      "s",
+      "o"
+    ]
+  },
+  {
+    "id": "art_000108_adv_com",
+    "category": "art",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This genre is built around extended prose fiction, character development, social setting, and narrative structure. It can absorb history, romance, crime, fantasy, satire, and psychological detail while usually offering a broader arc than a short story. What form is this?",
+    "displayAnswer": "Novel",
+    "normalizedAnswer": "novel",
+    "answerChars": [
+      "n",
+      "o",
+      "v",
+      "e",
+      "l"
+    ]
+  },
+  {
+    "id": "gen_000105_beg_std",
+    "category": "gen",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This naturally occurring substance is valued for hardness, optical brilliance, and the way its crystal structure affects light. It is used in jewelry and industry, and discussions of it often include geology, cutting, grading, and symbolic value. What material is this?",
+    "displayAnswer": "Diamond",
+    "normalizedAnswer": "diamond",
+    "answerChars": [
+      "d",
+      "i",
+      "a",
+      "m",
+      "o",
+      "n",
+      "d"
+    ]
+  },
+  {
+    "id": "gen_000106_int_com",
+    "category": "gen",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This instrument measures air pressure and is often connected with weather prediction, altitude changes, and atmospheric science. Older designs used liquid columns, while later designs may use mechanical or electronic sensing to show pressure variation. What instrument is this?",
+    "displayAnswer": "Barometer",
+    "normalizedAnswer": "barometer",
+    "answerChars": [
+      "b",
+      "a",
+      "r",
+      "o",
+      "m",
+      "e",
+      "t",
+      "e",
+      "r"
+    ]
+  },
+  {
+    "id": "gen_000107_int_std",
+    "category": "gen",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This concept describes the regular rise and fall of sea level caused mainly by gravitational relationships among Earth, the Moon, and the Sun. Local coastlines, basin shapes, and timing can make its effects very different from place to place. What phenomenon is this?",
+    "displayAnswer": "Tide",
+    "normalizedAnswer": "tide",
+    "answerChars": [
+      "t",
+      "i",
+      "d",
+      "e"
+    ]
+  },
+  {
+    "id": "gen_000108_adv_com",
+    "category": "gen",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This measurement idea compares distance with time and appears in physics, transport, sports, and everyday navigation. It can be expressed in many units and becomes especially important when motion changes or when limits are set by safety and technology. What concept is this?",
+    "displayAnswer": "Speed",
+    "normalizedAnswer": "speed",
+    "answerChars": [
+      "s",
+      "p",
+      "e",
+      "e",
+      "d"
+    ]
+  }
+]

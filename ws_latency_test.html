@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WebSocket Latency Test</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f6f7fb;
+      color: #162033;
+      display: grid;
+      place-items: center;
+    }
+
+    main {
+      width: min(720px, calc(100vw - 32px));
+      background: #fff;
+      border: 1px solid #d8deea;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 18px 48px rgba(22, 32, 51, 0.10);
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: 24px;
+      letter-spacing: 0;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 120px auto;
+      gap: 12px;
+      align-items: end;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #43506a;
+    }
+
+    input {
+      height: 42px;
+      border: 1px solid #c8d0df;
+      border-radius: 6px;
+      padding: 0 12px;
+      font: inherit;
+    }
+
+    button {
+      height: 42px;
+      border: 0;
+      border-radius: 6px;
+      padding: 0 16px;
+      font: inherit;
+      font-weight: 800;
+      color: #fff;
+      background: #2563eb;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      cursor: wait;
+      opacity: 0.65;
+    }
+
+    .status {
+      margin-top: 16px;
+      min-height: 24px;
+      color: #43506a;
+    }
+
+    .summary {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .metric {
+      border: 1px solid #d8deea;
+      border-radius: 6px;
+      padding: 12px;
+      background: #fbfcff;
+    }
+
+    .metric span {
+      display: block;
+      font-size: 12px;
+      color: #66728a;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 18px;
+    }
+
+    .error {
+      color: #b91c1c;
+      font-weight: 700;
+    }
+
+    @media (max-width: 640px) {
+      .controls {
+        grid-template-columns: 1fr;
+      }
+
+      .summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>WebSocket Latency Test</h1>
+    <div class="controls">
+      <label>
+        WebSocket URL
+        <input id="wsUrl" value="ws://localhost:8787" spellcheck="false">
+      </label>
+      <label>
+        Count
+        <input id="count" type="number" min="1" max="1000" value="30">
+      </label>
+      <button id="startBtn" type="button">Start WebSocket Latency Test</button>
+    </div>
+
+    <div class="status" id="status">Ready.</div>
+
+    <div class="summary" id="summary">
+      <div class="metric"><span>Min</span><strong id="min">--</strong></div>
+      <div class="metric"><span>Avg</span><strong id="avg">--</strong></div>
+      <div class="metric"><span>Max</span><strong id="max">--</strong></div>
+      <div class="metric"><span>P50</span><strong id="p50">--</strong></div>
+      <div class="metric"><span>P90</span><strong id="p90">--</strong></div>
+      <div class="metric"><span>P95</span><strong id="p95">--</strong></div>
+    </div>
+  </main>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+
+    function setStatus(message, isError = false) {
+      $("status").textContent = message;
+      $("status").classList.toggle("error", isError);
+    }
+
+    function fmt(value) {
+      return Number.isFinite(value) ? `${value.toFixed(2)} ms` : "--";
+    }
+
+    function percentile(sorted, p) {
+      if (sorted.length === 0) return NaN;
+      const index = Math.ceil((p / 100) * sorted.length) - 1;
+      return sorted[Math.max(0, Math.min(sorted.length - 1, index))];
+    }
+
+    function renderSummary(rows) {
+      const values = rows.map((row) => row.roundTripMs).sort((a, b) => a - b);
+      const sum = values.reduce((total, value) => total + value, 0);
+
+      $("min").textContent = fmt(values[0]);
+      $("avg").textContent = fmt(sum / values.length);
+      $("max").textContent = fmt(values[values.length - 1]);
+      $("p50").textContent = fmt(percentile(values, 50));
+      $("p90").textContent = fmt(percentile(values, 90));
+      $("p95").textContent = fmt(percentile(values, 95));
+    }
+
+    function resetSummary() {
+      ["min", "avg", "max", "p50", "p90", "p95"].forEach((id) => {
+        $(id).textContent = "--";
+      });
+    }
+
+    async function runTest() {
+      const url = $("wsUrl").value.trim();
+      const count = Math.max(1, Math.min(1000, Number($("count").value) || 30));
+      const rows = [];
+      const pending = new Map();
+
+      resetSummary();
+      setStatus("Connecting...");
+      $("startBtn").disabled = true;
+
+      try {
+        const socket = new WebSocket(url);
+
+        await new Promise((resolve, reject) => {
+          socket.onopen = resolve;
+          socket.onerror = () => reject(new Error(`Could not connect to ${url}`));
+        });
+
+        setStatus(`Connected. Sending ${count} messages...`);
+
+        socket.onmessage = async (event) => {
+          const receivedAt = performance.now();
+          const text = event.data instanceof Blob ? await event.data.text() : String(event.data);
+          const payload = JSON.parse(text);
+          const sent = pending.get(payload.i);
+          if (!sent) return;
+
+          pending.delete(payload.i);
+          rows.push({
+            i: payload.i,
+            sentAt: sent.t,
+            receivedAt,
+            roundTripMs: receivedAt - sent.t
+          });
+
+          if (rows.length === count) {
+            rows.sort((a, b) => a.i - b.i);
+            console.table(rows);
+            renderSummary(rows);
+            setStatus(`Done. ${count} round trips measured. See console.table(rows) output.`);
+            socket.close();
+            $("startBtn").disabled = false;
+          }
+        };
+
+        socket.onerror = (event) => {
+          console.error("WebSocket error:", event);
+          setStatus("WebSocket error. See console.", true);
+          $("startBtn").disabled = false;
+        };
+
+        for (let i = 0; i < count; i += 1) {
+          setTimeout(() => {
+            if (socket.readyState !== WebSocket.OPEN) return;
+            const t = performance.now();
+            const message = { i, t };
+            pending.set(i, message);
+            socket.send(JSON.stringify(message));
+          }, i * 100);
+        }
+      } catch (error) {
+        console.error(error);
+        setStatus(error.message || String(error), true);
+        $("startBtn").disabled = false;
+      }
+    }
+
+    $("startBtn").addEventListener("click", runTest);
+  </script>
+</body>
+</html>

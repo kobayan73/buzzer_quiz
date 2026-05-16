@@ -1,0 +1,747 @@
+[
+  {
+    "id": "geo_000109_beg_std",
+    "category": "geo",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This large island has landscapes shaped by isolation, with unusual animals, highland areas, dry forests, and coastal trade links across the Indian Ocean. Its biodiversity is often discussed in geography and biology, while its human cultures show influences from Africa and Southeast Asia. What place is this?",
+    "displayAnswer": "Madagascar",
+    "normalizedAnswer": "madagascar",
+    "answerChars": [
+      "m",
+      "a",
+      "d",
+      "a",
+      "g",
+      "a",
+      "s",
+      "c",
+      "a",
+      "r"
+    ]
+  },
+  {
+    "id": "geo_000110_int_com",
+    "category": "geo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "In regional geography, this country is linked to plateaus, deserts, tropical coasts, and a long history of movement between Indigenous societies and later colonial systems. It borders both the Pacific and the Gulf side, and its culture is often discussed through food, language, and migration. What country is this?",
+    "displayAnswer": "Mexico",
+    "normalizedAnswer": "mexico",
+    "answerChars": [
+      "m",
+      "e",
+      "x",
+      "i",
+      "c",
+      "o"
+    ]
+  },
+  {
+    "id": "geo_000111_int_std",
+    "category": "geo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This geographic term describes a chain or cluster of islands, often formed by volcanic arcs, continental fragments, or sea-level changes. It appears in discussions of maritime trade, biodiversity, and political borders, especially where many small landmasses are grouped across a sea. What is this term?",
+    "displayAnswer": "Archipelago",
+    "normalizedAnswer": "archipelago",
+    "answerChars": [
+      "a",
+      "r",
+      "c",
+      "h",
+      "i",
+      "p",
+      "e",
+      "l",
+      "a",
+      "g",
+      "o"
+    ]
+  },
+  {
+    "id": "geo_000112_adv_com",
+    "category": "geo",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "In geomorphology, this landform can arise through tectonic uplift, volcanism, folding, faulting, or erosion that leaves resistant rock standing above surrounding terrain. It affects rainfall patterns, habitats, travel routes, and settlement, while also serving as a visible marker of relief. What is this landform?",
+    "displayAnswer": "Mountain",
+    "normalizedAnswer": "mountain",
+    "answerChars": [
+      "m",
+      "o",
+      "u",
+      "n",
+      "t",
+      "a",
+      "i",
+      "n"
+    ]
+  },
+  {
+    "id": "his_000109_beg_std",
+    "category": "his",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This Carthaginian commander is studied for a campaign that combined logistics, diplomacy, and psychological pressure against a stronger republic. His reputation rests on bold movement across difficult terrain and on battles that later military writers treated as examples of tactical skill. Who is this?",
+    "displayAnswer": "Hannibal",
+    "normalizedAnswer": "hannibal",
+    "answerChars": [
+      "h",
+      "a",
+      "n",
+      "n",
+      "i",
+      "b",
+      "a",
+      "l"
+    ]
+  },
+  {
+    "id": "his_000110_int_com",
+    "category": "his",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "In history, this kind of event involves a deep break with an existing political or social order. It can begin with economic stress, ideological conflict, elite weakness, or popular mobilization, and its results may reshape laws, symbols, institutions, and ideas of citizenship. What is this?",
+    "displayAnswer": "Revolution",
+    "normalizedAnswer": "revolution",
+    "answerChars": [
+      "r",
+      "e",
+      "v",
+      "o",
+      "l",
+      "u",
+      "t",
+      "i",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "his_000111_int_std",
+    "category": "his",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This social and political arrangement is often described through landholding, personal obligation, military service, and local authority. Historians debate how uniformly it applied, but it remains a useful term when discussing medieval power relations and rural hierarchy. What system is this?",
+    "displayAnswer": "Feudalism",
+    "normalizedAnswer": "feudalism",
+    "answerChars": [
+      "f",
+      "e",
+      "u",
+      "d",
+      "a",
+      "l",
+      "i",
+      "s",
+      "m"
+    ]
+  },
+  {
+    "id": "his_000112_adv_com",
+    "category": "his",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "In comparative history, this political form is associated with rule over multiple peoples, regions, or legal traditions, often through layered administration, tribute, military power, and symbolic claims to universal authority. It may outlive a single dynasty or language community. What is this form?",
+    "displayAnswer": "Empire",
+    "normalizedAnswer": "empire",
+    "answerChars": [
+      "e",
+      "m",
+      "p",
+      "i",
+      "r",
+      "e"
+    ]
+  },
+  {
+    "id": "sci_000109_beg_std",
+    "category": "sci",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "In biology and chemistry, this process concerns the movement of water across a selectively permeable membrane. It matters in plant cells, kidney function, food preservation, and lab experiments where concentration differences create movement without a pump. What process is this?",
+    "displayAnswer": "Osmosis",
+    "normalizedAnswer": "osmosis",
+    "answerChars": [
+      "o",
+      "s",
+      "m",
+      "o",
+      "s",
+      "i",
+      "s"
+    ]
+  },
+  {
+    "id": "sci_000110_int_com",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "In physics, this quantity appears in many forms and is tracked through transformations rather than simple disappearance. It can be stored, transferred, radiated, or converted, and it helps explain motion, heating, chemical reactions, and biological activity. What quantity is this?",
+    "displayAnswer": "Energy",
+    "normalizedAnswer": "energy",
+    "answerChars": [
+      "e",
+      "n",
+      "e",
+      "r",
+      "g",
+      "y"
+    ]
+  },
+  {
+    "id": "sci_000111_int_std",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "In chemistry, this substance changes the rate of a reaction by offering an alternative pathway with lower activation requirements. It is not consumed in the overall reaction, and related ideas appear in industrial processes, enzymes, and pollution control. What is this?",
+    "displayAnswer": "Catalyst",
+    "normalizedAnswer": "catalyst",
+    "answerChars": [
+      "c",
+      "a",
+      "t",
+      "a",
+      "l",
+      "y",
+      "s",
+      "t"
+    ]
+  },
+  {
+    "id": "sci_000112_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "In physical science, this entity is treated as a basic unit for chemical identity, though its internal structure includes smaller charged and neutral components. Its arrangement and interactions explain bonding, spectra, materials, and much of ordinary matter. What is this?",
+    "displayAnswer": "Atom",
+    "normalizedAnswer": "atom",
+    "answerChars": [
+      "a",
+      "t",
+      "o",
+      "m"
+    ]
+  },
+  {
+    "id": "spo_000109_beg_std",
+    "category": "spo",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This combined athletics event tests speed, jumping, throwing, endurance, and consistency across two days. Competitors must manage fatigue while switching between technical skills and explosive performance, so the winner is often described as an especially complete track-and-field athlete. What event is this?",
+    "displayAnswer": "Decathlon",
+    "normalizedAnswer": "decathlon",
+    "answerChars": [
+      "d",
+      "e",
+      "c",
+      "a",
+      "t",
+      "h",
+      "l",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "spo_000110_int_com",
+    "category": "spo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This sport is shaped by resistance, breathing rhythm, lane discipline, and technique across different strokes. It can be practiced recreationally or competitively, and major races vary by distance, relay format, and whether the event takes place in a pool or open water. What sport is this?",
+    "displayAnswer": "Swimming",
+    "normalizedAnswer": "swimming",
+    "answerChars": [
+      "s",
+      "w",
+      "i",
+      "m",
+      "m",
+      "i",
+      "n",
+      "g"
+    ]
+  },
+  {
+    "id": "spo_000111_int_std",
+    "category": "spo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This combat sport developed from Japanese martial traditions and emphasizes throws, pins, joint locks, and controlled grappling rather than striking. It became an international sport with weight classes and has a scoring system built around decisive technique and control. What sport is this?",
+    "displayAnswer": "Judo",
+    "normalizedAnswer": "judo",
+    "answerChars": [
+      "j",
+      "u",
+      "d",
+      "o"
+    ]
+  },
+  {
+    "id": "spo_000112_adv_com",
+    "category": "spo",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "In sports infrastructure, this venue type must solve problems of sightlines, crowd movement, playing-surface maintenance, safety zoning, broadcasting, and ritual atmosphere. It can host local matches or major international events, depending on scale and design. What is this venue?",
+    "displayAnswer": "Stadium",
+    "normalizedAnswer": "stadium",
+    "answerChars": [
+      "s",
+      "t",
+      "a",
+      "d",
+      "i",
+      "u",
+      "m"
+    ]
+  },
+  {
+    "id": "ent_000109_beg_std",
+    "category": "ent",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This stage and screen form combines story, character, choreography, dialogue, and songs into a single dramatic structure. Its pacing often depends on moments when spoken emotion turns into performance, and it can range from comedy to historical drama. What form is this?",
+    "displayAnswer": "Musical",
+    "normalizedAnswer": "musical",
+    "answerChars": [
+      "m",
+      "u",
+      "s",
+      "i",
+      "c",
+      "a",
+      "l"
+    ]
+  },
+  {
+    "id": "ent_000110_int_com",
+    "category": "ent",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This entertainment genre depends on timing, expectation, reversal, social observation, and controlled exaggeration. It may appear in films, television, stand-up, theater, or animation, and its effect often changes across cultures and generations. What genre is this?",
+    "displayAnswer": "Comedy",
+    "normalizedAnswer": "comedy",
+    "answerChars": [
+      "c",
+      "o",
+      "m",
+      "e",
+      "d",
+      "y"
+    ]
+  },
+  {
+    "id": "ent_000111_int_std",
+    "category": "ent",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "In film, animation, and game production, this planning tool arranges images or panels to show camera movement, scene order, framing, and action before final production. It helps teams test rhythm and visual logic without building every finished shot. What is this?",
+    "displayAnswer": "Storyboard",
+    "normalizedAnswer": "storyboard",
+    "answerChars": [
+      "s",
+      "t",
+      "o",
+      "r",
+      "y",
+      "b",
+      "o",
+      "a",
+      "r",
+      "d"
+    ]
+  },
+  {
+    "id": "ent_000112_adv_com",
+    "category": "ent",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "In narrative design, this role often carries opposition, temptation, distortion of values, or pressure on the protagonist. The figure may be sympathetic, symbolic, comic, or frightening, and can reveal the moral structure of a story without being simply evil. What role is this?",
+    "displayAnswer": "Villain",
+    "normalizedAnswer": "villain",
+    "answerChars": [
+      "v",
+      "i",
+      "l",
+      "l",
+      "a",
+      "i",
+      "n"
+    ]
+  },
+  {
+    "id": "food_000109_beg_std",
+    "category": "food",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This bread is associated with fermentation driven by a maintained culture rather than only packaged yeast. Its flavor, texture, and rise depend on time, hydration, temperature, and microbial activity, making it both a home-baking craft and a traditional food style. What is this?",
+    "displayAnswer": "Sourdough",
+    "normalizedAnswer": "sourdough",
+    "answerChars": [
+      "s",
+      "o",
+      "u",
+      "r",
+      "d",
+      "o",
+      "u",
+      "g",
+      "h"
+    ]
+  },
+  {
+    "id": "food_000110_int_com",
+    "category": "food",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This food is made from cacao-derived ingredients and is shaped by roasting, grinding, mixing, tempering, and sweetening. It appears in desserts, drinks, gifts, and snacks, while its flavor can range from bitter and dark to creamy and sweet. What food is this?",
+    "displayAnswer": "Chocolate",
+    "normalizedAnswer": "chocolate",
+    "answerChars": [
+      "c",
+      "h",
+      "o",
+      "c",
+      "o",
+      "l",
+      "a",
+      "t",
+      "e"
+    ]
+  },
+  {
+    "id": "food_000111_int_std",
+    "category": "food",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This Japanese dish uses a light batter and hot oil to cook seafood or vegetables while keeping a crisp surface and a relatively delicate interior. Its texture depends on batter temperature, frying time, and moisture control rather than heavy coating. What dish is this?",
+    "displayAnswer": "Tempura",
+    "normalizedAnswer": "tempura",
+    "answerChars": [
+      "t",
+      "e",
+      "m",
+      "p",
+      "u",
+      "r",
+      "a"
+    ]
+  },
+  {
+    "id": "food_000112_adv_com",
+    "category": "food",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "In culinary classification, this preparation extracts flavor into liquid through simmering, seasoning, and combining ingredients. It can be clear or thick, rustic or refined, and its structure often depends on stock, starch, puree, fat, or emulsification. What is this?",
+    "displayAnswer": "Soup",
+    "normalizedAnswer": "soup",
+    "answerChars": [
+      "s",
+      "o",
+      "u",
+      "p"
+    ]
+  },
+  {
+    "id": "tech_000109_beg_std",
+    "category": "tech",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "In network security, this system controls traffic according to rules about sources, destinations, ports, protocols, or application behavior. It can be software, hardware, or cloud-based, and it helps separate trusted activity from potentially risky communication. What is this?",
+    "displayAnswer": "Firewall",
+    "normalizedAnswer": "firewall",
+    "answerChars": [
+      "f",
+      "i",
+      "r",
+      "e",
+      "w",
+      "a",
+      "l",
+      "l"
+    ]
+  },
+  {
+    "id": "tech_000110_int_com",
+    "category": "tech",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This software category interprets web resources, manages tabs, handles scripts, stores local data, and mediates user interaction with pages and services. Its design affects privacy, performance, extensions, and how people experience the modern internet. What is this?",
+    "displayAnswer": "Browser",
+    "normalizedAnswer": "browser",
+    "answerChars": [
+      "b",
+      "r",
+      "o",
+      "w",
+      "s",
+      "e",
+      "r"
+    ]
+  },
+  {
+    "id": "tech_000111_int_std",
+    "category": "tech",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This organized system stores and retrieves structured information using models, queries, indexes, and consistency rules. It can support banking, search, analytics, games, or social platforms, and different designs trade off speed, flexibility, and reliability. What is this?",
+    "displayAnswer": "Database",
+    "normalizedAnswer": "database",
+    "answerChars": [
+      "d",
+      "a",
+      "t",
+      "a",
+      "b",
+      "a",
+      "s",
+      "e"
+    ]
+  },
+  {
+    "id": "tech_000112_adv_com",
+    "category": "tech",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "In authentication systems, this secret is vulnerable to reuse, guessing, leaks, phishing, and poor storage practices. Designers often combine it with hashing, rate limits, managers, or additional factors because human memory alone creates security tradeoffs. What is this?",
+    "displayAnswer": "Password",
+    "normalizedAnswer": "password",
+    "answerChars": [
+      "p",
+      "a",
+      "s",
+      "s",
+      "w",
+      "o",
+      "r",
+      "d"
+    ]
+  },
+  {
+    "id": "lang_000109_beg_std",
+    "category": "lang",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "In phonetics and writing systems, this sound type is often described by obstruction or narrowing in the vocal tract. Alphabets frequently classify letters by this category, though the exact sound can change with language, position, and nearby sounds. What is this?",
+    "displayAnswer": "Consonant",
+    "normalizedAnswer": "consonant",
+    "answerChars": [
+      "c",
+      "o",
+      "n",
+      "s",
+      "o",
+      "n",
+      "a",
+      "n",
+      "t"
+    ]
+  },
+  {
+    "id": "lang_000110_int_com",
+    "category": "lang",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This unit of language usually expresses a complete thought through words arranged by grammar, punctuation, and intonation. It may be simple, compound, or complex, and its boundaries are easier to see in writing than in natural speech. What is this?",
+    "displayAnswer": "Sentence",
+    "normalizedAnswer": "sentence",
+    "answerChars": [
+      "s",
+      "e",
+      "n",
+      "t",
+      "e",
+      "n",
+      "c",
+      "e"
+    ]
+  },
+  {
+    "id": "lang_000111_int_std",
+    "category": "lang",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This field studies the origins and historical development of words, including changes in sound, meaning, and borrowing across languages. It can reveal migration, trade, conquest, scholarship, or cultural contact behind everyday vocabulary. What field is this?",
+    "displayAnswer": "Etymology",
+    "normalizedAnswer": "etymology",
+    "answerChars": [
+      "e",
+      "t",
+      "y",
+      "m",
+      "o",
+      "l",
+      "o",
+      "g",
+      "y"
+    ]
+  },
+  {
+    "id": "lang_000112_adv_com",
+    "category": "lang",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This activity must preserve meaning across linguistic systems while handling context, idiom, register, ambiguity, and cultural assumptions. It may involve literature, law, software, diplomacy, or everyday communication, and perfect one-to-one mapping is rare. What activity is this?",
+    "displayAnswer": "Translation",
+    "normalizedAnswer": "translation",
+    "answerChars": [
+      "t",
+      "r",
+      "a",
+      "n",
+      "s",
+      "l",
+      "a",
+      "t",
+      "i",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "art_000109_beg_std",
+    "category": "art",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This poetic form is traditionally associated with a compact structure, patterned argument, and a turn in thought or feeling. Different national traditions use different rhyme and line arrangements, but the form often compresses emotional reflection into a strict frame. What form is this?",
+    "displayAnswer": "Sonnet",
+    "normalizedAnswer": "sonnet",
+    "answerChars": [
+      "s",
+      "o",
+      "n",
+      "n",
+      "e",
+      "t"
+    ]
+  },
+  {
+    "id": "art_000110_int_com",
+    "category": "art",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This institution preserves, studies, and displays objects so that visitors can encounter art, history, science, or culture outside their original setting. Its choices about labels, layout, collecting, and access shape public memory and education. What institution is this?",
+    "displayAnswer": "Museum",
+    "normalizedAnswer": "museum",
+    "answerChars": [
+      "m",
+      "u",
+      "s",
+      "e",
+      "u",
+      "m"
+    ]
+  },
+  {
+    "id": "art_000111_int_std",
+    "category": "art",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This twentieth-century art movement explored dream logic, unexpected juxtapositions, psychological imagery, and the instability of ordinary reality. It influenced painting, film, literature, and design by treating the irrational as a source of creative force. What movement is this?",
+    "displayAnswer": "Surrealism",
+    "normalizedAnswer": "surrealism",
+    "answerChars": [
+      "s",
+      "u",
+      "r",
+      "r",
+      "e",
+      "a",
+      "l",
+      "i",
+      "s",
+      "m"
+    ]
+  },
+  {
+    "id": "art_000112_adv_com",
+    "category": "art",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "In visual art, this genre organizes likeness, pose, costume, gaze, setting, and status into an image of a person or group. It may flatter, reveal, memorialize, criticize, or construct identity rather than simply record appearance. What genre is this?",
+    "displayAnswer": "Portrait",
+    "normalizedAnswer": "portrait",
+    "answerChars": [
+      "p",
+      "o",
+      "r",
+      "t",
+      "r",
+      "a",
+      "i",
+      "t"
+    ]
+  },
+  {
+    "id": "gen_000109_beg_std",
+    "category": "gen",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This simple machine uses a rigid bar and a pivot to trade distance for force. It appears in tools, playground equipment, and engineering examples, and its behavior can be explained through balance, torque, and the relative positions of load and effort. What is this?",
+    "displayAnswer": "Lever",
+    "normalizedAnswer": "lever",
+    "answerChars": [
+      "l",
+      "e",
+      "v",
+      "e",
+      "r"
+    ]
+  },
+  {
+    "id": "gen_000110_int_com",
+    "category": "gen",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This object creates an image by reflecting light from a surface designed to preserve direction in a predictable way. It appears in homes, vehicles, instruments, and optical devices, and it also carries symbolic meanings in stories and psychology. What object is this?",
+    "displayAnswer": "Mirror",
+    "normalizedAnswer": "mirror",
+    "answerChars": [
+      "m",
+      "i",
+      "r",
+      "r",
+      "o",
+      "r"
+    ]
+  },
+  {
+    "id": "gen_000111_int_std",
+    "category": "gen",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This communication method uses visible signals, positions, or flags to send messages when speech or electronic transmission is unavailable or unsuitable. It has been used in navigation, railways, computing metaphors, and emergency signaling. What is this?",
+    "displayAnswer": "Semaphore",
+    "normalizedAnswer": "semaphore",
+    "answerChars": [
+      "s",
+      "e",
+      "m",
+      "a",
+      "p",
+      "h",
+      "o",
+      "r",
+      "e"
+    ]
+  },
+  {
+    "id": "gen_000112_adv_com",
+    "category": "gen",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "In everyday technology, this device stores chemical energy and delivers electrical potential through reactions between materials. Its limits involve capacity, voltage, discharge rate, safety, and recharge behavior, making it central to portable tools and vehicles. What device is this?",
+    "displayAnswer": "Battery",
+    "normalizedAnswer": "battery",
+    "answerChars": [
+      "b",
+      "a",
+      "t",
+      "t",
+      "e",
+      "r",
+      "y"
+    ]
+  }
+]

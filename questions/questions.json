@@ -1,0 +1,1323 @@
+[
+  {
+    "id": "geo_000001_beg_com",
+    "text": "This island country in East Asia has Tokyo as its capital and is famous for Mount Fuji, sushi, anime, Kyoto, and cherry blossoms. What country is it?",
+    "displayAnswer": "Japan",
+    "normalizedAnswer": "japan",
+    "answerChars": [
+      "j",
+      "a",
+      "p",
+      "a",
+      "n"
+    ]
+  },
+  {
+    "id": "geo_000002_beg_com",
+    "text": "This river flows through Egypt and is strongly associated with ancient pyramids, pharaohs, and farming along its banks. What river is it?",
+    "displayAnswer": "Nile",
+    "normalizedAnswer": "nile",
+    "answerChars": [
+      "n",
+      "i",
+      "l",
+      "e"
+    ]
+  },
+  {
+    "id": "geo_000003_beg_com",
+    "text": "This huge desert covers much of North Africa and is famous for extreme heat, sand dunes, oases, and camel caravans. What desert is it?",
+    "displayAnswer": "Sahara",
+    "normalizedAnswer": "sahara",
+    "answerChars": [
+      "s",
+      "a",
+      "h",
+      "a",
+      "r",
+      "a"
+    ]
+  },
+  {
+    "id": "his_000001_beg_com",
+    "text": "This ancient civilization developed along the Nile River and is famous for pyramids, mummies, hieroglyphs, and pharaohs. What civilization was it?",
+    "displayAnswer": "Egypt",
+    "normalizedAnswer": "egypt",
+    "answerChars": [
+      "e",
+      "g",
+      "y",
+      "p",
+      "t"
+    ]
+  },
+  {
+    "id": "his_000002_beg_com",
+    "text": "This global war lasted from 1939 to 1945 and involved countries such as Germany, Japan, the United States, and Britain. What war was it?",
+    "displayAnswer": "World War 2",
+    "normalizedAnswer": "worldwar2",
+    "answerChars": [
+      "w",
+      "o",
+      "r",
+      "l",
+      "d",
+      "w",
+      "a",
+      "r",
+      "2"
+    ]
+  },
+  {
+    "id": "his_000003_beg_com",
+    "text": "This French leader became emperor, led armies across Europe, and was finally defeated at the Battle of Waterloo. Who was he?",
+    "displayAnswer": "Napoleon",
+    "normalizedAnswer": "napoleon",
+    "answerChars": [
+      "n",
+      "a",
+      "p",
+      "o",
+      "l",
+      "e",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "sci_000001_beg_com",
+    "text": "This planet is called the Red Planet because of its color and is often discussed as a possible place for future human exploration. What planet is it?",
+    "displayAnswer": "Mars",
+    "normalizedAnswer": "mars",
+    "answerChars": [
+      "m",
+      "a",
+      "r",
+      "s"
+    ]
+  },
+  {
+    "id": "sci_000002_beg_com",
+    "text": "This force pulls objects toward each other and is the reason things fall to the ground when dropped on Earth. What force is it?",
+    "displayAnswer": "Gravity",
+    "normalizedAnswer": "gravity",
+    "answerChars": [
+      "g",
+      "r",
+      "a",
+      "v",
+      "i",
+      "t",
+      "y"
+    ]
+  },
+  {
+    "id": "sci_000003_beg_com",
+    "text": "This molecule carries genetic information in living things and is famous for its double helix structure. What molecule is it?",
+    "displayAnswer": "DNA",
+    "normalizedAnswer": "dna",
+    "answerChars": [
+      "d",
+      "n",
+      "a"
+    ]
+  },
+  {
+    "id": "spo_000001_beg_com",
+    "text": "This sport is played by two teams of eleven players, and the main goal is to kick a ball into the opponent’s net. What sport is it?",
+    "displayAnswer": "Soccer",
+    "normalizedAnswer": "soccer",
+    "answerChars": [
+      "s",
+      "o",
+      "c",
+      "c",
+      "e",
+      "r"
+    ]
+  },
+  {
+    "id": "spo_000002_beg_com",
+    "text": "This international sports event is held every four years and includes athletes from many countries competing for medals. What event is it?",
+    "displayAnswer": "Olympics",
+    "normalizedAnswer": "olympics",
+    "answerChars": [
+      "o",
+      "l",
+      "y",
+      "m",
+      "p",
+      "i",
+      "c",
+      "s"
+    ]
+  },
+  {
+    "id": "spo_000003_beg_com",
+    "text": "This indoor sport is played with rackets and a shuttlecock, and players try to hit it over a net. What sport is it?",
+    "displayAnswer": "Badminton",
+    "normalizedAnswer": "badminton",
+    "answerChars": [
+      "b",
+      "a",
+      "d",
+      "m",
+      "i",
+      "n",
+      "t",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "ent_000001_beg_com",
+    "text": "This Disney animated movie features Elsa, Anna, Olaf, a kingdom covered in snow, and the famous song Let It Go. What movie is it?",
+    "displayAnswer": "Frozen",
+    "normalizedAnswer": "frozen",
+    "answerChars": [
+      "f",
+      "r",
+      "o",
+      "z",
+      "e",
+      "n"
+    ]
+  },
+  {
+    "id": "ent_000002_beg_com",
+    "text": "This Marvel superhero wears a red and gold suit of armor and is also known as the billionaire inventor Tony Stark. What superhero is he?",
+    "displayAnswer": "Iron Man",
+    "normalizedAnswer": "ironman",
+    "answerChars": [
+      "i",
+      "r",
+      "o",
+      "n",
+      "m",
+      "a",
+      "n"
+    ]
+  },
+  {
+    "id": "ent_000003_beg_com",
+    "text": "This Japanese franchise includes Pikachu, Charizard, video games, anime, trading cards, and the phrase Gotta catch them all. What is it?",
+    "displayAnswer": "Pokemon",
+    "normalizedAnswer": "pokemon",
+    "answerChars": [
+      "p",
+      "o",
+      "k",
+      "e",
+      "m",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "food_000001_beg_com",
+    "text": "This Japanese dish is made with vinegared rice and often includes raw fish, seaweed, vegetables, or egg. What dish is it?",
+    "displayAnswer": "Sushi",
+    "normalizedAnswer": "sushi",
+    "answerChars": [
+      "s",
+      "u",
+      "s",
+      "h",
+      "i"
+    ]
+  },
+  {
+    "id": "food_000002_beg_com",
+    "text": "This Italian food is usually round, baked with tomato sauce and cheese, and often cut into triangular slices. What food is it?",
+    "displayAnswer": "Pizza",
+    "normalizedAnswer": "pizza",
+    "answerChars": [
+      "p",
+      "i",
+      "z",
+      "z",
+      "a"
+    ]
+  },
+  {
+    "id": "food_000003_beg_com",
+    "text": "This Mexican dish uses a folded tortilla filled with ingredients such as meat, beans, cheese, salsa, or vegetables. What dish is it?",
+    "displayAnswer": "Taco",
+    "normalizedAnswer": "taco",
+    "answerChars": [
+      "t",
+      "a",
+      "c",
+      "o"
+    ]
+  },
+  {
+    "id": "tech_000001_beg_com",
+    "text": "This technology company created the iPhone, iPad, Mac, and Apple Watch, and its logo looks like a bitten fruit. What company is it?",
+    "displayAnswer": "Apple",
+    "normalizedAnswer": "apple",
+    "answerChars": [
+      "a",
+      "p",
+      "p",
+      "l",
+      "e"
+    ]
+  },
+  {
+    "id": "tech_000002_beg_com",
+    "text": "This global network lets people use websites, send messages, stream videos, play online games, and share information. What is it called?",
+    "displayAnswer": "Internet",
+    "normalizedAnswer": "internet",
+    "answerChars": [
+      "i",
+      "n",
+      "t",
+      "e",
+      "r",
+      "n",
+      "e",
+      "t"
+    ]
+  },
+  {
+    "id": "tech_000003_beg_com",
+    "text": "This technology allows machines to perform tasks such as learning, recognizing images, understanding language, and making predictions. What is it?",
+    "displayAnswer": "AI",
+    "normalizedAnswer": "ai",
+    "answerChars": [
+      "a",
+      "i"
+    ]
+  },
+  {
+    "id": "lang_000001_beg_com",
+    "text": "This language is widely spoken in countries such as the United States, the United Kingdom, Canada, Australia, and New Zealand. What language is it?",
+    "displayAnswer": "English",
+    "normalizedAnswer": "english",
+    "answerChars": [
+      "e",
+      "n",
+      "g",
+      "l",
+      "i",
+      "s",
+      "h"
+    ]
+  },
+  {
+    "id": "lang_000002_beg_com",
+    "text": "This part of speech names a person, place, thing, or idea, such as teacher, city, river, music, or happiness. What is it?",
+    "displayAnswer": "Noun",
+    "normalizedAnswer": "noun",
+    "answerChars": [
+      "n",
+      "o",
+      "u",
+      "n"
+    ]
+  },
+  {
+    "id": "lang_000003_beg_com",
+    "text": "This Japanese writing system uses characters originally adapted from Chinese and is used with hiragana and katakana. What is it called?",
+    "displayAnswer": "Kanji",
+    "normalizedAnswer": "kanji",
+    "answerChars": [
+      "k",
+      "a",
+      "n",
+      "j",
+      "i"
+    ]
+  },
+  {
+    "id": "art_000001_beg_com",
+    "text": "This English writer wrote Hamlet, Macbeth, Romeo and Juliet, and many famous plays during the Elizabethan era. Who was he?",
+    "displayAnswer": "Shakespeare",
+    "normalizedAnswer": "shakespeare",
+    "answerChars": [
+      "s",
+      "h",
+      "a",
+      "k",
+      "e",
+      "s",
+      "p",
+      "e",
+      "a",
+      "r",
+      "e"
+    ]
+  },
+  {
+    "id": "art_000002_beg_com",
+    "text": "This famous painting by Leonardo da Vinci shows a woman with a mysterious smile and is displayed in the Louvre Museum. What painting is it?",
+    "displayAnswer": "Mona Lisa",
+    "normalizedAnswer": "monalisa",
+    "answerChars": [
+      "m",
+      "o",
+      "n",
+      "a",
+      "l",
+      "i",
+      "s",
+      "a"
+    ]
+  },
+  {
+    "id": "art_000003_beg_com",
+    "text": "This Dutch painter is famous for The Starry Night, sunflowers, vivid colors, and expressive brushstrokes. Who was he?",
+    "displayAnswer": "Van Gogh",
+    "normalizedAnswer": "vangogh",
+    "answerChars": [
+      "v",
+      "a",
+      "n",
+      "g",
+      "o",
+      "g",
+      "h"
+    ]
+  },
+  {
+    "id": "gen_000001_beg_com",
+    "text": "This is the largest ocean on Earth and lies between Asia, Australia, and the Americas. What ocean is it?",
+    "displayAnswer": "Pacific",
+    "normalizedAnswer": "pacific",
+    "answerChars": [
+      "p",
+      "a",
+      "c",
+      "i",
+      "f",
+      "i",
+      "c"
+    ]
+  },
+  {
+    "id": "gen_000002_beg_com",
+    "text": "This color is made by mixing red and blue paint and is often associated with royalty, mystery, and creativity. What color is it?",
+    "displayAnswer": "Purple",
+    "normalizedAnswer": "purple",
+    "answerChars": [
+      "p",
+      "u",
+      "r",
+      "p",
+      "l",
+      "e"
+    ]
+  },
+  {
+    "id": "gen_000003_beg_com",
+    "text": "This is the number of days in a leap year, when February has 29 days instead of 28. What number is it?",
+    "displayAnswer": "366",
+    "normalizedAnswer": "366",
+    "answerChars": [
+      "3",
+      "6",
+      "6"
+    ]
+  },
+  {
+    "id": "geo_000031_beg_std",
+    "text": "This island country in the North Atlantic is known for volcanoes, glaciers, hot springs, the Blue Lagoon, and its capital city Reykjavik. What country is it?",
+    "displayAnswer": "Iceland",
+    "normalizedAnswer": "iceland",
+    "answerChars": [
+      "i",
+      "c",
+      "e",
+      "l",
+      "a",
+      "n",
+      "d"
+    ]
+  },
+  {
+    "id": "geo_000032_beg_std",
+    "text": "This major South American river flows through the rainforest and is often discussed as one of the largest rivers in the world by volume. What river is it?",
+    "displayAnswer": "Amazon",
+    "normalizedAnswer": "amazon",
+    "answerChars": [
+      "a",
+      "m",
+      "a",
+      "z",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "geo_000033_beg_std",
+    "text": "This European mountain range stretches across countries such as Switzerland, France, Italy, and Austria, and is famous for skiing and high peaks. What mountain range is it?",
+    "displayAnswer": "Alps",
+    "normalizedAnswer": "alps",
+    "answerChars": [
+      "a",
+      "l",
+      "p",
+      "s"
+    ]
+  },
+  {
+    "id": "his_000031_beg_std",
+    "text": "This queen ruled ancient Egypt, was connected with Julius Caesar and Mark Antony, and is one of the most famous female rulers in history. Who was she?",
+    "displayAnswer": "Cleopatra",
+    "normalizedAnswer": "cleopatra",
+    "answerChars": [
+      "c",
+      "l",
+      "e",
+      "o",
+      "p",
+      "a",
+      "t",
+      "r",
+      "a"
+    ]
+  },
+  {
+    "id": "his_000032_beg_std",
+    "text": "This long period of tension after World War 2 involved the United States, the Soviet Union, nuclear weapons, espionage, and ideological rivalry. What was it called?",
+    "displayAnswer": "Cold War",
+    "normalizedAnswer": "coldwar",
+    "answerChars": [
+      "c",
+      "o",
+      "l",
+      "d",
+      "w",
+      "a",
+      "r"
+    ]
+  },
+  {
+    "id": "his_000033_beg_std",
+    "text": "This cultural movement began in Europe and is associated with renewed interest in art, science, classical learning, Leonardo da Vinci, and Michelangelo. What was it called?",
+    "displayAnswer": "Renaissance",
+    "normalizedAnswer": "renaissance",
+    "answerChars": [
+      "r",
+      "e",
+      "n",
+      "a",
+      "i",
+      "s",
+      "s",
+      "a",
+      "n",
+      "c",
+      "e"
+    ]
+  },
+  {
+    "id": "sci_000031_beg_std",
+    "text": "This is the largest planet in the solar system and is known for its Great Red Spot and many moons. What planet is it?",
+    "displayAnswer": "Jupiter",
+    "normalizedAnswer": "jupiter",
+    "answerChars": [
+      "j",
+      "u",
+      "p",
+      "i",
+      "t",
+      "e",
+      "r"
+    ]
+  },
+  {
+    "id": "sci_000032_beg_std",
+    "text": "This process allows plants to use sunlight, carbon dioxide, and water to make sugar and release oxygen. What process is it?",
+    "displayAnswer": "Photosynthesis",
+    "normalizedAnswer": "photosynthesis",
+    "answerChars": [
+      "p",
+      "h",
+      "o",
+      "t",
+      "o",
+      "s",
+      "y",
+      "n",
+      "t",
+      "h",
+      "e",
+      "s",
+      "i",
+      "s"
+    ]
+  },
+  {
+    "id": "sci_000033_beg_std",
+    "text": "This tiny negatively charged particle moves around atomic nuclei and plays an important role in electricity and chemical bonds. What particle is it?",
+    "displayAnswer": "Electron",
+    "normalizedAnswer": "electron",
+    "answerChars": [
+      "e",
+      "l",
+      "e",
+      "c",
+      "t",
+      "r",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "spo_000031_beg_std",
+    "text": "This famous tennis tournament is held in London, played on grass courts, and is known for traditions such as white clothing and strawberries. What tournament is it?",
+    "displayAnswer": "Wimbledon",
+    "normalizedAnswer": "wimbledon",
+    "answerChars": [
+      "w",
+      "i",
+      "m",
+      "b",
+      "l",
+      "e",
+      "d",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "spo_000032_beg_std",
+    "text": "This international motorsport competition features high-speed racing cars, famous teams, Grand Prix events, and drivers competing for a world championship. What is it called?",
+    "displayAnswer": "Formula 1",
+    "normalizedAnswer": "formula1",
+    "answerChars": [
+      "f",
+      "o",
+      "r",
+      "m",
+      "u",
+      "l",
+      "a",
+      "1"
+    ]
+  },
+  {
+    "id": "spo_000033_beg_std",
+    "text": "This team sport uses an oval ball, includes tackling and passing backward, and is especially popular in countries such as New Zealand, England, and South Africa. What sport is it?",
+    "displayAnswer": "Rugby",
+    "normalizedAnswer": "rugby",
+    "answerChars": [
+      "r",
+      "u",
+      "g",
+      "b",
+      "y"
+    ]
+  },
+  {
+    "id": "ent_000031_beg_std",
+    "text": "This science fiction franchise features Jedi, Sith, lightsabers, the Force, Darth Vader, and a galaxy far, far away. What franchise is it?",
+    "displayAnswer": "Star Wars",
+    "normalizedAnswer": "starwars",
+    "answerChars": [
+      "s",
+      "t",
+      "a",
+      "r",
+      "w",
+      "a",
+      "r",
+      "s"
+    ]
+  },
+  {
+    "id": "ent_000032_beg_std",
+    "text": "This fantasy series follows a young wizard who attends Hogwarts and faces Lord Voldemort with his friends Hermione and Ron. What series is it?",
+    "displayAnswer": "Harry Potter",
+    "normalizedAnswer": "harrypotter",
+    "answerChars": [
+      "h",
+      "a",
+      "r",
+      "r",
+      "y",
+      "p",
+      "o",
+      "t",
+      "t",
+      "e",
+      "r"
+    ]
+  },
+  {
+    "id": "ent_000033_beg_std",
+    "text": "This sandbox video game lets players mine blocks, craft tools, build structures, and survive against monsters such as creepers. What game is it?",
+    "displayAnswer": "Minecraft",
+    "normalizedAnswer": "minecraft",
+    "answerChars": [
+      "m",
+      "i",
+      "n",
+      "e",
+      "c",
+      "r",
+      "a",
+      "f",
+      "t"
+    ]
+  },
+  {
+    "id": "food_000031_beg_std",
+    "text": "This Spanish rice dish is often cooked in a wide pan and may include saffron, seafood, chicken, vegetables, or beans. What dish is it?",
+    "displayAnswer": "Paella",
+    "normalizedAnswer": "paella",
+    "answerChars": [
+      "p",
+      "a",
+      "e",
+      "l",
+      "l",
+      "a"
+    ]
+  },
+  {
+    "id": "food_000032_beg_std",
+    "text": "This crescent-shaped French pastry is made with layered buttery dough and is often eaten for breakfast. What pastry is it?",
+    "displayAnswer": "Croissant",
+    "normalizedAnswer": "croissant",
+    "answerChars": [
+      "c",
+      "r",
+      "o",
+      "i",
+      "s",
+      "s",
+      "a",
+      "n",
+      "t"
+    ]
+  },
+  {
+    "id": "food_000033_beg_std",
+    "text": "This Korean food is made from fermented vegetables, often cabbage or radish, seasoned with chili, garlic, and other spices. What food is it?",
+    "displayAnswer": "Kimchi",
+    "normalizedAnswer": "kimchi",
+    "answerChars": [
+      "k",
+      "i",
+      "m",
+      "c",
+      "h",
+      "i"
+    ]
+  },
+  {
+    "id": "tech_000031_beg_std",
+    "text": "This technology company is known for its search engine, Gmail, Android, YouTube ownership, and parent company Alphabet. What company is it?",
+    "displayAnswer": "Google",
+    "normalizedAnswer": "google",
+    "answerChars": [
+      "g",
+      "o",
+      "o",
+      "g",
+      "l",
+      "e"
+    ]
+  },
+  {
+    "id": "tech_000032_beg_std",
+    "text": "This technology stores records in linked blocks and is best known for its use in cryptocurrencies such as Bitcoin. What technology is it?",
+    "displayAnswer": "Blockchain",
+    "normalizedAnswer": "blockchain",
+    "answerChars": [
+      "b",
+      "l",
+      "o",
+      "c",
+      "k",
+      "c",
+      "h",
+      "a",
+      "i",
+      "n"
+    ]
+  },
+  {
+    "id": "tech_000033_beg_std",
+    "text": "This computing model lets users store data and run services on remote servers instead of only on their own local devices. What is it commonly called?",
+    "displayAnswer": "Cloud",
+    "normalizedAnswer": "cloud",
+    "answerChars": [
+      "c",
+      "l",
+      "o",
+      "u",
+      "d"
+    ]
+  },
+  {
+    "id": "lang_000031_beg_std",
+    "text": "This Romance language is spoken in Spain and many countries in Latin America, and is one of the most widely spoken languages in the world. What language is it?",
+    "displayAnswer": "Spanish",
+    "normalizedAnswer": "spanish",
+    "answerChars": [
+      "s",
+      "p",
+      "a",
+      "n",
+      "i",
+      "s",
+      "h"
+    ]
+  },
+  {
+    "id": "lang_000032_beg_std",
+    "text": "This part of speech describes a noun, as in words like blue, large, fast, beautiful, or difficult. What is it called?",
+    "displayAnswer": "Adjective",
+    "normalizedAnswer": "adjective",
+    "answerChars": [
+      "a",
+      "d",
+      "j",
+      "e",
+      "c",
+      "t",
+      "i",
+      "v",
+      "e"
+    ]
+  },
+  {
+    "id": "lang_000033_beg_std",
+    "text": "This writing system is a set of letters used to represent sounds, such as the A to Z system used in English. What is it called?",
+    "displayAnswer": "Alphabet",
+    "normalizedAnswer": "alphabet",
+    "answerChars": [
+      "a",
+      "l",
+      "p",
+      "h",
+      "a",
+      "b",
+      "e",
+      "t"
+    ]
+  },
+  {
+    "id": "art_000031_beg_std",
+    "text": "This Spanish artist co-founded Cubism and is known for works such as Guernica and many portraits with fragmented forms. Who was he?",
+    "displayAnswer": "Picasso",
+    "normalizedAnswer": "picasso",
+    "answerChars": [
+      "p",
+      "i",
+      "c",
+      "a",
+      "s",
+      "s",
+      "o"
+    ]
+  },
+  {
+    "id": "art_000032_beg_std",
+    "text": "This Spanish novel by Miguel de Cervantes follows a man who imagines himself as a knight and travels with Sancho Panza. What novel is it?",
+    "displayAnswer": "Don Quixote",
+    "normalizedAnswer": "donquixote",
+    "answerChars": [
+      "d",
+      "o",
+      "n",
+      "q",
+      "u",
+      "i",
+      "x",
+      "o",
+      "t",
+      "e"
+    ]
+  },
+  {
+    "id": "art_000033_beg_std",
+    "text": "This famous painting by Edvard Munch shows a figure with an open mouth standing under a dramatic sky. What painting is it?",
+    "displayAnswer": "The Scream",
+    "normalizedAnswer": "thescream",
+    "answerChars": [
+      "t",
+      "h",
+      "e",
+      "s",
+      "c",
+      "r",
+      "e",
+      "a",
+      "m"
+    ]
+  },
+  {
+    "id": "gen_000031_beg_std",
+    "text": "This cold continent surrounds the South Pole and is covered by a huge ice sheet. What continent is it?",
+    "displayAnswer": "Antarctica",
+    "normalizedAnswer": "antarctica",
+    "answerChars": [
+      "a",
+      "n",
+      "t",
+      "a",
+      "r",
+      "c",
+      "t",
+      "i",
+      "c",
+      "a"
+    ]
+  },
+  {
+    "id": "gen_000032_beg_std",
+    "text": "This metal element is liquid at room temperature and was once commonly used in thermometers. What element is it?",
+    "displayAnswer": "Mercury",
+    "normalizedAnswer": "mercury",
+    "answerChars": [
+      "m",
+      "e",
+      "r",
+      "c",
+      "u",
+      "r",
+      "y"
+    ]
+  },
+  {
+    "id": "gen_000033_beg_std",
+    "text": "This tool uses a magnetized needle to show direction and is often used for navigation. What tool is it?",
+    "displayAnswer": "Compass",
+    "normalizedAnswer": "compass",
+    "answerChars": [
+      "c",
+      "o",
+      "m",
+      "p",
+      "a",
+      "s",
+      "s"
+    ]
+  },
+  {
+    "id": "geo_000061_int_com",
+    "text": "This island country developed a distinctive culture shaped by Shinto shrines, Buddhist temples, samurai history, seasonal festivals, and a writing system that combines kanji with two phonetic scripts. It is also famous for high-speed trains, anime, sushi, cherry blossoms, Kyoto, and Mount Fuji. Its capital is Tokyo. What country is it?",
+    "displayAnswer": "Japan",
+    "normalizedAnswer": "japan",
+    "answerChars": [
+      "j",
+      "a",
+      "p",
+      "a",
+      "n"
+    ]
+  },
+  {
+    "id": "geo_000062_int_com",
+    "text": "For thousands of years, this river supported agriculture through seasonal flooding and allowed settlements to grow in an otherwise dry region. Temples, tombs, and ancient cities were built along its banks, and it became central to one of the world’s earliest civilizations. It flows through Egypt and is closely associated with pyramids and pharaohs. What river is it?",
+    "displayAnswer": "Nile",
+    "normalizedAnswer": "nile",
+    "answerChars": [
+      "n",
+      "i",
+      "l",
+      "e"
+    ]
+  },
+  {
+    "id": "geo_000063_int_com",
+    "text": "This region contains not only sand dunes but also rocky plateaus, gravel plains, mountains, and oases. It influenced ancient trade routes, nomadic cultures, and the movement of goods across North Africa. It stretches across many countries and is known for extreme heat and vast dry landscapes. What is the largest hot desert in the world?",
+    "displayAnswer": "Sahara",
+    "normalizedAnswer": "sahara",
+    "answerChars": [
+      "s",
+      "a",
+      "h",
+      "a",
+      "r",
+      "a"
+    ]
+  },
+  {
+    "id": "his_000061_int_com",
+    "text": "This ancient civilization developed complex systems of writing, religion, architecture, and government along a major river valley. Its rulers were often seen as divine, and its burial customs reflected strong beliefs about the afterlife. It is famous for hieroglyphs, mummies, pyramids, sphinxes, and pharaohs. What civilization was it?",
+    "displayAnswer": "Egypt",
+    "normalizedAnswer": "egypt",
+    "answerChars": [
+      "e",
+      "g",
+      "y",
+      "p",
+      "t"
+    ]
+  },
+  {
+    "id": "his_000062_int_com",
+    "text": "This conflict involved industrial-scale warfare, aerial bombing, genocide, and the use of nuclear weapons near its end. It reshaped global politics and led to the creation of the United Nations. Major participants included Germany, Japan, the Soviet Union, Britain, and the United States. It lasted from 1939 to 1945. What war was it?",
+    "displayAnswer": "World War 2",
+    "normalizedAnswer": "worldwar2",
+    "answerChars": [
+      "w",
+      "o",
+      "r",
+      "l",
+      "d",
+      "w",
+      "a",
+      "r",
+      "2"
+    ]
+  },
+  {
+    "id": "his_000063_int_com",
+    "text": "He rose during the instability after the French Revolution and became known for military campaigns, legal reforms, and a civil code that influenced many countries. His empire challenged European monarchies, but he was eventually exiled and then defeated after a brief return to power. His final defeat came at Waterloo. Who was he?",
+    "displayAnswer": "Napoleon",
+    "normalizedAnswer": "napoleon",
+    "answerChars": [
+      "n",
+      "a",
+      "p",
+      "o",
+      "l",
+      "e",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "sci_000061_int_com",
+    "text": "This planet has the tallest volcano in the solar system and a canyon system far larger than the Grand Canyon. Rovers have explored its surface to study rocks, ice, and signs of ancient water. It has two small moons called Phobos and Deimos and appears reddish because of iron oxide. What planet is it?",
+    "displayAnswer": "Mars",
+    "normalizedAnswer": "mars",
+    "answerChars": [
+      "m",
+      "a",
+      "r",
+      "s"
+    ]
+  },
+  {
+    "id": "sci_000062_int_com",
+    "text": "In classical physics, this interaction is described as an attraction between masses, while Einstein described it as the curvature of spacetime caused by mass and energy. It governs planetary orbits, tides, falling objects, and the motion of stars and galaxies. On Earth, it makes dropped objects fall downward. What is it?",
+    "displayAnswer": "Gravity",
+    "normalizedAnswer": "gravity",
+    "answerChars": [
+      "g",
+      "r",
+      "a",
+      "v",
+      "i",
+      "t",
+      "y"
+    ]
+  },
+  {
+    "id": "sci_000063_int_com",
+    "text": "This molecule is made of nucleotides containing bases commonly abbreviated as A, T, G, and C. Its double helix structure helps explain how biological information is copied and passed from one generation to the next. It plays a central role in heredity, development, and evolution. What molecule is it?",
+    "displayAnswer": "DNA",
+    "normalizedAnswer": "dna",
+    "answerChars": [
+      "d",
+      "n",
+      "a"
+    ]
+  },
+  {
+    "id": "spo_000061_int_com",
+    "text": "Its modern rules were standardized in nineteenth-century Britain, and tactical systems such as formations, pressing, and counterattacks are central to professional play. It is governed internationally by FIFA, and its biggest tournament attracts huge global audiences. Two teams of eleven players try to kick a ball into the opponent’s goal. What sport is it?",
+    "displayAnswer": "Soccer",
+    "normalizedAnswer": "soccer",
+    "answerChars": [
+      "s",
+      "o",
+      "c",
+      "c",
+      "e",
+      "r"
+    ]
+  },
+  {
+    "id": "spo_000062_int_com",
+    "text": "The modern version of this event was strongly influenced by Pierre de Coubertin and includes ceremonies, medals, national teams, and a torch relay. It has separate summer and winter editions and brings together athletes from around the world every four years. What international sporting event is this?",
+    "displayAnswer": "Olympics",
+    "normalizedAnswer": "olympics",
+    "answerChars": [
+      "o",
+      "l",
+      "y",
+      "m",
+      "p",
+      "i",
+      "c",
+      "s"
+    ]
+  },
+  {
+    "id": "spo_000063_int_com",
+    "text": "This racket sport developed from earlier shuttlecock games and is especially popular in countries such as Indonesia, China, Japan, Malaysia, and Denmark. The object being hit slows quickly because of its feathered or synthetic shape. Matches can be singles or doubles, with smashes and quick footwork. What sport is it?",
+    "displayAnswer": "Badminton",
+    "normalizedAnswer": "badminton",
+    "answerChars": [
+      "b",
+      "a",
+      "d",
+      "m",
+      "i",
+      "n",
+      "t",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "ent_000061_int_com",
+    "text": "This animated film was loosely inspired by Hans Christian Andersen’s The Snow Queen but became a story about sisters, fear, isolation, and love. Its soundtrack became a global phenomenon, especially a song associated with letting go of fear. It features a snowman named Olaf and sisters named Elsa and Anna. What movie is it?",
+    "displayAnswer": "Frozen",
+    "normalizedAnswer": "frozen",
+    "answerChars": [
+      "f",
+      "r",
+      "o",
+      "z",
+      "e",
+      "n"
+    ]
+  },
+  {
+    "id": "ent_000062_int_com",
+    "text": "This Marvel character began as a wealthy industrialist and inventor whose advanced technology became central to his identity as a hero. In the films, he is linked with arc reactors, artificial intelligence, and a red-and-gold armored suit. His civilian name is Tony Stark. Which superhero is he?",
+    "displayAnswer": "Iron Man",
+    "normalizedAnswer": "ironman",
+    "answerChars": [
+      "i",
+      "r",
+      "o",
+      "n",
+      "m",
+      "a",
+      "n"
+    ]
+  },
+  {
+    "id": "ent_000063_int_com",
+    "text": "This franchise began as video games and expanded into anime, trading cards, films, toys, and competitive tournaments. Its core idea involves collecting, training, and battling creatures with different types and abilities. Famous characters include Pikachu, Charizard, Mewtwo, and Bulbasaur. What franchise is it?",
+    "displayAnswer": "Pokemon",
+    "normalizedAnswer": "pokemon",
+    "answerChars": [
+      "p",
+      "o",
+      "k",
+      "e",
+      "m",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "food_000061_int_com",
+    "text": "Although many people associate it mainly with raw fish, this dish is fundamentally centered on seasoned rice prepared with vinegar, sugar, and salt. It has forms such as nigiri, maki, and chirashi, and developed from older preservation methods involving fish and rice. What Japanese dish is it?",
+    "displayAnswer": "Sushi",
+    "normalizedAnswer": "sushi",
+    "answerChars": [
+      "s",
+      "u",
+      "s",
+      "h",
+      "i"
+    ]
+  },
+  {
+    "id": "food_000062_int_com",
+    "text": "This food has roots in Italian culinary traditions, especially Naples, but became globally popular after adapting to local tastes. Its base is usually flat round dough topped with tomato sauce, cheese, and ingredients such as basil, pepperoni, mushrooms, or seafood. It is often baked and sliced. What food is it?",
+    "displayAnswer": "Pizza",
+    "normalizedAnswer": "pizza",
+    "answerChars": [
+      "p",
+      "i",
+      "z",
+      "z",
+      "a"
+    ]
+  },
+  {
+    "id": "food_000063_int_com",
+    "text": "This dish can vary widely by region and filling, but it often uses a small folded tortilla made from corn or wheat. It may contain meat, fish, beans, vegetables, salsa, cheese, or herbs. It can be street food, home cooking, or restaurant fare and is strongly associated with Mexican cuisine. What is it?",
+    "displayAnswer": "Taco",
+    "normalizedAnswer": "taco",
+    "answerChars": [
+      "t",
+      "a",
+      "c",
+      "o"
+    ]
+  },
+  {
+    "id": "tech_000061_int_com",
+    "text": "This company became known for tightly integrating hardware, software, and design into consumer products. It played major roles in personal computers, digital music players, smartphones, tablets, and wearable devices. Its products include the Mac, iPod, iPhone, iPad, and Apple Watch. What company is it?",
+    "displayAnswer": "Apple",
+    "normalizedAnswer": "apple",
+    "answerChars": [
+      "a",
+      "p",
+      "p",
+      "l",
+      "e"
+    ]
+  },
+  {
+    "id": "tech_000062_int_com",
+    "text": "This global system grew out of earlier computer networking projects and transformed communication, business, education, entertainment, and media. It supports services such as email, websites, video streaming, online games, cloud apps, and social media. People access it through browsers, Wi-Fi, and mobile networks. What is it?",
+    "displayAnswer": "Internet",
+    "normalizedAnswer": "internet",
+    "answerChars": [
+      "i",
+      "n",
+      "t",
+      "e",
+      "r",
+      "n",
+      "e",
+      "t"
+    ]
+  },
+  {
+    "id": "tech_000063_int_com",
+    "text": "This field includes machine learning, neural networks, natural language processing, computer vision, robotics, and recommendation systems. It aims to create systems that perform tasks associated with human intelligence, such as recognizing patterns, understanding language, and making predictions. What is it commonly called?",
+    "displayAnswer": "AI",
+    "normalizedAnswer": "ai",
+    "answerChars": [
+      "a",
+      "i"
+    ]
+  },
+  {
+    "id": "lang_000061_int_com",
+    "text": "This language developed from Germanic roots but absorbed many words from Latin, French, Greek, and other languages. It spread through trade, colonization, science, media, and the internet. It is used in countries such as the United Kingdom, the United States, Canada, Australia, and New Zealand. What language is it?",
+    "displayAnswer": "English",
+    "normalizedAnswer": "english",
+    "answerChars": [
+      "e",
+      "n",
+      "g",
+      "l",
+      "i",
+      "s",
+      "h"
+    ]
+  },
+  {
+    "id": "lang_000062_int_com",
+    "text": "This part of speech can refer to concrete objects, living beings, places, abstract ideas, events, or concepts. It may be common or proper, singular or plural, and can function as the subject or object of a sentence. Words such as teacher, city, river, freedom, and music are examples. What is it?",
+    "displayAnswer": "Noun",
+    "normalizedAnswer": "noun",
+    "answerChars": [
+      "n",
+      "o",
+      "u",
+      "n"
+    ]
+  },
+  {
+    "id": "lang_000063_int_com",
+    "text": "This writing system is used in Japanese alongside hiragana and katakana, and many of its characters were historically adapted from Chinese writing. Each character can carry meaning and may have multiple readings depending on context. It is used for nouns, verb stems, names, and many important words. What is it?",
+    "displayAnswer": "Kanji",
+    "normalizedAnswer": "kanji",
+    "answerChars": [
+      "k",
+      "a",
+      "n",
+      "j",
+      "i"
+    ]
+  },
+  {
+    "id": "art_000061_int_com",
+    "text": "This writer worked in early modern England and contributed greatly to drama, poetry, tragedy, comedy, and historical plays. Many phrases from his works remain famous today. His plays include Hamlet, Macbeth, Othello, King Lear, A Midsummer Night’s Dream, and Romeo and Juliet. Who was he?",
+    "displayAnswer": "Shakespeare",
+    "normalizedAnswer": "shakespeare",
+    "answerChars": [
+      "s",
+      "h",
+      "a",
+      "k",
+      "e",
+      "s",
+      "p",
+      "e",
+      "a",
+      "r",
+      "e"
+    ]
+  },
+  {
+    "id": "art_000062_int_com",
+    "text": "This portrait has been studied for its composition, atmospheric technique, subtle expression, and mysterious smile. It was painted during the Italian Renaissance and is now housed in the Louvre Museum in Paris, where it attracts enormous crowds. The artist was Leonardo da Vinci. What painting is it?",
+    "displayAnswer": "Mona Lisa",
+    "normalizedAnswer": "monalisa",
+    "answerChars": [
+      "m",
+      "o",
+      "n",
+      "a",
+      "l",
+      "i",
+      "s",
+      "a"
+    ]
+  },
+  {
+    "id": "art_000063_int_com",
+    "text": "This Dutch painter produced many works during a short and difficult life, often using vivid colors, expressive brushstrokes, and emotional intensity. He painted landscapes, portraits, sunflowers, cafés, and night skies. One iconic work shows a swirling night sky above a village. Who was he?",
+    "displayAnswer": "Van Gogh",
+    "normalizedAnswer": "vangogh",
+    "answerChars": [
+      "v",
+      "a",
+      "n",
+      "g",
+      "o",
+      "g",
+      "h"
+    ]
+  },
+  {
+    "id": "gen_000061_int_com",
+    "text": "This ocean contains many island nations, deep trenches, volcanic arcs, and major shipping routes. It touches the western coasts of the Americas and the eastern coasts of Asia and Australia. The Mariana Trench is located within it, and it is the largest ocean on Earth. What ocean is it?",
+    "displayAnswer": "Pacific",
+    "normalizedAnswer": "pacific",
+    "answerChars": [
+      "p",
+      "a",
+      "c",
+      "i",
+      "f",
+      "i",
+      "c"
+    ]
+  },
+  {
+    "id": "gen_000062_int_com",
+    "text": "In color theory, this color can be associated with royalty, mystery, spirituality, and creativity. Different shades may appear closer to violet, lavender, or plum. In basic paint mixing, it is commonly produced by combining red and blue. What color is it?",
+    "displayAnswer": "Purple",
+    "normalizedAnswer": "purple",
+    "answerChars": [
+      "p",
+      "u",
+      "r",
+      "p",
+      "l",
+      "e"
+    ]
+  },
+  {
+    "id": "gen_000063_int_com",
+    "text": "This number appears in the calendar system used to keep the year aligned with Earth’s orbit around the Sun. In most years, February has 28 days, but in a leap year an extra day is added, making February 29 exist. What is the total number of days in a leap year?",
+    "displayAnswer": "366",
+    "normalizedAnswer": "366",
+    "answerChars": [
+      "3",
+      "6",
+      "6"
+    ]
+  }
+]

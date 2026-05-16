@@ -1,0 +1,451 @@
+﻿source_file,id,category,difficulty_tier,knowledge_level,rank_tier,displayAnswer,normalizedAnswer,duplicate_count,all_rank_tiers_for_answer,duplicate_ids
+questions.json,gen_000003_beg_com,gen,beginner,common,excluded_beginner_common,366,366,2,D|excluded_beginner_common,gen_000003_beg_com|gen_000063_int_com
+questions.json,gen_000063_int_com,gen,intermediate,common,D,366,366,2,D|excluded_beginner_common,gen_000003_beg_com|gen_000063_int_com
+questions.json,lang_000032_beg_std,lang,beginner,standard,D,Adjective,adjective,1,D,
+questions.json,tech_000003_beg_com,tech,beginner,common,excluded_beginner_common,AI,ai,2,D|excluded_beginner_common,tech_000003_beg_com|tech_000063_int_com
+questions.json,tech_000063_int_com,tech,intermediate,common,D,AI,ai,2,D|excluded_beginner_common,tech_000003_beg_com|tech_000063_int_com
+questions.json,lang_000033_beg_std,lang,beginner,standard,D,Alphabet,alphabet,1,D,
+questions.json,geo_000033_beg_std,geo,beginner,standard,D,Alps,alps,1,D,
+questions.json,geo_000032_beg_std,geo,beginner,standard,D,Amazon,amazon,1,D,
+questions.json,gen_000031_beg_std,gen,beginner,standard,D,Antarctica,antarctica,1,D,
+questions.json,tech_000001_beg_com,tech,beginner,common,excluded_beginner_common,Apple,apple,2,D|excluded_beginner_common,tech_000001_beg_com|tech_000061_int_com
+questions.json,tech_000061_int_com,tech,intermediate,common,D,Apple,apple,2,D|excluded_beginner_common,tech_000001_beg_com|tech_000061_int_com
+tier_c_science_questions_30.json,sci_000029_adv_com,sci,advanced,common,C,Atmosphere,atmosphere,1,C,
+questions.json,spo_000003_beg_com,spo,beginner,common,excluded_beginner_common,Badminton,badminton,2,D|excluded_beginner_common,spo_000003_beg_com|spo_000063_int_com
+questions.json,spo_000063_int_com,spo,intermediate,common,D,Badminton,badminton,2,D|excluded_beginner_common,spo_000003_beg_com|spo_000063_int_com
+tier_c_science_questions_30.json,sci_000003_int_std,sci,intermediate,standard,C,Black hole,blackhole,1,C,
+questions.json,tech_000032_beg_std,tech,beginner,standard,D,Blockchain,blockchain,1,D,
+tier_c_science_questions_30.json,sci_000022_adv_com,sci,advanced,common,C,Brain,brain,1,C,
+tier_c_science_questions_30.json,sci_000024_adv_com,sci,advanced,common,C,Carbon,carbon,1,C,
+tier_c_science_questions_30.json,sci_000010_int_std,sci,intermediate,standard,C,Chloroplast,chloroplast,1,C,
+questions.json,his_000031_beg_std,his,beginner,standard,D,Cleopatra,cleopatra,1,D,
+questions.json,tech_000033_beg_std,tech,beginner,standard,D,Cloud,cloud,1,D,
+questions.json,his_000032_beg_std,his,beginner,standard,D,Cold War,coldwar,1,D,
+questions.json,gen_000033_beg_std,gen,beginner,standard,D,Compass,compass,1,D,
+tier_c_science_questions_30.json,sci_000005_int_std,sci,intermediate,standard,C,Covalent bond,covalentbond,1,C,
+questions.json,food_000032_beg_std,food,beginner,standard,D,Croissant,croissant,1,D,
+tier_c_science_questions_30.json,sci_000002_int_std,sci,intermediate,standard,C,DNA,dna,3,C|D|excluded_beginner_common,sci_000003_beg_com|sci_000063_int_com|sci_000002_int_std
+questions.json,sci_000003_beg_com,sci,beginner,common,excluded_beginner_common,DNA,dna,3,C|D|excluded_beginner_common,sci_000003_beg_com|sci_000063_int_com|sci_000002_int_std
+questions.json,sci_000063_int_com,sci,intermediate,common,D,DNA,dna,3,C|D|excluded_beginner_common,sci_000003_beg_com|sci_000063_int_com|sci_000002_int_std
+questions.json,art_000032_beg_std,art,beginner,standard,D,Don Quixote,donquixote,1,D,
+questions.json,his_000001_beg_com,his,beginner,common,excluded_beginner_common,Egypt,egypt,2,D|excluded_beginner_common,his_000001_beg_com|his_000061_int_com
+questions.json,his_000061_int_com,his,intermediate,common,D,Egypt,egypt,2,D|excluded_beginner_common,his_000001_beg_com|his_000061_int_com
+tier_c_science_questions_30.json,sci_000030_adv_com,sci,advanced,common,C,Electron,electron,2,C|D,sci_000033_beg_std|sci_000030_adv_com
+questions.json,sci_000033_beg_std,sci,beginner,standard,D,Electron,electron,2,C|D,sci_000033_beg_std|sci_000030_adv_com
+questions.json,lang_000001_beg_com,lang,beginner,common,excluded_beginner_common,English,english,2,D|excluded_beginner_common,lang_000001_beg_com|lang_000061_int_com
+questions.json,lang_000061_int_com,lang,intermediate,common,D,English,english,2,D|excluded_beginner_common,lang_000001_beg_com|lang_000061_int_com
+tier_c_science_questions_30.json,sci_000009_int_std,sci,intermediate,standard,C,Entropy,entropy,1,C,
+tier_c_science_questions_30.json,sci_000007_int_std,sci,intermediate,standard,C,Evolution,evolution,1,C,
+questions.json,spo_000032_beg_std,spo,beginner,standard,D,Formula 1,formula1,1,D,
+questions.json,ent_000001_beg_com,ent,beginner,common,excluded_beginner_common,Frozen,frozen,2,D|excluded_beginner_common,ent_000001_beg_com|ent_000061_int_com
+questions.json,ent_000061_int_com,ent,intermediate,common,D,Frozen,frozen,2,D|excluded_beginner_common,ent_000001_beg_com|ent_000061_int_com
+questions.json,tech_000031_beg_std,tech,beginner,standard,D,Google,google,1,D,
+questions.json,sci_000002_beg_com,sci,beginner,common,excluded_beginner_common,Gravity,gravity,3,C|D|excluded_beginner_common,sci_000002_beg_com|sci_000062_int_com|sci_000019_adv_com
+tier_c_science_questions_30.json,sci_000019_adv_com,sci,advanced,common,C,Gravity,gravity,3,C|D|excluded_beginner_common,sci_000002_beg_com|sci_000062_int_com|sci_000019_adv_com
+questions.json,sci_000062_int_com,sci,intermediate,common,D,Gravity,gravity,3,C|D|excluded_beginner_common,sci_000002_beg_com|sci_000062_int_com|sci_000019_adv_com
+tier_c_science_questions_30.json,sci_000015_int_std,sci,intermediate,standard,C,Hardness,hardness,1,C,
+questions.json,ent_000032_beg_std,ent,beginner,standard,D,Harry Potter,harrypotter,1,D,
+questions.json,geo_000031_beg_std,geo,beginner,standard,D,Iceland,iceland,1,D,
+tier_c_science_questions_30.json,sci_000028_adv_com,sci,advanced,common,C,Immune system,immunesystem,1,C,
+questions.json,tech_000002_beg_com,tech,beginner,common,excluded_beginner_common,Internet,internet,2,D|excluded_beginner_common,tech_000002_beg_com|tech_000062_int_com
+questions.json,tech_000062_int_com,tech,intermediate,common,D,Internet,internet,2,D|excluded_beginner_common,tech_000002_beg_com|tech_000062_int_com
+questions.json,ent_000002_beg_com,ent,beginner,common,excluded_beginner_common,Iron Man,ironman,2,D|excluded_beginner_common,ent_000002_beg_com|ent_000062_int_com
+questions.json,ent_000062_int_com,ent,intermediate,common,D,Iron Man,ironman,2,D|excluded_beginner_common,ent_000002_beg_com|ent_000062_int_com
+questions.json,geo_000001_beg_com,geo,beginner,common,excluded_beginner_common,Japan,japan,2,D|excluded_beginner_common,geo_000001_beg_com|geo_000061_int_com
+questions.json,geo_000061_int_com,geo,intermediate,common,D,Japan,japan,2,D|excluded_beginner_common,geo_000001_beg_com|geo_000061_int_com
+tier_c_science_questions_30.json,sci_000011_int_std,sci,intermediate,standard,C,Jupiter,jupiter,2,C|D,sci_000031_beg_std|sci_000011_int_std
+questions.json,sci_000031_beg_std,sci,beginner,standard,D,Jupiter,jupiter,2,C|D,sci_000031_beg_std|sci_000011_int_std
+questions.json,lang_000003_beg_com,lang,beginner,common,excluded_beginner_common,Kanji,kanji,2,D|excluded_beginner_common,lang_000003_beg_com|lang_000063_int_com
+questions.json,lang_000063_int_com,lang,intermediate,common,D,Kanji,kanji,2,D|excluded_beginner_common,lang_000003_beg_com|lang_000063_int_com
+questions.json,food_000033_beg_std,food,beginner,standard,D,Kimchi,kimchi,1,D,
+tier_c_science_questions_30.json,sci_000025_adv_com,sci,advanced,common,C,Light,light,1,C,
+tier_c_science_questions_30.json,sci_000026_adv_com,sci,advanced,common,C,Lung,lung,1,C,
+questions.json,sci_000001_beg_com,sci,beginner,common,excluded_beginner_common,Mars,mars,3,C|D|excluded_beginner_common,sci_000001_beg_com|sci_000061_int_com|sci_000023_adv_com
+tier_c_science_questions_30.json,sci_000023_adv_com,sci,advanced,common,C,Mars,mars,3,C|D|excluded_beginner_common,sci_000001_beg_com|sci_000061_int_com|sci_000023_adv_com
+questions.json,sci_000061_int_com,sci,intermediate,common,D,Mars,mars,3,C|D|excluded_beginner_common,sci_000001_beg_com|sci_000061_int_com|sci_000023_adv_com
+tier_c_science_questions_30.json,sci_000014_int_std,sci,intermediate,standard,C,Meiosis,meiosis,1,C,
+questions.json,gen_000032_beg_std,gen,beginner,standard,D,Mercury,mercury,1,D,
+questions.json,ent_000033_beg_std,ent,beginner,standard,D,Minecraft,minecraft,1,D,
+tier_c_science_questions_30.json,sci_000004_int_std,sci,intermediate,standard,C,Mitochondrion,mitochondrion,1,C,
+tier_c_science_questions_30.json,sci_000006_int_std,sci,intermediate,standard,C,Momentum,momentum,1,C,
+questions.json,art_000002_beg_com,art,beginner,common,excluded_beginner_common,Mona Lisa,monalisa,2,D|excluded_beginner_common,art_000002_beg_com|art_000062_int_com
+questions.json,art_000062_int_com,art,intermediate,common,D,Mona Lisa,monalisa,2,D|excluded_beginner_common,art_000002_beg_com|art_000062_int_com
+tier_c_science_questions_30.json,sci_000016_adv_com,sci,advanced,common,C,Moon,moon,1,C,
+questions.json,his_000003_beg_com,his,beginner,common,excluded_beginner_common,Napoleon,napoleon,2,D|excluded_beginner_common,his_000003_beg_com|his_000063_int_com
+questions.json,his_000063_int_com,his,intermediate,common,D,Napoleon,napoleon,2,D|excluded_beginner_common,his_000003_beg_com|his_000063_int_com
+questions.json,geo_000002_beg_com,geo,beginner,common,excluded_beginner_common,Nile,nile,2,D|excluded_beginner_common,geo_000002_beg_com|geo_000062_int_com
+questions.json,geo_000062_int_com,geo,intermediate,common,D,Nile,nile,2,D|excluded_beginner_common,geo_000002_beg_com|geo_000062_int_com
+questions.json,lang_000002_beg_com,lang,beginner,common,excluded_beginner_common,Noun,noun,2,D|excluded_beginner_common,lang_000002_beg_com|lang_000062_int_com
+questions.json,lang_000062_int_com,lang,intermediate,common,D,Noun,noun,2,D|excluded_beginner_common,lang_000002_beg_com|lang_000062_int_com
+questions.json,spo_000002_beg_com,spo,beginner,common,excluded_beginner_common,Olympics,olympics,2,D|excluded_beginner_common,spo_000002_beg_com|spo_000062_int_com
+questions.json,spo_000062_int_com,spo,intermediate,common,D,Olympics,olympics,2,D|excluded_beginner_common,spo_000002_beg_com|spo_000062_int_com
+tier_c_science_questions_30.json,sci_000017_adv_com,sci,advanced,common,C,Oxygen,oxygen,1,C,
+tier_c_science_questions_30.json,sci_000001_int_std,sci,intermediate,standard,C,Ozone,ozone,1,C,
+questions.json,gen_000001_beg_com,gen,beginner,common,excluded_beginner_common,Pacific,pacific,2,D|excluded_beginner_common,gen_000001_beg_com|gen_000061_int_com
+questions.json,gen_000061_int_com,gen,intermediate,common,D,Pacific,pacific,2,D|excluded_beginner_common,gen_000001_beg_com|gen_000061_int_com
+questions.json,food_000031_beg_std,food,beginner,standard,D,Paella,paella,1,D,
+questions.json,sci_000032_beg_std,sci,beginner,standard,D,Photosynthesis,photosynthesis,1,D,
+tier_c_science_questions_30.json,sci_000012_int_std,sci,intermediate,standard,C,pH scale,phscale,1,C,
+questions.json,art_000031_beg_std,art,beginner,standard,D,Picasso,picasso,1,D,
+questions.json,food_000002_beg_com,food,beginner,common,excluded_beginner_common,Pizza,pizza,2,D|excluded_beginner_common,food_000002_beg_com|food_000062_int_com
+questions.json,food_000062_int_com,food,intermediate,common,D,Pizza,pizza,2,D|excluded_beginner_common,food_000002_beg_com|food_000062_int_com
+questions.json,ent_000003_beg_com,ent,beginner,common,excluded_beginner_common,Pokemon,pokemon,2,D|excluded_beginner_common,ent_000003_beg_com|ent_000063_int_com
+questions.json,ent_000063_int_com,ent,intermediate,common,D,Pokemon,pokemon,2,D|excluded_beginner_common,ent_000003_beg_com|ent_000063_int_com
+questions.json,gen_000002_beg_com,gen,beginner,common,excluded_beginner_common,Purple,purple,2,D|excluded_beginner_common,gen_000002_beg_com|gen_000062_int_com
+questions.json,gen_000062_int_com,gen,intermediate,common,D,Purple,purple,2,D|excluded_beginner_common,gen_000002_beg_com|gen_000062_int_com
+tier_c_science_questions_30.json,sci_000013_int_std,sci,intermediate,standard,C,Refraction,refraction,1,C,
+questions.json,his_000033_beg_std,his,beginner,standard,D,Renaissance,renaissance,1,D,
+questions.json,spo_000033_beg_std,spo,beginner,standard,D,Rugby,rugby,1,D,
+questions.json,geo_000003_beg_com,geo,beginner,common,excluded_beginner_common,Sahara,sahara,2,D|excluded_beginner_common,geo_000003_beg_com|geo_000063_int_com
+questions.json,geo_000063_int_com,geo,intermediate,common,D,Sahara,sahara,2,D|excluded_beginner_common,geo_000003_beg_com|geo_000063_int_com
+tier_c_science_questions_30.json,sci_000027_adv_com,sci,advanced,common,C,Saturn,saturn,1,C,
+questions.json,art_000001_beg_com,art,beginner,common,excluded_beginner_common,Shakespeare,shakespeare,2,D|excluded_beginner_common,art_000001_beg_com|art_000061_int_com
+questions.json,art_000061_int_com,art,intermediate,common,D,Shakespeare,shakespeare,2,D|excluded_beginner_common,art_000001_beg_com|art_000061_int_com
+questions.json,spo_000001_beg_com,spo,beginner,common,excluded_beginner_common,Soccer,soccer,2,D|excluded_beginner_common,spo_000001_beg_com|spo_000061_int_com
+questions.json,spo_000061_int_com,spo,intermediate,common,D,Soccer,soccer,2,D|excluded_beginner_common,spo_000001_beg_com|spo_000061_int_com
+questions.json,lang_000031_beg_std,lang,beginner,standard,D,Spanish,spanish,1,D,
+tier_c_science_questions_30.json,sci_000021_adv_com,sci,advanced,common,C,Star,star,1,C,
+questions.json,ent_000031_beg_std,ent,beginner,standard,D,Star Wars,starwars,1,D,
+tier_c_science_questions_30.json,sci_000008_int_std,sci,intermediate,standard,C,Subduction,subduction,1,C,
+questions.json,food_000001_beg_com,food,beginner,common,excluded_beginner_common,Sushi,sushi,2,D|excluded_beginner_common,food_000001_beg_com|food_000061_int_com
+questions.json,food_000061_int_com,food,intermediate,common,D,Sushi,sushi,2,D|excluded_beginner_common,food_000001_beg_com|food_000061_int_com
+questions.json,food_000003_beg_com,food,beginner,common,excluded_beginner_common,Taco,taco,2,D|excluded_beginner_common,food_000003_beg_com|food_000063_int_com
+questions.json,food_000063_int_com,food,intermediate,common,D,Taco,taco,2,D|excluded_beginner_common,food_000003_beg_com|food_000063_int_com
+questions.json,art_000033_beg_std,art,beginner,standard,D,The Scream,thescream,1,D,
+questions.json,art_000003_beg_com,art,beginner,common,excluded_beginner_common,Van Gogh,vangogh,2,D|excluded_beginner_common,art_000003_beg_com|art_000063_int_com
+questions.json,art_000063_int_com,art,intermediate,common,D,Van Gogh,vangogh,2,D|excluded_beginner_common,art_000003_beg_com|art_000063_int_com
+tier_c_science_questions_30.json,sci_000018_adv_com,sci,advanced,common,C,Venus,venus,1,C,
+tier_c_science_questions_30.json,sci_000020_adv_com,sci,advanced,common,C,Water,water,1,C,
+questions.json,spo_000031_beg_std,spo,beginner,standard,D,Wimbledon,wimbledon,1,D,
+questions.json,his_000002_beg_com,his,beginner,common,excluded_beginner_common,World War 2,worldwar2,2,D|excluded_beginner_common,his_000002_beg_com|his_000062_int_com
+questions.json,his_000062_int_com,his,intermediate,common,D,World War 2,worldwar2,2,D|excluded_beginner_common,his_000002_beg_com|his_000062_int_com
+art_000001_beg_std,tier_d_random_genres_questions_30.json,art,beginner,standard,D,Impressionism,impressionism,2026-04-27T16:09:15
+ent_000002_beg_std,tier_d_random_genres_questions_30.json,ent,beginner,standard,D,Jurassic Park,jurassicpark,2026-04-27T16:09:15
+his_000003_int_com,tier_d_random_genres_questions_30.json,his,intermediate,common,D,Roman Empire,romanempire,2026-04-27T16:09:15
+lang_000004_int_com,tier_d_random_genres_questions_30.json,lang,intermediate,common,D,Chinese,chinese,2026-04-27T16:09:15
+ent_000005_int_com,tier_d_random_genres_questions_30.json,ent,intermediate,common,D,Batman,batman,2026-04-27T16:09:15
+his_000006_beg_std,tier_d_random_genres_questions_30.json,his,beginner,standard,D,Silk Road,silkroad,2026-04-27T16:09:15
+tech_000007_int_com,tier_d_random_genres_questions_30.json,tech,intermediate,common,D,Smartphone,smartphone,2026-04-27T16:09:15
+sci_000008_int_com,tier_d_random_genres_questions_30.json,sci,intermediate,common,D,Photosynthesis,photosynthesis,2026-04-27T16:09:15
+sci_000009_beg_std,tier_d_random_genres_questions_30.json,sci,beginner,standard,D,Plate tectonics,platetectonics,2026-04-27T16:09:15
+tech_000010_beg_std,tier_d_random_genres_questions_30.json,tech,beginner,standard,D,Encryption,encryption,2026-04-27T16:09:15
+geo_000011_beg_std,tier_d_random_genres_questions_30.json,geo,beginner,standard,D,Andes,andes,2026-04-27T16:09:15
+tech_000012_beg_std,tier_d_random_genres_questions_30.json,tech,beginner,standard,D,Linux,linux,2026-04-27T16:09:15
+ent_000013_int_com,tier_d_random_genres_questions_30.json,ent,intermediate,common,D,The Lion King,thelionking,2026-04-27T16:09:15
+food_000014_beg_std,tier_d_random_genres_questions_30.json,food,beginner,standard,D,Hummus,hummus,2026-04-27T16:09:15
+gen_000015_int_com,tier_d_random_genres_questions_30.json,gen,intermediate,common,D,Calendar,calendar,2026-04-27T16:09:15
+geo_000016_int_com,tier_d_random_genres_questions_30.json,geo,intermediate,common,D,Australia,australia,2026-04-27T16:09:15
+sci_000017_int_com,tier_d_random_genres_questions_30.json,sci,intermediate,common,D,Volcano,volcano,2026-04-27T16:09:15
+his_000018_int_com,tier_d_random_genres_questions_30.json,his,intermediate,common,D,Industrial Revolution,industrialrevolution,2026-04-27T16:09:15
+lang_000019_beg_std,tier_d_random_genres_questions_30.json,lang,beginner,standard,D,Syntax,syntax,2026-04-27T16:09:15
+food_000020_beg_std,tier_d_random_genres_questions_30.json,food,beginner,standard,D,Risotto,risotto,2026-04-27T16:09:15
+gen_000021_int_com,tier_d_random_genres_questions_30.json,gen,intermediate,common,D,Gold,gold,2026-04-27T16:09:15
+art_000022_int_com,tier_d_random_genres_questions_30.json,art,intermediate,common,D,The Last Supper,thelastsupper,2026-04-27T16:09:15
+geo_000023_beg_std,tier_d_random_genres_questions_30.json,geo,beginner,standard,D,Mekong,mekong,2026-04-27T16:09:15
+spo_000024_int_com,tier_d_random_genres_questions_30.json,spo,intermediate,common,D,Basketball,basketball,2026-04-27T16:09:15
+sci_000025_beg_std,tier_d_random_genres_questions_30.json,sci,beginner,standard,D,Natural selection,naturalselection,2026-04-27T16:09:15
+food_000026_int_com,tier_d_random_genres_questions_30.json,food,intermediate,common,D,Curry,curry,2026-04-27T16:09:15
+spo_000027_beg_std,tier_d_random_genres_questions_30.json,spo,beginner,standard,D,Marathon,marathon,2026-04-27T16:09:15
+geo_000028_int_com,tier_d_random_genres_questions_30.json,geo,intermediate,common,D,Canada,canada,2026-04-27T16:09:15
+gen_000029_beg_std,tier_d_random_genres_questions_30.json,gen,beginner,standard,D,Helium,helium,2026-04-27T16:09:15
+his_000030_beg_std,tier_d_random_genres_questions_30.json,his,beginner,standard,D,Magna Carta,magnacarta,2026-04-27T16:09:15
+geo_000101_beg_std,tier_d_c_questions_40.json,geo,beginner,standard,D,Atacama,atacama,2026-04-28T14:29:11
+his_000101_beg_std,tier_d_c_questions_40.json,his,beginner,standard,D,Crusades,crusades,2026-04-28T14:29:11
+sci_000101_beg_std,tier_d_c_questions_40.json,sci,beginner,standard,D,Transform fault,transformfault,2026-04-28T14:29:11
+spo_000101_beg_std,tier_d_c_questions_40.json,spo,beginner,standard,D,Pole vault,polevault,2026-04-28T14:29:11
+ent_000101_beg_std,tier_d_c_questions_40.json,ent,beginner,standard,D,Neorealism,neorealism,2026-04-28T14:29:11
+food_000101_beg_std,tier_d_c_questions_40.json,food,beginner,standard,D,Greek yogurt,greekyogurt,2026-04-28T14:29:11
+tech_000101_beg_std,tier_d_c_questions_40.json,tech,beginner,standard,D,Multi factor authentication,multifactorauthentication,2026-04-28T14:29:11
+lang_000101_beg_std,tier_d_c_questions_40.json,lang,beginner,standard,D,Morpheme,morpheme,2026-04-28T14:29:11
+art_000101_beg_std,tier_d_c_questions_40.json,art,beginner,standard,D,Fresco,fresco,2026-04-28T14:29:11
+gen_000101_beg_std,tier_d_c_questions_40.json,gen,beginner,standard,D,Magnetic compass,magneticcompass,2026-04-28T14:29:11
+geo_000102_int_com,tier_d_c_questions_40.json,geo,intermediate,common,D,Glacier,glacier,2026-04-28T14:29:11
+his_000102_int_com,tier_d_c_questions_40.json,his,intermediate,common,D,Mesopotamia,mesopotamia,2026-04-28T14:29:11
+sci_000102_int_com,tier_d_c_questions_40.json,sci,intermediate,common,D,Evaporation,evaporation,2026-04-28T14:29:11
+spo_000102_int_com,tier_d_c_questions_40.json,spo,intermediate,common,D,Tennis,tennis,2026-04-28T14:29:11
+ent_000102_int_com,tier_d_c_questions_40.json,ent,intermediate,common,D,Mystery,mystery,2026-04-28T14:29:11
+food_000102_int_com,tier_d_c_questions_40.json,food,intermediate,common,D,Bread,bread,2026-04-28T14:29:11
+tech_000102_int_com,tier_d_c_questions_40.json,tech,intermediate,common,D,Compiler,compiler,2026-04-28T14:29:11
+lang_000102_int_com,tier_d_c_questions_40.json,lang,intermediate,common,D,Alphabet,alphabet,2026-04-28T14:29:11
+art_000102_int_com,tier_d_c_questions_40.json,art,intermediate,common,D,Poetry,poetry,2026-04-28T14:29:11
+gen_000102_int_com,tier_d_c_questions_40.json,gen,intermediate,common,D,Thermometer,thermometer,2026-04-28T14:29:11
+geo_000103_int_std,tier_d_c_questions_40.json,geo,intermediate,standard,C,Gulf Stream,gulfstream,2026-04-28T14:29:11
+his_000103_int_std,tier_d_c_questions_40.json,his,intermediate,standard,C,National Convention,nationalconvention,2026-04-28T14:29:11
+sci_000103_int_std,tier_d_c_questions_40.json,sci,intermediate,standard,C,Meiosis,meiosis,2026-04-28T14:29:11
+spo_000103_int_std,tier_d_c_questions_40.json,spo,intermediate,standard,C,Triathlon,triathlon,2026-04-28T14:29:11
+ent_000103_int_std,tier_d_c_questions_40.json,ent,intermediate,standard,C,Studio Ghibli,studioghibli,2026-04-28T14:29:11
+food_000103_int_std,tier_d_c_questions_40.json,food,intermediate,standard,C,Natto,natto,2026-04-28T14:29:11
+tech_000103_int_std,tier_d_c_questions_40.json,tech,intermediate,standard,C,Graph database,graphdatabase,2026-04-28T14:29:11
+lang_000103_int_std,tier_d_c_questions_40.json,lang,intermediate,standard,C,Indo European,indoeuropean,2026-04-28T14:29:11
+art_000103_int_std,tier_d_c_questions_40.json,art,intermediate,standard,C,Impressionism,impressionism,2026-04-28T14:29:11
+gen_000103_int_std,tier_d_c_questions_40.json,gen,intermediate,standard,C,Ad hominem,adhominem,2026-04-28T14:29:11
+geo_000104_adv_com,tier_d_c_questions_40.json,geo,advanced,common,C,River,river,2026-04-28T14:29:11
+his_000104_adv_com,tier_d_c_questions_40.json,his,advanced,common,C,Napoleon,napoleon,2026-04-28T14:29:11
+sci_000104_adv_com,tier_d_c_questions_40.json,sci,advanced,common,C,Gravity,gravity,2026-04-28T14:29:11
+spo_000104_adv_com,tier_d_c_questions_40.json,spo,advanced,common,C,Soccer,soccer,2026-04-28T14:29:11
+ent_000104_adv_com,tier_d_c_questions_40.json,ent,advanced,common,C,Science fiction,sciencefiction,2026-04-28T14:29:11
+food_000104_adv_com,tier_d_c_questions_40.json,food,advanced,common,C,Bread,bread,2026-04-28T14:29:11
+tech_000104_adv_com,tier_d_c_questions_40.json,tech,advanced,common,C,Internet,internet,2026-04-28T14:29:11
+lang_000104_adv_com,tier_d_c_questions_40.json,lang,advanced,common,C,Noun,noun,2026-04-28T14:29:11
+art_000104_adv_com,tier_d_c_questions_40.json,art,advanced,common,C,Shakespeare,shakespeare,2026-04-28T14:29:11
+gen_000104_adv_com,tier_d_c_questions_40.json,gen,advanced,common,C,Carbon,carbon,2026-04-28T14:29:11
+geo_000105_beg_std,tier_d_c_questions_40_batch2.json,geo,beginner,standard,D,Norway,norway,2026-04-28T14:33:01
+geo_000106_int_com,tier_d_c_questions_40_batch2.json,geo,intermediate,common,D,Italy,italy,2026-04-28T14:33:01
+geo_000107_int_std,tier_d_c_questions_40_batch2.json,geo,intermediate,standard,C,Nile,nile,2026-04-28T14:33:01
+geo_000108_adv_com,tier_d_c_questions_40_batch2.json,geo,advanced,common,C,Australia,australia,2026-04-28T14:33:01
+his_000105_beg_std,tier_d_c_questions_40_batch2.json,his,beginner,standard,D,Byzantine Empire,byzantineempire,2026-04-28T14:33:01
+his_000106_int_com,tier_d_c_questions_40_batch2.json,his,intermediate,common,D,World War 1,worldwar1,2026-04-28T14:33:01
+his_000107_int_std,tier_d_c_questions_40_batch2.json,his,intermediate,standard,C,Renaissance,renaissance,2026-04-28T14:33:01
+his_000108_adv_com,tier_d_c_questions_40_batch2.json,his,advanced,common,C,Monarchy,monarchy,2026-04-28T14:33:01
+sci_000105_beg_std,tier_d_c_questions_40_batch2.json,sci,beginner,standard,D,Mitochondria,mitochondria,2026-04-28T14:33:01
+sci_000106_int_com,tier_d_c_questions_40_batch2.json,sci,intermediate,common,D,Friction,friction,2026-04-28T14:33:01
+sci_000107_int_std,tier_d_c_questions_40_batch2.json,sci,intermediate,standard,C,Photosynthesis,photosynthesis,2026-04-28T14:33:01
+sci_000108_adv_com,tier_d_c_questions_40_batch2.json,sci,advanced,common,C,Ocean,ocean,2026-04-28T14:33:01
+spo_000105_beg_std,tier_d_c_questions_40_batch2.json,spo,beginner,standard,D,Tennis,tennis,2026-04-28T14:33:01
+spo_000106_int_com,tier_d_c_questions_40_batch2.json,spo,intermediate,common,D,Volleyball,volleyball,2026-04-28T14:33:01
+spo_000107_int_std,tier_d_c_questions_40_batch2.json,spo,intermediate,standard,C,Marathon,marathon,2026-04-28T14:33:01
+spo_000108_adv_com,tier_d_c_questions_40_batch2.json,spo,advanced,common,C,Olympics,olympics,2026-04-28T14:33:01
+ent_000105_beg_std,tier_d_c_questions_40_batch2.json,ent,beginner,standard,D,Horror,horror,2026-04-28T14:33:01
+ent_000106_int_com,tier_d_c_questions_40_batch2.json,ent,intermediate,common,D,Animation,animation,2026-04-28T14:33:01
+ent_000107_int_std,tier_d_c_questions_40_batch2.json,ent,intermediate,standard,C,Franchise,franchise,2026-04-28T14:33:01
+ent_000108_adv_com,tier_d_c_questions_40_batch2.json,ent,advanced,common,C,Batman,batman,2026-04-28T14:33:01
+food_000105_beg_std,tier_d_c_questions_40_batch2.json,food,beginner,standard,D,Yogurt,yogurt,2026-04-28T14:33:01
+food_000106_int_com,tier_d_c_questions_40_batch2.json,food,intermediate,common,D,Cheese,cheese,2026-04-28T14:33:01
+food_000107_int_std,tier_d_c_questions_40_batch2.json,food,intermediate,standard,C,Takoyaki,takoyaki,2026-04-28T14:33:01
+food_000108_adv_com,tier_d_c_questions_40_batch2.json,food,advanced,common,C,Coffee,coffee,2026-04-28T14:33:01
+tech_000105_beg_std,tier_d_c_questions_40_batch2.json,tech,beginner,standard,D,World Wide Web,worldwideweb,2026-04-28T14:33:01
+tech_000106_int_com,tier_d_c_questions_40_batch2.json,tech,intermediate,common,D,Search Engine,searchengine,2026-04-28T14:33:01
+tech_000107_int_std,tier_d_c_questions_40_batch2.json,tech,intermediate,standard,C,Encryption,encryption,2026-04-28T14:33:01
+tech_000108_adv_com,tier_d_c_questions_40_batch2.json,tech,advanced,common,C,Artificial Intelligence,artificialintelligence,2026-04-28T14:33:01
+lang_000105_beg_std,tier_d_c_questions_40_batch2.json,lang,beginner,standard,D,Vowel,vowel,2026-04-28T14:33:01
+lang_000106_int_com,tier_d_c_questions_40_batch2.json,lang,intermediate,common,D,Verb,verb,2026-04-28T14:33:01
+lang_000107_int_std,tier_d_c_questions_40_batch2.json,lang,intermediate,standard,C,Borrowing,borrowing,2026-04-28T14:33:01
+lang_000108_adv_com,tier_d_c_questions_40_batch2.json,lang,advanced,common,C,Indo European,indoeuropean,2026-04-28T14:33:01
+art_000105_beg_std,tier_d_c_questions_40_batch2.json,art,beginner,standard,D,Cubism,cubism,2026-04-28T14:33:01
+art_000106_int_com,tier_d_c_questions_40_batch2.json,art,intermediate,common,D,Theater,theater,2026-04-28T14:33:01
+art_000107_int_std,tier_d_c_questions_40_batch2.json,art,intermediate,standard,C,Picasso,picasso,2026-04-28T14:33:01
+art_000108_adv_com,tier_d_c_questions_40_batch2.json,art,advanced,common,C,Novel,novel,2026-04-28T14:33:01
+gen_000105_beg_std,tier_d_c_questions_40_batch2.json,gen,beginner,standard,D,Diamond,diamond,2026-04-28T14:33:01
+gen_000106_int_com,tier_d_c_questions_40_batch2.json,gen,intermediate,common,D,Barometer,barometer,2026-04-28T14:33:01
+gen_000107_int_std,tier_d_c_questions_40_batch2.json,gen,intermediate,standard,C,Tide,tide,2026-04-28T14:33:01
+gen_000108_adv_com,tier_d_c_questions_40_batch2.json,gen,advanced,common,C,Speed,speed,2026-04-28T14:33:01
+geo_000109_beg_std,tier_c_d_questions_40_batch3.json,geo,beginner,standard,D,Madagascar,madagascar,2026-04-28T15:25:32
+geo_000110_int_com,tier_c_d_questions_40_batch3.json,geo,intermediate,common,D,Mexico,mexico,2026-04-28T15:25:32
+geo_000111_int_std,tier_c_d_questions_40_batch3.json,geo,intermediate,standard,C,Archipelago,archipelago,2026-04-28T15:25:32
+geo_000112_adv_com,tier_c_d_questions_40_batch3.json,geo,advanced,common,C,Mountain,mountain,2026-04-28T15:25:32
+his_000109_beg_std,tier_c_d_questions_40_batch3.json,his,beginner,standard,D,Hannibal,hannibal,2026-04-28T15:25:32
+his_000110_int_com,tier_c_d_questions_40_batch3.json,his,intermediate,common,D,Revolution,revolution,2026-04-28T15:25:32
+his_000111_int_std,tier_c_d_questions_40_batch3.json,his,intermediate,standard,C,Feudalism,feudalism,2026-04-28T15:25:32
+his_000112_adv_com,tier_c_d_questions_40_batch3.json,his,advanced,common,C,Empire,empire,2026-04-28T15:25:32
+sci_000109_beg_std,tier_c_d_questions_40_batch3.json,sci,beginner,standard,D,Osmosis,osmosis,2026-04-28T15:25:32
+sci_000110_int_com,tier_c_d_questions_40_batch3.json,sci,intermediate,common,D,Energy,energy,2026-04-28T15:25:32
+sci_000111_int_std,tier_c_d_questions_40_batch3.json,sci,intermediate,standard,C,Catalyst,catalyst,2026-04-28T15:25:32
+sci_000112_adv_com,tier_c_d_questions_40_batch3.json,sci,advanced,common,C,Atom,atom,2026-04-28T15:25:32
+spo_000109_beg_std,tier_c_d_questions_40_batch3.json,spo,beginner,standard,D,Decathlon,decathlon,2026-04-28T15:25:32
+spo_000110_int_com,tier_c_d_questions_40_batch3.json,spo,intermediate,common,D,Swimming,swimming,2026-04-28T15:25:32
+spo_000111_int_std,tier_c_d_questions_40_batch3.json,spo,intermediate,standard,C,Judo,judo,2026-04-28T15:25:32
+spo_000112_adv_com,tier_c_d_questions_40_batch3.json,spo,advanced,common,C,Stadium,stadium,2026-04-28T15:25:32
+ent_000109_beg_std,tier_c_d_questions_40_batch3.json,ent,beginner,standard,D,Musical,musical,2026-04-28T15:25:32
+ent_000110_int_com,tier_c_d_questions_40_batch3.json,ent,intermediate,common,D,Comedy,comedy,2026-04-28T15:25:32
+ent_000111_int_std,tier_c_d_questions_40_batch3.json,ent,intermediate,standard,C,Storyboard,storyboard,2026-04-28T15:25:32
+ent_000112_adv_com,tier_c_d_questions_40_batch3.json,ent,advanced,common,C,Villain,villain,2026-04-28T15:25:32
+food_000109_beg_std,tier_c_d_questions_40_batch3.json,food,beginner,standard,D,Sourdough,sourdough,2026-04-28T15:25:32
+food_000110_int_com,tier_c_d_questions_40_batch3.json,food,intermediate,common,D,Chocolate,chocolate,2026-04-28T15:25:32
+food_000111_int_std,tier_c_d_questions_40_batch3.json,food,intermediate,standard,C,Tempura,tempura,2026-04-28T15:25:32
+food_000112_adv_com,tier_c_d_questions_40_batch3.json,food,advanced,common,C,Soup,soup,2026-04-28T15:25:32
+tech_000109_beg_std,tier_c_d_questions_40_batch3.json,tech,beginner,standard,D,Firewall,firewall,2026-04-28T15:25:32
+tech_000110_int_com,tier_c_d_questions_40_batch3.json,tech,intermediate,common,D,Browser,browser,2026-04-28T15:25:32
+tech_000111_int_std,tier_c_d_questions_40_batch3.json,tech,intermediate,standard,C,Database,database,2026-04-28T15:25:32
+tech_000112_adv_com,tier_c_d_questions_40_batch3.json,tech,advanced,common,C,Password,password,2026-04-28T15:25:32
+lang_000109_beg_std,tier_c_d_questions_40_batch3.json,lang,beginner,standard,D,Consonant,consonant,2026-04-28T15:25:32
+lang_000110_int_com,tier_c_d_questions_40_batch3.json,lang,intermediate,common,D,Sentence,sentence,2026-04-28T15:25:32
+lang_000111_int_std,tier_c_d_questions_40_batch3.json,lang,intermediate,standard,C,Etymology,etymology,2026-04-28T15:25:32
+lang_000112_adv_com,tier_c_d_questions_40_batch3.json,lang,advanced,common,C,Translation,translation,2026-04-28T15:25:32
+art_000109_beg_std,tier_c_d_questions_40_batch3.json,art,beginner,standard,D,Sonnet,sonnet,2026-04-28T15:25:32
+art_000110_int_com,tier_c_d_questions_40_batch3.json,art,intermediate,common,D,Museum,museum,2026-04-28T15:25:32
+art_000111_int_std,tier_c_d_questions_40_batch3.json,art,intermediate,standard,C,Surrealism,surrealism,2026-04-28T15:25:32
+art_000112_adv_com,tier_c_d_questions_40_batch3.json,art,advanced,common,C,Portrait,portrait,2026-04-28T15:25:32
+gen_000109_beg_std,tier_c_d_questions_40_batch3.json,gen,beginner,standard,D,Lever,lever,2026-04-28T15:25:32
+gen_000110_int_com,tier_c_d_questions_40_batch3.json,gen,intermediate,common,D,Mirror,mirror,2026-04-28T15:25:32
+gen_000111_int_std,tier_c_d_questions_40_batch3.json,gen,intermediate,standard,C,Semaphore,semaphore,2026-04-28T15:25:32
+gen_000112_adv_com,tier_c_d_questions_40_batch3.json,gen,advanced,common,C,Battery,battery,2026-04-28T15:25:32
+geo_000301_beg_std,tier_c_d_questions_20_specific_hints_batch2.json,geo,beginner,standard,D,Portugal,portugal,2026-04-28T16:50:38
+his_000302_beg_std,tier_c_d_questions_20_specific_hints_batch2.json,his,beginner,standard,D,Ancient Egypt,ancientegypt,2026-04-28T16:50:38
+sci_000303_beg_std,tier_c_d_questions_20_specific_hints_batch2.json,sci,beginner,standard,D,Weight,weight,2026-04-28T16:50:38
+food_000304_beg_std,tier_c_d_questions_20_specific_hints_batch2.json,food,beginner,standard,D,Mayonnaise,mayonnaise,2026-04-28T16:50:38
+art_000305_beg_std,tier_c_d_questions_20_specific_hints_batch2.json,art,beginner,standard,D,Caravaggio,caravaggio,2026-04-28T16:50:38
+tech_000306_int_com,tier_c_d_questions_20_specific_hints_batch2.json,tech,intermediate,common,D,Wikipedia,wikipedia,2026-04-28T16:50:38
+spo_000307_int_com,tier_c_d_questions_20_specific_hints_batch2.json,spo,intermediate,common,D,Cricket,cricket,2026-04-28T16:50:38
+lang_000308_int_com,tier_c_d_questions_20_specific_hints_batch2.json,lang,intermediate,common,D,Preposition,preposition,2026-04-28T16:50:38
+ent_000309_int_com,tier_c_d_questions_20_specific_hints_batch2.json,ent,intermediate,common,D,Shrek,shrek,2026-04-28T16:50:38
+gen_000310_int_com,tier_c_d_questions_20_specific_hints_batch2.json,gen,intermediate,common,D,Sextant,sextant,2026-04-28T16:50:38
+geo_000311_int_std,tier_c_d_questions_20_specific_hints_batch2.json,geo,intermediate,standard,C,Chile,chile,2026-04-28T16:50:38
+his_000312_int_std,tier_c_d_questions_20_specific_hints_batch2.json,his,intermediate,standard,C,Athens,athens,2026-04-28T16:50:38
+sci_000313_int_std,tier_c_d_questions_20_specific_hints_batch2.json,sci,intermediate,standard,C,Law of Conservation of Mass,lawofconservationofmass,2026-04-28T16:50:38
+food_000314_int_std,tier_c_d_questions_20_specific_hints_batch2.json,food,intermediate,standard,C,Couscous,couscous,2026-04-28T16:50:38
+art_000315_int_std,tier_c_d_questions_20_specific_hints_batch2.json,art,intermediate,standard,C,Tempera,tempera,2026-04-28T16:50:38
+tech_000316_adv_com,tier_c_d_questions_20_specific_hints_batch2.json,tech,advanced,common,C,Transmission Control Protocol,transmissioncontrolprotocol,2026-04-28T16:50:38
+sci_000317_adv_com,tier_c_d_questions_20_specific_hints_batch2.json,sci,advanced,common,C,Earthquake,earthquake,2026-04-28T16:50:38
+spo_000318_adv_com,tier_c_d_questions_20_specific_hints_batch2.json,spo,advanced,common,C,Baseball,baseball,2026-04-28T16:50:38
+lang_000319_adv_com,tier_c_d_questions_20_specific_hints_batch2.json,lang,advanced,common,C,Vowels,vowels,2026-04-28T16:50:38
+ent_000320_adv_com,tier_c_d_questions_20_specific_hints_batch2.json,ent,advanced,common,C,The Matrix,thematrix,2026-04-28T16:50:38
+geo_000401_int_std,tier_c_d_questions_40_specific_hints_batch3.json,geo,intermediate,standard,C,Danube,danube,2026-04-28T17:01:41
+his_000402_int_std,tier_c_d_questions_40_specific_hints_batch3.json,his,intermediate,standard,C,Hammurabi,hammurabi,2026-04-28T17:01:41
+sci_000403_int_std,tier_c_d_questions_40_specific_hints_batch3.json,sci,intermediate,standard,C,Doppler Effect,dopplereffect,2026-04-28T17:01:41
+tech_000404_int_std,tier_c_d_questions_40_specific_hints_batch3.json,tech,intermediate,standard,C,Polymerase Chain Reaction,polymerasechainreaction,2026-04-28T17:01:41
+art_000405_int_std,tier_c_d_questions_40_specific_hints_batch3.json,art,intermediate,standard,C,Ukiyo-e,ukiyoe,2026-04-28T17:01:41
+lang_000406_int_std,tier_c_d_questions_40_specific_hints_batch3.json,lang,intermediate,standard,C,Haiku,haiku,2026-04-28T17:01:41
+food_000407_int_std,tier_c_d_questions_40_specific_hints_batch3.json,food,intermediate,standard,C,Risotto,risotto,2026-04-28T17:01:41
+spo_000408_int_std,tier_c_d_questions_40_specific_hints_batch3.json,spo,intermediate,standard,C,Modern Pentathlon,modernpentathlon,2026-04-28T17:01:41
+ent_000409_int_std,tier_c_d_questions_40_specific_hints_batch3.json,ent,intermediate,standard,C,Film Noir,filmnoir,2026-04-28T17:01:41
+gen_000410_int_std,tier_c_d_questions_40_specific_hints_batch3.json,gen,intermediate,standard,C,Gantt Chart,ganttchart,2026-04-28T17:01:41
+geo_000411_adv_com,tier_c_d_questions_40_specific_hints_batch3.json,geo,advanced,common,C,London,london,2026-04-28T17:01:41
+sci_000412_adv_com,tier_c_d_questions_40_specific_hints_batch3.json,sci,advanced,common,C,Banana,banana,2026-04-28T17:01:41
+sci_000413_adv_com,tier_c_d_questions_40_specific_hints_batch3.json,sci,advanced,common,C,Elephant,elephant,2026-04-28T17:01:41
+art_000414_adv_com,tier_c_d_questions_40_specific_hints_batch3.json,art,advanced,common,C,Piano,piano,2026-04-28T17:01:41
+sci_000415_adv_com,tier_c_d_questions_40_specific_hints_batch3.json,sci,advanced,common,C,Rain,rain,2026-04-28T17:01:41
+tech_000416_adv_com,tier_c_d_questions_40_specific_hints_batch3.json,tech,advanced,common,C,Camera,camera,2026-04-28T17:01:41
+gen_000417_adv_com,tier_c_d_questions_40_specific_hints_batch3.json,gen,advanced,common,C,Bicycle,bicycle,2026-04-28T17:01:41
+gen_000418_adv_com,tier_c_d_questions_40_specific_hints_batch3.json,gen,advanced,common,C,Silver,silver,2026-04-28T17:01:41
+geo_000419_adv_com,tier_c_d_questions_40_specific_hints_batch3.json,geo,advanced,common,C,Desert,desert,2026-04-28T17:01:41
+art_000420_adv_com,tier_c_d_questions_40_specific_hints_batch3.json,art,advanced,common,C,Guitar,guitar,2026-04-28T17:01:41
+geo_000421_beg_std,tier_c_d_questions_40_specific_hints_batch3.json,geo,beginner,standard,D,Finland,finland,2026-04-28T17:01:41
+sci_000422_beg_std,tier_c_d_questions_40_specific_hints_batch3.json,sci,beginner,standard,D,Chlorine,chlorine,2026-04-28T17:01:41
+his_000423_beg_std,tier_c_d_questions_40_specific_hints_batch3.json,his,beginner,standard,D,Gutenberg,gutenberg,2026-04-28T17:01:41
+food_000424_beg_std,tier_c_d_questions_40_specific_hints_batch3.json,food,beginner,standard,D,Tiramisu,tiramisu,2026-04-28T17:01:41
+tech_000425_beg_std,tier_c_d_questions_40_specific_hints_batch3.json,tech,beginner,standard,D,QR Code,qrcode,2026-04-28T17:01:41
+lang_000426_beg_std,tier_c_d_questions_40_specific_hints_batch3.json,lang,beginner,standard,D,Metaphor,metaphor,2026-04-28T17:01:41
+art_000427_beg_std,tier_c_d_questions_40_specific_hints_batch3.json,art,beginner,standard,D,Watercolor,watercolor,2026-04-28T17:01:41
+spo_000428_beg_std,tier_c_d_questions_40_specific_hints_batch3.json,spo,beginner,standard,D,Archery,archery,2026-04-28T17:01:41
+ent_000429_beg_std,tier_c_d_questions_40_specific_hints_batch3.json,ent,beginner,standard,D,Toy Story,toystory,2026-04-28T17:01:41
+gen_000430_beg_std,tier_c_d_questions_40_specific_hints_batch3.json,gen,beginner,standard,D,Telescope,telescope,2026-04-28T17:01:41
+geo_000431_int_com,tier_c_d_questions_40_specific_hints_batch3.json,geo,intermediate,common,D,Brazil,brazil,2026-04-28T17:01:41
+geo_000432_int_com,tier_c_d_questions_40_specific_hints_batch3.json,geo,intermediate,common,D,China,china,2026-04-28T17:01:41
+sci_000433_int_com,tier_c_d_questions_40_specific_hints_batch3.json,sci,intermediate,common,D,Penguin,penguin,2026-04-28T17:01:41
+food_000434_int_com,tier_c_d_questions_40_specific_hints_batch3.json,food,intermediate,common,D,Honey,honey,2026-04-28T17:01:41
+geo_000435_int_com,tier_c_d_questions_40_specific_hints_batch3.json,geo,intermediate,common,D,Island,island,2026-04-28T17:01:41
+tech_000436_int_com,tier_c_d_questions_40_specific_hints_batch3.json,tech,intermediate,common,D,Lemon,lemon,2026-04-28T17:01:41
+gen_000437_int_com,tier_c_d_questions_40_specific_hints_batch3.json,gen,intermediate,common,D,Bridge,bridge,2026-04-28T17:01:41
+gen_000438_int_com,tier_c_d_questions_40_specific_hints_batch3.json,gen,intermediate,common,D,Train,train,2026-04-28T17:01:41
+gen_000439_int_com,tier_c_d_questions_40_specific_hints_batch3.json,gen,intermediate,common,D,Umbrella,umbrella,2026-04-28T17:01:41
+gen_000440_int_com,tier_c_d_questions_40_specific_hints_batch3.json,gen,intermediate,common,D,Clock,clock,2026-04-28T17:01:41
+geo_000441_beg_std,tier_c_d_quiz_60_questions.json,geo,beginner,standard,D,New Zealand,newzealand,2026-05-01T10:40:43
+geo_000442_beg_std,tier_c_d_quiz_60_questions.json,geo,beginner,standard,D,Peru,peru,2026-05-01T10:40:43
+geo_000443_beg_std,tier_c_d_quiz_60_questions.json,geo,beginner,standard,D,Baltic Sea,balticsea,2026-05-01T10:40:43
+his_000444_beg_std,tier_c_d_quiz_60_questions.json,his,beginner,standard,D,Ottoman Empire,ottomanempire,2026-05-01T10:40:43
+his_000445_beg_std,tier_c_d_quiz_60_questions.json,his,beginner,standard,D,Joan of Arc,joanofarc,2026-05-01T10:40:43
+his_000446_beg_std,tier_c_d_quiz_60_questions.json,his,beginner,standard,D,Meiji Restoration,meijirestoration,2026-05-01T10:40:43
+sci_000447_beg_std,tier_c_d_quiz_60_questions.json,sci,beginner,standard,D,Nitrogen,nitrogen,2026-05-01T10:40:43
+sci_000448_beg_std,tier_c_d_quiz_60_questions.json,sci,beginner,standard,D,Pancreas,pancreas,2026-05-01T10:40:43
+sci_000449_beg_std,tier_c_d_quiz_60_questions.json,sci,beginner,standard,D,Condensation,condensation,2026-05-01T10:40:43
+spo_000450_beg_std,tier_c_d_quiz_60_questions.json,spo,beginner,standard,D,Fencing,fencing,2026-05-01T10:40:43
+spo_000451_beg_std,tier_c_d_quiz_60_questions.json,spo,beginner,standard,D,Rowing,rowing,2026-05-01T10:40:43
+spo_000452_beg_std,tier_c_d_quiz_60_questions.json,spo,beginner,standard,D,Table Tennis,tabletennis,2026-05-01T10:40:43
+ent_000453_beg_std,tier_c_d_quiz_60_questions.json,ent,beginner,standard,D,Spirited Away,spiritedaway,2026-05-01T10:40:43
+ent_000454_beg_std,tier_c_d_quiz_60_questions.json,ent,beginner,standard,D,Godzilla,godzilla,2026-05-01T10:40:43
+ent_000455_beg_std,tier_c_d_quiz_60_questions.json,ent,beginner,standard,D,The Avengers,theavengers,2026-05-01T10:40:43
+food_000456_beg_std,tier_c_d_quiz_60_questions.json,food,beginner,standard,D,Ramen,ramen,2026-05-01T10:40:43
+food_000457_beg_std,tier_c_d_quiz_60_questions.json,food,beginner,standard,D,Sauerkraut,sauerkraut,2026-05-01T10:40:43
+food_000458_beg_std,tier_c_d_quiz_60_questions.json,food,beginner,standard,D,Falafel,falafel,2026-05-01T10:40:43
+tech_000459_beg_std,tier_c_d_quiz_60_questions.json,tech,beginner,standard,D,Ethernet,ethernet,2026-05-01T10:40:43
+tech_000460_beg_std,tier_c_d_quiz_60_questions.json,tech,beginner,standard,D,Algorithm,algorithm,2026-05-01T10:40:43
+tech_000461_beg_std,tier_c_d_quiz_60_questions.json,tech,beginner,standard,D,CAPTCHA,captcha,2026-05-01T10:40:43
+lang_000462_beg_std,tier_c_d_quiz_60_questions.json,lang,beginner,standard,D,Palindrome,palindrome,2026-05-01T10:40:43
+lang_000463_beg_std,tier_c_d_quiz_60_questions.json,lang,beginner,standard,D,Hiragana,hiragana,2026-05-01T10:40:43
+lang_000464_beg_std,tier_c_d_quiz_60_questions.json,lang,beginner,standard,D,Clause,clause,2026-05-01T10:40:43
+art_000465_beg_std,tier_c_d_quiz_60_questions.json,art,beginner,standard,D,Beethoven,beethoven,2026-05-01T10:40:43
+art_000466_beg_std,tier_c_d_quiz_60_questions.json,art,beginner,standard,D,Guernica,guernica,2026-05-01T10:40:43
+art_000467_beg_std,tier_c_d_quiz_60_questions.json,art,beginner,standard,D,Odyssey,odyssey,2026-05-01T10:40:43
+gen_000468_beg_std,tier_c_d_quiz_60_questions.json,gen,beginner,standard,D,Abacus,abacus,2026-05-01T10:40:43
+gen_000469_beg_std,tier_c_d_quiz_60_questions.json,gen,beginner,standard,D,Magnet,magnet,2026-05-01T10:40:43
+gen_000470_beg_std,tier_c_d_quiz_60_questions.json,gen,beginner,standard,D,Prism,prism,2026-05-01T10:40:43
+geo_000471_int_std,tier_c_d_quiz_60_questions.json,geo,intermediate,standard,C,Patagonia,patagonia,2026-05-01T10:40:43
+geo_000472_int_std,tier_c_d_quiz_60_questions.json,geo,intermediate,standard,C,Caspian Sea,caspiansea,2026-05-01T10:40:43
+geo_000473_adv_com,tier_c_d_quiz_60_questions.json,geo,advanced,common,C,Himalayas,himalayas,2026-05-01T10:40:43
+his_000474_int_std,tier_c_d_quiz_60_questions.json,his,intermediate,standard,C,Song Dynasty,songdynasty,2026-05-01T10:40:43
+his_000475_int_std,tier_c_d_quiz_60_questions.json,his,intermediate,standard,C,Thirty Years War,thirtyyearswar,2026-05-01T10:40:43
+his_000476_int_std,tier_c_d_quiz_60_questions.json,his,intermediate,standard,C,Haitian Revolution,haitianrevolution,2026-05-01T10:40:43
+sci_000477_int_std,tier_c_d_quiz_60_questions.json,sci,intermediate,standard,C,Ribosome,ribosome,2026-05-01T10:40:43
+sci_000478_int_std,tier_c_d_quiz_60_questions.json,sci,intermediate,standard,C,CRISPR,crispr,2026-05-01T10:40:43
+sci_000479_int_std,tier_c_d_quiz_60_questions.json,sci,intermediate,standard,C,Superconductivity,superconductivity,2026-05-01T10:40:43
+spo_000480_int_std,tier_c_d_quiz_60_questions.json,spo,intermediate,standard,C,Biathlon,biathlon,2026-05-01T10:40:43
+spo_000481_int_std,tier_c_d_quiz_60_questions.json,spo,intermediate,standard,C,Curling,curling,2026-05-01T10:40:43
+spo_000482_int_std,tier_c_d_quiz_60_questions.json,spo,intermediate,standard,C,Sabermetrics,sabermetrics,2026-05-01T10:40:43
+ent_000483_int_std,tier_c_d_quiz_60_questions.json,ent,intermediate,standard,C,Neon Genesis Evangelion,neongenesisevangelion,2026-05-01T10:40:43
+ent_000484_int_std,tier_c_d_quiz_60_questions.json,ent,intermediate,standard,C,Citizen Kane,citizenkane,2026-05-01T10:40:43
+ent_000485_int_std,tier_c_d_quiz_60_questions.json,ent,intermediate,standard,C,Dungeons and Dragons,dungeonsanddragons,2026-05-01T10:40:43
+food_000486_int_std,tier_c_d_quiz_60_questions.json,food,intermediate,standard,C,Miso,miso,2026-05-01T10:40:43
+food_000487_int_std,tier_c_d_quiz_60_questions.json,food,intermediate,standard,C,Pho,pho,2026-05-01T10:40:43
+food_000488_int_std,tier_c_d_quiz_60_questions.json,food,intermediate,standard,C,Ceviche,ceviche,2026-05-01T10:40:43
+tech_000489_int_std,tier_c_d_quiz_60_questions.json,tech,intermediate,standard,C,Kernel,kernel,2026-05-01T10:40:43
+tech_000490_int_std,tier_c_d_quiz_60_questions.json,tech,intermediate,standard,C,Kubernetes,kubernetes,2026-05-01T10:40:43
+tech_000491_int_std,tier_c_d_quiz_60_questions.json,tech,intermediate,standard,C,Public Key Cryptography,publickeycryptography,2026-05-01T10:40:43
+lang_000492_int_std,tier_c_d_quiz_60_questions.json,lang,intermediate,standard,C,Agglutination,agglutination,2026-05-01T10:40:43
+lang_000493_int_std,tier_c_d_quiz_60_questions.json,lang,intermediate,standard,C,Ablaut,ablaut,2026-05-01T10:40:43
+lang_000494_int_std,tier_c_d_quiz_60_questions.json,lang,intermediate,standard,C,Phoneme,phoneme,2026-05-01T10:40:43
+art_000495_int_std,tier_c_d_quiz_60_questions.json,art,intermediate,standard,C,Bauhaus,bauhaus,2026-05-01T10:40:43
+art_000496_int_std,tier_c_d_quiz_60_questions.json,art,intermediate,standard,C,Magical Realism,magicalrealism,2026-05-01T10:40:43
+art_000497_int_std,tier_c_d_quiz_60_questions.json,art,intermediate,standard,C,Chiaroscuro,chiaroscuro,2026-05-01T10:40:43
+gen_000498_int_std,tier_c_d_quiz_60_questions.json,gen,intermediate,standard,C,Astrolabe,astrolabe,2026-05-01T10:40:43
+gen_000499_int_std,tier_c_d_quiz_60_questions.json,gen,intermediate,standard,C,Gyroscope,gyroscope,2026-05-01T10:40:43
+gen_000500_int_std,tier_c_d_quiz_60_questions.json,gen,intermediate,standard,C,Lodestone,lodestone,2026-05-01T10:40:43
+geo_000501_beg_std,tier_c_d_quiz_60_questions_v2.json,geo,beginner,standard,D,Sydney,sydney,2026-05-03T14:34:23
+geo_000502_beg_std,tier_c_d_quiz_60_questions_v2.json,geo,beginner,standard,D,Bolivia,bolivia,2026-05-03T14:34:23
+geo_000503_beg_std,tier_c_d_quiz_60_questions_v2.json,geo,beginner,standard,D,Ethiopia,ethiopia,2026-05-03T14:34:23
+his_000504_beg_std,tier_c_d_quiz_60_questions_v2.json,his,beginner,standard,D,Anglo Saxons,anglosaxons,2026-05-03T14:34:23
+his_000505_beg_std,tier_c_d_quiz_60_questions_v2.json,his,beginner,standard,D,Vikings,vikings,2026-05-03T14:34:23
+his_000506_beg_std,tier_c_d_quiz_60_questions_v2.json,his,beginner,standard,D,French Revolution,frenchrevolution,2026-05-03T14:34:23
+sci_000507_beg_std,tier_c_d_quiz_60_questions_v2.json,sci,beginner,standard,D,Organic Chemistry,organicchemistry,2026-05-03T14:34:23
+sci_000508_beg_std,tier_c_d_quiz_60_questions_v2.json,sci,beginner,standard,D,Astronomy,astronomy,2026-05-03T14:34:23
+sci_000509_beg_std,tier_c_d_quiz_60_questions_v2.json,sci,beginner,standard,D,Calcium Carbonate,calciumcarbonate,2026-05-03T14:34:23
+spo_000510_beg_std,tier_c_d_quiz_60_questions_v2.json,spo,beginner,standard,D,Ice Curling,icecurling,2026-05-03T14:34:23
+spo_000511_beg_std,tier_c_d_quiz_60_questions_v2.json,spo,beginner,standard,D,Gymnastics,gymnastics,2026-05-03T14:34:23
+spo_000512_beg_std,tier_c_d_quiz_60_questions_v2.json,spo,beginner,standard,D,Darts,darts,2026-05-03T14:34:23
+ent_000513_beg_std,tier_c_d_quiz_60_questions_v2.json,ent,beginner,standard,D,The Simpsons,thesimpsons,2026-05-03T14:34:23
+ent_000514_beg_std,tier_c_d_quiz_60_questions_v2.json,ent,beginner,standard,D,Back to the Future,backtothefuture,2026-05-03T14:34:23
+ent_000515_beg_std,tier_c_d_quiz_60_questions_v2.json,ent,beginner,standard,D,E T the Extra Terrestrial,ettheextraterrestrial,2026-05-03T14:34:23
+food_000516_beg_std,tier_c_d_quiz_60_questions_v2.json,food,beginner,standard,D,Pad Thai,padthai,2026-05-03T14:34:23
+food_000517_beg_std,tier_c_d_quiz_60_questions_v2.json,food,beginner,standard,D,Pesto,pesto,2026-05-03T14:34:23
+food_000518_beg_std,tier_c_d_quiz_60_questions_v2.json,food,beginner,standard,D,Miso Soup,misosoup,2026-05-03T14:34:23
+tech_000519_beg_std,tier_c_d_quiz_60_questions_v2.json,tech,beginner,standard,D,Tablet Computer,tabletcomputer,2026-05-03T14:34:23
+tech_000520_beg_std,tier_c_d_quiz_60_questions_v2.json,tech,beginner,standard,D,GitHub,github,2026-05-03T14:34:23
+tech_000521_beg_std,tier_c_d_quiz_60_questions_v2.json,tech,beginner,standard,D,Database,database,2026-05-03T14:34:23
+lang_000522_beg_std,tier_c_d_quiz_60_questions_v2.json,lang,beginner,standard,D,Neologism,neologism,2026-05-03T14:34:23
+lang_000523_beg_std,tier_c_d_quiz_60_questions_v2.json,lang,beginner,standard,D,Onomatopoeia,onomatopoeia,2026-05-03T14:34:23
+lang_000524_beg_std,tier_c_d_quiz_60_questions_v2.json,lang,beginner,standard,D,Prosody,prosody,2026-05-03T14:34:23
+art_000525_beg_std,tier_c_d_quiz_60_questions_v2.json,art,beginner,standard,D,Claude Monet,claudemonet,2026-05-03T14:34:23
+art_000526_beg_std,tier_c_d_quiz_60_questions_v2.json,art,beginner,standard,D,Salvador Dali,salvadordali,2026-05-03T14:34:23
+art_000527_beg_std,tier_c_d_quiz_60_questions_v2.json,art,beginner,standard,D,Frankenstein,frankenstein,2026-05-03T14:34:23
+gen_000528_beg_std,tier_c_d_quiz_60_questions_v2.json,gen,beginner,standard,D,Light Bulb,lightbulb,2026-05-03T14:34:23
+gen_000529_beg_std,tier_c_d_quiz_60_questions_v2.json,gen,beginner,standard,D,Pulley,pulley,2026-05-03T14:34:23
+gen_000530_beg_std,tier_c_d_quiz_60_questions_v2.json,gen,beginner,standard,D,Microscope,microscope,2026-05-03T14:34:23
+geo_000531_int_std,tier_c_d_quiz_60_questions_v2.json,geo,intermediate,standard,C,Li River,liriver,2026-05-03T14:34:23
+geo_000532_int_std,tier_c_d_quiz_60_questions_v2.json,geo,intermediate,standard,C,Indian Peninsula,indianpeninsula,2026-05-03T14:34:23
+geo_000533_adv_com,tier_c_d_quiz_60_questions_v2.json,geo,advanced,common,C,Andes,andes,2026-05-03T14:34:23
+his_000534_int_std,tier_c_d_quiz_60_questions_v2.json,his,intermediate,standard,C,Minoan Civilization,minoancivilization,2026-05-03T14:34:23
+his_000535_int_std,tier_c_d_quiz_60_questions_v2.json,his,intermediate,standard,C,Maurya Empire,mauryaempire,2026-05-03T14:34:23
+his_000536_int_std,tier_c_d_quiz_60_questions_v2.json,his,intermediate,standard,C,Middle Ages,middleages,2026-05-03T14:34:23
+sci_000537_int_std,tier_c_d_quiz_60_questions_v2.json,sci,intermediate,standard,C,RNA Splicing,rnasplicing,2026-05-03T14:34:23
+sci_000538_int_std,tier_c_d_quiz_60_questions_v2.json,sci,intermediate,standard,C,Plate Tectonics,platetectonics,2026-05-03T14:34:23
+sci_000539_adv_com,tier_c_d_quiz_60_questions_v2.json,sci,advanced,common,C,Blue,blue,2026-05-03T14:34:23
+spo_000540_int_std,tier_c_d_quiz_60_questions_v2.json,spo,intermediate,standard,C,Tour de France,tourdefrance,2026-05-03T14:34:23
+spo_000541_int_std,tier_c_d_quiz_60_questions_v2.json,spo,intermediate,standard,C,Curling Strategy,curlingstrategy,2026-05-03T14:34:23
+spo_000542_int_std,tier_c_d_quiz_60_questions_v2.json,spo,intermediate,standard,C,Sport Fencing,sportfencing,2026-05-03T14:34:23
+ent_000543_int_std,tier_c_d_quiz_60_questions_v2.json,ent,intermediate,standard,C,Inception,inception,2026-05-03T14:34:23
+ent_000544_int_std,tier_c_d_quiz_60_questions_v2.json,ent,intermediate,standard,C,Mad Max Fury Road,madmaxfuryroad,2026-05-03T14:34:23
+ent_000545_adv_com,tier_c_d_quiz_60_questions_v2.json,ent,advanced,common,C,Mario,mario,2026-05-03T14:34:23
+food_000546_int_std,tier_c_d_quiz_60_questions_v2.json,food,intermediate,standard,C,Tamale,tamale,2026-05-03T14:34:23
+food_000547_int_std,tier_c_d_quiz_60_questions_v2.json,food,intermediate,standard,C,Poke,poke,2026-05-03T14:34:23
+food_000548_int_std,tier_c_d_quiz_60_questions_v2.json,food,intermediate,standard,C,Kimchi,kimchi,2026-05-03T14:34:23
+tech_000549_int_std,tier_c_d_quiz_60_questions_v2.json,tech,intermediate,standard,C,Internet Protocol,internetprotocol,2026-05-03T14:34:23
+tech_000550_int_std,tier_c_d_quiz_60_questions_v2.json,tech,intermediate,standard,C,Cloud Computing,cloudcomputing,2026-05-03T14:34:23
+tech_000551_int_std,tier_c_d_quiz_60_questions_v2.json,tech,intermediate,standard,C,Blockchain,blockchain,2026-05-03T14:34:23
+lang_000552_int_std,tier_c_d_quiz_60_questions_v2.json,lang,intermediate,standard,C,Japanese,japanese,2026-05-03T14:34:23
+lang_000553_int_std,tier_c_d_quiz_60_questions_v2.json,lang,intermediate,standard,C,Xhosa,xhosa,2026-05-03T14:34:23
+lang_000554_int_std,tier_c_d_quiz_60_questions_v2.json,lang,intermediate,standard,C,Sanskrit,sanskrit,2026-05-03T14:34:23
+art_000555_int_std,tier_c_d_quiz_60_questions_v2.json,art,intermediate,standard,C,Ulysses,ulysses,2026-05-03T14:34:23
+art_000556_int_std,tier_c_d_quiz_60_questions_v2.json,art,intermediate,standard,C,Gothic Architecture,gothicarchitecture,2026-05-03T14:34:23
+art_000557_int_std,tier_c_d_quiz_60_questions_v2.json,art,intermediate,standard,C,Jazz,jazz,2026-05-03T14:34:23
+gen_000558_int_std,tier_c_d_quiz_60_questions_v2.json,gen,intermediate,standard,C,Plane,plane,2026-05-03T14:34:23
+gen_000559_int_std,tier_c_d_quiz_60_questions_v2.json,gen,intermediate,standard,C,Beam Balance,beambalance,2026-05-03T14:34:23
+gen_000560_int_std,tier_c_d_quiz_60_questions_v2.json,gen,intermediate,standard,C,Gear,gear,2026-05-03T14:34:23

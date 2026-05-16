@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "start": "node ws_game_server.js",
+    "ws-latency": "node ws_latency_server.js",
+    "ws-game": "node ws_game_server.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

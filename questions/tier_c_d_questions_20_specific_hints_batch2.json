@@ -1,0 +1,416 @@
+[
+  {
+    "id": "geo_000301_beg_std",
+    "category": "geo",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "The Douro wine region, the Tagus estuary, and the old Atlantic port of Porto all help identify this Iberian country. Its maritime history connects it to Brazil and routes around Africa. What country is this?",
+    "displayAnswer": "Portugal",
+    "normalizedAnswer": "portugal",
+    "answerChars": [
+      "p",
+      "o",
+      "r",
+      "t",
+      "u",
+      "g",
+      "a",
+      "l"
+    ]
+  },
+  {
+    "id": "his_000302_beg_std",
+    "category": "his",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "Linked to the Rosetta Stone and the reigns of Ptolemaic rulers, this civilization used hieroglyphs and built temples along the Nile. Its monuments shaped later ideas of ancient kingship. What civilization is this?",
+    "displayAnswer": "Ancient Egypt",
+    "normalizedAnswer": "ancientegypt",
+    "answerChars": [
+      "a",
+      "n",
+      "c",
+      "i",
+      "e",
+      "n",
+      "t",
+      "e",
+      "g",
+      "y",
+      "p",
+      "t"
+    ]
+  },
+  {
+    "id": "sci_000303_beg_std",
+    "category": "sci",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "Measured in newtons, this physical quantity changes with local gravitational acceleration even when mass stays the same. It is often confused with mass in everyday speech. What quantity is this?",
+    "displayAnswer": "Weight",
+    "normalizedAnswer": "weight",
+    "answerChars": [
+      "w",
+      "e",
+      "i",
+      "g",
+      "h",
+      "t"
+    ]
+  },
+  {
+    "id": "food_000304_beg_std",
+    "category": "food",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "Often made by emulsifying egg yolk, oil, and acid, this pale sauce appears in sandwiches, salads, and many dressings. Its stability depends on tiny oil droplets staying suspended. What sauce is this?",
+    "displayAnswer": "Mayonnaise",
+    "normalizedAnswer": "mayonnaise",
+    "answerChars": [
+      "m",
+      "a",
+      "y",
+      "o",
+      "n",
+      "n",
+      "a",
+      "i",
+      "s",
+      "e"
+    ]
+  },
+  {
+    "id": "art_000305_beg_std",
+    "category": "art",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "Painted with dramatic light contrasts and figures emerging from darkness, works such as The Calling of Saint Matthew made this Italian Baroque artist famous. Which painter is this?",
+    "displayAnswer": "Caravaggio",
+    "normalizedAnswer": "caravaggio",
+    "answerChars": [
+      "c",
+      "a",
+      "r",
+      "a",
+      "v",
+      "a",
+      "g",
+      "g",
+      "i",
+      "o"
+    ]
+  },
+  {
+    "id": "tech_000306_int_com",
+    "category": "tech",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "Built on MediaWiki software and maintained through volunteer editing, this online reference uses article histories and talk pages rather than a traditional editorial board. What website is this?",
+    "displayAnswer": "Wikipedia",
+    "normalizedAnswer": "wikipedia",
+    "answerChars": [
+      "w",
+      "i",
+      "k",
+      "i",
+      "p",
+      "e",
+      "d",
+      "i",
+      "a"
+    ]
+  },
+  {
+    "id": "spo_000307_int_com",
+    "category": "spo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "Overs, wickets, and the Ashes are central clues to this bat-and-ball sport, where a bowler delivers the ball toward a batter defending a set of stumps. What sport is this?",
+    "displayAnswer": "Cricket",
+    "normalizedAnswer": "cricket",
+    "answerChars": [
+      "c",
+      "r",
+      "i",
+      "c",
+      "k",
+      "e",
+      "t"
+    ]
+  },
+  {
+    "id": "lang_000308_int_com",
+    "category": "lang",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "In English grammar, words such as under, beside, and during often introduce phrases that show location, time, or relation. They usually appear before a noun phrase. What part of speech is this?",
+    "displayAnswer": "Preposition",
+    "normalizedAnswer": "preposition",
+    "answerChars": [
+      "p",
+      "r",
+      "e",
+      "p",
+      "o",
+      "s",
+      "i",
+      "t",
+      "i",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "ent_000309_int_com",
+    "category": "ent",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "Set in a fairy-tale world that parodies princes, curses, and talking animals, this animated film follows a green ogre sent to rescue a princess from a tower. What film is this?",
+    "displayAnswer": "Shrek",
+    "normalizedAnswer": "shrek",
+    "answerChars": [
+      "s",
+      "h",
+      "r",
+      "e",
+      "k"
+    ]
+  },
+  {
+    "id": "gen_000310_int_com",
+    "category": "gen",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "Using mirrors and an arc scale, this navigation instrument measures the angle between a celestial body and the horizon. Sailors used it to estimate position at sea. What instrument is this?",
+    "displayAnswer": "Sextant",
+    "normalizedAnswer": "sextant",
+    "answerChars": [
+      "s",
+      "e",
+      "x",
+      "t",
+      "a",
+      "n",
+      "t"
+    ]
+  },
+  {
+    "id": "geo_000311_int_std",
+    "category": "geo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "Its Altiplano plateau, Atacama edge, and Pacific-facing valleys make this long country unusually narrow. The Andes define much of its eastern boundary. What country is this?",
+    "displayAnswer": "Chile",
+    "normalizedAnswer": "chile",
+    "answerChars": [
+      "c",
+      "h",
+      "i",
+      "l",
+      "e"
+    ]
+  },
+  {
+    "id": "his_000312_int_std",
+    "category": "his",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "The Delian League, hoplite warfare, and the reforms of Cleisthenes are closely tied to this Greek city-state. Its political legacy is often discussed through citizen assemblies. What city-state is this?",
+    "displayAnswer": "Athens",
+    "normalizedAnswer": "athens",
+    "answerChars": [
+      "a",
+      "t",
+      "h",
+      "e",
+      "n",
+      "s"
+    ]
+  },
+  {
+    "id": "sci_000313_int_std",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "Named after a French chemist, this rule says mass is not created or destroyed in an ordinary chemical reaction. It explains why balanced equations keep atom counts equal. What law is this?",
+    "displayAnswer": "Law of Conservation of Mass",
+    "normalizedAnswer": "lawofconservationofmass",
+    "answerChars": [
+      "l",
+      "a",
+      "w",
+      "o",
+      "f",
+      "c",
+      "o",
+      "n",
+      "s",
+      "e",
+      "r",
+      "v",
+      "a",
+      "t",
+      "i",
+      "o",
+      "n",
+      "o",
+      "f",
+      "m",
+      "a",
+      "s",
+      "s"
+    ]
+  },
+  {
+    "id": "food_000314_int_std",
+    "category": "food",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "Made from durum wheat semolina and often rolled into tiny granules, this North African staple is steamed rather than boiled like ordinary pasta. It is commonly served with stews. What food is this?",
+    "displayAnswer": "Couscous",
+    "normalizedAnswer": "couscous",
+    "answerChars": [
+      "c",
+      "o",
+      "u",
+      "s",
+      "c",
+      "o",
+      "u",
+      "s"
+    ]
+  },
+  {
+    "id": "art_000315_int_std",
+    "category": "art",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "Used in medieval manuscripts and later portraiture, this technique mixes pigment with egg yolk, creating quick-drying layers before oil paint became dominant in Europe. What painting medium is this?",
+    "displayAnswer": "Tempera",
+    "normalizedAnswer": "tempera",
+    "answerChars": [
+      "t",
+      "e",
+      "m",
+      "p",
+      "e",
+      "r",
+      "a"
+    ]
+  },
+  {
+    "id": "tech_000316_adv_com",
+    "category": "tech",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "Its TCP three-way handshake establishes a connection before data transfer, unlike simpler datagram-based methods. Web pages and email often rely on it underneath. What protocol is this?",
+    "displayAnswer": "Transmission Control Protocol",
+    "normalizedAnswer": "transmissioncontrolprotocol",
+    "answerChars": [
+      "t",
+      "r",
+      "a",
+      "n",
+      "s",
+      "m",
+      "i",
+      "s",
+      "s",
+      "i",
+      "o",
+      "n",
+      "c",
+      "o",
+      "n",
+      "t",
+      "r",
+      "o",
+      "l",
+      "p",
+      "r",
+      "o",
+      "t",
+      "o",
+      "c",
+      "o",
+      "l"
+    ]
+  },
+  {
+    "id": "sci_000317_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "P waves and S waves recorded by seismographs help locate the focus of this event, while faults release built-up stress through sudden ground motion. What natural event is this?",
+    "displayAnswer": "Earthquake",
+    "normalizedAnswer": "earthquake",
+    "answerChars": [
+      "e",
+      "a",
+      "r",
+      "t",
+      "h",
+      "q",
+      "u",
+      "a",
+      "k",
+      "e"
+    ]
+  },
+  {
+    "id": "spo_000318_adv_com",
+    "category": "spo",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "Force plays, earned runs, and a diamond-shaped infield structure this sport, where pitchers try to retire batters and runners advance around four bases. What sport is this?",
+    "displayAnswer": "Baseball",
+    "normalizedAnswer": "baseball",
+    "answerChars": [
+      "b",
+      "a",
+      "s",
+      "e",
+      "b",
+      "a",
+      "l",
+      "l"
+    ]
+  },
+  {
+    "id": "lang_000319_adv_com",
+    "category": "lang",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "In phonetics, these sounds are produced with an open vocal tract, and languages often organize them by height, backness, and rounding. They contrast with obstructed speech sounds. What are they?",
+    "displayAnswer": "Vowels",
+    "normalizedAnswer": "vowels",
+    "answerChars": [
+      "v",
+      "o",
+      "w",
+      "e",
+      "l",
+      "s"
+    ]
+  },
+  {
+    "id": "ent_000320_adv_com",
+    "category": "ent",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "Bullet time, red pills, and simulated reality define this cyberpunk film, whose story follows a hacker discovering that everyday life is an artificial system. What film is this?",
+    "displayAnswer": "The Matrix",
+    "normalizedAnswer": "thematrix",
+    "answerChars": [
+      "t",
+      "h",
+      "e",
+      "m",
+      "a",
+      "t",
+      "r",
+      "i",
+      "x"
+    ]
+  }
+]

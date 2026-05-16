@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buzzer Quiz Screen Flow Demo</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(186, 230, 253, 0.46), transparent 30%),
+        radial-gradient(circle at 88% 14%, rgba(252, 231, 243, 0.55), transparent 32%),
+        radial-gradient(circle at 72% 86%, rgba(254, 240, 138, 0.24), transparent 34%),
+        linear-gradient(135deg, #f8fbff 0%, #fff8fc 52%, #fffdf3 100%);
+      background-attachment: fixed;
+      color: #1d1d1f;
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.08s ease, opacity 0.15s ease;
+      font-family: inherit;
+    }
+
+    button:hover { transform: translateY(-1px); }
+    button:active { transform: translateY(1px) scale(0.99); }
+
+    .flow-start-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 1200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 18% 22%, rgba(186, 230, 253, 0.58), transparent 30%),
+        radial-gradient(circle at 86% 16%, rgba(252, 231, 243, 0.66), transparent 32%),
+        radial-gradient(circle at 72% 88%, rgba(254, 240, 138, 0.30), transparent 34%),
+        linear-gradient(135deg, #f8fbff 0%, #fff8fc 52%, #fffdf3 100%);
+    }
+
+    .flow-start-card {
+      width: min(94vw, 880px);
+      min-height: 560px;
+      border-radius: 36px;
+      padding: 48px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(148, 163, 184, 0.26);
+      box-shadow: 0 28px 80px rgba(0,0,0,0.12);
+      backdrop-filter: blur(14px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 34px;
+      align-items: center;
+    }
+
+    .flow-start-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(238, 242, 255, 0.92);
+      color: #3730a3;
+      font-size: 13px;
+      font-weight: 850;
+      margin-bottom: 18px;
+    }
+
+    .flow-start-title {
+      margin: 0;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 0.96;
+      letter-spacing: -0.055em;
+      font-weight: 950;
+      color: #111827;
+    }
+
+    .flow-start-title span {
+      display: block;
+      background: linear-gradient(135deg, #0284c7, #db2777 62%, #f97316);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .flow-start-subtitle {
+      margin: 20px 0 0;
+      max-width: 520px;
+      color: #64748b;
+      font-size: 16px;
+      line-height: 1.65;
+      font-weight: 600;
+    }
+
+    .flow-start-actions {
+      margin-top: 30px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .flow-primary-btn {
+      min-width: 190px;
+      padding: 15px 26px;
+      background: #111827;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 900;
+      box-shadow: 0 14px 30px rgba(17, 24, 39, 0.20);
+    }
+
+    .flow-secondary-btn {
+      min-width: 150px;
+      padding: 15px 22px;
+      background: rgba(229, 231, 235, 0.92);
+      color: #111827;
+      font-size: 15px;
+      font-weight: 850;
+    }
+
+    .flow-start-panel {
+      border-radius: 28px;
+      padding: 22px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.94), rgba(248,250,252,0.84));
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.75), 0 16px 36px rgba(0,0,0,0.08);
+    }
+
+    .flow-avatar-versus {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      justify-items: center;
+      gap: 18px;
+      margin-bottom: 22px;
+      width: 100%;
+    }
+
+    .flow-avatar-versus > div:first-child {
+      justify-self: end;
+    }
+
+    .flow-avatar-versus > div:nth-child(2) {
+      justify-self: center;
+    }
+
+    .flow-avatar-versus > div:last-child {
+      justify-self: start;
+    }
+
+    .flow-avatar {
+      width: 92px;
+      height: 92px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 42px;
+      font-weight: 950;
+      border: 5px solid rgba(255,255,255,0.75);
+      box-shadow:
+        inset 0 10px 14px rgba(255,255,255,0.28),
+        inset 0 -12px 16px rgba(0,0,0,0.14),
+        0 12px 26px rgba(0,0,0,0.16);
+      margin: 0 auto;
+    }
+
+    .flow-avatar.a {
+      background: radial-gradient(circle at 36% 25%, #dff6ff, #5fc7f2 34%, #0ea5d8 86%);
+    }
+
+    .flow-avatar.b {
+      background: radial-gradient(circle at 36% 25%, #ffe4f2, #ff8bc7 34%, #db3f91 86%);
+    }
+
+    .flow-vs {
+      color: #94a3b8;
+      font-size: 20px;
+      font-weight: 950;
+    }
+
+    .flow-rule-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .flow-rule-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 13px;
+      border-radius: 16px;
+      background: rgba(248, 250, 252, 0.84);
+      border: 1px solid rgba(226, 232, 240, 0.82);
+      color: #475569;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .flow-rule-list strong {
+      color: #111827;
+      font-size: 14px;
+    }
+
+    .flow-matching-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 1300;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: rgba(15, 23, 42, 0.56);
+      backdrop-filter: blur(5px);
+    }
+
+    .flow-matching-backdrop.show {
+      display: flex;
+    }
+
+    .flow-matching-card {
+      width: min(92vw, 560px);
+      min-height: 420px;
+      border-radius: 34px;
+      padding: 38px 36px 34px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(255,255,255,0.78);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.30);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: "Helvetica Neue", Arial, system-ui, sans-serif;
+    }
+
+    .flow-matching-card.friend-mode {
+      justify-content: flex-start;
+      padding-top: 44px;
+    }
+
+    .flow-matching-title {
+      margin: 0;
+      color: #222222;
+      font-size: 36px;
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .flow-matching-subtitle {
+      margin: 10px 0 24px;
+      color: #64748b;
+      font-size: 15px;
+      line-height: 1.6;
+      font-weight: 650;
+      animation: flowSubtitlePulse 900ms ease-in-out infinite;
+    }
+
+    .flow-matching-card.friend-mode .flow-matching-subtitle {
+      margin-bottom: 18px;
+    }
+
+    @keyframes flowSubtitlePulse {
+      0%, 100% { transform: translateY(0); opacity: 0.62; }
+      50% { transform: translateY(-5px); opacity: 1; }
+    }
+
+    .flow-search-avatars {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .flow-search-avatars.friend-mode {
+      display: none;
+    }
+
+    .flow-search-card {
+      min-height: 140px;
+      border-radius: 24px;
+      padding: 18px 12px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(248,250,252,0.88));
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+    }
+
+    .flow-opponent-card {
+      transition: opacity 220ms ease, transform 220ms ease, visibility 220ms ease;
+    }
+
+    .flow-opponent-card.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.96);
+      pointer-events: none;
+    }
+
+    .flow-search-name {
+      color: #111827;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .flow-search-status {
+      min-height: 18px;
+      color: #94a3b8;
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .flow-pulse-dots {
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .flow-pulse-dots span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #94a3b8;
+      animation: flowDotPulse 900ms ease-in-out infinite;
+    }
+
+    .flow-pulse-dots span:nth-child(2) { animation-delay: 120ms; }
+    .flow-pulse-dots span:nth-child(3) { animation-delay: 240ms; }
+
+    @keyframes flowDotPulse {
+      0%, 100% { transform: translateY(0); opacity: 0.4; }
+      50% { transform: translateY(-5px); opacity: 1; }
+    }
+
+    .flow-countdown-ring {
+      width: 96px;
+      height: 96px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      animation: flowSpinnerRotate 3600ms linear infinite;
+    }
+
+    .flow-countdown-ring::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 12px;
+      height: 12px;
+      margin-left: -6px;
+      margin-top: -6px;
+      border-radius: 999px;
+      background: transparent;
+      box-shadow:
+        0 -34px 0 rgba(17, 24, 39, 0.90),
+        24px -24px 0 rgba(17, 24, 39, 0.74),
+        34px 0 0 rgba(17, 24, 39, 0.58),
+        24px 24px 0 rgba(17, 24, 39, 0.42),
+        0 34px 0 rgba(17, 24, 39, 0.30),
+        -24px 24px 0 rgba(17, 24, 39, 0.22),
+        -34px 0 0 rgba(17, 24, 39, 0.38),
+        -24px -24px 0 rgba(17, 24, 39, 0.66);
+    }
+
+    .flow-countdown-number {
+      display: none;
+    }
+
+    .flow-waiting-spinner {
+      display: none;
+      position: relative;
+      width: 88px;
+      height: 88px;
+      border-radius: 999px;
+      animation: flowSpinnerRotate 3600ms linear infinite;
+    }
+
+    .flow-waiting-spinner.show {
+      display: block;
+    }
+
+    .flow-waiting-spinner span {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 12px;
+      height: 12px;
+      margin-left: -6px;
+      margin-top: -6px;
+      border-radius: 999px;
+      background: #111827;
+      transform: rotate(var(--dot-angle)) translateY(-34px);
+      opacity: var(--dot-opacity);
+    }
+
+    .flow-waiting-spinner span:nth-child(1) { --dot-angle: 0deg; --dot-opacity: 0.90; }
+    .flow-waiting-spinner span:nth-child(2) { --dot-angle: 45deg; --dot-opacity: 0.74; }
+    .flow-waiting-spinner span:nth-child(3) { --dot-angle: 90deg; --dot-opacity: 0.58; }
+    .flow-waiting-spinner span:nth-child(4) { --dot-angle: 135deg; --dot-opacity: 0.42; }
+    .flow-waiting-spinner span:nth-child(5) { --dot-angle: 180deg; --dot-opacity: 0.30; }
+    .flow-waiting-spinner span:nth-child(6) { --dot-angle: 225deg; --dot-opacity: 0.22; }
+    .flow-waiting-spinner span:nth-child(7) { --dot-angle: 270deg; --dot-opacity: 0.38; }
+    .flow-waiting-spinner span:nth-child(8) { --dot-angle: 315deg; --dot-opacity: 0.66; }
+
+    @keyframes flowSpinnerRotate {
+      to { transform: rotate(360deg); }
+    }
+
+    .flow-matching-message {
+      margin: 2px 0 18px;
+      min-height: 24px;
+      color: #475569;
+      font-size: 15px;
+      font-weight: 850;
+    }
+
+    .flow-matching-message.waiting-pulse {
+      animation: flowSubtitlePulse 900ms ease-in-out infinite;
+    }
+
+    .flow-cancel-btn {
+      background: #e5e7eb;
+      color: #111827;
+      font-size: 14px;
+      font-weight: 850;
+      padding: 11px 18px;
+    }
+
+    .flow-friend-options {
+      display: none;
+      width: min(100%, 360px);
+      gap: 14px;
+      justify-content: center;
+      align-items: stretch;
+      flex-direction: column;
+      margin: 10px 0 18px;
+    }
+
+    .flow-matching-card.friend-mode .flow-friend-options {
+      margin-top: 6px;
+      margin-bottom: 14px;
+    }
+
+    .flow-friend-options.show {
+      display: flex;
+    }
+
+    .flow-friend-action-btn {
+      width: 100%;
+      min-height: 60px;
+      padding: 17px 24px;
+      border-radius: 999px;
+      background: #111827;
+      color: #ffffff;
+      font-size: 17px;
+      font-weight: 950;
+      box-shadow: 0 12px 26px rgba(17, 24, 39, 0.16);
+    }
+
+    .flow-friend-join-btn {
+      background: rgba(229, 231, 235, 0.92);
+      color: #111827;
+      box-shadow: none;
+    }
+
+    .flow-room-entry {
+      display: none;
+      width: min(100%, 360px);
+      margin: 2px 0 18px;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .flow-room-entry.show {
+      display: flex;
+    }
+
+    .flow-room-input {
+      min-width: 0;
+      flex: 1;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.42);
+      background: rgba(255, 255, 255, 0.94);
+      padding: 0 16px;
+      color: #111827;
+      font-size: 15px;
+      font-weight: 800;
+      text-align: center;
+      outline: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .flow-room-input:focus {
+      border-color: rgba(37, 99, 235, 0.54);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.10);
+    }
+
+    .flow-room-submit-btn {
+      height: 44px;
+      padding: 0 18px;
+      background: #111827;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .flow-room-settings {
+      display: none;
+      width: min(100%, 430px);
+      margin: 4px 0 16px;
+      padding: 16px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(248,250,252,0.88));
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.75), 0 12px 28px rgba(0,0,0,0.07);
+    }
+
+    .flow-matching-card.friend-mode .flow-room-settings {
+      margin-top: 0;
+    }
+
+    .flow-room-settings.show {
+      display: block;
+    }
+
+    .flow-room-settings-title {
+      margin: 0 0 12px;
+      color: #111827;
+      font-size: 16px;
+      font-weight: 950;
+      text-align: center;
+    }
+
+    .flow-setting-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 10px 0;
+      border-top: 1px solid rgba(226, 232, 240, 0.80);
+    }
+
+    .flow-setting-row:first-of-type {
+      border-top: 0;
+    }
+
+    .flow-setting-label {
+      color: #475569;
+      font-size: 13px;
+      font-weight: 850;
+      text-align: left;
+    }
+
+    .flow-stepper {
+      display: inline-grid;
+      grid-template-columns: 34px 70px 34px;
+      gap: 7px;
+      align-items: center;
+    }
+
+    .flow-stepper button {
+      width: 34px;
+      height: 34px;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: #111827;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    .flow-stepper-value {
+      min-width: 70px;
+      text-align: center;
+      color: #111827;
+      font-size: 15px;
+      font-weight: 950;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .flow-create-final-btn {
+      width: 100%;
+      min-height: 48px;
+      margin-top: 12px;
+      border-radius: 999px;
+      background: #2563eb;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 950;
+      box-shadow: 0 12px 26px rgba(37, 99, 235, 0.20);
+    }
+
+    .flow-room-id-card {
+      display: none;
+      width: min(100%, 360px);
+      margin: 4px 0 18px;
+      padding: 16px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(248,250,252,0.9));
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.75), 0 12px 28px rgba(0,0,0,0.07);
+      text-align: center;
+    }
+
+    .flow-room-id-card.show {
+      display: block;
+    }
+
+    .flow-room-id-label {
+      color: #64748b;
+      font-size: 12px;
+      font-weight: 850;
+      margin-bottom: 6px;
+    }
+
+    .flow-room-id-value {
+      color: #111827;
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: 0.12em;
+      font-variant-numeric: tabular-nums;
+      margin-bottom: 12px;
+    }
+
+    .flow-copy-room-btn {
+      min-height: 42px;
+      padding: 0 20px;
+      border-radius: 999px;
+      background: #111827;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    @media (max-width: 760px) {
+      .flow-start-screen { padding: 6px; }
+
+      .flow-start-card {
+        width: 100%;
+        min-height: calc(100vh - 90px);
+        max-height: calc(100vh - 90px);
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        padding: 18px 14px 14px;
+        gap: 12px;
+        overflow: hidden;
+      }
+
+      .flow-start-card > div:first-child {
+        display: contents;
+      }
+
+      .flow-start-card {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .flow-start-title {
+        order: 1;
+      }
+
+      .flow-start-subtitle {
+        order: 4;
+      }
+
+      .flow-start-panel {
+        order: 2;
+      }
+
+      .flow-start-actions {
+        order: 5;
+        margin-top: 12px;
+        padding-top: 0;
+        gap: 8px;
+        transform: translateY(10px);
+      }
+
+      .flow-start-title { font-size: 48px; order: 1; }
+
+      .flow-start-eyebrow {
+        display: none;
+      }
+
+      .flow-start-subtitle {
+        order: 4;
+        font-size: 12px;
+        line-height: 1.42;
+        margin-top: 10px;
+      }
+
+      .flow-primary-btn,
+      .flow-secondary-btn {
+        width: 100%;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 16px;
+      }
+
+      .flow-start-panel {
+        width: 100%;
+        padding: 12px;
+      }
+
+      .flow-rule-list {
+        gap: 5px;
+      }
+
+      .flow-rule-list li {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 7px 1.7em;
+        border-radius: 9px;
+        font-size: 14px;
+      }
+
+      .flow-rule-list li strong {
+        font-size: 15px;
+      }
+
+      .flow-rule-list li span {
+        padding-left: 0.2em;
+      }
+
+      .flow-rule-list li strong {
+        padding-right: 0.2em;
+      }
+
+      .flow-avatar {
+        width: 74px;
+        height: 74px;
+        font-size: 34px;
+        border-width: 4px;
+      }
+
+      .flow-avatar-versus {
+        margin-bottom: 12px;
+      }
+
+      .flow-matching-card {
+        width: min(92vw, 100%);
+        min-height: 390px;
+        padding: 30px 20px;
+        border-radius: 30px;
+      }
+
+      .flow-matching-card.friend-mode {
+        padding-top: 34px;
+      }
+
+      .flow-matching-title { font-size: 30px; }
+
+      .flow-search-avatars { gap: 10px; }
+
+      .flow-search-card {
+        min-height: 118px;
+        padding: 14px 8px;
+      }
+
+      .flow-countdown-ring {
+        width: 80px;
+        height: 80px;
+      }
+
+      .flow-countdown-ring::before {
+        width: 10px;
+        height: 10px;
+        margin-left: -5px;
+        margin-top: -5px;
+        box-shadow:
+          0 -31px 0 rgba(17, 24, 39, 0.90),
+          22px -22px 0 rgba(17, 24, 39, 0.74),
+          31px 0 0 rgba(17, 24, 39, 0.58),
+          22px 22px 0 rgba(17, 24, 39, 0.42),
+          0 31px 0 rgba(17, 24, 39, 0.30),
+          -22px 22px 0 rgba(17, 24, 39, 0.22),
+          -31px 0 0 rgba(17, 24, 39, 0.38),
+          -22px -22px 0 rgba(17, 24, 39, 0.66);
+      }
+
+
+      .flow-waiting-spinner {
+        width: 80px;
+        height: 80px;
+      }
+
+      .flow-waiting-spinner span {
+        width: 10px;
+        height: 10px;
+        margin-left: -5px;
+        margin-top: -5px;
+        transform: rotate(var(--dot-angle)) translateY(-31px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="flow-start-screen" id="flowStartScreen">
+    <div class="flow-start-card">
+      <div>
+        <div class="flow-start-eyebrow">⚡ Real-time Buzzer Battle</div>
+        <h1 class="flow-start-title">Buzzer Quiz<span>Head-to-Head</span></h1>
+        <p class="flow-start-subtitle">
+          Read the question, hit the buzzer, and spell the answer under pressure.
+          If no online opponent is found, Koh Avatar will join the match.
+        </p>
+        <div class="flow-start-actions">
+          <button class="flow-primary-btn" id="flowStartMatchBtn">Random Match</button>
+          <button class="flow-secondary-btn" id="flowFriendMatchBtn">Friend Match</button>
+        </div>
+      </div>
+
+      <div class="flow-start-panel">
+        <div class="flow-avatar-versus">
+          <div><div class="flow-avatar a">A</div></div>
+          <div class="flow-vs">VS</div>
+          <div><div class="flow-avatar b">K</div></div>
+        </div>
+
+        <ul class="flow-rule-list">
+          <li><span>Win points</span><strong>50</strong></li>
+          <li><span>Questions</span><strong>30</strong></li>
+          <li><span>Wrong limit</span><strong>5</strong></li>
+          <li><span>Wrong penalty</span><strong>0</strong></li>
+          <li><span>Fallback</span><strong>Koh Avatar</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="flow-matching-backdrop" id="flowMatchingBackdrop">
+    <div class="flow-matching-card" id="flowMatchingCard">
+      <h2 class="flow-matching-title" id="flowMatchingTitle">Finding opponent...</h2>
+      <p class="flow-matching-subtitle" id="flowMatchingSubtitle">
+        Searching for a real-time challenger.
+      </p>
+
+      <div class="flow-search-avatars" id="flowSearchAvatars">
+        <div class="flow-search-card">
+          <div class="flow-avatar a">A</div>
+          <div class="flow-search-name">You</div>
+          <div class="flow-search-status">Ready</div>
+        </div>
+
+        <div class="flow-countdown-ring" id="flowCountdownRing">
+          <div class="flow-countdown-number" id="flowCountdownNumber">10</div>
+        </div>
+        <div class="flow-waiting-spinner" id="flowWaitingSpinner" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="flow-search-card flow-opponent-card is-hidden" id="flowOpponentCard">
+          <div class="flow-avatar b" id="flowOpponentAvatar">?</div>
+          <div class="flow-search-name" id="flowOpponentName">Opponent</div>
+          <div class="flow-search-status" id="flowOpponentStatus">
+            <span class="flow-pulse-dots"><span></span><span></span><span></span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-friend-options" id="flowFriendOptions">
+        <button class="flow-friend-action-btn" id="flowCreateRoomBtn">Create Room</button>
+        <button class="flow-friend-action-btn flow-friend-join-btn" id="flowJoinRoomBtn">Enter Room ID</button>
+      </div>
+
+      <div class="flow-room-settings" id="flowRoomSettings">
+        <div class="flow-room-settings-title">Room Settings</div>
+
+        <div class="flow-setting-row">
+          <div class="flow-setting-label">Win points</div>
+          <div class="flow-stepper">
+            <button type="button" data-setting="winPoints" data-delta="-1">−</button>
+            <div class="flow-stepper-value" id="flowWinPointsValue">50</div>
+            <button type="button" data-setting="winPoints" data-delta="1">＋</button>
+          </div>
+        </div>
+
+        <div class="flow-setting-row">
+          <div class="flow-setting-label">Questions</div>
+          <div class="flow-stepper">
+            <button type="button" data-setting="questions" data-delta="-1">−</button>
+            <div class="flow-stepper-value" id="flowQuestionsValue">30</div>
+            <button type="button" data-setting="questions" data-delta="1">＋</button>
+          </div>
+        </div>
+
+        <div class="flow-setting-row">
+          <div class="flow-setting-label">Wrong limit</div>
+          <div class="flow-stepper">
+            <button type="button" data-setting="wrongLimit" data-delta="-1">−</button>
+            <div class="flow-stepper-value" id="flowWrongLimitValue">5</div>
+            <button type="button" data-setting="wrongLimit" data-delta="1">＋</button>
+          </div>
+        </div>
+
+        <div class="flow-setting-row">
+          <div class="flow-setting-label">Wrong penalty</div>
+          <div class="flow-stepper">
+            <button type="button" data-setting="wrongPenalty" data-delta="-1">−</button>
+            <div class="flow-stepper-value" id="flowWrongPenaltyValue">0</div>
+            <button type="button" data-setting="wrongPenalty" data-delta="1">＋</button>
+          </div>
+        </div>
+
+        <button class="flow-create-final-btn" id="flowCreateFinalBtn">Create</button>
+      </div>
+
+      <div class="flow-room-id-card" id="flowRoomIdCard">
+        <div class="flow-room-id-label">Room ID</div>
+        <div class="flow-room-id-value" id="flowRoomIdValue">------</div>
+        <button class="flow-copy-room-btn" id="flowCopyRoomBtn">Copy Room ID</button>
+      </div>
+
+      <div class="flow-room-entry" id="flowRoomEntry">
+        <input class="flow-room-input" id="flowRoomInput" type="text" inputmode="latin" maxlength="8" placeholder="ROOM ID" />
+        <button class="flow-room-submit-btn" id="flowRoomSubmitBtn">Join</button>
+      </div>
+
+      <div class="flow-matching-message" id="flowMatchingMessage"></div>
+      <button class="flow-cancel-btn" id="flowCancelMatchingBtn">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    (function initScreenFlowDemo() {
+      const startBtn = document.getElementById("flowStartMatchBtn");
+      const friendMatchBtn = document.getElementById("flowFriendMatchBtn");
+      const matchingBackdrop = document.getElementById("flowMatchingBackdrop");
+      const matchingCard = document.getElementById("flowMatchingCard");
+      const searchAvatars = document.getElementById("flowSearchAvatars");
+      const cancelBtn = document.getElementById("flowCancelMatchingBtn");
+      const countdownNumber = document.getElementById("flowCountdownNumber");
+      const countdownRing = document.getElementById("flowCountdownRing");
+      const waitingSpinner = document.getElementById("flowWaitingSpinner");
+      const matchingTitle = document.getElementById("flowMatchingTitle");
+      const matchingSubtitle = document.getElementById("flowMatchingSubtitle");
+      const matchingMessage = document.getElementById("flowMatchingMessage");
+      const opponentAvatar = document.getElementById("flowOpponentAvatar");
+      const opponentCard = document.getElementById("flowOpponentCard");
+      const opponentName = document.getElementById("flowOpponentName");
+      const opponentStatus = document.getElementById("flowOpponentStatus");
+      const friendOptions = document.getElementById("flowFriendOptions");
+      const createRoomBtn = document.getElementById("flowCreateRoomBtn");
+      const joinRoomBtn = document.getElementById("flowJoinRoomBtn");
+      const roomEntry = document.getElementById("flowRoomEntry");
+      const roomInput = document.getElementById("flowRoomInput");
+      const roomSubmitBtn = document.getElementById("flowRoomSubmitBtn");
+      const roomSettings = document.getElementById("flowRoomSettings");
+      const createFinalBtn = document.getElementById("flowCreateFinalBtn");
+      const roomIdCard = document.getElementById("flowRoomIdCard");
+      const roomIdValue = document.getElementById("flowRoomIdValue");
+      const copyRoomBtn = document.getElementById("flowCopyRoomBtn");
+      const winPointsValue = document.getElementById("flowWinPointsValue");
+      const questionsValue = document.getElementById("flowQuestionsValue");
+      const wrongLimitValue = document.getElementById("flowWrongLimitValue");
+      const wrongPenaltyValue = document.getElementById("flowWrongPenaltyValue");
+
+      let matchingTimer = null;
+      let matchingStartedAt = null;
+      const matchingDurationMs = 3000;
+
+      const roomSettingsState = {
+        winPoints: 50,
+        questions: 30,
+        wrongLimit: 5,
+        wrongPenalty: 0,
+        roomId: ""
+      };
+
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+      }
+
+      function setRingProgress(remainingMs) {
+        const progress = Math.max(0, Math.min(1, 1 - remainingMs / matchingDurationMs));
+        const degrees = Math.round(progress * 360);
+        countdownRing.style.setProperty("--flow-progress", `${degrees}deg`);
+      }
+
+      function renderRoomSettings() {
+        roomSettingsState.questions = clamp(roomSettingsState.questions, 5, 30);
+        roomSettingsState.winPoints = clamp(roomSettingsState.winPoints, 30, roomSettingsState.questions * 10);
+        roomSettingsState.winPoints = Math.round(roomSettingsState.winPoints / 10) * 10;
+        roomSettingsState.wrongLimit = clamp(roomSettingsState.wrongLimit, 1, roomSettingsState.questions);
+        roomSettingsState.wrongPenalty = clamp(roomSettingsState.wrongPenalty, -50, 0);
+        roomSettingsState.wrongPenalty = Math.round(roomSettingsState.wrongPenalty / 10) * 10;
+
+        winPointsValue.textContent = String(roomSettingsState.winPoints);
+        questionsValue.textContent = String(roomSettingsState.questions);
+        wrongLimitValue.textContent = String(roomSettingsState.wrongLimit);
+        wrongPenaltyValue.textContent = String(roomSettingsState.wrongPenalty);
+      }
+
+      function generateRoomId() {
+        return Math.random().toString(36).slice(2, 8).toUpperCase();
+      }
+
+      function hideFriendSubscreens() {
+        friendOptions.classList.remove("show");
+        roomEntry.classList.remove("show");
+        roomSettings.classList.remove("show");
+        roomIdCard.classList.remove("show");
+      }
+
+      function setFriendMode(isFriendMode) {
+        matchingCard.classList.toggle("friend-mode", isFriendMode);
+        searchAvatars.classList.toggle("friend-mode", isFriendMode);
+      }
+
+      function resetRoomSettings() {
+        roomSettingsState.winPoints = 50;
+        roomSettingsState.questions = 30;
+        roomSettingsState.wrongLimit = 5;
+        roomSettingsState.wrongPenalty = 0;
+        roomSettingsState.roomId = "";
+        renderRoomSettings();
+      }
+
+      function resetMatchingUi() {
+        clearInterval(matchingTimer);
+        matchingTimer = null;
+
+        setFriendMode(false);
+        hideFriendSubscreens();
+
+        countdownRing.style.display = "grid";
+        waitingSpinner.classList.remove("show");
+        matchingMessage.classList.remove("waiting-pulse");
+
+        countdownNumber.textContent = "3";
+        setRingProgress(matchingDurationMs);
+
+        matchingTitle.textContent = "Finding opponent...";
+        matchingSubtitle.textContent = "Searching for a real-time challenger.";
+        matchingMessage.textContent = "";
+
+        opponentAvatar.textContent = "?";
+        opponentName.textContent = "Opponent";
+        opponentStatus.innerHTML = '<span class="flow-pulse-dots"><span></span><span></span><span></span></span>';
+        opponentCard.classList.add("is-hidden");
+
+        roomInput.value = "";
+        copyRoomBtn.textContent = "Copy Room ID";
+        resetRoomSettings();
+      }
+
+      function openMatchingPopup() {
+        resetMatchingUi();
+        matchingBackdrop.classList.add("show");
+        matchingStartedAt = performance.now();
+
+        matchingTimer = setInterval(() => {
+          const elapsed = performance.now() - matchingStartedAt;
+          const remaining = Math.max(0, matchingDurationMs - elapsed);
+          const remainingSec = Math.ceil(remaining / 1000);
+
+          countdownNumber.textContent = String(remainingSec);
+          setRingProgress(remaining);
+
+          if (remaining <= 0) {
+            clearInterval(matchingTimer);
+            matchingTimer = null;
+            showAvatarFoundState();
+          }
+        }, 80);
+      }
+
+      function showAvatarFoundState() {
+        setFriendMode(false);
+
+        countdownRing.style.display = "grid";
+        waitingSpinner.classList.remove("show");
+        matchingMessage.classList.remove("waiting-pulse");
+
+        countdownNumber.textContent = "✓";
+        countdownRing.style.setProperty("--flow-progress", "360deg");
+
+        matchingTitle.textContent = "Koh Avatar joined!";
+        matchingSubtitle.textContent = "Koh Avatar is ready.";
+        matchingMessage.textContent = "Let's Go!!";
+
+        opponentAvatar.textContent = "K";
+        opponentName.textContent = "Koh Avatar";
+        opponentStatus.textContent = "Joined";
+        opponentCard.classList.remove("is-hidden");
+      }
+
+      function closeMatchingPopup() {
+        clearInterval(matchingTimer);
+        matchingTimer = null;
+        matchingBackdrop.classList.remove("show");
+        setFriendMode(false);
+        waitingSpinner.classList.remove("show");
+        matchingMessage.classList.remove("waiting-pulse");
+      }
+
+      function openFriendMatchMenu() {
+        clearInterval(matchingTimer);
+        matchingTimer = null;
+
+        resetMatchingUi();
+        matchingBackdrop.classList.add("show");
+        setFriendMode(true);
+
+        countdownRing.style.display = "none";
+        waitingSpinner.classList.remove("show");
+        opponentCard.classList.add("is-hidden");
+
+        matchingTitle.textContent = "Friend Match";
+        matchingSubtitle.textContent = "Create a room or enter your friend’s room ID.";
+        matchingMessage.textContent = "";
+
+        friendOptions.classList.add("show");
+      }
+
+      function openCreateRoomSettings() {
+        hideFriendSubscreens();
+        setFriendMode(true);
+
+        countdownRing.style.display = "none";
+        waitingSpinner.classList.remove("show");
+        matchingMessage.classList.remove("waiting-pulse");
+        opponentCard.classList.add("is-hidden");
+
+        matchingTitle.textContent = "Create Room";
+        matchingSubtitle.textContent = "Adjust match rules before creating your room.";
+        matchingMessage.textContent = "";
+
+        renderRoomSettings();
+        roomSettings.classList.add("show");
+      }
+
+      function showRoomCreated() {
+        hideFriendSubscreens();
+        setFriendMode(false);
+
+        roomSettingsState.roomId = generateRoomId();
+        roomIdValue.textContent = roomSettingsState.roomId;
+
+        countdownRing.style.display = "none";
+        waitingSpinner.classList.add("show");
+        opponentCard.classList.add("is-hidden");
+
+        matchingTitle.textContent = "Room Created";
+        matchingSubtitle.textContent = "Share this room ID with your friend.";
+        matchingMessage.textContent = "Waiting for player...";
+        matchingMessage.classList.add("waiting-pulse");
+
+        roomIdCard.classList.add("show");
+      }
+
+      function openRoomEntry() {
+        hideFriendSubscreens();
+        setFriendMode(true);
+
+        countdownRing.style.display = "none";
+        waitingSpinner.classList.remove("show");
+        matchingMessage.classList.remove("waiting-pulse");
+        opponentCard.classList.add("is-hidden");
+
+        matchingTitle.textContent = "Enter Room ID";
+        matchingSubtitle.textContent = "Type the room ID shared by your friend.";
+        matchingMessage.textContent = "";
+
+        roomEntry.classList.add("show");
+        setTimeout(() => roomInput.focus(), 80);
+      }
+
+      function joinRoom() {
+        const roomId = roomInput.value.trim().toUpperCase();
+
+        if (!roomId) {
+          matchingMessage.textContent = "Please enter a room ID.";
+          return;
+        }
+
+        hideFriendSubscreens();
+        setFriendMode(false);
+
+        countdownRing.style.display = "grid";
+        waitingSpinner.classList.remove("show");
+        matchingMessage.classList.remove("waiting-pulse");
+
+        countdownNumber.textContent = "✓";
+        countdownRing.style.setProperty("--flow-progress", "360deg");
+
+        matchingTitle.textContent = "Joining Room...";
+        matchingSubtitle.textContent = `Room ${roomId}`;
+        matchingMessage.textContent = "Let's Go!!";
+
+        opponentAvatar.textContent = "?";
+        opponentName.textContent = "Friend";
+        opponentStatus.textContent = "Waiting";
+        opponentCard.classList.remove("is-hidden");
+      }
+
+      startBtn.addEventListener("click", openMatchingPopup);
+      friendMatchBtn.addEventListener("click", openFriendMatchMenu);
+      createRoomBtn.addEventListener("click", openCreateRoomSettings);
+      createFinalBtn.addEventListener("click", showRoomCreated);
+      joinRoomBtn.addEventListener("click", openRoomEntry);
+      roomSubmitBtn.addEventListener("click", joinRoom);
+      cancelBtn.addEventListener("click", closeMatchingPopup);
+
+      roomInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") joinRoom();
+      });
+
+      document.querySelectorAll("[data-setting]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const setting = button.dataset.setting;
+          const delta = Number(button.dataset.delta || 0);
+
+          if (setting === "winPoints") {
+            roomSettingsState.winPoints += delta * 10;
+          }
+
+          if (setting === "questions") {
+            roomSettingsState.questions += delta;
+          }
+
+          if (setting === "wrongLimit") {
+            roomSettingsState.wrongLimit += delta;
+          }
+
+          if (setting === "wrongPenalty") {
+            roomSettingsState.wrongPenalty += delta * 10;
+          }
+
+          renderRoomSettings();
+        });
+      });
+
+      copyRoomBtn.addEventListener("click", async () => {
+        const roomId = roomSettingsState.roomId || roomIdValue.textContent;
+        if (!roomId || roomId === "------") return;
+
+        try {
+          await navigator.clipboard.writeText(roomId);
+          copyRoomBtn.textContent = "Copied!";
+          setTimeout(() => { copyRoomBtn.textContent = "Copy Room ID"; }, 1200);
+        } catch (error) {
+          const textarea = document.createElement("textarea");
+          textarea.value = roomId;
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textarea);
+          copyRoomBtn.textContent = "Copied!";
+          setTimeout(() => { copyRoomBtn.textContent = "Copy Room ID"; }, 1200);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

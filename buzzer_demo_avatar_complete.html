@@ -1,0 +1,3094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buzzer Quiz Local Demo</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(186, 230, 253, 0.46), transparent 30%),
+        radial-gradient(circle at 88% 14%, rgba(252, 231, 243, 0.55), transparent 32%),
+        radial-gradient(circle at 72% 86%, rgba(254, 240, 138, 0.24), transparent 34%),
+        linear-gradient(135deg, #f8fbff 0%, #fff8fc 52%, #fffdf3 100%);
+      background-attachment: fixed;
+      color: #1d1d1f;
+    }
+
+    .app {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 18px 24px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+
+    h1 { font-size: 24px; margin: 0; }
+
+    .subtitle {
+      margin-top: 4px;
+      color: #6e6e73;
+      font-size: 13px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.86);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.07);
+      border: 1px solid rgba(148, 163, 184, 0.26);
+      backdrop-filter: blur(10px);
+      margin-bottom: 10px;
+    }
+
+    .main-layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 760px);
+      gap: 12px;
+      align-items: start;
+      justify-content: start;
+    }
+
+    .side-panel {
+      position: sticky;
+      top: 18px;
+      margin-bottom: 0;
+    }
+
+    .game-column {
+      min-width: 0;
+      width: 100%;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .bottom-controls-card {
+      margin-bottom: 10px;
+    }
+
+    .bottom-controls-card .controls {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .bottom-controls-card .controls button {
+      min-width: 180px;
+    }
+
+    .bottom-controls-card .meta {
+      justify-content: center;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .mobile-popup-test-controls {
+      display: flex;
+      width: 100%;
+      gap: 8px;
+      margin-top: 0;
+    }
+
+    .mobile-popup-test-controls button {
+      flex: 1 1 0;
+      padding: 10px 12px;
+      font-size: 12px;
+      min-width: 0;
+    }
+
+    .side-panel .controls button {
+      width: 100%;
+      text-align: center;
+    }
+
+    .side-panel .meta {
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .side-panel .small {
+      margin-top: 6px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #111827;
+      color: white;
+      transition: transform 0.08s ease, opacity 0.15s ease;
+    }
+
+    button:hover { transform: translateY(-1px); }
+
+    button:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .secondary { background: #e5e7eb; color: #111827; }
+    .blue { background: #2563eb; }
+    .green { background: #15803d; }
+    .orange { background: #c2410c; }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 7px 12px;
+      background: #eef2ff;
+      color: #3730a3;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .question-box {
+      position: relative;
+      min-height: 380px;
+      font-size: 22px;
+      line-height: 1.55;
+      letter-spacing: 0.01em;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.88), rgba(250,252,255,0.82));
+      padding: 20px;
+      padding-bottom: 62px;
+      white-space: pre-wrap;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+    }
+
+
+    .answer-line {
+      position: absolute;
+      right: 22px;
+      bottom: 18px;
+      display: block;
+      text-align: right;
+      font-weight: 900;
+      font-size: 22px;
+      color: #111827;
+      white-space: nowrap;
+    }
+
+    .timebar-wrap {
+      display: block;
+      visibility: hidden;
+      height: 10px;
+      margin-top: 14px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      overflow: hidden;
+    }
+
+    .timebar-wrap.show { visibility: visible; }
+
+    .mobile-timebar-wrap {
+      display: none;
+    }
+
+    .timebar-fill {
+      width: 100%;
+      height: 100%;
+      background: #111827;
+      transform-origin: left center;
+      transform: scaleX(1);
+    }
+
+    .buzz-result {
+      display: none;
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      font-weight: 800;
+      color: #111827;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .buzz-result.show { display: block; }
+    .buzz-result .winner-a { color: #0284c7; }
+    .buzz-result .winner-b { color: #db2777; }
+
+    .buzz-result .diff {
+      display: block;
+      margin-top: 4px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #6b7280;
+    }
+
+    .meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 12px 0 0;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .players {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .match-scoreboard {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 12px;
+      min-height: 92px;
+      padding: 12px 16px;
+    }
+
+    .score-side {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .score-side-a { justify-content: flex-start; }
+    .score-side-b { justify-content: flex-end; }
+
+    .score-center {
+      display: grid;
+      grid-template-columns: 86px 54px 86px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 234px;
+    }
+
+    .score-number {
+      min-width: 44px;
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 950;
+      color: #111827;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .score-side-a .score-number { text-align: left; margin-left: 8px; }
+    .score-side-b .score-number { text-align: right; margin-right: 8px; }
+
+    .question-counter-center {
+      min-width: 54px;
+      text-align: center;
+      font-size: 23px;
+      line-height: 1;
+      font-weight: 950;
+      color: #111827;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .score-buzz-time {
+      min-width: 92px;
+      text-align: center;
+      padding: 6px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      color: #475569;
+      font-size: 13px;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+      min-height: 29px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 140ms ease, visibility 140ms ease, background 160ms ease, color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .score-buzz-time.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .score-buzz-time.win-a {
+      background: rgba(224, 245, 255, 0.96);
+      border-color: rgba(14, 165, 216, 0.28);
+      color: #0369a1;
+      box-shadow: 0 6px 14px rgba(14, 165, 216, 0.10);
+    }
+
+    .score-buzz-time.win-b {
+      background: rgba(255, 230, 242, 0.96);
+      border-color: rgba(219, 63, 145, 0.24);
+      color: #be185d;
+      box-shadow: 0 6px 14px rgba(219, 63, 145, 0.10);
+    }
+
+    .avatar-wrap {
+      position: relative;
+      width: 72px;
+      height: 72px;
+      flex: 0 0 auto;
+    }
+
+    .life-badge {
+      position: absolute;
+      bottom: 0;
+      z-index: 5;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      min-width: 38px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(244, 114, 182, 0.28);
+      box-shadow: 0 5px 12px rgba(0,0,0,0.12);
+      color: #db2777;
+      font-size: 11px;
+      font-weight: 950;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .score-side-a .life-badge { right: -8px; }
+    .score-side-b .life-badge { right: -8px; left: auto; }
+
+    .player {
+      border-radius: 20px;
+      padding: 18px;
+      background: #fff;
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .player.score-compact {
+      min-height: 112px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 14px;
+      align-items: center;
+      text-align: left;
+    }
+
+    .score-compact h2 { margin: 0 0 6px; }
+    .score-compact .scoreline { margin-bottom: 4px; text-align: left; }
+    .score-compact .small { margin-top: 4px; text-align: left; }
+
+    .player-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 30px;
+      font-weight: 900;
+      border: 4px solid rgba(255,255,255,0.7);
+      box-shadow:
+        inset 0 8px 12px rgba(255,255,255,0.28),
+        inset 0 -10px 14px rgba(0,0,0,0.14),
+        0 8px 18px rgba(0,0,0,0.12);
+    }
+
+    .player-avatar.a {
+      background: radial-gradient(circle at 36% 25%, #dff6ff, #5fc7f2 34%, #0ea5d8 86%);
+    }
+
+    .player-avatar.b {
+      background: radial-gradient(circle at 36% 25%, #ffe4f2, #ff8bc7 34%, #db3f91 86%);
+    }
+
+    .player.active {
+      border-color: rgba(37, 99, 235, 0.52);
+      transform: translateY(-1px);
+    }
+
+    .player h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .scoreline {
+      font-weight: 700;
+      color: #374151;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+
+    .small {
+      font-size: 13px;
+      color: #6b7280;
+      min-height: 18px;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    .buzz-action-panel {
+      position: relative;
+      min-height: 198px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .buzz-action-panel.answering {
+      position: relative;
+      z-index: 1000;
+    }
+
+    .buzz-action-panel.answering .buzz-action-inner {
+      filter: brightness(0.82) saturate(0.72);
+      opacity: 0.35;
+      transform: scale(0.98);
+    }
+
+    .buzz-action-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: filter 180ms ease, opacity 180ms ease, transform 180ms ease;
+      transform: translateY(10px);
+    }
+
+    .hidden-buzz-area { display: none; }
+
+    .press-label {
+      margin: 0;
+      min-height: 18px;
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 950;
+      order: 2;
+      text-align: center;
+      color: #f97316;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-shadow:
+        0 2px 0 rgba(255, 255, 255, 0.9),
+        0 5px 12px rgba(249, 115, 22, 0.26);
+    }
+
+   .answer-area {
+      display: none;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      width: min(760px, calc(100vw - 32px));
+      height: 202px;
+      min-height: 0;
+      transform: translate(-50%, -50%);
+      z-index: 1200;
+      margin: 0;
+      padding: 18px 16px 18px;
+      text-align: center;
+      border: 1px solid rgba(148, 163, 184, 0.32);
+      background: #ffffff;
+      box-shadow: 0 22px 48px rgba(0,0,0,0.18);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      grid-template-rows: 54px 30px 62px;
+      align-content: center;
+      row-gap: 10px;
+    }
+
+    .answer-area.show { display: grid; }
+
+    .answer-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      background: rgba(17, 24, 39, 0.25);
+      pointer-events: none;
+    }
+
+.answer-backdrop.show {
+  display: block;
+}
+
+.mobile-answer-backdrop {
+  display: none;
+}
+
+.answer-player-icon {
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 26px;
+  font-weight: 950;
+  border: 4px solid rgba(255,255,255,0.76);
+  box-shadow:
+    inset 0 8px 12px rgba(255,255,255,0.28),
+    inset 0 -10px 14px rgba(0,0,0,0.14),
+    0 10px 22px rgba(0,0,0,0.16);
+  pointer-events: none;
+  z-index: 1201;
+}
+
+.answer-player-icon.a {
+  background: radial-gradient(circle at 36% 25%, #dff6ff, #5fc7f2 34%, #0ea5d8 86%);
+}
+
+.answer-player-icon.b {
+  background: radial-gradient(circle at 36% 25%, #ffe4f2, #ff8bc7 34%, #db3f91 86%);
+}
+
+.answer-area.avatar-answering {
+  grid-template-rows: 58px 30px;
+  row-gap: 10px;
+}
+
+.answer-area.avatar-answering .choices {
+  display: none;
+}
+
+    .answer-area.avatar-answering {
+  grid-template-rows: 58px 30px;
+  row-gap: 10px;
+}
+
+.answer-area.avatar-answering .choices {
+  display: none;
+}
+
+    .answer-progress {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 54px;
+      min-height: 54px;
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: 0.10em;
+      margin: 0;
+      color: #111827;
+      text-transform: lowercase;
+      line-height: 1;
+      transform: translateY(25px);
+    }
+
+    .answer-progress.empty {
+      opacity: 0.35;
+      font-size: 24px;
+      letter-spacing: 0.02em;
+      text-transform: none;
+    }
+
+    .choices {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin-top: 0;
+      height: 93px;
+      transform: translateY(-10px);
+    }
+
+    .choice {
+      min-width: 73px;
+      height: 68px;
+      border-radius: 12px;
+      font-size: 32px;
+      font-weight: 900;
+      padding: 0 18px;
+      color: #111827;
+      background: linear-gradient(145deg, rgba(255,255,255,0.98), rgba(239,246,255,0.92));
+      border: 1px solid rgba(148, 163, 184, 0.32);
+      box-shadow:
+        inset 0 3px 8px rgba(255,255,255,0.75),
+        inset 0 -8px 14px rgba(148, 163, 184, 0.10),
+        0 8px 18px rgba(0,0,0,0.10);
+      text-transform: lowercase;
+      line-height: 1;
+    }
+
+    .choice:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        inset 0 3px 8px rgba(255,255,255,0.8),
+        inset 0 -8px 14px rgba(148, 163, 184, 0.10),
+        0 12px 22px rgba(0,0,0,0.12);
+    }
+
+    .choice:active {
+      transform: translateY(4px) scale(0.97);
+      box-shadow:
+        inset 0 2px 6px rgba(255,255,255,0.7),
+        inset 0 -4px 10px rgba(148, 163, 184, 0.10),
+        0 4px 10px rgba(0,0,0,0.10);
+    }
+
+    .buzz-pad {
+      width: 126px;
+      height: 126px;
+      border-radius: 999px;
+      padding: 11px;
+      background: linear-gradient(145deg, #fffdf0, #f4edcf);
+      border: 3px solid rgba(255, 255, 255, 0.85);
+      box-shadow:
+        inset 0 2px 5px rgba(255,255,255,0.75),
+        inset 0 -5px 10px rgba(177, 152, 89, 0.16),
+        0 10px 20px rgba(0,0,0,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      position: relative;
+      order: 1;
+    }
+
+    .quiz-buzz-button {
+      width: 98px;
+      height: 98px;
+      border-radius: 999px;
+      color: white;
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-shadow: 0 2px 3px rgba(0,0,0,0.22);
+      border: 5px solid rgba(255,255,255,0.58);
+      box-shadow:
+        inset 0 9px 15px rgba(255,255,255,0.30),
+        inset 0 -13px 18px rgba(0,0,0,0.18),
+        0 8px 0 rgba(0,0,0,0.18),
+        0 14px 22px rgba(0,0,0,0.15);
+      transition: transform 80ms ease, box-shadow 80ms ease, filter 120ms ease;
+    }
+
+    .quiz-buzz-button.a {
+      background: radial-gradient(circle at 36% 25%, #dff6ff, #5fc7f2 34%, #0ea5d8 86%);
+    }
+
+    .quiz-buzz-button.b {
+      background: radial-gradient(circle at 36% 25%, #ffe4f2, #ff8bc7 34%, #db3f91 86%);
+    }
+
+    .quiz-buzz-button:active {
+      transform: translateY(6px) scale(0.965);
+      box-shadow:
+        inset 0 6px 12px rgba(255,255,255,0.24),
+        inset 0 -8px 13px rgba(0,0,0,0.18),
+        0 3px 0 rgba(0,0,0,0.18),
+        0 8px 14px rgba(0,0,0,0.13);
+      filter: brightness(0.98);
+    }
+
+    .quiz-buzz-button:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+      filter: grayscale(0.2);
+    }
+
+    .buzz-time {
+      position: absolute;
+      left: 50%;
+      bottom: 8px;
+      transform: translateX(-50%);
+      display: none;
+      min-width: 92px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1.25;
+      text-align: center;
+      color: #111827;
+      pointer-events: none;
+    }
+
+    .buzz-time.show { display: block; }
+    .buzz-time.win-a { color: #0284c7; }
+    .buzz-time.win-b { color: #db2777; }
+
+    .buzz-time.missed {
+      color: #6b7280;
+      font-weight: 700;
+    }
+
+    .timer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      height: 30px;
+      margin: 0 0 0 auto;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(255, 247, 237, 0.9);
+      border: 1px solid rgba(251, 191, 36, 0.26);
+      text-align: right;
+      font-weight: 900;
+      color: #92400e;
+      font-size: 16px;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+    }
+
+    .log {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background: #111827;
+      color: #d1d5db;
+      border-radius: 18px;
+      padding: 16px;
+      min-height: 140px;
+      max-height: 240px;
+      overflow: auto;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .kbd {
+      display: inline-block;
+      border-radius: 7px;
+      border: 1px solid #d1d5db;
+      padding: 2px 7px;
+      background: #f9fafb;
+      color: #111827;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .match-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 999;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+    }
+
+    .match-modal-backdrop.show { display: flex; }
+
+    #confettiCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .match-modal {
+      position: relative;
+      z-index: 1001;
+      max-width: 820px;
+      width: min(94vw, 820px);
+      min-height: 580px;
+      border-radius: 34px;
+      padding: 54px 70px 46px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.97);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.30);
+      border: 1px solid rgba(255,255,255,0.78);
+      animation: popupPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      font-family: "Helvetica Neue", Arial, system-ui, sans-serif;
+      color: #222222;
+      overflow: hidden;
+    }
+
+    .match-modal.player-a-win {
+      background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(224,245,255,0.98));
+    }
+
+    .match-modal.player-b-win {
+      background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,230,242,0.98));
+    }
+
+    .match-modal .congrats-label {
+      display: none;
+      order: 2;
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.35;
+      color: #555555;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    .match-modal h2 {
+      order: 1;
+      margin: 0 0 10px;
+      font-size: 62px;
+      line-height: 1.05;
+      color: #222222;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      transform: translateY(-30px);
+    }
+
+    .match-modal.player-a-win #matchModalTitle {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      background: linear-gradient(180deg, #fff7cc 0%, #eab308 48%, #92400e 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow:
+        0 2px 0 rgba(255, 255, 255, 0.55),
+        0 10px 18px rgba(120, 53, 15, 0.24);
+    }
+
+    .match-modal p {
+      display: none;
+      margin: 0;
+    }
+
+    .match-modal button {
+  order: 6;
+  padding: 16px 40px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 850;
+  font-size: 16px;
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.24);
+  min-width: 220px;
+  margin-top: 8px;
+}
+
+.match-modal .title-back-button {
+  order: 7;
+  background: #d1d5db;
+  color: #111827;
+  box-shadow: 0 10px 22px rgba(107, 114, 128, 0.22);
+  margin-top: 10px;
+}
+
+    .match-result-avatars {
+      order: 4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      margin: 0 0 20px;
+      width: 100%;
+      font-weight: bold;
+    }
+
+    .winner-only-emblem-wrap {
+      order: 3;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin: 0 0 12px;
+    }
+
+    .result-avatar-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.58;
+      transform: scale(0.82);
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .result-avatar-wrap.winner {
+      opacity: 1;
+      transform: scale(1.18);
+    }
+
+    .result-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 59px;
+      font-weight: 950;
+      border: 7px solid rgba(255,255,255,0.75);
+      box-shadow:
+        inset 0 14px 20px rgba(255,255,255,0.28),
+        inset 0 -17px 22px rgba(0,0,0,0.14),
+        0 17px 36px rgba(0,0,0,0.16);
+    }
+
+    .result-avatar.a {
+      background: radial-gradient(circle at 36% 25%, #dff6ff, #5fc7f2 34%, #0ea5d8 86%);
+    }
+
+    .result-avatar.b {
+      background: radial-gradient(circle at 36% 25%, #ffe4f2, #ff8bc7 34%, #db3f91 86%);
+    }
+
+    .result-avatar-label {
+      font-size: 22px;
+      font-weight: 950;
+      color: rgba(17, 24, 39, 0.74);
+    }
+
+    .final-score-large {
+      min-width: 390px;
+      font-size: 92px;
+      line-height: 1;
+      font-weight: 850;
+      color: #222222;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.03em;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-text-stroke: 2.2px rgba(255, 255, 255, 0.96);
+      text-shadow:
+        0 3px 0 rgba(255, 255, 255, 0.92),
+        0 15px 28px rgba(0,0,0,0.14);
+    }
+
+    #resultAvatarWrapA {
+      margin-right: -50px;
+    }
+
+    #resultAvatarWrapB {
+      margin-left: -50px;
+    }
+
+    .match-result-label {
+      order: 3;
+      margin: 0 0 2px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #666666;
+      text-align: center;
+    }
+
+    .match-status-message {
+  display: none;
+}
+
+    .final-score-large.player-a-win-score {
+      color: #1d4ed8;
+      text-shadow:
+        0 3px 0 rgba(255, 255, 255, 0.92),
+        0 10px 22px rgba(37,99,235,0.18);
+    }
+
+    .final-score-large.player-b-win-score {
+      color: #db2777;
+      text-shadow:
+        0 3px 0 rgba(255, 255, 255, 0.92),
+        0 10px 22px rgba(219,39,119,0.16);
+    }
+
+    @keyframes popupPop {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @media (max-width: 760px) {
+      .players { display: block; }
+      .header { display: none; }
+      .app {
+        padding: 2px 4px 12px;
+      }
+      .main-layout { grid-template-columns: 1fr; justify-content: stretch; }
+      .main-layout {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .game-column {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .side-panel {
+        order: 2;
+      }
+
+      .game-column {
+        order: 1;
+      }
+
+      .players {
+        order: -1;
+      }
+
+      .players {
+        margin-bottom: 2px;
+      }
+      .players {
+        margin-top: 0;
+      }
+
+      .players .card {
+        margin-top: 0;
+      }
+
+      .match-scoreboard {
+        margin-bottom: 2px;
+      }
+
+      .game-column > .card:first-child {
+        margin-top: 0;
+      }
+      .side-panel { position: static; }
+      .side-panel .small,
+      .side-panel .meta {
+        display: none;
+      }
+      .controls { flex-direction: row; flex-wrap: wrap; }
+      .mobile-popup-test-controls {
+        display: flex;
+        width: 100%;
+        gap: 8px;
+        margin-top: 8px;
+      }
+
+      .mobile-popup-test-controls button {
+        flex: 1 1 0;
+        padding: 10px 12px;
+        font-size: 12px;
+        min-width: 0;
+      }
+      .side-panel .controls button { width: auto; }
+      .side-panel .meta { flex-direction: row; }
+      h1 { font-size: 23px; }
+      .question-box {
+        font-size: 18px;
+        min-height: 320px;
+        width: 100%;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        padding: 6px 2px 52px;
+      }
+
+      .game-column > .card:first-child {
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .game-column > .card:first-child {
+        min-height: 360px;
+      }
+
+      .buzz-action-inner {
+        transform: translateY(15px);
+      }
+
+      .press-label {
+        order: 1;
+      }
+
+      .buzz-pad {
+        order: 2;
+      }
+
+      .game-column > .card:first-child {
+        margin-bottom: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom: 0;
+        padding-bottom: 8px;
+      }
+
+      .game-column > .buzz-action-panel {
+        margin-top: 0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-top: 0;
+        box-shadow: 0 10px 26px rgba(0,0,0,0.07);
+        background: rgba(255, 255, 255, 0.86);
+      }
+
+      .answer-area {
+        position: fixed;
+        top: 85%;
+        left: 4px;
+        right: 4px;
+        width: auto;
+        z-index: 1200;
+        background: #ffffff;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border-radius: 22px;
+        overflow: visible;
+        transform: translateY(-50%);
+      }
+
+      .answer-player-icon {
+        left: 22px;
+        top: 12px;
+        transform: none;
+        width: 36px;
+        height: 36px;
+        font-size: 17px;
+      }
+
+      .timer {
+        position: absolute;
+        top: 12px;
+        right: 14px;
+        margin: 0;
+        z-index: 1202;
+      }
+
+      .answer-area {
+        grid-template-rows: 64px 24px 93px;
+        row-gap: 4px;
+        align-content: center;
+      }
+
+      .choices {
+        height: 93px;
+        align-items: center;
+        gap: 4px;
+        transform: translateY(10px);
+      }
+
+      .choice {
+        min-width: 73px;
+        height: 68px;
+        border-radius: 12px;
+        font-size: 32px;
+        padding: 0 18px;
+      }
+
+      .answer-progress {
+        padding-left: 58px;
+        padding-right: 58px;
+        transform: translateY(26px);
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 100%;
+      }
+      .buzz-action-panel.answering {
+        position: static;
+        z-index: auto;
+      }
+
+      .answer-area.show {
+        position: fixed;
+        z-index: 1200;
+      }
+
+      .answer-area {
+        position: fixed;
+        z-index: 1200;
+        background: #ffffff;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border-radius: 22px;
+        overflow: hidden;
+      }
+
+      .answer-backdrop {
+  display: none !important;
+}
+
+.mobile-answer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  display: none;
+  background: rgba(17, 24, 39, 0.25);
+  pointer-events: none;
+}
+
+.mobile-answer-backdrop.show {
+  display: block;
+}
+      .game-column > .card:first-child + .buzz-action-panel {
+        margin-bottom: 10px;
+      }
+      .player-avatar {
+        width: 54px;
+        height: 54px;
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      .avatar-wrap {
+        width: 62px;
+        height: 62px;
+      }
+
+      .life-badge {
+        bottom: 0;
+        z-index: 8;
+        min-width: 34px;
+        padding: 2px 5px;
+        gap: 1px;
+        font-size: 10px;
+        line-height: 1;
+        box-shadow: 0 5px 12px rgba(0,0,0,0.14);
+      }
+
+      .score-side-a .life-badge,
+      .score-side-b .life-badge {
+        right: 0;
+        left: auto;
+      }
+
+      .question-counter-center {
+        font-size: 15px;
+        min-width: 38px;
+      }
+
+      .score-center {
+        grid-template-columns: 58px 38px 58px;
+        gap: 6px;
+        min-width: 160px;
+      }
+
+      .score-number {
+        min-width: 34px;
+      }
+
+      .score-side-a .score-number {
+        margin-left: 6px;
+      }
+
+      .score-side-b .score-number {
+        margin-right: 6px;
+      }
+
+      .match-scoreboard {
+        position: relative;
+      }
+
+      .match-scoreboard .timebar-wrap {
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 6px;
+        display: block;
+        height: 7px;
+        margin-top: 0;
+        z-index: 2;
+      }
+
+      .match-scoreboard {
+        padding-bottom: 18px;
+      }
+
+      .game-column > .card:first-child > .timebar-wrap {
+        display: none;
+      }
+
+      .score-buzz-time {
+        position: absolute;
+        top: 3px;
+        width: 54px;
+        min-width: 54px;
+        min-height: 22px;
+        padding: 4px 4px;
+        font-size: 10px;
+        line-height: 1;
+        z-index: 12;
+        pointer-events: none;
+      }
+
+      #buzzSummaryA {
+        left: 16px;
+      }
+
+      #buzzSummaryB {
+        right: 16px;
+      }
+
+      .score-center {
+        grid-template-columns: 38px;
+        min-width: 38px;
+      }
+      .match-modal {
+        width: min(92vw, 100%);
+        min-height: 420px;
+        padding: 36px 24px;
+        border-radius: 30px;
+      }
+      .match-modal h2 {
+        font-size: 38px;
+        transform: translateY(-30px);
+      }
+
+      .match-modal.player-a-win #matchModalTitle {
+        font-family: Georgia, "Times New Roman", serif;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        background: linear-gradient(180deg, #fff3b0 0%, #d97706 48%, #7c2d12 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.65),
+          0 2px 2px rgba(92, 45, 8, 0.42),
+          0 8px 18px rgba(120, 53, 15, 0.28);
+      }
+      .winner-emblem {
+        width: 24px;
+        height: 20px;
+      }
+      .winner-emblem::before {
+        inset: -3px -4px;
+      }
+
+      .winner-emblem .result-avatar {
+        width: 10px;
+        height: 10px;
+        font-size: 5px;
+        border-width: 1px;
+      }
+      .match-modal .congrats-label {
+        display: none;
+        margin-bottom: 0;
+      }
+
+      .match-result-avatars {
+  order: 4;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 14px;
+}
+
+.match-result-avatars .result-avatar-wrap {
+  display: none;
+}
+
+      .winner-only-emblem-wrap {
+        display: none;
+      }
+
+      .match-result-label {
+        order: 3;
+        margin: 0 0 6px;
+        width: 100%;
+        text-align: center;
+        font-size: 22px;
+        font-weight: 850;
+        color: transparent;
+        position: relative;
+      }
+
+      .match-result-label::after {
+        content: "Match Score";
+        color: #222222;
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .final-score-large {
+        order: 4;
+        min-width: 100%;
+        width: 100%;
+        font-size: 92px;
+        line-height: 1;
+        margin: 0 0 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .match-status-message {
+  display: none;
+}
+
+      .match-modal button {
+  order: 6;
+  transform: translateY(20px);
+  padding: 14px 28px;
+  min-width: 210px;
+  font-size: 15px;
+}
+
+.match-modal .title-back-button {
+  order: 7;
+  transform: translateY(20px);
+  background: #d1d5db;
+  color: #111827;
+  box-shadow: 0 10px 22px rgba(107, 114, 128, 0.22);
+}
+
+    .winner-emblem {
+      position: relative;
+      width: 240px;
+      height: 204px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .winner-emblem::before {
+      content: "";
+      position: absolute;
+      inset: -34px -42px;
+      background-image: url("images/winner_wreath.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 3;
+      filter: drop-shadow(0 8px 16px rgba(117, 76, 12, 0.20));
+      transform: scale(1.14);
+      transition: opacity 180ms ease, transform 220ms ease;
+    }
+
+    .result-avatar-wrap.winner .winner-emblem::before {
+      opacity: 1;
+      transform: scale(1.28);
+      animation: emblemPop 520ms cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    }
+
+    .winner-emblem .result-avatar {
+      position: relative;
+      z-index: 2;
+      width: 96px;
+      height: 96px;
+      font-size: 47px;
+    }
+
+    @keyframes emblemPop {
+      0% { transform: scale(0.92) rotate(-8deg); opacity: 0; }
+      68% { transform: scale(1.34) rotate(1.5deg); opacity: 1; }
+      100% { transform: scale(1.28) rotate(0deg); opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+  <audio id="sfxQuestion" src="sounds/Quiz-Question02-1(Low).mp3" preload="auto"></audio>
+  <audio id="sfxBuzz" src="sounds/Quiz-Button03-1.mp3" preload="auto"></audio>
+  <audio id="sfxCorrect" src="sounds/Quiz-Ding_Dong02-1(Fast).mp3" preload="auto"></audio>
+  <audio id="sfxWrong" src="sounds/Quiz-Buzzer02-4(Multi).mp3" preload="auto"></audio>
+  <audio id="sfxWin" src="sounds/win.mp3" preload="auto"></audio>
+  <audio id="sfxLose" src="sounds/lose.mp3" preload="auto"></audio>
+
+  <div class="app">
+    <div class="header">
+      <div>
+        <h1>Head-to-Head Buzzer Quiz Demo</h1>
+        <div class="subtitle">
+          Local prototype: 1 screen, 2 players, 800ms grace window, letter-by-letter question reveal at 20 chars/sec.
+        </div>
+      </div>
+      <span class="status" id="status">Ready</span>
+    </div>
+
+    <div class="main-layout">
+      <aside class="card side-panel">
+        <div class="controls">
+  <button id="startBtn">Start / Restart Match</button>
+  <button class="secondary" id="resetBtn">Reset Match</button>
+
+  <div class="mobile-popup-test-controls">
+    <button class="green" id="showWinPopupBtn" type="button">Show Win Popup</button>
+    <button class="orange" id="showLosePopupBtn" type="button">Show Lose Popup</button>
+  </div>
+
+  <span class="small">Questions load automatically from Supabase.</span>
+  <span class="small">Player A buzz: <span class="kbd">A</span> / Player B is Koh Avatar</span>
+</div>
+
+        <div class="meta">
+          <span>First to 5 points wins</span>
+          <span>Max 30 questions</span>
+          <span>5 wrong answers = loss</span>
+        </div>
+
+        <div class="meta">
+          <span id="questionInfo">Question 1 / 1</span>
+          <span id="bankInfo">Question bank: built-in demo</span>
+        </div>
+      </aside>
+
+      <main class="game-column">
+        <div class="card">
+          <div class="question-box" id="questionBox"></div>
+
+          <div class="timebar-wrap" id="timebarWrap">
+            <div class="timebar-fill" id="timebarFill"></div>
+          </div>
+
+          <div class="buzz-result" id="buzzResult"></div>
+
+          <div class="meta" style="display:none;">
+            <span id="streamInfo">Position: 0</span>
+            <span id="winnerInfo">Press Start / Restart Match to begin.</span>
+          </div>
+        </div>
+
+        <div class="card buzz-action-panel" id="buzzActionPanel">
+          <div class="buzz-action-inner">
+            <div class="press-label">Press!!</div>
+            <div class="buzz-pad">
+              <button class="quiz-buzz-button a" id="buzzA">A</button>
+              <div class="buzz-time" id="buzzTimeA"></div>
+            </div>
+
+            <div class="hidden-buzz-area">
+              <button id="buzzB" type="button">B</button>
+              <div class="buzz-time" id="buzzTimeB"></div>
+            </div>
+          </div>
+
+          <div class="card answer-area" id="answerArea">
+            <div class="answer-player-icon a" id="answerPlayerIcon">A</div>
+            <div class="answer-progress empty" id="answerProgress">Start spelling</div>
+            <span class="timer" id="answerTimer">--</span>
+            <div class="choices" id="choices"></div>
+          </div>
+        </div>
+
+        <div class="players">
+          <div class="card match-scoreboard">
+            <div class="timebar-wrap mobile-timebar-wrap" id="mobileTimebarWrap">
+             <div class="timebar-fill" id="mobileTimebarFill"></div>
+            </div>
+            <div class="score-side score-side-a player-a score-0" id="playerA">
+              <div class="avatar-wrap">
+                <div class="player-avatar a">A</div>
+                <div class="life-badge">♥×<span id="livesA">5</span></div>
+              </div>
+              <div class="score-number"><span id="scoreA">0</span></div>
+              <div class="small" id="infoA" style="display:none;">Waiting</div>
+            </div>
+
+            <div class="score-center">
+              <div class="score-buzz-time" id="buzzSummaryA"></div>
+              <div class="question-counter-center" id="centerQuestionNo">Q1</div>
+              <div class="score-buzz-time" id="buzzSummaryB"></div>
+            </div>
+
+            <div class="score-side score-side-b player-b score-0" id="playerB">
+              <div class="small" id="infoB" style="display:none;">Waiting</div>
+              <div class="score-number"><span id="scoreB">0</span></div>
+              <div class="avatar-wrap">
+                <div class="player-avatar b">K</div>
+                <div class="life-badge">♥×<span id="livesB">5</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+</div>
+
+<div class="answer-backdrop" id="answerBackdrop"></div>
+<div class="mobile-answer-backdrop" id="mobileAnswerBackdrop"></div>
+
+
+<div class="card" style="display:none;">
+      <strong>Event Log</strong>
+      <div class="log" id="log"></div>
+    </div>
+
+    <div class="match-modal-backdrop" id="matchModalBackdrop">
+      <canvas id="confettiCanvas"></canvas>
+      <div class="match-modal" id="matchModal">
+        <h2 id="matchModalTitle">YOU WIN!</h2>
+        <div class="congrats-label" id="matchCongratsLabel"></div>
+        <div class="winner-only-emblem-wrap" id="winnerOnlyEmblemWrap"></div>
+        <div class="match-result-label">Match Result:</div>
+        <div class="match-result-avatars">
+          <div class="result-avatar-wrap" id="resultAvatarWrapA">
+            <div class="winner-emblem">
+              <div class="result-avatar a">A</div>
+            </div>
+            <div class="result-avatar-label">A</div>
+          </div>
+
+          <div class="final-score-large" id="finalScoreLarge">0-0</div>
+
+          <div class="result-avatar-wrap" id="resultAvatarWrapB">
+            <div class="winner-emblem">
+              <div class="result-avatar b">K</div>
+            </div>
+            <div class="result-avatar-label">Koh Avatar</div>
+          </div>
+        </div>
+        <div class="match-status-message">Match Over</div>
+        <p id="matchModalMessage">Final Score</p>
+        <button id="closeModalBtn">Start Next Match</button>
+<button class="title-back-button" id="backToTitleBtn" type="button">Back to Title</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let questionBank = [
+      {
+        id: "geo_000001_int_com",
+        text: "Its indigenous Ainu culture developed distinctive traditions, oral literature, and spiritual practices long before Japan's modern prefectural system was established. During the Meiji era, it became a major frontier region for agricultural development, fisheries, and settlement projects. It contains vast wetlands, active volcanoes, national parks, and some of Japan's coldest cities. Today, it is widely associated with Sapporo, the Snow Festival, dairy products, potatoes, skiing, and the largest land area of any Japanese prefecture. Which region is it?",
+        displayAnswer: "Hokkaido",
+        normalizedAnswer: "hokkaido",
+        answerChars: ["h", "o", "k", "k", "a", "i", "d", "o"]
+      },
+      {
+        id: "geo_000002_beg_com",
+        text: "This river flows through Egypt and is strongly associated with ancient pyramids, pharaohs, and farming along its banks. What river is it?",
+        displayAnswer: "Nile",
+        normalizedAnswer: "nile",
+        answerChars: ["n", "i", "l", "e"]
+      },
+      {
+        id: "sci_000001_beg_com",
+        text: "This planet is called the Red Planet because of its color and is often discussed as a possible place for future human exploration. What planet is it?",
+        displayAnswer: "Mars",
+        normalizedAnswer: "mars",
+        answerChars: ["m", "a", "r", "s"]
+      }
+    ];
+
+    const state = {
+      currentQuestionIndex: 0,
+      status: "ready",
+      pos: 0,
+      streamTimer: null,
+      displayStart: null,
+      buzzes: {},
+      graceTimer: null,
+      answerPlayer: null,
+      answerIndex: 0,
+      answerTimer: null,
+      answerDeadline: null,
+      answerCountdownTimer: null,
+      scores: { A: 0, B: 0 },
+      wrongs: { A: 0, B: 0 },
+      eliminatedThisQuestion: new Set(),
+      fullRevealTimer: null,
+      revealTimer: null,
+      matchOver: false,
+      showAnswerInQuestionBox: false,
+      countdownStart: null,
+      countdownDuration: null,
+      countdownTimer: null,
+      avatarBuzzTimer: null,
+      avatarAnswerTimers: []
+    };
+
+    const $ = (id) => document.getElementById(id);
+
+    const WIN_SCORE = 1;
+    const MAX_QUESTIONS_PER_MATCH = 30;
+    const MAX_WRONGS = 5;
+    const QUESTION_SPEED_MS = 50;
+    const GRACE_WINDOW_MS = 800;
+    const FULL_REVEAL_ANSWER_LIMIT_MS = 5000;
+    const BETWEEN_QUESTIONS_REVEAL_MS = 3000;
+    const SAVED_QUESTIONS_KEY = "buzzer_quiz_saved_questions_json";
+    const SUPABASE_URL = "https://vfedwqlrfjdhnetdgaeq.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZmZWR3cWxyZmpkaG5ldGRnYWVxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcxMTYxODcsImV4cCI6MjA5MjY5MjE4N30.o8lFcRilQ-eIqakyBM55_JOZgVqHexOKGU023AwXUEY";
+    const SUPABASE_MATCH_QUESTION_LIMIT = 90;
+    const AVATAR_NAME = "koh";
+    const AVATAR_ATTEMPTS_TABLE = "avatar_attempts";
+    let avatarAttemptsByQuestionId = new Map();
+
+    function currentQuestion() {
+      return questionBank[state.currentQuestionIndex];
+    }
+
+    function shuffleQuestions() {
+      for (let i = questionBank.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [questionBank[i], questionBank[j]] = [questionBank[j], questionBank[i]];
+      }
+    }
+
+    function normalizeQuestion(raw, index) {
+      const id = raw.id || raw.question_id || `q_${String(index + 1).padStart(6, "0")}`;
+      const text = raw.text || raw.questionText || raw.question_text || "";
+      const displayAnswer = raw.displayAnswer || raw.answerDisplay || raw.answer_display || raw.answer || "";
+      const normalizedAnswer = raw.normalizedAnswer || raw.answerNormalized || raw.answer_normalized || normalizeAnswer(displayAnswer);
+      const answerChars = raw.answerChars || raw.answer_chars || normalizedAnswer.split("");
+
+      return {
+        id,
+        text,
+        displayAnswer,
+        normalizedAnswer,
+        answerChars: Array.isArray(answerChars) ? answerChars.map(String) : String(answerChars).split("")
+      };
+    }
+
+    function normalizeAnswer(value) {
+      return String(value)
+        .toLowerCase()
+        .replace(/\s+/g, "")
+        .replace(/\bii\b/g, "2")
+        .replace(/ⅱ/g, "2")
+        .replace(/Ⅱ/g, "2")
+        .replace(/[^a-z0-9]/g, "");
+    }
+
+    function buildVisibleAnswerProgress(question, revealCount) {
+      const display = String(question.displayAnswer || question.normalizedAnswer || "").toLowerCase();
+      let normalizedSeen = 0;
+      let visible = "";
+
+      for (const char of display) {
+        const isAnswerChar = /[a-z0-9]/.test(char);
+
+        if (isAnswerChar) {
+          if (normalizedSeen >= revealCount) break;
+          visible += char;
+          normalizedSeen += 1;
+        } else if (normalizedSeen > 0 && normalizedSeen < revealCount) {
+          visible += char;
+        }
+      }
+
+      return visible.replace(/\s+/g, " ").trimEnd();
+    }
+
+    async function loadQuestionBankFromJsonText(jsonText, options = {}) {
+      const parsed = JSON.parse(jsonText);
+      const rows = Array.isArray(parsed) ? parsed : parsed.questions;
+
+      if (!Array.isArray(rows)) {
+        throw new Error("JSON must be an array of questions or an object with a questions array.");
+      }
+
+      const normalized = rows
+        .map(normalizeQuestion)
+        .filter((q) => q.text && q.displayAnswer && q.answerChars.length > 0);
+
+      if (normalized.length === 0) {
+        throw new Error("No valid questions were found in the JSON file.");
+      }
+
+      questionBank = normalized;
+      await loadAvatarAttemptsForQuestionBank();
+      state.currentQuestionIndex = 0;
+      resetRound();
+
+      if (options.save !== false) {
+        try {
+          localStorage.setItem(SAVED_QUESTIONS_KEY, jsonText);
+          log(`Loaded and saved ${questionBank.length} questions from JSON.`);
+        } catch (error) {
+          log(`Loaded ${questionBank.length} questions from JSON, but could not save them locally.`);
+        }
+      } else {
+        log(`Loaded ${questionBank.length} questions from JSON.`);
+      }
+
+      updateUI();
+    }
+
+    function handleJsonFile(file) {
+      const reader = new FileReader();
+
+      reader.onload = async () => {
+        try {
+          await loadQuestionBankFromJsonText(reader.result);
+        } catch (error) {
+          alert(`Failed to load questions: ${error.message}`);
+          log(`Failed to load questions: ${error.message}`);
+        }
+      };
+
+      reader.onerror = () => {
+        alert("Failed to read the selected file.");
+        log("Failed to read the selected file.");
+      };
+
+      reader.readAsText(file);
+    }
+
+    async function tryAutoLoadQuestionsJson() {
+      try {
+        const response = await fetch("questions.json", { cache: "no-store" });
+
+        if (!response.ok) {
+          log("Auto-load skipped: questions.json was not found next to the HTML file.");
+          return;
+        }
+
+        const jsonText = await response.text();
+        await loadQuestionBankFromJsonText(jsonText, { save: true });
+        log("Auto-loaded questions.json from the same folder.");
+      } catch (error) {
+        log("Auto-load skipped. Use the Load questions.json button or run a local server.");
+      }
+    }
+
+    function isSupabaseConfigured() {
+      return (
+        SUPABASE_URL &&
+        SUPABASE_ANON_KEY &&
+        !SUPABASE_ANON_KEY.includes("PASTE_YOUR")
+      );
+    }
+
+    function questionFromSupabaseRow(row) {
+      let answerChars = row.answer_chars;
+
+      if (!Array.isArray(answerChars)) {
+        try {
+          answerChars = JSON.parse(answerChars);
+        } catch (error) {
+          answerChars = String(row.answer_normalized || "").split("");
+        }
+      }
+
+      return {
+        id: row.id,
+        text: row.question_text,
+        displayAnswer: row.answer_display,
+        normalizedAnswer: row.answer_normalized,
+        answerChars: answerChars.map(String)
+      };
+    }
+
+    function dedupeQuestionsByAnswer(rows) {
+      const seenAnswers = new Set();
+      const deduped = [];
+
+      for (const row of rows) {
+        const question = questionFromSupabaseRow(row);
+        const answerKey = normalizeAnswer(question.normalizedAnswer || question.displayAnswer);
+
+        if (!answerKey) continue;
+        if (seenAnswers.has(answerKey)) continue;
+
+        seenAnswers.add(answerKey);
+        deduped.push(question);
+      }
+
+      return deduped;
+    }
+
+    function parseMaybeJsonArray(value) {
+      if (Array.isArray(value)) return value;
+      if (value === null || value === undefined || value === "") return [];
+      try {
+        const parsed = JSON.parse(value);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function normalizeAvatarAttempt(row) {
+      return {
+        questionId: row.question_id,
+        buzzTimeMs: Number(row.buzz_time_ms),
+        answerTimeMs: row.answer_time_ms === null || row.answer_time_ms === undefined ? null : Number(row.answer_time_ms),
+        charTimesMs: parseMaybeJsonArray(row.char_times_ms).map((v) => Math.max(0, Number(v) || 0)),
+        selectedAnswer: String(row.selected_answer || "").toLowerCase(),
+        correctAnswer: String(row.correct_answer || "").toLowerCase(),
+        isCorrect: Boolean(row.is_correct)
+      };
+    }
+
+    function clearAvatarTimers() {
+      clearTimeout(state.avatarBuzzTimer);
+      state.avatarBuzzTimer = null;
+      state.avatarAnswerTimers.forEach((timer) => clearTimeout(timer));
+      state.avatarAnswerTimers = [];
+    }
+
+    async function loadAvatarAttemptsForQuestionBank() {
+      avatarAttemptsByQuestionId = new Map();
+      if (!isSupabaseConfigured() || questionBank.length === 0) return;
+
+      const questionIds = questionBank.map((q) => q.id).filter(Boolean);
+      if (questionIds.length === 0) return;
+
+      try {
+        for (let i = 0; i < questionIds.length; i += 80) {
+          const chunk = questionIds.slice(i, i + 80);
+          const inList = chunk.map((id) => `"${String(id).replace(/"/g, "\"")}"`).join(",");
+          const url = `${SUPABASE_URL}/rest/v1/${AVATAR_ATTEMPTS_TABLE}`
+            + `?avatar_name=eq.${encodeURIComponent(AVATAR_NAME)}`
+            + `&question_id=in.(${encodeURIComponent(inList)})`
+            + `&select=question_id,buzz_time_ms,answer_time_ms,char_times_ms,selected_answer,correct_answer,is_correct`;
+
+          const response = await fetch(url, {
+            method: "GET",
+            headers: {
+              "apikey": SUPABASE_ANON_KEY,
+              "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+              "Content-Type": "application/json"
+            }
+          });
+
+          if (!response.ok) throw new Error(await response.text());
+          const rows = await response.json();
+          if (!Array.isArray(rows)) continue;
+
+          rows.forEach((row) => {
+            const attempt = normalizeAvatarAttempt(row);
+            if (attempt.questionId && Number.isFinite(attempt.buzzTimeMs) && attempt.buzzTimeMs >= 0) {
+              avatarAttemptsByQuestionId.set(attempt.questionId, attempt);
+            }
+          });
+        }
+
+        log(`Loaded ${avatarAttemptsByQuestionId.size} Koh Avatar records.`);
+      } catch (error) {
+        console.error(error);
+        log(`Failed to load Koh Avatar records: ${error.message || error}`);
+      }
+    }
+
+    function scheduleAvatarForCurrentQuestion() {
+      clearAvatarTimers();
+
+      const question = currentQuestion();
+      if (!question || state.matchOver || state.status !== "streaming") return;
+      if (state.eliminatedThisQuestion.has("B")) return;
+
+      const attempt = avatarAttemptsByQuestionId.get(question.id);
+      if (!attempt) {
+        log(`No Koh Avatar record for ${question.id}. Player B will not buzz.`);
+        return;
+      }
+
+      const delay = Math.max(0, attempt.buzzTimeMs - (performance.now() - state.displayStart));
+
+      state.avatarBuzzTimer = setTimeout(() => {
+        if (state.matchOver) return;
+        if (state.eliminatedThisQuestion.has("B")) return;
+        if (state.status !== "streaming" && state.status !== "buzz_pending") return;
+        buzz("B");
+      }, delay);
+
+      log(`Koh Avatar scheduled: ${formatSeconds(attempt.buzzTimeMs)}.`);
+    }
+
+    function scheduleAvatarAnswerIfNeeded(player) {
+      clearAvatarTimers();
+
+      if (player !== "B") return;
+
+      const question = currentQuestion();
+      if (!question) return;
+
+      const attempt = avatarAttemptsByQuestionId.get(question.id);
+      if (!attempt) {
+        log(`Koh Avatar won buzz, but no answer record exists for ${question.id}. It will time out.`);
+        return;
+      }
+
+      const answerSource = attempt.selectedAnswer || (attempt.isCorrect ? question.normalizedAnswer : "");
+      const plannedChars = String(answerSource || "").split("");
+      if (plannedChars.length === 0) return;
+
+      const charTimes = attempt.charTimesMs.length > 0 ? attempt.charTimesMs : plannedChars.map((_, index) => index === 0 ? 500 : 220);
+      let elapsed = 0;
+
+      plannedChars.forEach((char, index) => {
+        elapsed += Math.max(0, Number(charTimes[index] ?? 250));
+        const timer = setTimeout(() => {
+          if (state.matchOver) return;
+          if (state.status !== "answering" || state.answerPlayer !== "B") return;
+          chooseChar(char);
+        }, elapsed);
+        state.avatarAnswerTimers.push(timer);
+      });
+
+      log(`Koh Avatar answer simulation started. correct=${attempt.isCorrect ? "true" : "false"}.`);
+    }
+
+    async function loadQuestionBankFromSupabase() {
+      if (!isSupabaseConfigured()) {
+        log("Supabase anon public key is not set in buzzer_demo.html.");
+        setStatus("Supabase key missing");
+        return;
+      }
+
+      try {
+        setStatus("Loading questions");
+        hideMatchPopup();
+
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/rpc/get_random_questions`, {
+          method: "POST",
+          headers: {
+            "apikey": SUPABASE_ANON_KEY,
+            "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            limit_count: SUPABASE_MATCH_QUESTION_LIMIT
+          })
+        });
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(errorText);
+        }
+
+        const rows = await response.json();
+
+        if (!Array.isArray(rows) || rows.length === 0) {
+          throw new Error("No questions returned from Supabase.");
+        }
+
+        questionBank = dedupeQuestionsByAnswer(rows);
+        await loadAvatarAttemptsForQuestionBank();
+        state.currentQuestionIndex = 0;
+        state.scores = { A: 0, B: 0 };
+        state.wrongs = { A: 0, B: 0 };
+        state.matchOver = false;
+        state.showAnswerInQuestionBox = false;
+        resetRound();
+
+        log(`Loaded ${questionBank.length} unique-answer questions from ${rows.length} Supabase rows. Koh Avatar records: ${avatarAttemptsByQuestionId.size}.`);
+        setStatus("Ready");
+        updateUI();
+      } catch (error) {
+        console.error(error);
+        log(`Failed to load from Supabase: ${error.message}`);
+        setStatus("Load failed");
+      }
+    }
+
+    async function tryLoadSavedQuestionsJson() {
+      try {
+        const saved = localStorage.getItem(SAVED_QUESTIONS_KEY);
+        if (!saved) return false;
+        await loadQuestionBankFromJsonText(saved, { save: false });
+        log("Restored saved questions from this browser.");
+        return true;
+      } catch (error) {
+        log("Saved questions could not be restored.");
+        return false;
+      }
+    }
+
+    function clearSavedQuestionsJson() {
+      try {
+        localStorage.removeItem(SAVED_QUESTIONS_KEY);
+        log("Saved questions were cleared. The built-in demo questions will be used until you load questions.json again.");
+      } catch (error) {
+        log("Saved questions could not be cleared.");
+      }
+    }
+
+    function log(message) {
+      const time = new Date().toLocaleTimeString();
+      $("log").innerHTML += `[${time}] ${message}<br>`;
+      $("log").scrollTop = $("log").scrollHeight;
+    }
+
+    function setStatus(text) {
+      const statusEl = $("status");
+      if (statusEl) statusEl.textContent = text;
+    }
+
+    function isMobileViewport() {
+      return window.matchMedia && window.matchMedia("(max-width: 760px)").matches;
+    }
+
+    function showAnswerBackdrop() {
+      const desktopBackdrop = $("answerBackdrop");
+      const mobileBackdrop = $("mobileAnswerBackdrop");
+
+      if (isMobileViewport()) {
+        if (desktopBackdrop) desktopBackdrop.classList.remove("show");
+        if (mobileBackdrop) mobileBackdrop.classList.add("show");
+      } else {
+        if (mobileBackdrop) mobileBackdrop.classList.remove("show");
+        if (desktopBackdrop) desktopBackdrop.classList.add("show");
+      }
+    }
+
+    function hideAnswerBackdrop() {
+      const desktopBackdrop = $("answerBackdrop");
+      const mobileBackdrop = $("mobileAnswerBackdrop");
+
+      if (desktopBackdrop) desktopBackdrop.classList.remove("show");
+      if (mobileBackdrop) mobileBackdrop.classList.remove("show");
+    }
+
+    function fitAnswerProgressToOneLine() {
+      const progressEl = $("answerProgress");
+      if (!progressEl || !isMobileViewport()) return;
+
+      progressEl.style.fontSize = "";
+      progressEl.style.letterSpacing = "";
+
+      requestAnimationFrame(() => {
+        if (!progressEl || !isMobileViewport()) return;
+
+        const maxFont = 38;
+        const minFont = 18;
+        const maxLetter = 0.10;
+        const minLetter = 0.00;
+        let fontSize = maxFont;
+        let letterSpacingEm = maxLetter;
+
+        progressEl.style.whiteSpace = "nowrap";
+        progressEl.style.overflow = "hidden";
+        progressEl.style.fontSize = `${fontSize}px`;
+        progressEl.style.letterSpacing = `${letterSpacingEm}em`;
+
+        while (progressEl.scrollWidth > progressEl.clientWidth && letterSpacingEm > minLetter) {
+          letterSpacingEm = Math.max(minLetter, letterSpacingEm - 0.01);
+          progressEl.style.letterSpacing = `${letterSpacingEm.toFixed(2)}em`;
+        }
+
+        while (progressEl.scrollWidth > progressEl.clientWidth && fontSize > minFont) {
+          fontSize -= 1;
+          progressEl.style.fontSize = `${fontSize}px`;
+        }
+      });
+    }
+
+    function showBuzzResult(html) {
+      const el = $("buzzResult");
+      if (!el) return;
+      el.innerHTML = html;
+      el.classList.add("show");
+    }
+
+    function showBuzzTime(player, text, className = "") {
+      const el = player === "A" ? $("buzzTimeA") : $("buzzTimeB");
+      if (!el) return;
+      el.className = "buzz-time show";
+      if (className) el.classList.add(className);
+      el.innerHTML = text;
+    }
+
+    function hideBuzzResult() {
+      const el = $("buzzResult");
+      if (el) {
+        el.innerHTML = "";
+        el.classList.remove("show");
+      }
+
+      const timeA = $("buzzTimeA");
+      const timeB = $("buzzTimeB");
+      if (timeA) {
+        timeA.innerHTML = "";
+        timeA.className = "buzz-time";
+      }
+      if (timeB) {
+        timeB.innerHTML = "";
+        timeB.className = "buzz-time";
+      }
+    }
+
+    function formatSeconds(ms) {
+      return `${(ms / 1000).toFixed(3)}s`;
+    }
+
+    function setScoreBuzzTime(player, text, className = "") {
+      const el = player === "A" ? $("buzzSummaryA") : $("buzzSummaryB");
+      if (!el) return;
+      el.textContent = text;
+      el.classList.remove("win-a", "win-b", "show");
+      if (text) el.classList.add("show");
+      if (className) el.classList.add(className);
+    }
+
+    function playSfx(id) {
+      const audio = $(id);
+      if (!audio) return Promise.resolve(false);
+      audio.volume = id === "sfxQuestion" ? 0.8 : 1.0;
+      audio.currentTime = 0;
+      return audio.play()
+        .then(() => true)
+        .catch(() => false);
+    }
+
+    function playSfxBeforeQuestionStart(callback) {
+      const audio = $("sfxQuestion");
+      if (!audio) {
+        callback();
+        return;
+      }
+
+      let started = false;
+      let done = false;
+
+      const startQuestion = () => {
+        if (done) return;
+        done = true;
+        audio.onended = null;
+        callback();
+      };
+
+      audio.currentTime = 0;
+      audio.volume = 0.8;
+      audio.onended = startQuestion;
+
+      audio.play()
+        .then(() => {
+          started = true;
+        })
+        .catch(() => {
+          startQuestion();
+        });
+
+      setTimeout(() => {
+        if (!started) return;
+        startQuestion();
+      }, Math.min(900, Math.max(250, (audio.duration || 0.6) * 1000)));
+    }
+
+    function setPlayerScoreClass(player, score) {
+      return;
+    }
+
+    let confettiAnimationId = null;
+
+    function animateFinalScore(scoreA, scoreB) {
+      const finalScore = $("finalScoreLarge");
+      if (!finalScore) return;
+
+      const duration = 1000;
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const currentA = Math.floor(progress * scoreA);
+        const currentB = Math.floor(progress * scoreB);
+        finalScore.textContent = `${currentA}-${currentB}`;
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+
+    function stopConfetti() {
+      if (confettiAnimationId) {
+        cancelAnimationFrame(confettiAnimationId);
+        confettiAnimationId = null;
+      }
+      const canvas = $("confettiCanvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function startConfetti() {
+      const canvas = $("confettiCanvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      stopConfetti();
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const colors = ["#fde047", "#60a5fa", "#f87171", "#34d399", "#a78bfa"];
+      const pieces = [];
+
+      for (let i = 0; i < 150; i++) {
+        pieces.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height - canvas.height,
+          size: Math.random() * 10 + 5,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          speed: Math.random() * 3 + 2,
+          angle: Math.random() * Math.PI * 2
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pieces.forEach((p) => {
+          ctx.save();
+          ctx.fillStyle = p.color;
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.angle);
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+          ctx.restore();
+
+          p.y += p.speed;
+          p.angle += 0.05;
+          if (p.y > canvas.height + 20) p.y = -20;
+        });
+        confettiAnimationId = requestAnimationFrame(draw);
+      }
+
+      draw();
+    }
+
+    function showMatchPopup(winner, message) {
+      const backdrop = $("matchModalBackdrop");
+      const modal = $("matchModal");
+      const title = $("matchModalTitle");
+      const congratsLabel = $("matchCongratsLabel");
+      const body = $("matchModalMessage");
+      const wrapA = $("resultAvatarWrapA");
+      const wrapB = $("resultAvatarWrapB");
+      const finalScore = $("finalScoreLarge");
+      const winnerOnlyEmblemWrap = $("winnerOnlyEmblemWrap");
+      if (!backdrop || !modal || !title || !body) return;
+
+      modal.classList.remove("player-a-win", "player-b-win");
+      modal.classList.add(winner === "A" ? "player-a-win" : "player-b-win");
+
+      if (wrapA && wrapB) {
+        wrapA.classList.toggle("winner", winner === "A");
+        wrapB.classList.toggle("winner", winner === "B");
+      }
+      if (winnerOnlyEmblemWrap) {
+        winnerOnlyEmblemWrap.innerHTML = `
+          <div class="result-avatar-wrap winner">
+            <div class="winner-emblem">
+              <div class="result-avatar ${winner === "A" ? "a" : "b"}">${winner}</div>
+            </div>
+            <div class="result-avatar-label">${winner}</div>
+          </div>
+        `;
+      }
+
+      if (finalScore) {
+        finalScore.classList.remove("player-a-win-score", "player-b-win-score");
+        finalScore.classList.add(winner === "A" ? "player-a-win-score" : "player-b-win-score");
+        finalScore.textContent = "0-0";
+      }
+
+      title.textContent = winner === "A" ? "YOU WIN!" : "YOU LOSE";
+      if (congratsLabel) congratsLabel.textContent = "";
+      body.textContent = "";
+
+      backdrop.classList.add("show");
+      animateFinalScore(state.scores.A * 10, state.scores.B * 10);
+
+      if (winner === "A") {
+        startConfetti();
+        playSfx("sfxWin");
+      } else {
+        stopConfetti();
+        playSfx("sfxLose");
+      }
+    }
+
+    function hideMatchPopup() {
+      const backdrop = $("matchModalBackdrop");
+      if (backdrop) backdrop.classList.remove("show");
+      stopConfetti();
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function getQuestionNumber() {
+      return state.currentQuestionIndex + 1;
+    }
+
+    function renderQuestionText() {
+      if (!currentQuestion()) return "";
+
+      if (state.status === "ready" && state.pos === 0 && !state.showAnswerInQuestionBox) {
+        return "";
+      }
+
+      const qNo = getQuestionNumber();
+      const visibleText = currentQuestion().text.slice(0, state.pos);
+      const questionPart = `Q${qNo}. ${escapeHtml(visibleText)}`;
+
+      if (!state.showAnswerInQuestionBox) {
+        return questionPart;
+      }
+
+      return `${questionPart}<span class="answer-line">A${qNo}. ${escapeHtml(currentQuestion().displayAnswer)}</span>`;
+    }
+
+    function getActiveTimebarElements() {
+      const isMobile = window.matchMedia && window.matchMedia("(max-width: 760px)").matches;
+
+  return {
+    wrap: isMobile ? $("mobileTimebarWrap") : $("timebarWrap"),
+    fill: isMobile ? $("mobileTimebarFill") : $("timebarFill")
+  };
+}
+
+function hideTimebar() {
+  const desktopWrap = $("timebarWrap");
+  const desktopFill = $("timebarFill");
+  const mobileWrap = $("mobileTimebarWrap");
+  const mobileFill = $("mobileTimebarFill");
+
+  if (desktopWrap) desktopWrap.classList.remove("show");
+  if (desktopFill) desktopFill.style.transform = "scaleX(1)";
+  if (mobileWrap) mobileWrap.classList.remove("show");
+  if (mobileFill) mobileFill.style.transform = "scaleX(1)";
+}
+
+    function startTimebar(durationMs) {
+      state.countdownStart = performance.now();
+      state.countdownDuration = durationMs;
+
+      const timebar = getActiveTimebarElements();
+if (!timebar.wrap || !timebar.fill) return;
+
+timebar.wrap.classList.add("show");
+timebar.fill.style.transform = "scaleX(1)";
+
+      clearInterval(state.countdownTimer);
+
+      state.countdownTimer = setInterval(() => {
+        const elapsed = performance.now() - state.countdownStart;
+        const ratio = Math.max(0, 1 - elapsed / state.countdownDuration);
+
+        timebar.fill.style.transform = `scaleX(${ratio})`;
+
+        if (ratio <= 0) {
+          clearInterval(state.countdownTimer);
+          state.countdownTimer = null;
+        }
+      }, 30);
+    }
+
+    function updateUI() {
+      if (!currentQuestion()) return;
+
+      $("questionBox").innerHTML = renderQuestionText();
+      $("streamInfo").textContent = `Position: ${state.pos} / ${currentQuestion().text.length}`;
+      $("scoreA").textContent = state.scores.A * 10;
+      $("scoreB").textContent = state.scores.B * 10;
+      $("livesA").textContent = Math.max(0, MAX_WRONGS - state.wrongs.A);
+      $("livesB").textContent = Math.max(0, MAX_WRONGS - state.wrongs.B);
+      $("centerQuestionNo").textContent = `Q${state.currentQuestionIndex + 1}`;
+
+      setPlayerScoreClass("A", state.scores.A);
+      setPlayerScoreClass("B", state.scores.B);
+
+      $("playerA").classList.toggle("active", state.answerPlayer === "A");
+      $("playerB").classList.toggle("active", state.answerPlayer === "B");
+
+      const canBuzzA =
+        (state.status === "streaming" || state.status === "buzz_pending") &&
+        !state.eliminatedThisQuestion.has("A") &&
+        state.buzzes.A === undefined;
+
+      const canBuzzB =
+        (state.status === "streaming" || state.status === "buzz_pending") &&
+        !state.eliminatedThisQuestion.has("B") &&
+        state.buzzes.B === undefined;
+
+      $("buzzA").disabled = !canBuzzA;
+      $("buzzB").disabled = !canBuzzB;
+
+      $("infoA").textContent = state.eliminatedThisQuestion.has("A") ? "Eliminated for this question" : "Waiting";
+      $("infoB").textContent = state.eliminatedThisQuestion.has("B") ? "Eliminated for this question" : "Waiting";
+
+      $("questionInfo").textContent = `Question ${state.currentQuestionIndex + 1} / ${questionBank.length}`;
+      $("bankInfo").textContent = `Question bank: ${questionBank.length} questions loaded`;
+    }
+
+    function clearTimers() {
+      clearAvatarTimers();
+      clearInterval(state.streamTimer);
+      clearTimeout(state.graceTimer);
+      clearTimeout(state.answerTimer);
+      clearInterval(state.answerCountdownTimer);
+      clearTimeout(state.fullRevealTimer);
+      clearTimeout(state.revealTimer);
+      clearInterval(state.countdownTimer);
+
+      state.streamTimer = null;
+      state.graceTimer = null;
+      state.answerTimer = null;
+      state.answerCountdownTimer = null;
+      state.fullRevealTimer = null;
+      state.revealTimer = null;
+      state.countdownTimer = null;
+      state.countdownStart = null;
+      state.countdownDuration = null;
+
+      hideTimebar();
+    }
+
+    function resetRound() {
+      clearTimers();
+
+      state.status = "ready";
+      state.pos = 0;
+      state.displayStart = null;
+      state.buzzes = {};
+      state.answerPlayer = null;
+      state.answerIndex = 0;
+      state.eliminatedThisQuestion = new Set();
+      state.showAnswerInQuestionBox = false;
+
+      $("answerArea").classList.remove("show");
+      $("answerArea").classList.remove("avatar-answering");
+      hideAnswerBackdrop();
+      $("answerArea").classList.remove("avatar-answering");
+      $("buzzActionPanel").classList.remove("answering");
+      hideBuzzResult();
+      setScoreBuzzTime("A", "");
+      setScoreBuzzTime("B", "");
+      $("winnerInfo").textContent = "";
+
+      setStatus("Ready");
+      updateUI();
+    }
+
+    async function startRound() {
+      if (avatarAttemptsByQuestionId.size === 0) {
+        setStatus("Loading avatar");
+        await loadAvatarAttemptsForQuestionBank();
+      }
+
+      shuffleQuestions();
+      hideMatchPopup();
+
+      state.currentQuestionIndex = 0;
+      state.scores = { A: 0, B: 0 };
+      state.wrongs = { A: 0, B: 0 };
+      state.matchOver = false;
+      state.showAnswerInQuestionBox = false;
+
+      $("log").innerHTML = "";
+      log(`Match started. Player B is Koh Avatar. Avatar records loaded: ${avatarAttemptsByQuestionId.size}.`);
+
+      startCurrentQuestion();
+    }
+
+    function startCurrentQuestion() {
+      resetRound();
+
+      if (state.matchOver) return;
+
+      if (state.currentQuestionIndex >= Math.min(questionBank.length, MAX_QUESTIONS_PER_MATCH)) {
+        finishMatch("Maximum question count reached.");
+        return;
+      }
+
+      state.status = "question_intro";
+      setStatus("Get ready");
+      $("winnerInfo").textContent = "";
+      log(`Question ${state.currentQuestionIndex + 1} intro sound.`);
+      updateUI();
+
+      playSfxBeforeQuestionStart(() => {
+        if (state.matchOver || state.status !== "question_intro") return;
+
+        state.status = "streaming";
+        state.displayStart = performance.now();
+        scheduleAvatarForCurrentQuestion();
+
+        setStatus("Question streaming");
+        $("winnerInfo").textContent = "";
+        log(`Question ${state.currentQuestionIndex + 1} started. Streaming at 20 chars/sec.`);
+
+        state.streamTimer = setInterval(() => {
+          if (state.status !== "streaming") return;
+
+          if (state.pos < currentQuestion().text.length) {
+            state.pos += 1;
+            updateUI();
+          } else {
+            clearInterval(state.streamTimer);
+            log("Full question revealed. Players have 5 seconds to buzz.");
+            startTimebar(FULL_REVEAL_ANSWER_LIMIT_MS);
+
+            state.fullRevealTimer = setTimeout(() => {
+              if (state.status === "streaming") {
+                revealQuestionThenContinue("Time up. No correct answer after full reveal.");
+              }
+            }, FULL_REVEAL_ANSWER_LIMIT_MS);
+          }
+        }, QUESTION_SPEED_MS);
+
+        updateUI();
+      });
+    }
+
+    function buzz(player) {
+      if (state.status !== "streaming" && state.status !== "buzz_pending") return;
+      if (state.eliminatedThisQuestion.has(player)) return;
+      if (state.buzzes[player] !== undefined) return;
+
+      const reaction = Math.round(performance.now() - state.displayStart);
+      const isFirstBuzz = Object.keys(state.buzzes).length === 0;
+
+      state.buzzes[player] = reaction;
+      setScoreBuzzTime(player, formatSeconds(reaction));
+      playSfx("sfxBuzz");
+
+      if (player === "B") {
+        log(`Koh Avatar buzzed at ${(reaction / 1000).toFixed(3)}s.`);
+      }
+
+      if (isFirstBuzz) {
+        state.status = "buzz_pending";
+        clearInterval(state.streamTimer);
+        clearTimeout(state.fullRevealTimer);
+        hideTimebar();
+        setStatus("Buzz pending");
+        log(`Player ${player} buzzed first at ${(reaction / 1000).toFixed(3)}s. Waiting ${GRACE_WINDOW_MS}ms for the other player.`);
+
+        state.graceTimer = setTimeout(() => {
+          decideBuzzWinner();
+        }, GRACE_WINDOW_MS);
+      } else {
+        log(`Player ${player} also buzzed at ${(reaction / 1000).toFixed(3)}s within the grace window.`);
+      }
+
+      $("winnerInfo").textContent = "";
+      updateUI();
+    }
+
+    function decideBuzzWinner() {
+      const a = state.buzzes.A;
+      const b = state.buzzes.B;
+      let winner;
+
+      if (a !== undefined && b !== undefined) {
+        winner = a <= b ? "A" : "B";
+        const diff = Math.abs(a - b);
+        setScoreBuzzTime("A", formatSeconds(a), winner === "A" ? "win-a" : "");
+        setScoreBuzzTime("B", formatSeconds(b), winner === "B" ? "win-b" : "");
+
+        showBuzzTime(
+          "A",
+          `${formatSeconds(a)}` + (winner === "A" ? `<br>WIN` : `<br>+${formatSeconds(diff)}`),
+          winner === "A" ? "win-a" : ""
+        );
+
+        showBuzzTime(
+          "B",
+          `${formatSeconds(b)}` + (winner === "B" ? `<br>WIN` : `<br>+${formatSeconds(diff)}`),
+          winner === "B" ? "win-b" : ""
+        );
+
+        log(`Both buzzed. A=${formatSeconds(a)}, B=${formatSeconds(b)}. Player ${winner} wins by ${formatSeconds(diff)}.`);
+      } else {
+        winner = a !== undefined ? "A" : "B";
+        const winnerTime = winner === "A" ? a : b;
+        setScoreBuzzTime("A", winner === "A" ? formatSeconds(winnerTime) : "", winner === "A" ? "win-a" : "");
+        setScoreBuzzTime("B", winner === "B" ? formatSeconds(winnerTime) : "", winner === "B" ? "win-b" : "");
+
+        if (winner === "A") {
+          showBuzzTime("A", `${formatSeconds(winnerTime)}<br>WIN`, "win-a");
+        } else {
+          showBuzzTime("B", `${formatSeconds(winnerTime)}<br>WIN`, "win-b");
+        }
+
+        log(`Grace window ended. Player ${winner} wins the buzz at ${formatSeconds(winnerTime)}.`);
+      }
+
+      state.answerPlayer = winner;
+      state.status = "answering";
+
+      $("winnerInfo").textContent = "";
+
+      setStatus("Answering");
+      showAnswerUI(winner);
+      updateUI();
+    }
+
+    function showAnswerUI(player) {
+  state.answerIndex = 0;
+
+  const answerArea = $("answerArea");
+  if (isMobileViewport() && answerArea && answerArea.parentElement !== document.body) {
+    document.body.appendChild(answerArea);
+  }
+
+  $("buzzActionPanel").classList.add("answering");
+  $("answerArea").classList.add("show");
+  $("answerArea").classList.toggle("avatar-answering", player === "B");
+  showAnswerBackdrop();
+
+  const icon = $("answerPlayerIcon");
+  icon.textContent = player === "B" ? "K" : "A";
+  icon.classList.toggle("a", player === "A");
+  icon.classList.toggle("b", player === "B");
+
+  renderAnswerChoices();
+  scheduleAvatarAnswerIfNeeded(player);
+}
+
+    function renderAnswerChoices() {
+      const idx = state.answerIndex;
+      const correct = currentQuestion().answerChars[idx];
+      const built = buildVisibleAnswerProgress(currentQuestion(), idx);
+      const progressEl = $("answerProgress");
+
+      if (built) {
+        progressEl.textContent = built;
+        progressEl.classList.remove("empty");
+      } else if (state.answerPlayer === "B") {
+        progressEl.textContent = "Opponent is answering";
+        progressEl.classList.add("empty");
+      } else {
+        progressEl.textContent = "Start spelling";
+        progressEl.classList.add("empty");
+      }
+
+      fitAnswerProgressToOneLine();
+
+      const choices = makeChoices(correct);
+      $("choices").innerHTML = "";
+
+      for (const ch of choices) {
+        const btn = document.createElement("button");
+        btn.className = "choice";
+        btn.textContent = ch;
+        btn.onclick = () => chooseChar(ch);
+        $("choices").appendChild(btn);
+      }
+
+      const limit = idx === 0 ? 5000 : 3000;
+      state.answerDeadline = performance.now() + limit;
+
+      clearTimeout(state.answerTimer);
+      clearInterval(state.answerCountdownTimer);
+
+      state.answerTimer = setTimeout(() => failAnswer("time out"), limit);
+
+      state.answerCountdownTimer = setInterval(() => {
+        const remain = Math.max(0, state.answerDeadline - performance.now());
+        $("answerTimer").textContent = (remain / 1000).toFixed(1) + "s";
+      }, 40);
+    }
+
+    function makeChoices(correct) {
+      const vowels = ["a", "e", "i", "o", "u"];
+      const consonants = "bcdfghjklmnpqrstvwxyz".split("");
+      const digits = "0123456789".split("");
+
+      let pool = /[0-9]/.test(correct)
+        ? digits
+        : (vowels.includes(correct) ? vowels : consonants);
+
+      const set = new Set([correct]);
+
+      while (set.size < 4) {
+        const c = pool[Math.floor(Math.random() * pool.length)];
+        set.add(c);
+      }
+
+      return Array.from(set).sort(() => Math.random() - 0.5);
+    }
+
+    function chooseChar(ch) {
+      const correct = currentQuestion().answerChars[state.answerIndex];
+
+      if (ch !== correct) {
+        playSfx("sfxWrong");
+        failAnswer(`wrong character '${ch}'`);
+        return;
+      }
+
+      log(`Player ${state.answerPlayer} selected '${ch}' correctly.`);
+
+      state.answerIndex += 1;
+
+      if (state.answerIndex >= currentQuestion().answerChars.length) {
+        clearTimeout(state.answerTimer);
+        clearInterval(state.answerCountdownTimer);
+
+        const p = state.answerPlayer;
+        state.scores[p] += 1;
+        state.status = "result";
+
+        setStatus("Correct");
+        playSfx("sfxCorrect");
+        $("answerArea").classList.remove("show");
+        $("answerArea").classList.remove("avatar-answering");
+        hideAnswerBackdrop();
+        $("answerArea").classList.remove("avatar-answering");
+        $("buzzActionPanel").classList.remove("answering");
+        $("winnerInfo").textContent = "";
+
+        log(`Player ${p} completed the answer '${currentQuestion().displayAnswer}' and scores +1.`);
+        updateUI();
+
+        revealQuestionThenContinue(`Player ${p} answered correctly.`);
+        return;
+      }
+
+      renderAnswerChoices();
+    }
+
+    function failAnswer(reason) {
+      clearTimeout(state.answerTimer);
+      clearInterval(state.answerCountdownTimer);
+
+      const p = state.answerPlayer;
+      state.wrongs[p] += 1;
+      state.eliminatedThisQuestion.add(p);
+
+      if (reason === "time out") {
+        playSfx("sfxWrong");
+      }
+
+      log(`Player ${p} failed: ${reason}. Player ${p} is eliminated for this question.`);
+
+      $("answerArea").classList.remove("show");
+      $("answerArea").classList.remove("avatar-answering");
+      hideAnswerBackdrop();
+      $("answerArea").classList.remove("avatar-answering");
+      $("buzzActionPanel").classList.remove("answering");
+
+      state.answerPlayer = null;
+      state.buzzes = {};
+
+      if (state.wrongs[p] >= MAX_WRONGS) {
+        revealQuestionThenContinue(`Player ${p} reached ${MAX_WRONGS} wrong answers.`);
+        return;
+      }
+
+      if (state.eliminatedThisQuestion.has("A") && state.eliminatedThisQuestion.has("B")) {
+        revealQuestionThenContinue("Both players missed this question.");
+        return;
+      }
+
+      state.status = "streaming";
+      state.displayStart = performance.now() - state.pos * QUESTION_SPEED_MS;
+      scheduleAvatarForCurrentQuestion();
+
+      setStatus("Question resumed");
+      $("winnerInfo").textContent = "";
+
+      log(`Question resumed from character ${state.pos}.`);
+
+      state.streamTimer = setInterval(() => {
+        if (state.status !== "streaming") return;
+
+        if (state.pos < currentQuestion().text.length) {
+          state.pos += 1;
+          updateUI();
+        } else {
+          clearInterval(state.streamTimer);
+          log("Full question revealed. Players have 5 seconds to buzz.");
+          startTimebar(FULL_REVEAL_ANSWER_LIMIT_MS);
+
+          state.fullRevealTimer = setTimeout(() => {
+            if (state.status === "streaming") {
+              revealQuestionThenContinue("Time up. No correct answer after full reveal.");
+            }
+          }, FULL_REVEAL_ANSWER_LIMIT_MS);
+        }
+      }, QUESTION_SPEED_MS);
+
+      updateUI();
+    }
+
+    function revealQuestionThenContinue(reason) {
+      clearTimers();
+
+      state.status = "revealing";
+      state.pos = currentQuestion().text.length;
+      state.showAnswerInQuestionBox = true;
+
+      setStatus("Answer reveal");
+      $("answerArea").classList.remove("show");
+      $("answerArea").classList.remove("avatar-answering");
+      hideAnswerBackdrop();
+      $("answerArea").classList.remove("avatar-answering");
+      $("buzzActionPanel").classList.remove("answering");
+      hideBuzzResult();
+      $("winnerInfo").textContent = "";
+
+      log(`${reason} Showing full question and answer for 3 seconds. Answer: ${currentQuestion().displayAnswer}.`);
+
+      updateUI();
+
+      state.revealTimer = setTimeout(() => {
+        if (state.matchOver) return;
+
+        if (checkMatchEnd()) return;
+
+        state.currentQuestionIndex += 1;
+
+        if (state.currentQuestionIndex >= Math.min(questionBank.length, MAX_QUESTIONS_PER_MATCH)) {
+          finishMatch("Maximum question count reached.");
+          return;
+        }
+
+        startCurrentQuestion();
+      }, BETWEEN_QUESTIONS_REVEAL_MS);
+    }
+
+    function checkMatchEnd() {
+      if (state.scores.A >= WIN_SCORE) {
+        finishMatch(`Player A wins with ${state.scores.A} points.`);
+        return true;
+      }
+
+      if (state.scores.B >= WIN_SCORE) {
+        finishMatch(`Player B wins with ${state.scores.B} points.`);
+        return true;
+      }
+
+      if (state.wrongs.A >= MAX_WRONGS) {
+        finishMatch(`Player A reached ${MAX_WRONGS} wrong answers. Player B wins.`);
+        return true;
+      }
+
+      if (state.wrongs.B >= MAX_WRONGS) {
+        finishMatch(`Player B reached ${MAX_WRONGS} wrong answers. Player A wins.`);
+        return true;
+      }
+
+      return false;
+    }
+
+    function finishMatch(message) {
+      clearTimers();
+
+      state.matchOver = true;
+      state.status = "match_over";
+
+      setStatus("Match over");
+      $("answerArea").classList.remove("show");
+      $("answerArea").classList.remove("avatar-answering");
+      hideAnswerBackdrop();
+      $("answerArea").classList.remove("avatar-answering");
+      $("buzzActionPanel").classList.remove("answering");
+      hideBuzzResult();
+
+      if (currentQuestion()) {
+        state.pos = currentQuestion().text.length;
+        state.showAnswerInQuestionBox = true;
+      }
+
+      $("winnerInfo").textContent = "";
+
+      log(`MATCH OVER: ${message}`);
+
+      updateUI();
+
+      let winner = null;
+
+      if (message.includes("Player A wins") || message.includes("Player B reached")) {
+        winner = "A";
+      } else if (message.includes("Player B wins") || message.includes("Player A reached")) {
+        winner = "B";
+      }
+
+      if (winner) {
+        showMatchPopup(
+          winner,
+          `${message} Final score: A ${state.scores.A} - B ${state.scores.B}`
+        );
+      }
+    }
+
+    function resetMatch() {
+      resetRound();
+      hideMatchPopup();
+
+      state.currentQuestionIndex = 0;
+      state.scores = { A: 0, B: 0 };
+      state.wrongs = { A: 0, B: 0 };
+      state.matchOver = false;
+      state.showAnswerInQuestionBox = false;
+
+      $("log").innerHTML = "";
+
+      log("Match reset. Press Start / Restart Match to shuffle and begin.");
+
+      updateUI();
+    }
+
+    const startButton = $("startBtn");
+const resetButton = $("resetBtn");
+const closeModalButton = $("closeModalBtn");
+const backToTitleButton = $("backToTitleBtn");
+const showWinPopupButton = $("showWinPopupBtn");
+const showLosePopupButton = $("showLosePopupBtn");
+
+if (startButton) startButton.onclick = () => startRound();
+if (resetButton) resetButton.onclick = resetMatch;
+if (closeModalButton) closeModalButton.onclick = () => startRound();
+if (backToTitleButton) {
+  backToTitleButton.onclick = () => {
+    hideMatchPopup();
+    resetMatch();
+  };
+}
+
+if (showWinPopupButton) {
+  showWinPopupButton.onclick = () => {
+    state.scores.A = 1;
+    state.scores.B = 0;
+    showMatchPopup("A", "Preview win popup.");
+  };
+}
+
+if (showLosePopupButton) {
+  showLosePopupButton.onclick = () => {
+    state.scores.A = 0;
+    state.scores.B = 1;
+    showMatchPopup("B", "Preview lose popup.");
+  };
+}
+
+    $("buzzA").onclick = () => buzz("A");
+    $("buzzB").onclick = () => {};
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key.toLowerCase() === "a") buzz("A");
+      // Player B is controlled by Koh Avatar.
+    });
+
+    updateUI();
+    log("Demo loaded. Fetching questions from Supabase...");
+    loadQuestionBankFromSupabase();
+  </script>
+</body>
+</html>

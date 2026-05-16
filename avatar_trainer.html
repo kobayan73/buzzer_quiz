@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Koh Avatar Trainer</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --ink: #111827;
+      --muted: #64748b;
+      --soft-border: rgba(148, 163, 184, 0.24);
+      --card: rgba(255, 255, 255, 0.88);
+      --blue: #0ea5d8;
+      --pink: #db3f91;
+      --orange: #f97316;
+      --green: #10b981;
+      --red: #ef4444;
+    }
+
+    html, body {
+      min-height: 100%;
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(186, 230, 253, 0.46), transparent 30%),
+        radial-gradient(circle at 88% 14%, rgba(252, 231, 243, 0.55), transparent 32%),
+        radial-gradient(circle at 72% 86%, rgba(254, 240, 138, 0.24), transparent 34%),
+        linear-gradient(135deg, #f8fbff 0%, #fff8fc 52%, #fffdf3 100%);
+      background-attachment: fixed;
+      color: var(--ink);
+    }
+
+    button { border: 0; cursor: pointer; font-family: inherit; }
+    button:hover { transform: translateY(-1px); }
+    button:active { transform: translateY(1px) scale(0.99); }
+    button:disabled { cursor: not-allowed; opacity: 0.55; transform: none; }
+
+    .page {
+      width: min(1120px, calc(100vw - 20px));
+      min-height: 100vh;
+      height: 100vh;
+      margin: 0 auto;
+      padding: 10px 0;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      gap: 10px;
+      overflow: hidden;
+    }
+
+    .top-card {
+      border-radius: 28px;
+      padding: 12px 16px;
+      background: var(--card);
+      border: 1px solid var(--soft-border);
+      box-shadow: 0 14px 38px rgba(0,0,0,0.08);
+      backdrop-filter: blur(14px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(238, 242, 255, 0.92);
+      color: #3730a3;
+      font-size: 11px;
+      font-weight: 850;
+      margin-bottom: 6px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      font-weight: 950;
+    }
+
+    h1 span {
+      display: block;
+      background: linear-gradient(135deg, #0284c7, #db2777 62%, #f97316);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle { display: none; }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 86px);
+      gap: 8px;
+    }
+
+    .stat {
+      padding: 8px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(226, 232, 240, 0.86);
+      text-align: center;
+    }
+
+    .stat-label {
+      color: #94a3b8;
+      font-size: 9px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .stat-value {
+      margin-top: 2px;
+      color: var(--ink);
+      font-size: 18px;
+      font-weight: 950;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 250px;
+      gap: 10px;
+      min-height: 0;
+      height: 100%;
+      order: -1;
+    }
+
+    .question-card,
+    .side-card {
+      border-radius: 34px;
+      background: var(--card);
+      border: 1px solid var(--soft-border);
+      box-shadow: 0 22px 60px rgba(0,0,0,0.10);
+      backdrop-filter: blur(14px);
+    }
+
+    .question-card {
+      min-height: 0;
+      height: 100%;
+      padding: 12px;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) 190px;
+      gap: 8px;
+    }
+
+    .question-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 0 2px;
+    }
+
+    .pill-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(248, 250, 252, 0.92);
+      border: 1px solid rgba(226, 232, 240, 0.82);
+      color: #475569;
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    #timerPill {
+      display: none;
+    }
+
+    .status-pill {
+      color: #075985;
+      background: rgba(224, 242, 254, 0.9);
+      border-color: rgba(125, 211, 252, 0.36);
+    }
+
+    .question-box {
+      min-height: 0;
+      height: 100%;
+      border-radius: 28px;
+      padding: 54px 28px 54px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(226, 232, 240, 0.86);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.82), 0 14px 34px rgba(0,0,0,0.06);
+    }
+
+    .question-label {
+      position: absolute;
+      top: 18px;
+      left: 22px;
+      color: #94a3b8;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .question-text {
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 22px;
+  line-height: 1.55;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-align: left;
+  white-space: pre-wrap;
+  word-break: break-word;
+  width: 100%;
+  font-style: normal;
+  font-variant: normal;
+  font-kerning: auto;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  transform: translateZ(0);
+  will-change: auto;
+}
+
+    .answer-hint {
+  display: none;
+}
+
+    .revealed-answer-line {
+      position: absolute;
+      right: 22px;
+      bottom: 18px;
+      display: none;
+      text-align: right;
+      font-weight: 950;
+      font-size: 22px;
+      color: #111827;
+      white-space: nowrap;
+      z-index: 4;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    }
+
+    .revealed-answer-line.show {
+      display: block;
+    }
+
+    .question-timebar-wrap {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 16px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(226, 232, 240, 0.86);
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .question-timebar-wrap.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .question-timebar-fill {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #0ea5d8, #f97316, #ef4444);
+      transform-origin: left center;
+      transform: scaleX(1);
+    }
+
+    .training-area {
+      min-height: 0;
+      height: 190px;
+      border-radius: 28px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.70);
+      border: 1px solid rgba(226, 232, 240, 0.78);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      position: relative;
+    }
+
+    .buzz-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 166px;
+      position: relative;
+    }
+
+    .trainer-press-label {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #f97316;
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -0.03em;
+    }
+
+    .buzz-btn {
+      width: 142px;
+      height: 142px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 36% 25%, #fff1df, #ffb45f 34%, #f97316 86%);
+      color: white;
+      font-size: 30px;
+      font-weight: 950;
+      letter-spacing: -0.04em;
+      border: 6px solid rgba(255,255,255,0.82);
+      box-shadow:
+        inset 0 18px 22px rgba(255,255,255,0.28),
+        inset 0 -22px 28px rgba(0,0,0,0.16),
+        0 22px 46px rgba(249,115,22,0.28);
+    }
+
+    .answer-panel {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .answer-panel.show { display: flex; }
+
+    .answer-panel.trainer-popup-style {
+      position: absolute;
+      inset: 10px;
+      z-index: 3;
+      justify-content: center;
+      padding: 14px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.96);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.16);
+    }
+
+    .answer-progress {
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--ink);
+      font-size: clamp(30px, 6vw, 50px);
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: 0.04em;
+      word-break: break-word;
+    }
+
+    .answer-choice-timer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      min-width: 64px;
+      height: 30px;
+      margin: -4px auto 0;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255, 247, 237, 0.92);
+      border: 1px solid rgba(251, 191, 36, 0.28);
+      color: #92400e;
+      font-size: 16px;
+      line-height: 1;
+      font-weight: 950;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .choice-grid {
+      width: min(100%, 520px);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .choice-btn {
+      min-height: 58px;
+      border-radius: 20px;
+      color: var(--ink);
+      background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,250,252,0.90));
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.07);
+      font-size: 26px;
+      font-weight: 950;
+    }
+
+    .finish-panel {
+      display: none;
+      border-radius: 24px;
+      padding: 18px;
+      background: rgba(240, 253, 244, 0.82);
+      border: 1px solid rgba(134, 239, 172, 0.42);
+      text-align: center;
+      color: #166534;
+      font-weight: 850;
+      line-height: 1.6;
+    }
+
+    .finish-panel.show { display: block; }
+
+    .side-card {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-self: stretch;
+      min-height: 0;
+      overflow: auto;
+    }
+
+    .side-title {
+      margin: 0;
+      color: var(--ink);
+      font-size: 16px;
+      font-weight: 950;
+      letter-spacing: -0.02em;
+    }
+
+    .side-note { display: none; }
+
+    .progress-bar {
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(226, 232, 240, 0.72);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #0ea5d8, #db2777, #f97316);
+      transition: width 220ms ease;
+    }
+
+    .side-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .side-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 9px 10px;
+      border-radius: 15px;
+      background: rgba(248, 250, 252, 0.84);
+      border: 1px solid rgba(226, 232, 240, 0.82);
+      color: #475569;
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    .side-list strong {
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .secondary-actions {
+      display: grid;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .small-btn {
+      border-radius: 999px;
+      padding: 10px 12px;
+      background: rgba(229, 231, 235, 0.92);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .small-btn.danger {
+      color: #991b1b;
+      background: rgba(254, 226, 226, 0.88);
+    }
+
+    .small-btn.good {
+      color: #065f46;
+      background: rgba(209, 250, 229, 0.88);
+    }
+
+    .loading-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(248, 251, 255, 0.75);
+      backdrop-filter: blur(8px);
+    }
+
+    .loading-overlay.hidden { display: none; }
+
+    .loading-card {
+      width: min(86vw, 420px);
+      padding: 30px 28px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.90);
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.14);
+      text-align: center;
+    }
+
+    .loading-title {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.1;
+      font-weight: 950;
+      letter-spacing: -0.035em;
+    }
+
+    .loading-text {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.6;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      z-index: 2100;
+      transform: translateX(-50%) translateY(30px);
+      opacity: 0;
+      pointer-events: none;
+      min-width: min(90vw, 360px);
+      padding: 13px 16px;
+      border-radius: 999px;
+      background: rgba(17, 24, 39, 0.92);
+      color: white;
+      font-size: 13px;
+      font-weight: 850;
+      text-align: center;
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .error-box {
+      display: none;
+      border-radius: 24px;
+      padding: 16px;
+      color: #991b1b;
+      background: rgba(254, 226, 226, 0.82);
+      border: 1px solid rgba(248, 113, 113, 0.36);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    .error-box.show { display: block; }
+
+    @media (max-width: 860px) {
+      .page {
+        width: min(100vw - 20px, 720px);
+        height: auto;
+        min-height: 100vh;
+        padding: 10px 0;
+        overflow: visible;
+      }
+
+      .top-card {
+        grid-template-columns: 1fr;
+        padding: 24px 20px;
+        order: 2;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .main-grid {
+        grid-template-columns: 1fr;
+        order: -1;
+      }
+
+      .question-card {
+        min-height: 600px;
+        height: auto;
+        padding: 12px;
+        grid-template-rows: auto minmax(300px, 1fr) 180px;
+      }
+
+      .question-box {
+        min-height: 240px;
+        padding: 46px 18px 46px;
+      }
+
+      .question-text {
+        font-size: 18px;
+        line-height: 1.55;
+      }
+
+      .training-area { height: 180px; }
+
+      .buzz-btn {
+        width: 136px;
+        height: 136px;
+        font-size: 26px;
+      }
+
+      .choice-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .choice-btn {
+        min-height: 58px;
+      }
+
+      .side-card {
+        max-height: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <audio id="sfxQuestion" src="sounds/Quiz-Question02-1(Low).mp3" preload="auto"></audio>
+  <audio id="sfxBuzz" src="sounds/Quiz-Button03-1.mp3" preload="auto"></audio>
+  <audio id="sfxCorrect" src="sounds/Quiz-Ding_Dong02-1(Fast).mp3" preload="auto"></audio>
+  <audio id="sfxWrong" src="sounds/Quiz-Buzzer02-4(Multi).mp3" preload="auto"></audio>
+
+  <div class="page">
+    <header class="top-card">
+      <div>
+        <div class="eyebrow">🧠 Koh Avatar Data Builder</div>
+        <h1>Koh Avatar<span>Trainer</span></h1>
+        <p class="subtitle">
+          未収録の問題だけをSupabaseから取得し、1問ずつBuzz時間・解答時間・文字選択時間を保存します。
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-label">Loaded</div>
+          <div class="stat-value" id="loadedCount">0</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Saved</div>
+          <div class="stat-value" id="savedCount">0</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Current</div>
+          <div class="stat-value" id="currentIndex">0</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Remaining</div>
+          <div class="stat-value" id="remainingCount">0</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-grid">
+      <section class="question-card">
+        <div class="question-meta">
+          <div class="pill-row">
+            <div class="pill status-pill" id="statusPill">Loading</div>
+            <div class="pill" id="questionIdPill">question_id: -</div>
+            <div class="pill" id="categoryPill">category: -</div>
+            <div class="pill" id="difficultyPill">difficulty: -</div>
+          </div>
+          <div class="pill" id="timerPill">buzz: - ms / answer: - ms</div>
+        </div>
+
+        <div class="question-box">
+          <div class="question-label">Question</div>
+          <div class="question-text" id="questionText">Loading questions...</div>
+          <div class="answer-hint" id="answerHint">answer length: -</div>
+          <div class="revealed-answer-line" id="revealedAnswerLine"></div>
+          <div class="question-timebar-wrap" id="questionTimebarWrap" aria-hidden="true">
+            <div class="question-timebar-fill" id="questionTimebarFill"></div>
+          </div>
+        </div>
+
+        <div class="training-area">
+          <div class="buzz-wrap" id="buzzWrap">
+            <div class="trainer-press-label">Press!!</div>
+            <button class="buzz-btn" id="buzzBtn">Buzz!</button>
+          </div>
+
+          <div class="answer-panel trainer-popup-style" id="answerPanel">
+            <div class="answer-progress" id="answerProgress"></div>
+            <span class="answer-choice-timer" id="answerChoiceTimer">--</span>
+            <div class="choice-grid" id="choiceGrid"></div>
+          </div>
+
+          <div class="finish-panel" id="finishPanel"></div>
+          <div class="error-box" id="errorBox"></div>
+        </div>
+      </section>
+
+      <aside class="side-card">
+        <h2 class="side-title">Training Status</h2>
+        <p class="side-note">保存済みの問題は次回以降このページには出ません。</p>
+
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <ul class="side-list">
+          <li><span>Avatar</span><strong id="avatarNameLabel">koh</strong></li>
+          <li><span>Buzz time</span><strong id="buzzTimeLabel">-</strong></li>
+          <li><span>Answer time</span><strong id="answerTimeLabel">-</strong></li>
+          <li><span>Selected</span><strong id="selectedAnswerLabel">-</strong></li>
+          <li style="display:none;"><span>Correct</span><strong id="correctAnswerLabel">-</strong></li>
+        </ul>
+
+        <div class="secondary-actions">
+          <button class="small-btn good" id="startBtn">Start</button>
+          <button class="small-btn danger" id="stopBtn" disabled>Stop</button>
+          <button class="small-btn" id="reloadBtn">Reload unrecorded</button>
+          <button class="small-btn danger" id="markWrongBtn" disabled>Save as wrong</button>
+          <button class="small-btn good" id="saveManualCorrectBtn" disabled>Save current as correct</button>
+          <button class="small-btn" id="skipBtn">Skip current</button>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-card">
+      <h2 class="loading-title" id="loadingTitle">Connecting to Supabase</h2>
+      <p class="loading-text" id="loadingText">未収録問題を取得しています。</p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const SUPABASE_URL = "https://vfedwqlrfjdhnetdgaeq.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZmZWR3cWxyZmpkaG5ldGRnYWVxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcxMTYxODcsImV4cCI6MjA5MjY5MjE4N30.o8lFcRilQ-eIqakyBM55_JOZgVqHexOKGU023AwXUEY";
+    const AVATAR_NAME = "koh";
+    const BATCH_LIMIT = 200;
+
+    const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+    const $ = (id) => document.getElementById(id);
+
+    const els = {
+      loadedCount: $("loadedCount"),
+      savedCount: $("savedCount"),
+      currentIndex: $("currentIndex"),
+      remainingCount: $("remainingCount"),
+      statusPill: $("statusPill"),
+      questionIdPill: $("questionIdPill"),
+      categoryPill: $("categoryPill"),
+      difficultyPill: $("difficultyPill"),
+      timerPill: $("timerPill"),
+      questionText: $("questionText"),
+      answerHint: $("answerHint"),
+      revealedAnswerLine: $("revealedAnswerLine"),
+      questionTimebarWrap: $("questionTimebarWrap"),
+      questionTimebarFill: $("questionTimebarFill"),
+      buzzWrap: $("buzzWrap"),
+      buzzBtn: $("buzzBtn"),
+      answerPanel: $("answerPanel"),
+      answerProgress: $("answerProgress"),
+      answerChoiceTimer: $("answerChoiceTimer"),
+      choiceGrid: $("choiceGrid"),
+      finishPanel: $("finishPanel"),
+      errorBox: $("errorBox"),
+      progressFill: $("progressFill"),
+      avatarNameLabel: $("avatarNameLabel"),
+      buzzTimeLabel: $("buzzTimeLabel"),
+      answerTimeLabel: $("answerTimeLabel"),
+      selectedAnswerLabel: $("selectedAnswerLabel"),
+      correctAnswerLabel: $("correctAnswerLabel"),
+      startBtn: $("startBtn"),
+      stopBtn: $("stopBtn"),
+      reloadBtn: $("reloadBtn"),
+      markWrongBtn: $("markWrongBtn"),
+      saveManualCorrectBtn: $("saveManualCorrectBtn"),
+      skipBtn: $("skipBtn"),
+      loadingOverlay: $("loadingOverlay"),
+      loadingTitle: $("loadingTitle"),
+      loadingText: $("loadingText"),
+      toast: $("toast")
+    };
+
+    let supabaseClient = null;
+    let questions = [];
+    let currentPos = 0;
+    let savedCount = 0;
+    let currentQuestion = null;
+    let questionShownAt = 0;
+    let buzzedAt = 0;
+    let lastCharAt = 0;
+    let buzzTimeMs = null;
+    let charTimesMs = [];
+    let selectedAnswer = "";
+    let isSaving = false;
+    let isTrainingActive = false;
+    let activeQuestionText = "";
+    let displayedQuestionText = "";
+    let typewriterTimer = null;
+    let fullRevealTimer = null;
+    let fullRevealAnimationFrame = null;
+    let fullRevealTimerStartedAt = 0;
+    let revealAnswerTimer = null;
+    let choiceTimer = null;
+    let choiceAnimationFrame = null;
+    let choiceTimerStartedAt = 0;
+    let audioContext = null;
+
+    const TYPEWRITER_INTERVAL_MS = 45;
+    const FULL_REVEAL_BUZZ_LIMIT_MS = 5000;
+    const FIRST_CHAR_LIMIT_MS = 5000;
+    const NEXT_CHAR_LIMIT_MS = 3000;
+
+    function getAudioContext() {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) return null;
+      if (!audioContext) audioContext = new AudioContextClass();
+      if (audioContext.state === "suspended") audioContext.resume();
+      return audioContext;
+    }
+
+    function playTone(frequency, durationMs, type = "sine", volume = 0.18) {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+
+      const oscillator = ctx.createOscillator();
+      const gainNode = ctx.createGain();
+      const now = ctx.currentTime;
+
+      oscillator.type = type;
+      oscillator.frequency.setValueAtTime(frequency, now);
+      gainNode.gain.setValueAtTime(0.0001, now);
+      gainNode.gain.exponentialRampToValueAtTime(Math.max(0.0001, volume), now + 0.015);
+      gainNode.gain.exponentialRampToValueAtTime(0.0001, now + durationMs / 1000);
+
+      oscillator.connect(gainNode);
+      gainNode.connect(ctx.destination);
+      oscillator.start(now);
+      oscillator.stop(now + durationMs / 1000 + 0.02);
+    }
+
+    function playSfx(id) {
+      const audio = document.getElementById(id);
+      if (!audio) return Promise.resolve(false);
+      audio.volume = 0.5;
+      audio.currentTime = 0;
+      return audio.play()
+        .then(() => true)
+        .catch(() => false);
+    }
+
+    function playSound(name) {
+      if (name === "buzz") {
+        playSfx("sfxBuzz");
+        return;
+      }
+      if (name === "correct") {
+        playSfx("sfxCorrect");
+        return;
+      }
+      if (name === "wrong" || name === "timeout") {
+        playSfx("sfxWrong");
+        return;
+      }
+      if (name === "start") {
+        playTone(660, 80, "sine", 0.20);
+        setTimeout(() => playTone(880, 90, "sine", 0.20), 90);
+        return;
+      }
+      if (name === "click") {
+        playTone(740, 45, "triangle", 0.12);
+      }
+    }
+
+    function playQuestionSfxBeforeStart(callback) {
+      const audio = document.getElementById("sfxQuestion");
+      if (!audio) {
+        callback();
+        return;
+      }
+
+      let started = false;
+      let done = false;
+
+      const startQuestion = () => {
+        if (done) return;
+        done = true;
+        audio.onended = null;
+        callback();
+      };
+
+      audio.currentTime = 0;
+      audio.volume = 0.5;
+      audio.onended = startQuestion;
+
+      audio.play()
+        .then(() => {
+          started = true;
+        })
+        .catch(() => {
+          startQuestion();
+        });
+
+      setTimeout(() => {
+        if (!started) return;
+        startQuestion();
+      }, Math.min(900, Math.max(250, (audio.duration || 0.6) * 1000)));
+    }
+
+    function resetTimebar() {
+      els.questionTimebarWrap.classList.remove("show");
+      els.questionTimebarFill.style.transform = "scaleX(1)";
+    }
+
+    function clearFullRevealTimer() {
+      if (fullRevealTimer) clearTimeout(fullRevealTimer);
+      if (fullRevealAnimationFrame) cancelAnimationFrame(fullRevealAnimationFrame);
+      fullRevealTimer = null;
+      fullRevealAnimationFrame = null;
+      resetTimebar();
+    }
+
+    function clearChoiceTimer() {
+      if (choiceTimer) clearTimeout(choiceTimer);
+      if (choiceAnimationFrame) cancelAnimationFrame(choiceAnimationFrame);
+      choiceTimer = null;
+      choiceAnimationFrame = null;
+      resetTimebar();
+      els.answerChoiceTimer.textContent = "--";
+    }
+
+    function clearQuestionTimers() {
+      if (typewriterTimer) clearInterval(typewriterTimer);
+      if (revealAnswerTimer) clearTimeout(revealAnswerTimer);
+
+      typewriterTimer = null;
+      revealAnswerTimer = null;
+      displayedQuestionText = els.questionText.textContent || displayedQuestionText;
+
+      els.revealedAnswerLine.classList.remove("show");
+      els.revealedAnswerLine.textContent = "";
+
+      clearFullRevealTimer();
+      clearChoiceTimer();
+    }
+
+    function showAnswerBeforeNext(callback) {
+      if (revealAnswerTimer) clearTimeout(revealAnswerTimer);
+
+      clearFullRevealTimer();
+      clearChoiceTimer();
+
+      const displayAnswer =
+        getField(currentQuestion, ["answer_display", "answer", "correct_answer"], "") ||
+        getCorrectAnswer(currentQuestion);
+
+      const qNo = currentPos + 1;
+
+      els.answerPanel.classList.remove("show");
+      els.buzzWrap.style.display = "none";
+      els.finishPanel.classList.remove("show");
+
+      els.revealedAnswerLine.textContent = `A${qNo}. ${displayAnswer}`;
+      els.revealedAnswerLine.classList.add("show");
+
+      revealAnswerTimer = setTimeout(() => {
+        els.revealedAnswerLine.classList.remove("show");
+        els.revealedAnswerLine.textContent = "";
+        revealAnswerTimer = null;
+        callback();
+      }, 2000);
+    }
+
+    function startFullRevealBuzzTimer() {
+      if (!isTrainingActive || !currentQuestion || isSaving || buzzTimeMs !== null) return;
+
+      clearFullRevealTimer();
+
+      fullRevealTimerStartedAt = performance.now();
+      els.questionTimebarFill.style.transform = "scaleX(1)";
+      els.questionTimebarWrap.classList.add("show");
+      els.timerPill.textContent = "buzz: waiting / full: 5.0s";
+
+      function updateFullRevealTimer() {
+        if (!isTrainingActive || !currentQuestion || isSaving || buzzTimeMs !== null) {
+          clearFullRevealTimer();
+          return;
+        }
+
+        const elapsed = performance.now() - fullRevealTimerStartedAt;
+        const remainMs = Math.max(0, FULL_REVEAL_BUZZ_LIMIT_MS - elapsed);
+        const remainRatio = Math.max(0, remainMs / FULL_REVEAL_BUZZ_LIMIT_MS);
+        const remainText = `${(remainMs / 1000).toFixed(1)}s`;
+
+        els.questionTimebarFill.style.transform = `scaleX(${remainRatio})`;
+        els.timerPill.textContent = `buzz: waiting / full: ${remainText}`;
+
+        if (remainRatio > 0) {
+          fullRevealAnimationFrame = requestAnimationFrame(updateFullRevealTimer);
+        }
+      }
+
+      fullRevealAnimationFrame = requestAnimationFrame(updateFullRevealTimer);
+
+      fullRevealTimer = setTimeout(() => {
+        if (!isTrainingActive || !currentQuestion || isSaving || buzzTimeMs !== null) return;
+        buzzTimeMs = null;
+        selectedAnswer = "";
+        saveAttempt(false);
+      }, FULL_REVEAL_BUZZ_LIMIT_MS);
+    }
+
+    function startCharacterChoiceTimer(limitMs) {
+      if (!isTrainingActive || !currentQuestion || isSaving || buzzTimeMs === null) return;
+
+      clearChoiceTimer();
+
+      choiceTimerStartedAt = performance.now();
+      els.questionTimebarFill.style.transform = "scaleX(1)";
+      els.questionTimebarWrap.classList.add("show");
+
+      function updateTimer() {
+        if (!isTrainingActive || !currentQuestion || isSaving) {
+          els.questionTimebarWrap.classList.remove("show");
+          return;
+        }
+
+        const elapsed = performance.now() - choiceTimerStartedAt;
+        const remainMs = Math.max(0, limitMs - elapsed);
+        const remainRatio = Math.max(0, remainMs / limitMs);
+        const remainText = `${(remainMs / 1000).toFixed(1)}s`;
+        const label = selectedAnswer.length === 0 ? "first" : "next";
+
+        els.questionTimebarFill.style.transform = `scaleX(${remainRatio})`;
+        els.answerChoiceTimer.textContent = remainText;
+        els.timerPill.textContent = `buzz: ${buzzTimeMs ?? "-"} ms / ${label}: ${remainText}`;
+
+        if (remainRatio > 0) {
+          choiceAnimationFrame = requestAnimationFrame(updateTimer);
+        }
+      }
+
+      choiceAnimationFrame = requestAnimationFrame(updateTimer);
+
+      choiceTimer = setTimeout(() => {
+        if (!isTrainingActive || !currentQuestion || isSaving) return;
+        saveAttempt(false);
+      }, limitMs);
+    }
+
+    function normalizeString(value) {
+      return String(value || "").trim();
+    }
+
+    function normalizeAnswer(value) {
+      return normalizeString(value)
+        .replace(/[\s\-_.,'’]/g, "")
+        .toUpperCase();
+    }
+
+    function getField(row, candidates, fallback = "") {
+      for (const key of candidates) {
+        if (row && row[key] !== undefined && row[key] !== null && String(row[key]).trim() !== "") {
+          return row[key];
+        }
+      }
+      return fallback;
+    }
+
+    function getQuestionText(row) {
+      return normalizeString(getField(row, ["question_text", "question", "prompt", "body", "text", "q"], ""));
+    }
+
+    function getCorrectAnswer(row) {
+      const direct = getField(row, [
+        "answer_normalized",
+        "answer_display",
+        "answer",
+        "correct_answer",
+        "correctAnswer",
+        "answer_text"
+      ], "");
+      return normalizeAnswer(direct);
+    }
+
+    function getCategory(row) {
+      return normalizeString(getField(row, ["category", "genre", "topic"], ""));
+    }
+
+    function getDifficulty(row) {
+      return normalizeString(getField(row, ["difficulty", "difficulty_tier", "level", "rank"], ""));
+    }
+
+    function setLoading(show, title = "Loading", text = "") {
+      els.loadingTitle.textContent = title;
+      els.loadingText.textContent = text;
+      els.loadingOverlay.classList.toggle("hidden", !show);
+    }
+
+    function showToast(message) {
+      els.toast.textContent = message;
+      els.toast.classList.add("show");
+      setTimeout(() => els.toast.classList.remove("show"), 1600);
+    }
+
+    function showError(message) {
+      els.errorBox.textContent = message;
+      els.errorBox.classList.add("show");
+    }
+
+    function clearError() {
+      els.errorBox.textContent = "";
+      els.errorBox.classList.remove("show");
+    }
+
+    function shuffle(array) {
+      const arr = [...array];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function makeChoices(correctChar) {
+      const choices = new Set([correctChar]);
+      while (choices.size < 4) {
+        choices.add(ALPHABET[Math.floor(Math.random() * ALPHABET.length)]);
+      }
+      return shuffle([...choices]);
+    }
+
+    function updateStats() {
+      const total = questions.length;
+      const currentNumber = total === 0 ? 0 : Math.min(currentPos + 1, total);
+      const remaining = Math.max(0, total - currentPos);
+      const completed = total === 0 ? 0 : Math.min(currentPos, total);
+      const progress = total === 0 ? 0 : Math.round((completed / total) * 100);
+
+      els.loadedCount.textContent = String(total);
+      els.savedCount.textContent = String(savedCount);
+      els.currentIndex.textContent = String(currentNumber);
+      els.remainingCount.textContent = String(remaining);
+      els.progressFill.style.width = `${progress}%`;
+    }
+
+    function resetAttemptState() {
+      currentQuestion = questions[currentPos] || null;
+      questionShownAt = performance.now();
+      buzzedAt = 0;
+      lastCharAt = 0;
+      buzzTimeMs = null;
+      charTimesMs = [];
+      selectedAnswer = "";
+      isSaving = false;
+
+      clearQuestionTimers();
+
+      els.answerPanel.classList.remove("show");
+      els.finishPanel.classList.remove("show");
+      els.finishPanel.textContent = "";
+      els.choiceGrid.innerHTML = "";
+      els.answerProgress.textContent = "";
+      els.answerChoiceTimer.textContent = "--";
+      els.buzzWrap.style.display = "flex";
+      els.buzzBtn.disabled = !isTrainingActive;
+      els.markWrongBtn.disabled = true;
+      els.saveManualCorrectBtn.disabled = true;
+
+      els.buzzTimeLabel.textContent = "-";
+      els.answerTimeLabel.textContent = "-";
+      els.selectedAnswerLabel.textContent = "-";
+      els.correctAnswerLabel.textContent = currentQuestion ? getCorrectAnswer(currentQuestion) || "-" : "-";
+      els.timerPill.textContent = "buzz: - ms / answer: - ms";
+      clearError();
+    }
+
+    function renderCurrentQuestion() {
+      updateStats();
+      resetAttemptState();
+
+      if (!currentQuestion) {
+        clearQuestionTimers();
+        els.statusPill.textContent = "Completed";
+        els.questionIdPill.textContent = "question_id: -";
+        els.categoryPill.textContent = "category: -";
+        els.difficultyPill.textContent = "difficulty: -";
+        els.questionText.textContent = "All avatar records completed!";
+        els.answerHint.textContent = "";
+        els.buzzBtn.disabled = true;
+        els.buzzWrap.style.display = "none";
+        els.finishPanel.classList.add("show");
+        els.finishPanel.textContent = "新しい問題をSupabaseに追加したら、Reload unrecorded を押してください。";
+        return;
+      }
+
+      const qText = getQuestionText(currentQuestion);
+      const answer = getCorrectAnswer(currentQuestion);
+      const category = getCategory(currentQuestion) || "-";
+      const difficulty = getDifficulty(currentQuestion) || "-";
+
+      els.statusPill.textContent = isTrainingActive ? "Recording" : "Stopped";
+      els.questionIdPill.textContent = `question_id: ${currentQuestion.id || "-"}`;
+      els.categoryPill.textContent = `category: ${category}`;
+      els.difficultyPill.textContent = `difficulty: ${difficulty}`;
+      activeQuestionText = qText || "Question text not found. Check column names.";
+      displayedQuestionText = isTrainingActive ? activeQuestionText : "";
+      els.questionText.textContent = isTrainingActive ? activeQuestionText : "";  
+      els.answerHint.textContent = "";
+      els.correctAnswerLabel.textContent = answer || "-";
+
+      els.startBtn.disabled = isTrainingActive || !currentQuestion;
+      els.stopBtn.disabled = !isTrainingActive;
+
+      if (isTrainingActive && currentQuestion) {
+        questionShownAt = performance.now();
+        startQuestionTypewriter(activeQuestionText);
+      }
+    }
+
+    function startQuestionTypewriter(fullText) {
+      clearQuestionTimers();
+      activeQuestionText = String(fullText || "");
+      displayedQuestionText = "";
+      els.questionText.textContent = "";
+
+      if (!isTrainingActive || !activeQuestionText) {
+        displayedQuestionText = activeQuestionText;
+        els.questionText.textContent = activeQuestionText;
+        return;
+      }
+
+      playQuestionSfxBeforeStart(() => {
+        if (!isTrainingActive || isSaving || !currentQuestion) return;
+
+        let index = 0;
+        typewriterTimer = setInterval(() => {
+          if (!isTrainingActive || isSaving || !currentQuestion) {
+            clearQuestionTimers();
+            return;
+          }
+
+          index += 1;
+          displayedQuestionText = activeQuestionText.slice(0, index);
+          els.questionText.textContent = displayedQuestionText;
+
+          if (index >= activeQuestionText.length) {
+            clearInterval(typewriterTimer);
+            typewriterTimer = null;
+            startFullRevealBuzzTimer();
+          }
+        }, TYPEWRITER_INTERVAL_MS);
+      });
+    }
+
+    function handleBuzz() {
+      if (!isTrainingActive || !currentQuestion || isSaving) return;
+
+      playSound("buzz");
+      clearFullRevealTimer();
+
+      if (typewriterTimer) {
+        clearInterval(typewriterTimer);
+        typewriterTimer = null;
+      }
+      displayedQuestionText = els.questionText.textContent || displayedQuestionText;
+      els.questionText.textContent = displayedQuestionText;
+
+      const answer = getCorrectAnswer(currentQuestion);
+      if (!answer) {
+        showError("正答カラムが見つかりません。answer_normalized / answer_display を確認してください。");
+        return;
+      }
+
+      const now = performance.now();
+      buzzTimeMs = Math.round(now - questionShownAt);
+      buzzedAt = now;
+      lastCharAt = now;
+
+      els.buzzWrap.style.display = "none";
+      els.answerPanel.classList.add("show");
+      els.markWrongBtn.disabled = false;
+      els.saveManualCorrectBtn.disabled = false;
+      els.buzzTimeLabel.textContent = `${buzzTimeMs} ms`;
+      els.timerPill.textContent = `buzz: ${buzzTimeMs} ms / first: 5.0s`;
+
+      renderAnswerChoices();
+    }
+
+    function renderAnswerChoices() {
+      const answer = getCorrectAnswer(currentQuestion);
+      const nextChar = answer[selectedAnswer.length];
+      els.answerProgress.textContent = selectedAnswer || "·";
+      els.selectedAnswerLabel.textContent = selectedAnswer || "-";
+
+      if (!nextChar) {
+        saveAttempt(true);
+        return;
+      }
+
+      const choices = makeChoices(nextChar);
+      els.choiceGrid.innerHTML = "";
+
+      choices.forEach((char) => {
+        const btn = document.createElement("button");
+        btn.className = "choice-btn";
+        btn.textContent = char;
+        btn.addEventListener("click", () => handleCharChoice(char));
+        els.choiceGrid.appendChild(btn);
+      });
+
+      startCharacterChoiceTimer(
+        selectedAnswer.length === 0 ? FIRST_CHAR_LIMIT_MS : NEXT_CHAR_LIMIT_MS
+      );
+    }
+
+    function handleCharChoice(char) {
+      if (!isTrainingActive || !currentQuestion || isSaving) return;
+
+      playSound("click");
+      clearChoiceTimer();
+
+      const now = performance.now();
+      charTimesMs.push(Math.round(now - lastCharAt));
+      lastCharAt = now;
+      selectedAnswer += char;
+
+      const correctAnswer = getCorrectAnswer(currentQuestion);
+      const expectedPrefix = correctAnswer.slice(0, selectedAnswer.length);
+
+      if (selectedAnswer !== expectedPrefix) {
+        saveAttempt(false);
+        return;
+      }
+
+      renderAnswerChoices();
+    }
+
+    async function saveAttempt(isCorrect) {
+      if (!isTrainingActive || !currentQuestion || isSaving) return;
+
+      isSaving = true;
+      clearQuestionTimers();
+      playSound(isCorrect ? "correct" : "wrong");
+      clearError();
+      els.markWrongBtn.disabled = true;
+      els.saveManualCorrectBtn.disabled = true;
+      els.choiceGrid.innerHTML = "";
+
+      const now = performance.now();
+      const answerTimeMs = buzzedAt ? Math.round(now - buzzedAt) : null;
+      const correctAnswer = getCorrectAnswer(currentQuestion);
+      const category = getCategory(currentQuestion);
+      const difficulty = getDifficulty(currentQuestion);
+
+      els.answerProgress.textContent = selectedAnswer || "-";
+      els.answerTimeLabel.textContent = answerTimeMs === null ? "-" : `${answerTimeMs} ms`;
+      els.timerPill.textContent = answerTimeMs === null
+        ? `buzz: ${buzzTimeMs ?? "timeout"} / answer: - ms`
+        : `buzz: ${buzzTimeMs ?? "-"} ms / answer: ${answerTimeMs} ms`;
+      els.answerChoiceTimer.textContent = "--";
+      els.selectedAnswerLabel.textContent = selectedAnswer || "-";
+
+      const payload = {
+        avatar_name: AVATAR_NAME,
+        question_id: currentQuestion.id,
+        category,
+        difficulty,
+        buzz_time_ms: buzzTimeMs,
+        answer_time_ms: answerTimeMs,
+        char_times_ms: charTimesMs,
+        selected_answer: selectedAnswer,
+        correct_answer: correctAnswer,
+        is_correct: isCorrect
+      };
+
+      try {
+        const { error } = await supabaseClient
+          .from("avatar_attempts")
+          .upsert(payload, { onConflict: "avatar_name,question_id" });
+
+        if (error) throw error;
+
+        savedCount += 1;
+        els.finishPanel.classList.add("show");
+        els.finishPanel.textContent = isCorrect
+          ? "Saved as correct. Showing answer..."
+          : "Saved as wrong. Showing answer...";
+        showToast("Avatar record saved");
+
+        showAnswerBeforeNext(() => {
+          currentPos += 1;
+          renderCurrentQuestion();
+        });
+      } catch (error) {
+        isSaving = false;
+        els.markWrongBtn.disabled = false;
+        els.saveManualCorrectBtn.disabled = false;
+        showError(`保存に失敗しました。\n${error.message || error}`);
+      }
+    }
+
+    function saveCurrentAsWrong() {
+      if (!isTrainingActive || !currentQuestion || buzzTimeMs === null || isSaving) return;
+      saveAttempt(false);
+    }
+
+    function saveCurrentAsCorrect() {
+      if (!isTrainingActive || !currentQuestion || buzzTimeMs === null || isSaving) return;
+      selectedAnswer = getCorrectAnswer(currentQuestion);
+      saveAttempt(true);
+    }
+
+    function skipCurrent() {
+      if (!isTrainingActive || !currentQuestion) return;
+      currentPos += 1;
+      renderCurrentQuestion();
+      showToast("Skipped current question");
+    }
+
+    function startTraining() {
+      if (!currentQuestion || isTrainingActive) return;
+
+      const answer = getCorrectAnswer(currentQuestion);
+      if (!answer) {
+        showError("正答カラムが見つかりません。answer_normalized / answer_display を確認してください。");
+        return;
+      }
+
+      isTrainingActive = true;
+      questionShownAt = performance.now();
+      buzzedAt = 0;
+      lastCharAt = 0;
+      buzzTimeMs = null;
+      charTimesMs = [];
+      selectedAnswer = "";
+      isSaving = false;
+
+      playSound("start");
+      els.statusPill.textContent = "Recording";
+      els.buzzBtn.disabled = false;
+      els.startBtn.disabled = true;
+      els.stopBtn.disabled = false;
+      els.markWrongBtn.disabled = true;
+      els.saveManualCorrectBtn.disabled = true;
+      els.answerPanel.classList.remove("show");
+      els.finishPanel.classList.remove("show");
+      els.finishPanel.textContent = "";
+      els.choiceGrid.innerHTML = "";
+      els.answerProgress.textContent = "";
+      els.answerChoiceTimer.textContent = "--";
+      els.buzzWrap.style.display = "flex";
+      els.buzzTimeLabel.textContent = "-";
+      els.answerTimeLabel.textContent = "-";
+      els.selectedAnswerLabel.textContent = "-";
+      els.timerPill.textContent = "buzz: - ms / answer: - ms";
+      clearError();
+
+      questionShownAt = performance.now();
+      startQuestionTypewriter(activeQuestionText || getQuestionText(currentQuestion));
+      showToast("Recording started");
+    }
+
+    function stopTraining() {
+      if (!isTrainingActive) return;
+
+      isTrainingActive = false;
+      isSaving = false;
+      clearQuestionTimers();
+      displayedQuestionText = "";
+      els.questionText.textContent = "";
+
+      els.statusPill.textContent = currentQuestion ? "Stopped" : "Completed";
+      els.buzzBtn.disabled = true;
+      els.startBtn.disabled = !currentQuestion;
+      els.stopBtn.disabled = true;
+      els.markWrongBtn.disabled = true;
+      els.saveManualCorrectBtn.disabled = true;
+      els.choiceGrid.innerHTML = "";
+      els.answerPanel.classList.remove("show");
+      els.buzzWrap.style.display = currentQuestion ? "flex" : "none";
+      showToast("Recording stopped");
+    }
+
+    async function loadUnrecordedQuestions() {
+      clearError();
+      setLoading(true, "Loading unrecorded questions", "Supabaseから未収録問題を取得しています。");
+
+      if (SUPABASE_URL.includes("PASTE_YOUR") || SUPABASE_ANON_KEY.includes("ここに現在")) {
+        setLoading(false);
+        showError("SUPABASE_ANON_KEY を現在の anon public key に戻してください。");
+        els.questionText.textContent = "Supabase credentials are missing.";
+        return;
+      }
+
+      try {
+        supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        const { data, error } = await supabaseClient.rpc("get_unrecorded_avatar_questions", {
+          p_avatar_name: AVATAR_NAME,
+          p_limit: BATCH_LIMIT
+        });
+
+        if (error) throw error;
+
+        questions = Array.isArray(data) ? shuffle(data) : [];
+        currentPos = 0;
+        savedCount = 0;
+        isTrainingActive = false;
+        els.avatarNameLabel.textContent = AVATAR_NAME;
+        renderCurrentQuestion();
+        els.startBtn.disabled = questions.length === 0;
+        els.stopBtn.disabled = true;
+        els.buzzBtn.disabled = true;
+        clearQuestionTimers();
+
+        if (questions.length === 0) {
+          showToast("No unrecorded questions");
+        } else {
+          showToast(`${questions.length} unrecorded questions loaded`);
+        }
+      } catch (error) {
+        showError(`未収録問題の取得に失敗しました。\n${error.message || error}\n\nSQL関数 get_unrecorded_avatar_questions が作成済みか確認してください。`);
+        els.questionText.textContent = "Failed to load questions.";
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    els.startBtn.addEventListener("click", startTraining);
+    els.stopBtn.addEventListener("click", stopTraining);
+    els.buzzBtn.addEventListener("click", handleBuzz);
+    els.reloadBtn.addEventListener("click", loadUnrecordedQuestions);
+    els.markWrongBtn.addEventListener("click", saveCurrentAsWrong);
+    els.saveManualCorrectBtn.addEventListener("click", saveCurrentAsCorrect);
+    els.skipBtn.addEventListener("click", skipCurrent);
+
+    window.addEventListener("keydown", (event) => {
+      if (event.code === "Space") {
+        event.preventDefault();
+        if (!currentQuestion) return;
+        if (isTrainingActive && els.buzzWrap.style.display !== "none") {
+          handleBuzz();
+        }
+      }
+    });
+
+    loadUnrecordedQuestions();
+  </script>
+</body>
+</html>

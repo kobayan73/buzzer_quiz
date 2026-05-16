@@ -1,0 +1,817 @@
+[
+  {
+    "id": "geo_000101_beg_std",
+    "category": "geo",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "Among deserts, this one is often described through fog-influenced coasts, nitrate history, and extremely dry basins rather than through rolling dunes alone. It lies along western South America, where cold ocean currents and mountains help limit rainfall. Researchers sometimes use parts of it as a comparison site for harsh planetary environments. What desert is this?",
+    "displayAnswer": "Atacama",
+    "normalizedAnswer": "atacama",
+    "answerChars": [
+      "a",
+      "t",
+      "a",
+      "c",
+      "a",
+      "m",
+      "a"
+    ]
+  },
+  {
+    "id": "his_000101_beg_std",
+    "category": "his",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This medieval campaign is connected with religious vows, armed pilgrimage, and attempts by Western European nobles to control sacred places in the eastern Mediterranean. It involved many separate expeditions rather than one single event, and its legacy shaped trade, politics, and relations among Christian, Muslim, and Jewish communities. What historical movement is this?",
+    "displayAnswer": "Crusades",
+    "normalizedAnswer": "crusades",
+    "answerChars": [
+      "c",
+      "r",
+      "u",
+      "s",
+      "a",
+      "d",
+      "e",
+      "s"
+    ]
+  },
+  {
+    "id": "sci_000101_beg_std",
+    "category": "sci",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This geological boundary is not a single crack but a broad zone where two plates slide past one another. It is often discussed when explaining why some earthquakes occur without volcanoes, because the main motion is horizontal rather than one plate diving beneath another. Roads, fences, and stream channels can be visibly offset across it. What type of fault is this?",
+    "displayAnswer": "Transform fault",
+    "normalizedAnswer": "transformfault",
+    "answerChars": [
+      "t",
+      "r",
+      "a",
+      "n",
+      "s",
+      "f",
+      "o",
+      "r",
+      "m",
+      "f",
+      "a",
+      "u",
+      "l",
+      "t"
+    ]
+  },
+  {
+    "id": "spo_000101_beg_std",
+    "category": "spo",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This Olympic field event depends on converting sprint speed into upward motion through a flexible implement. Athletes plant the implement in a box, swing their body upward, and try to clear a horizontal bar without knocking it down. Technique, timing, grip height, and body inversion matter as much as raw speed. What event is this?",
+    "displayAnswer": "Pole vault",
+    "normalizedAnswer": "polevault",
+    "answerChars": [
+      "p",
+      "o",
+      "l",
+      "e",
+      "v",
+      "a",
+      "u",
+      "l",
+      "t"
+    ]
+  },
+  {
+    "id": "ent_000101_beg_std",
+    "category": "ent",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This film movement is associated with postwar Italian cinema, location shooting, nonprofessional actors, and stories about ordinary people facing social hardship. It influenced later directors around the world because it made poverty, unemployment, and daily struggle feel immediate rather than theatrical. What film movement is this?",
+    "displayAnswer": "Neorealism",
+    "normalizedAnswer": "neorealism",
+    "answerChars": [
+      "n",
+      "e",
+      "o",
+      "r",
+      "e",
+      "a",
+      "l",
+      "i",
+      "s",
+      "m"
+    ]
+  },
+  {
+    "id": "food_000101_beg_std",
+    "category": "food",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This dairy product is made by draining whey from fermented milk until it becomes thicker and more concentrated. It appears in savory dips, breakfast bowls, and sauces, and its texture can range from spoonable to very dense depending on how long it is strained. It is often linked with Mediterranean and Middle Eastern cooking. What food is this?",
+    "displayAnswer": "Greek yogurt",
+    "normalizedAnswer": "greekyogurt",
+    "answerChars": [
+      "g",
+      "r",
+      "e",
+      "e",
+      "k",
+      "y",
+      "o",
+      "g",
+      "u",
+      "r",
+      "t"
+    ]
+  },
+  {
+    "id": "tech_000101_beg_std",
+    "category": "tech",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This security method relies on requiring more than one kind of proof before access is granted. A password may be combined with a phone prompt, hardware token, biometric check, or temporary code, reducing the danger of a stolen password alone. Many online accounts encourage it for login protection. What method is this?",
+    "displayAnswer": "Multi factor authentication",
+    "normalizedAnswer": "multifactorauthentication",
+    "answerChars": [
+      "m",
+      "u",
+      "l",
+      "t",
+      "i",
+      "f",
+      "a",
+      "c",
+      "t",
+      "o",
+      "r",
+      "a",
+      "u",
+      "t",
+      "h",
+      "e",
+      "n",
+      "t",
+      "i",
+      "c",
+      "a",
+      "t",
+      "i",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "lang_000101_beg_std",
+    "category": "lang",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "In linguistics, this unit can change the meaning or grammatical function of a word, yet it may be smaller than what people casually call a word. Prefixes, suffixes, and roots can all be examples, and comparing them helps explain why related words share patterns. What unit is this?",
+    "displayAnswer": "Morpheme",
+    "normalizedAnswer": "morpheme",
+    "answerChars": [
+      "m",
+      "o",
+      "r",
+      "p",
+      "h",
+      "e",
+      "m",
+      "e"
+    ]
+  },
+  {
+    "id": "art_000101_beg_std",
+    "category": "art",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This painting technique uses water-based pigment applied to wet plaster so that the color becomes part of the wall surface as it dries. It is strongly associated with murals, church interiors, and large historical cycles because the artist must work in planned sections before the plaster sets. What technique is this?",
+    "displayAnswer": "Fresco",
+    "normalizedAnswer": "fresco",
+    "answerChars": [
+      "f",
+      "r",
+      "e",
+      "s",
+      "c",
+      "o"
+    ]
+  },
+  {
+    "id": "gen_000101_beg_std",
+    "category": "gen",
+    "difficulty_tier": "beginner",
+    "knowledge_level": "standard",
+    "text": "This navigational instrument measures direction relative to Earth’s magnetic field rather than by stars or landmarks. Its usefulness depends on a freely moving magnetized needle or equivalent sensor, and it became important for travel when visibility or familiar reference points were limited. What instrument is this?",
+    "displayAnswer": "Magnetic compass",
+    "normalizedAnswer": "magneticcompass",
+    "answerChars": [
+      "m",
+      "a",
+      "g",
+      "n",
+      "e",
+      "t",
+      "i",
+      "c",
+      "c",
+      "o",
+      "m",
+      "p",
+      "a",
+      "s",
+      "s"
+    ]
+  },
+  {
+    "id": "geo_000102_int_com",
+    "category": "geo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This landform can be studied through calving fronts, moraines, and the slow plastic flow of ice under its own weight. It stores freshwater for long periods and reshapes valleys by erosion, leaving distinctive deposits when it retreats. In popular discussion it is often mentioned when describing visible effects of warming climates. What landform is this?",
+    "displayAnswer": "Glacier",
+    "normalizedAnswer": "glacier",
+    "answerChars": [
+      "g",
+      "l",
+      "a",
+      "c",
+      "i",
+      "e",
+      "r"
+    ]
+  },
+  {
+    "id": "his_000102_int_com",
+    "category": "his",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This ancient civilization used city-states, cuneiform writing, irrigation systems, and temple complexes as part of an urban culture in river valleys. Its political map changed often, but its administrative records and myths influenced later societies in the same region. It is often introduced as one of the earliest complex civilizations. What civilization is this?",
+    "displayAnswer": "Mesopotamia",
+    "normalizedAnswer": "mesopotamia",
+    "answerChars": [
+      "m",
+      "e",
+      "s",
+      "o",
+      "p",
+      "o",
+      "t",
+      "a",
+      "m",
+      "i",
+      "a"
+    ]
+  },
+  {
+    "id": "sci_000102_int_com",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This process involves liquid particles escaping from a surface into a gas phase without the whole liquid reaching a boiling point. It is affected by temperature, airflow, surface area, and humidity, and it helps explain cooling after sweating or why shallow water disappears faster. What process is this?",
+    "displayAnswer": "Evaporation",
+    "normalizedAnswer": "evaporation",
+    "answerChars": [
+      "e",
+      "v",
+      "a",
+      "p",
+      "o",
+      "r",
+      "a",
+      "t",
+      "i",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "spo_000102_int_com",
+    "category": "spo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This racket sport has a scoring language that includes terms not used in most ball games, and rallies can be shaped by spin, court surface, and whether play begins from a first or second serve. Singles and doubles formats share the same basic court geometry. What sport is this?",
+    "displayAnswer": "Tennis",
+    "normalizedAnswer": "tennis",
+    "answerChars": [
+      "t",
+      "e",
+      "n",
+      "n",
+      "i",
+      "s"
+    ]
+  },
+  {
+    "id": "ent_000102_int_com",
+    "category": "ent",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This storytelling genre often builds tension through investigation, hidden motives, clues, and the gradual narrowing of suspects. It can appear in novels, films, games, and television, and its satisfaction usually depends on whether the explanation feels both surprising and fair. What genre is this?",
+    "displayAnswer": "Mystery",
+    "normalizedAnswer": "mystery",
+    "answerChars": [
+      "m",
+      "y",
+      "s",
+      "t",
+      "e",
+      "r",
+      "y"
+    ]
+  },
+  {
+    "id": "food_000102_int_com",
+    "category": "food",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This staple food begins as grain that is milled into flour, mixed with water and often yeast or another leavening agent, then heated until a structured crumb and crust form. Regional versions vary widely in shape, grain type, fermentation time, and texture. What food is this?",
+    "displayAnswer": "Bread",
+    "normalizedAnswer": "bread",
+    "answerChars": [
+      "b",
+      "r",
+      "e",
+      "a",
+      "d"
+    ]
+  },
+  {
+    "id": "tech_000102_int_com",
+    "category": "tech",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This type of software translates human-readable code into a lower-level form before or during execution. Its design affects error messages, optimization, portability, and how closely programmers interact with hardware details. It is central to turning programming languages into working programs. What software is this?",
+    "displayAnswer": "Compiler",
+    "normalizedAnswer": "compiler",
+    "answerChars": [
+      "c",
+      "o",
+      "m",
+      "p",
+      "i",
+      "l",
+      "e",
+      "r"
+    ]
+  },
+  {
+    "id": "lang_000102_int_com",
+    "category": "lang",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This writing system represents spoken language with signs that are generally linked to individual sounds rather than whole ideas or syllables. Different languages adapt it in different ways, and the order of its symbols is used for dictionaries, indexes, and classroom learning. What system is this?",
+    "displayAnswer": "Alphabet",
+    "normalizedAnswer": "alphabet",
+    "answerChars": [
+      "a",
+      "l",
+      "p",
+      "h",
+      "a",
+      "b",
+      "e",
+      "t"
+    ]
+  },
+  {
+    "id": "art_000102_int_com",
+    "category": "art",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This literary form is built around patterned language, imagery, rhythm, line breaks, and compression rather than only plot. It can be narrative or lyric, formal or free, and it often asks the reader to pay close attention to sound and association. What form is this?",
+    "displayAnswer": "Poetry",
+    "normalizedAnswer": "poetry",
+    "answerChars": [
+      "p",
+      "o",
+      "e",
+      "t",
+      "r",
+      "y"
+    ]
+  },
+  {
+    "id": "gen_000102_int_com",
+    "category": "gen",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "common",
+    "text": "This object is used to measure temperature by linking a physical property to a calibrated scale. Older versions used expanding liquids in a narrow tube, while modern versions may rely on electrical resistance, infrared sensing, or digital circuits. What object is this?",
+    "displayAnswer": "Thermometer",
+    "normalizedAnswer": "thermometer",
+    "answerChars": [
+      "t",
+      "h",
+      "e",
+      "r",
+      "m",
+      "o",
+      "m",
+      "e",
+      "t",
+      "e",
+      "r"
+    ]
+  },
+  {
+    "id": "geo_000103_int_std",
+    "category": "geo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This ocean current is important in discussions of climate because it transports warm water across the North Atlantic and affects weather patterns far from its origin. It forms part of a larger circulation system involving winds, salinity, and temperature contrasts, and changes to it are often discussed in climate science. What current is this?",
+    "displayAnswer": "Gulf Stream",
+    "normalizedAnswer": "gulfstream",
+    "answerChars": [
+      "g",
+      "u",
+      "l",
+      "f",
+      "s",
+      "t",
+      "r",
+      "e",
+      "a",
+      "m"
+    ]
+  },
+  {
+    "id": "his_000103_int_std",
+    "category": "his",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This political assembly began during a revolutionary period with representatives divided in ways that later helped shape the language of left and right in politics. It became associated with drafting laws, challenging monarchy, and reorganizing authority around the idea of the nation. What assembly is this?",
+    "displayAnswer": "National Convention",
+    "normalizedAnswer": "nationalconvention",
+    "answerChars": [
+      "n",
+      "a",
+      "t",
+      "i",
+      "o",
+      "n",
+      "a",
+      "l",
+      "c",
+      "o",
+      "n",
+      "v",
+      "e",
+      "n",
+      "t",
+      "i",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "sci_000103_int_std",
+    "category": "sci",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This biological process separates homologous chromosomes and later sister chromatids to produce cells with half the original chromosome number. It creates variation through crossing over and independent assortment, and it is essential for many forms of sexual reproduction. What process is this?",
+    "displayAnswer": "Meiosis",
+    "normalizedAnswer": "meiosis",
+    "answerChars": [
+      "m",
+      "e",
+      "i",
+      "o",
+      "s",
+      "i",
+      "s"
+    ]
+  },
+  {
+    "id": "spo_000103_int_std",
+    "category": "spo",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This endurance event combines swimming, cycling, and running in a fixed order, requiring athletes to manage pacing, equipment changes, hydration, and different muscle demands across disciplines. Its shorter formats are common, while its long-distance versions are known for extreme fatigue management. What event is this?",
+    "displayAnswer": "Triathlon",
+    "normalizedAnswer": "triathlon",
+    "answerChars": [
+      "t",
+      "r",
+      "i",
+      "a",
+      "t",
+      "h",
+      "l",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "ent_000103_int_std",
+    "category": "ent",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This animation studio became known for handcrafted-looking feature films, attention to landscapes and flight, and stories where childhood, work, spirits, and environmental change often overlap. Its films are frequently discussed as alternatives to more formulaic commercial animation. What studio is this?",
+    "displayAnswer": "Studio Ghibli",
+    "normalizedAnswer": "studioghibli",
+    "answerChars": [
+      "s",
+      "t",
+      "u",
+      "d",
+      "i",
+      "o",
+      "g",
+      "h",
+      "i",
+      "b",
+      "l",
+      "i"
+    ]
+  },
+  {
+    "id": "food_000103_int_std",
+    "category": "food",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This fermented soybean food has a strong aroma, sticky texture, and long strands that appear when it is stirred. It is often eaten with rice and condiments, and its flavor divides people even within the food culture where it is most common. What food is this?",
+    "displayAnswer": "Natto",
+    "normalizedAnswer": "natto",
+    "answerChars": [
+      "n",
+      "a",
+      "t",
+      "t",
+      "o"
+    ]
+  },
+  {
+    "id": "tech_000103_int_std",
+    "category": "tech",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This database model organizes data as nodes and relationships rather than primarily as rows in tables. It is useful when queries depend on connections, paths, recommendations, fraud links, or social networks, because relationships are treated as first-class structures. What database model is this?",
+    "displayAnswer": "Graph database",
+    "normalizedAnswer": "graphdatabase",
+    "answerChars": [
+      "g",
+      "r",
+      "a",
+      "p",
+      "h",
+      "d",
+      "a",
+      "t",
+      "a",
+      "b",
+      "a",
+      "s",
+      "e"
+    ]
+  },
+  {
+    "id": "lang_000103_int_std",
+    "category": "lang",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This language family includes languages spoken across much of Europe and parts of South Asia, and it is reconstructed by comparing systematic sound correspondences and shared vocabulary. Its study connects linguistics with migration, archaeology, and ancient texts. What language family is this?",
+    "displayAnswer": "Indo European",
+    "normalizedAnswer": "indoeuropean",
+    "answerChars": [
+      "i",
+      "n",
+      "d",
+      "o",
+      "e",
+      "u",
+      "r",
+      "o",
+      "p",
+      "e",
+      "a",
+      "n"
+    ]
+  },
+  {
+    "id": "art_000103_int_std",
+    "category": "art",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This art movement reacted against strict academic rules by emphasizing changing light, loose brushwork, and scenes of modern life or outdoor observation. Its name originally came from criticism of a painting title rather than from a formal manifesto. What movement is this?",
+    "displayAnswer": "Impressionism",
+    "normalizedAnswer": "impressionism",
+    "answerChars": [
+      "i",
+      "m",
+      "p",
+      "r",
+      "e",
+      "s",
+      "s",
+      "i",
+      "o",
+      "n",
+      "i",
+      "s",
+      "m"
+    ]
+  },
+  {
+    "id": "gen_000103_int_std",
+    "category": "gen",
+    "difficulty_tier": "intermediate",
+    "knowledge_level": "standard",
+    "text": "This logical fallacy occurs when someone attacks a person’s character, motives, or background instead of addressing the argument itself. It can appear in debates, comment sections, and political rhetoric because it shifts attention away from whether a claim is actually supported. What fallacy is this?",
+    "displayAnswer": "Ad hominem",
+    "normalizedAnswer": "adhominem",
+    "answerChars": [
+      "a",
+      "d",
+      "h",
+      "o",
+      "m",
+      "i",
+      "n",
+      "e",
+      "m"
+    ]
+  },
+  {
+    "id": "geo_000104_adv_com",
+    "category": "geo",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This geographic feature can be examined through drainage basins, sediment transport, meanders, deltas, and seasonal discharge. It connects uplands to lowlands and can shape borders, agriculture, cities, and trade routes over long periods. Even when people think of it simply as flowing water, its system includes tributaries and floodplains. What feature is this?",
+    "displayAnswer": "River",
+    "normalizedAnswer": "river",
+    "answerChars": [
+      "r",
+      "i",
+      "v",
+      "e",
+      "r"
+    ]
+  },
+  {
+    "id": "his_000104_adv_com",
+    "category": "his",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This ruler’s significance can be studied through administrative centralization, legal reform, propaganda, and the symbolic use of coronation. His campaigns altered boundaries and institutions across Europe, but his legacy is also debated because military brilliance and authoritarian rule are hard to separate. Which historical figure is this?",
+    "displayAnswer": "Napoleon",
+    "normalizedAnswer": "napoleon",
+    "answerChars": [
+      "n",
+      "a",
+      "p",
+      "o",
+      "l",
+      "e",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "sci_000104_adv_com",
+    "category": "sci",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This force is described in classical mechanics as proportional to masses and inversely related to the square of distance, yet in modern physics it is connected with spacetime curvature. It governs falling objects, tides, planetary motion, and the formation of large-scale cosmic structures. What force is this?",
+    "displayAnswer": "Gravity",
+    "normalizedAnswer": "gravity",
+    "answerChars": [
+      "g",
+      "r",
+      "a",
+      "v",
+      "i",
+      "t",
+      "y"
+    ]
+  },
+  {
+    "id": "spo_000104_adv_com",
+    "category": "spo",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This sport can be analyzed through pressing structures, off-ball movement, transition phases, and the spatial value of passing lanes rather than only through shots and goals. Its global appeal comes partly from simple equipment needs, but elite performance depends on complex collective decision-making. What sport is this?",
+    "displayAnswer": "Soccer",
+    "normalizedAnswer": "soccer",
+    "answerChars": [
+      "s",
+      "o",
+      "c",
+      "c",
+      "e",
+      "r"
+    ]
+  },
+  {
+    "id": "ent_000104_adv_com",
+    "category": "ent",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This fictional genre often uses speculative technology, altered societies, space travel, artificial intelligence, or future history to test ideas about humanity. Its settings may be far from everyday life, but its conflicts often reflect present concerns about power, identity, knowledge, and survival. What genre is this?",
+    "displayAnswer": "Science fiction",
+    "normalizedAnswer": "sciencefiction",
+    "answerChars": [
+      "s",
+      "c",
+      "i",
+      "e",
+      "n",
+      "c",
+      "e",
+      "f",
+      "i",
+      "c",
+      "t",
+      "i",
+      "o",
+      "n"
+    ]
+  },
+  {
+    "id": "food_000104_adv_com",
+    "category": "food",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This preparation can be understood through starch gelatinization, gluten development, fermentation gases, browning reactions, and crust formation. Although many cultures treat it as ordinary, small changes in hydration, flour, time, and heat can produce very different textures. What food is this?",
+    "displayAnswer": "Bread",
+    "normalizedAnswer": "bread",
+    "answerChars": [
+      "b",
+      "r",
+      "e",
+      "a",
+      "d"
+    ]
+  },
+  {
+    "id": "tech_000104_adv_com",
+    "category": "tech",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This network can be described as a packet-switched system of systems using layered protocols, routing, addressing, and resilient design rather than as one central service. Many familiar applications sit on top of it, but its basic architecture is broader than any single website or platform. What is it?",
+    "displayAnswer": "Internet",
+    "normalizedAnswer": "internet",
+    "answerChars": [
+      "i",
+      "n",
+      "t",
+      "e",
+      "r",
+      "n",
+      "e",
+      "t"
+    ]
+  },
+  {
+    "id": "lang_000104_adv_com",
+    "category": "lang",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This grammatical category can be identified by distribution, morphology, and syntactic role rather than by the schoolbook idea that it simply names a thing. It may be countable or mass, concrete or abstract, and it can head phrases with determiners or modifiers. What category is this?",
+    "displayAnswer": "Noun",
+    "normalizedAnswer": "noun",
+    "answerChars": [
+      "n",
+      "o",
+      "u",
+      "n"
+    ]
+  },
+  {
+    "id": "art_000104_adv_com",
+    "category": "art",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This playwright’s work can be studied through blank verse, theatrical conventions, source adaptation, and the blending of comedy, history, and tragedy. His language entered later culture so deeply that quotations, character types, and plots often circulate apart from the original plays. Who is this?",
+    "displayAnswer": "Shakespeare",
+    "normalizedAnswer": "shakespeare",
+    "answerChars": [
+      "s",
+      "h",
+      "a",
+      "k",
+      "e",
+      "s",
+      "p",
+      "e",
+      "a",
+      "r",
+      "e"
+    ]
+  },
+  {
+    "id": "gen_000104_adv_com",
+    "category": "gen",
+    "difficulty_tier": "advanced",
+    "knowledge_level": "common",
+    "text": "This chemical element is fundamental to organic chemistry because its bonding patterns allow chains, rings, and complex frameworks. It appears in living tissues, fuels, minerals, atmospheric gases, and engineered materials, making it central to both biology and technology. What element is this?",
+    "displayAnswer": "Carbon",
+    "normalizedAnswer": "carbon",
+    "answerChars": [
+      "c",
+      "a",
+      "r",
+      "b",
+      "o",
+      "n"
+    ]
+  }
+]
